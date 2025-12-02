@@ -1,17 +1,18 @@
 {
   "id": "recluse",
   "name": "Recluse",
-  "team": "outsider",
-  "ability": "You might register as evil & as a Minion or Demon, even if dead.",
   "edition": "tb",
-  "image": "icons/tb/recluse.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You might register as evil & as a Minion or Demon, even if dead.",
+  "flavor": "\"Garn git ya darn grub ya mitts ofma lorn yasee. Grr. Natsy pikkins yonder southwise ye begittin afta ya! Git! Me harvy no so widda licks and demmons no be fightin' hadsup ne'er ma kin. Git, assay!\"",
+  "image": "icons/tb/recluse.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "sage",

@@ -1,16 +1,17 @@
 {
   "id": "fiddler",
   "name": "Fiddler",
-  "team": "fabled",
-  "ability": "Once per game, the Demon secretly chooses an opposing player: all players choose which of these 2 players win.",
   "edition": "fabled",
-  "image": "icons/fabled/fiddler.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, the Demon secretly chooses an opposing player: all players choose which of these 2 players win.",
+  "flavor": "\"I'll wager mi lyef ye cannae best me in a fiddle contest, ye boss-eyed snook! We'll go out on the lash, get the pub jammers an' have a right craic. I'll be layin' ma boots into ya come mornin' ye rumbly muppet.\"",
+  "image": "icons/fabled/fiddler.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

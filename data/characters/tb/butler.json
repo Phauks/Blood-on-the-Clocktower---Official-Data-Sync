@@ -1,19 +1,20 @@
 {
   "id": "butler",
   "name": "Butler",
-  "team": "outsider",
-  "ability": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.",
   "edition": "tb",
-  "image": "icons/tb/butler.webp",
-  "firstNight": 129,
+  "team": "outsider",
   "firstNightReminder": "The Butler chooses a player.",
-  "otherNight": 174,
   "otherNightReminder": "The Butler chooses a player.",
   "reminders": [
     "MASTER"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.",
+  "flavor": "\"Yes, sir...No, sir...Certainly, sir.\"",
+  "image": "icons/tb/butler.webp",
+  "firstNight": 129,
+  "otherNight": 174,
   "jinxes": [
     {
       "id": "cannibal",

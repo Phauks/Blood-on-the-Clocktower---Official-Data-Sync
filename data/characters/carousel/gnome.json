@@ -1,18 +1,19 @@
 {
   "id": "gnome",
   "name": "Gnome",
-  "team": "traveller",
-  "ability": "All players start knowing a player of your alignment. You may choose to kill anyone who nominates them.",
   "edition": "carousel",
-  "image": "icons/carousel/gnome.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "AMIGO"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "All players start knowing a player of your alignment. You may choose to kill anyone who nominates them.",
+  "flavor": "\"Four the score or seven beers, no shows are goes for me and my. A prank to crack the cranks and planks o' the floor foundation length, so incontravertabubbilly mini. The large essays down streams of joyce, no greater than is scene, not inherdt, Ha-urrumph.o.\"",
+  "image": "icons/carousel/gnome.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

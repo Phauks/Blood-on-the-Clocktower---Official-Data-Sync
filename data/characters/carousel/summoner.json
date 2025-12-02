@@ -1,13 +1,9 @@
 {
   "id": "summoner",
   "name": "Summoner",
-  "team": "minion",
-  "ability": "You get 3 bluffs. On the 3rd night, choose a player: they become an evil Demon of your choice. [No Demon]",
   "edition": "carousel",
-  "image": "icons/carousel/summoner.webp",
-  "firstNight": 95,
+  "team": "minion",
   "firstNightReminder": "Show the THESE CHARACTERS ARE NOT IN PLAY token. Show 3 not-in-play good character tokens.",
-  "otherNight": 117,
   "otherNightReminder": "Change the Summoner reminder token to the relevant night. If it is night 3, the Summoner chooses a player and a Demon. Put the Summoner to sleep. Wake the chosen player. Show the YOU ARE token, a thumbs down and the chosen Demon token.",
   "reminders": [
     "NIGHT 1",
@@ -16,6 +12,11 @@
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "You get 3 bluffs. On the 3rd night, choose a player: they become an evil Demon of your choice. [No Demon]",
+  "flavor": "\"Hail the guardians of the north; by my intellect, thou art cut. Hail the guardians of the east; by my will, thou art dominated. Hail the guardians of the south; by that which lies beyond, the mystery is revealed. Hail the guardians of the west; a shield in the darkness\"",
+  "image": "icons/carousel/summoner.webp",
+  "firstNight": 95,
+  "otherNight": 117,
   "jinxes": [
     {
       "id": "alchemist",

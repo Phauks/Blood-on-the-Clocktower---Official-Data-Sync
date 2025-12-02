@@ -1,13 +1,9 @@
 {
   "id": "shabaloth",
   "name": "Shabaloth",
-  "team": "demon",
-  "ability": "Each night*, choose 2 players: they die. A dead player you chose last night might be regurgitated.",
   "edition": "bmr",
-  "image": "icons/bmr/shabaloth.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 126,
   "otherNightReminder": "A previously chosen player might be resurrected.  The Shabaloth chooses 2 players.",
   "reminders": [
     "DEAD",
@@ -16,5 +12,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose 2 players: they die. A dead player you chose last night might be regurgitated.",
+  "flavor": "\"Blarg f'taag nm mataan! No sho gumtha m'sik na yuuu. Fluuuuuuuuurg h-sikkkh.\"",
+  "image": "icons/bmr/shabaloth.webp",
+  "firstNight": 0,
+  "otherNight": 126,
   "_remindersFetched": true
 }

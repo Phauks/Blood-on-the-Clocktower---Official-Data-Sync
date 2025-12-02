@@ -1,13 +1,9 @@
 {
   "id": "tealady",
   "name": "Tea Lady",
-  "team": "townsfolk",
-  "ability": "If both your alive neighbors are good, they can't die.",
   "edition": "bmr",
-  "image": "icons/bmr/tealady.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "CANNOT DIE",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If both your alive neighbors are good, they can't die.",
+  "flavor": "\"If you are cold, tea will warm you. If you are too heated, tea will cool you. If you are depressed, tea will cheer you. If you are excited, tea will calm you.\"",
+  "image": "icons/bmr/tealady.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

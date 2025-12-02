@@ -1,19 +1,20 @@
 {
   "id": "slayer",
   "name": "Slayer",
-  "team": "townsfolk",
-  "ability": "Once per game, during the day, publicly choose a player: if they are the Demon, they die.",
   "edition": "tb",
-  "image": "icons/tb/slayer.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, during the day, publicly choose a player: if they are the Demon, they die.",
+  "flavor": "\"Die.\"",
+  "image": "icons/tb/slayer.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "lleech",

@@ -1,13 +1,9 @@
 {
   "id": "alhadikhia",
   "name": "Al-Hadikhia",
-  "team": "demon",
-  "ability": "Each night*, you may choose 3 players (all players learn who): each silently chooses to live or die, but if all live, all die.",
   "edition": "carousel",
-  "image": "icons/carousel/alhadikhia.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 134,
   "otherNightReminder": "The Al-Hadikhia chooses three players.    Wake the player marked 1 and say \"the Al-Hadikhia has chosen\", then the player's name, then \"Do you choose to live?\" They either nod or shake their head. Put them to sleep and add or remove shrouds accordingly. Repeat for players marked 2 and 3. If all three players are now alive, add a shroud to all three.",
   "reminders": [
     "1",
@@ -16,6 +12,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, you may choose 3 players (all players learn who): each silently chooses to live or die, but if all live, all die.",
+  "flavor": "\"Alsukut min dhahab.\"",
+  "image": "icons/carousel/alhadikhia.webp",
+  "firstNight": 0,
+  "otherNight": 134,
   "jinxes": [
     {
       "id": "scarletwoman",

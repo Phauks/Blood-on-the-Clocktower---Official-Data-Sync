@@ -1,13 +1,9 @@
 {
   "id": "riot",
   "name": "Riot",
-  "team": "demon",
-  "ability": "On day 3, Minions become Riot & nominees die but nominate an alive player immediately. This must happen.",
   "edition": "carousel",
-  "image": "icons/carousel/riot.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "DAY 1",
@@ -16,6 +12,11 @@
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "On day 3, Minions become Riot & nominees die but nominate an alive player immediately. This must happen.",
+  "flavor": "\"Larga vida a la revolución! Mi revolucion!\"",
+  "image": "icons/carousel/riot.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "grandmother",

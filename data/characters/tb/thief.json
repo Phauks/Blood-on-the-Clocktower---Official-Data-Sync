@@ -1,18 +1,19 @@
 {
   "id": "thief",
   "name": "Thief",
-  "team": "traveller",
-  "ability": "Each night, choose a player (not yourself): their vote counts negatively tomorrow.",
   "edition": "tb",
-  "image": "icons/tb/thief.webp",
-  "firstNight": 86,
+  "team": "traveller",
   "firstNightReminder": "The Thief chooses a player.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NEGATIVE VOTE"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose a player (not yourself): their vote counts negatively tomorrow.",
+  "flavor": "\"I aint done nuffink. I weren't even in dat alley last night! It weren't me what stole Mayor Bruno's briefcase wiv all dem fancy dockoments innit. Besides, it was too 'eavy to carry far.\"",
+  "image": "icons/tb/thief.webp",
+  "firstNight": 86,
+  "otherNight": 0,
   "_remindersFetched": true
 }

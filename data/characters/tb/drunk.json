@@ -1,19 +1,20 @@
 {
   "id": "drunk",
   "name": "Drunk",
-  "team": "outsider",
-  "ability": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.",
   "edition": "tb",
-  "image": "icons/tb/drunk.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "IS THE DRUNK"
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.",
+  "flavor": "\"I’m only a *hic* social drinker, my dear. Admittedly, I am a heavy *burp* socializer.\"",
+  "image": "icons/tb/drunk.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "mathematician",

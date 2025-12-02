@@ -1,13 +1,9 @@
 {
   "id": "puzzlemaster",
   "name": "Puzzlemaster",
-  "team": "outsider",
-  "ability": "1 player is drunk, even if you die. If you guess (once) who it is, learn the Demon player, but guess wrong & get false info.",
   "edition": "carousel",
-  "image": "icons/carousel/puzzlemaster.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "DRUNK",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "1 player is drunk, even if you die. If you guess (once) who it is, learn the Demon player, but guess wrong & get false info.",
+  "flavor": "\"When one begins to think that some thing is merely some other thing, one is usually on the brink of an error. Patience, patience. Don’t confusejustandshouldwithisandisn’t.\"",
+  "image": "icons/carousel/puzzlemaster.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

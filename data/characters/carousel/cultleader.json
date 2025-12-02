@@ -1,17 +1,18 @@
 {
   "id": "cultleader",
   "name": "Cult Leader",
-  "team": "townsfolk",
-  "ability": "Each night, you become the alignment of an alive neighbor. If all good players choose to join your cult, your team wins.",
   "edition": "carousel",
-  "image": "icons/carousel/cultleader.webp",
-  "firstNight": 142,
+  "team": "townsfolk",
   "firstNightReminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
-  "otherNight": 173,
   "otherNightReminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "Each night, you become the alignment of an alive neighbor. If all good players choose to join your cult, your team wins.",
+  "flavor": "\"Thinking themselves wise, they became fools.\"",
+  "image": "icons/carousel/cultleader.webp",
+  "firstNight": 142,
+  "otherNight": 173,
   "jinxes": [
     {
       "id": "pithag",

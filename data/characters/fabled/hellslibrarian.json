@@ -1,18 +1,19 @@
 {
   "id": "hellslibrarian",
   "name": "Hell's Librarian",
-  "team": "fabled",
-  "ability": "Something bad might happen to whoever talks when the Storyteller has asked for silence.",
   "edition": "fabled",
-  "image": "icons/fabled/hellslibrarian.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "SOMETHING BAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Something bad might happen to whoever talks when the Storyteller has asked for silence.",
+  "flavor": "\"Shhhhhh. Please be quiet. It is best not to disturb the Librarian. I've heard it has a temper.\"",
+  "image": "icons/fabled/hellslibrarian.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

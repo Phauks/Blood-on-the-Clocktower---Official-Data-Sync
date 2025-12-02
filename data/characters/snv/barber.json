@@ -1,18 +1,19 @@
 {
   "id": "barber",
   "name": "Barber",
-  "team": "outsider",
-  "ability": "If you died today or tonight, the Demon may choose 2 players (not another Demon) to swap characters.",
   "edition": "snv",
-  "image": "icons/snv/barber.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 143,
   "otherNightReminder": "If the Barber died today or tonight, show the Demon the THIS CHARACTER SELECTED YOU & Barber tokens. If the Demon chose 2 players, wake one at a time. Show the YOU ARE token & their new character token.",
   "reminders": [
     "HAIRCUTS TONIGHT"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you died today or tonight, the Demon may choose 2 players (not another Demon) to swap characters.",
+  "flavor": "\"Did you know that barbery and surgery were once the same profession? No? Well, now you do.\"",
+  "image": "icons/snv/barber.webp",
+  "firstNight": 0,
+  "otherNight": 143,
   "_remindersFetched": true
 }

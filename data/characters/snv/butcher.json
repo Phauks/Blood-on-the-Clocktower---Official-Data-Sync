@@ -1,16 +1,17 @@
 {
   "id": "butcher",
   "name": "Butcher",
-  "team": "traveller",
-  "ability": "Each day, after the 1st execution, you may nominate again.",
   "edition": "snv",
-  "image": "icons/snv/butcher.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each day, after the 1st execution, you may nominate again.",
+  "flavor": "\"It tastes like chicken. More please.\"",
+  "image": "icons/snv/butcher.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

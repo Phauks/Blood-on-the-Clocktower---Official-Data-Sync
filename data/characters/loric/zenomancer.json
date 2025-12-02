@@ -1,13 +1,9 @@
 {
   "id": "zenomancer",
   "name": "Zenomancer",
-  "team": "loric",
-  "ability": "One or more players each have a goal. When achieved, that player learns a piece of true info.",
   "edition": "loric",
-  "image": "icons/loric/zenomancer.webp",
-  "firstNight": 0,
+  "team": "loric",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "GOAL",
@@ -16,5 +12,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "One or more players each have a goal. When achieved, that player learns a piece of true info.",
+  "flavor": "\"The universe is a verb not a noun, they say, and it is turtles, turtles all the way down. Turtles all the way down, my friend, turtles all the way down.\"",
+  "image": "icons/loric/zenomancer.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

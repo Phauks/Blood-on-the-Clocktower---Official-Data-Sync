@@ -1,16 +1,17 @@
 {
   "id": "shugenja",
   "name": "Shugenja",
-  "team": "townsfolk",
-  "ability": "You start knowing if your closest evil player is clockwise or anti-clockwise. If equidistant, this info is arbitrary.",
   "edition": "carousel",
-  "image": "icons/carousel/shugenja.webp",
-  "firstNight": 138,
+  "team": "townsfolk",
   "firstNightReminder": "Point clockwise or anticlockwise around the circle.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You start knowing if your closest evil player is clockwise or anti-clockwise. If equidistant, this info is arbitrary.",
+  "flavor": "\"これは夢。それも夢。すべて夢です。\"",
+  "image": "icons/carousel/shugenja.webp",
+  "firstNight": 138,
+  "otherNight": 0,
   "_remindersFetched": true
 }

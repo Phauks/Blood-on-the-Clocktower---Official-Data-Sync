@@ -1,16 +1,17 @@
 {
   "id": "bigwig",
   "name": "Big Wig",
-  "team": "loric",
-  "ability": "Each nominee chooses a player: until voting, only they may speak & they are mad the nominee is good or they might die.",
   "edition": "loric",
-  "image": "icons/loric/bigwig.webp",
-  "firstNight": 0,
+  "team": "loric",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each nominee chooses a player: until voting, only they may speak & they are mad the nominee is good or they might die.",
+  "flavor": "\"Each nominee chooses a player: until voting, only they may speak & they are mad the nominee is good or they might die.\"",
+  "image": "icons/loric/bigwig.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

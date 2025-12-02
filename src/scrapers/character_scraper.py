@@ -110,6 +110,12 @@ Examples:
     )
     
     parser.add_argument(
+        "--flavor", "-f",
+        action="store_true",
+        help="Fetch flavor text from wiki (adds ~1 sec per character)",
+    )
+    
+    parser.add_argument(
         "--images", "-i",
         action="store_true",
         help="Download character icon images (incremental, skips existing)",
@@ -118,7 +124,7 @@ Examples:
     parser.add_argument(
         "--all", "-a",
         action="store_true",
-        help="Enable all optional features: --validate --images --reminders --package",
+        help="Enable all optional features: --validate --images --reminders --flavor --package",
     )
     
     parser.add_argument(
@@ -134,6 +140,7 @@ Examples:
         args.validate = True
         args.images = True
         args.reminders = True
+        args.flavor = True
         args.package = True
     
     return args
@@ -152,8 +159,8 @@ def scrape_characters(headless: bool = True, timeout: int = DEFAULT_TIMEOUT) -> 
         print("Loading page...")
         page.goto(SCRIPT_TOOL_URL, timeout=timeout)
         
-        # Wait for character list to load (SPA renders content dynamically)
-        print("Waiting for SPA to render...")
+        # Wait for character list to load (Single Page Application renders content dynamically)
+        print("Waiting for Single Page Application to render...")
         page.wait_for_selector("#all-characters .item[data-id]", state="attached", timeout=timeout)
         # Give the page a moment to fully render
         page.wait_for_timeout(PAGE_RENDER_DELAY)
@@ -293,8 +300,12 @@ def main() -> int:
             # Determine which editions to fetch
             editions_to_fetch = args.edition if args.edition else list(VALID_EDITIONS)
             
+            total_tokens = 0
+            total_fetched = 0
+            total_preserved = 0
+            
             for edition in editions_to_fetch:
-                reminders = fetch_reminders_for_edition(
+                result = fetch_reminders_for_edition(
                     edition,
                     dry_run=False,
                     team_filter=None,
@@ -303,17 +314,44 @@ def main() -> int:
                     incremental=True,
                     previous_data=previous_data
                 )
-                if reminders:
-                    update_character_files_with_reminders(edition, reminders)
+                if result and result.get("reminders"):
+                    update_character_files_with_reminders(edition, result["reminders"])
+                    total_tokens += result.get("total_tokens", 0)
+                    total_fetched += result.get("fetched", 0)
+                    total_preserved += result.get("preserved", 0)
             
+            print(f"\nReminder summary:")
+            print(f"  Fetched: {total_fetched}, Preserved: {total_preserved}")
+            print(f"  Total reminder tokens: {total_tokens}")
             print("\n✓ Reminder tokens fetched (only new/changed characters)!")
         except ImportError as e:
             print(f"\n⚠ Could not import reminder_fetcher: {e}")
             print("  Run 'pip install beautifulsoup4 tqdm' and try again.")
     
+    # Fetch flavor text from wiki if requested
+    if args.flavor:
+        print("\n--- Phase 8: Fetching flavor text from wiki (incremental) ---")
+        try:
+            from flavor_fetcher import update_flavor_for_characters, load_scraped_characters, save_updated_characters
+            
+            # Load current character data
+            char_data = load_scraped_characters()
+            
+            # Update flavor text
+            stats = update_flavor_for_characters(char_data, force=False)
+            
+            # Save if any fetches were made
+            if stats["fetched"] > 0:
+                save_updated_characters(char_data)
+            
+            print("\n✓ Flavor text fetched (only new/changed characters)!")
+        except ImportError as e:
+            print(f"\n⚠ Could not import flavor_fetcher: {e}")
+            print("  Run 'pip install beautifulsoup4' and try again.")
+    
     # Create distribution package if requested
     if args.package:
-        print("\n--- Phase 8: Creating distribution package ---")
+        print("\n--- Phase 9: Creating distribution package ---")
         try:
             from packager import package_data
             
@@ -321,6 +359,17 @@ def main() -> int:
             print("\n✓ Distribution package created in dist/")
         except ImportError as e:
             print(f"\n⚠ Could not import packager: {e}")
+    
+    # Regenerate manifest with updated data (reminders, flavor, etc.)
+    if args.reminders or args.flavor:
+        print("\n--- Updating manifest with fetched data ---")
+        try:
+            from data_loader import load_previous_character_data as load_all_chars
+            updated_characters = load_all_chars()
+            if updated_characters:
+                create_manifest(updated_characters, data_dir)
+        except ImportError:
+            pass
     
     print("\n✓ Scraping complete!")
     return 0

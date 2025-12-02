@@ -1,18 +1,19 @@
 {
   "id": "judge",
   "name": "Judge",
-  "team": "traveller",
-  "ability": "Once per game, if another player nominated, you may choose to force the current execution to pass or fail.",
   "edition": "bmr",
-  "image": "icons/bmr/judge.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, if another player nominated, you may choose to force the current execution to pass or fail.",
+  "flavor": "\"I find the defendant guilty of the crimes of murder, fraud, arson, larceny, impersonating an officer of the law, practicing medicine without a license, slander, regicide, and littering.\"",
+  "image": "icons/bmr/judge.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

@@ -1,13 +1,9 @@
 {
   "id": "pixie",
   "name": "Pixie",
-  "team": "townsfolk",
-  "ability": "You start knowing 1 in-play Townsfolk. If you were mad that you were this character, you gain their ability when they die.",
   "edition": "carousel",
-  "image": "icons/carousel/pixie.webp",
-  "firstNight": 119,
+  "team": "townsfolk",
   "firstNightReminder": "Show the Townsfolk character token marked MAD.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "MAD",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You start knowing 1 in-play Townsfolk. If you were mad that you were this character, you gain their ability when they die.",
+  "flavor": "\"Round and round the garden, go.Little girls run to and fro.Little boys climb up the tree.Which of these should Pixie be?Ladies smile and go to town.Lords with axe chop forest down.What’s yours is mine. What’s mine, divine.Silly little Pixie, me.\"",
+  "image": "icons/carousel/pixie.webp",
+  "firstNight": 119,
+  "otherNight": 0,
   "_remindersFetched": true
 }

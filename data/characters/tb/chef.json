@@ -1,16 +1,17 @@
 {
   "id": "chef",
   "name": "Chef",
-  "team": "townsfolk",
-  "ability": "You start knowing how many pairs of evil players there are.",
   "edition": "tb",
-  "image": "icons/tb/chef.webp",
-  "firstNight": 126,
+  "team": "townsfolk",
   "firstNightReminder": "Give a finger signal.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You start knowing how many pairs of evil players there are.",
+  "flavor": "\"This evening's reservations seem odd. Never before has Mrs Mayweather kept company with that scamp from Hudson Lane. Yet, tonight, they have a table for two. Strange.\"",
+  "image": "icons/tb/chef.webp",
+  "firstNight": 126,
+  "otherNight": 0,
   "_remindersFetched": true
 }

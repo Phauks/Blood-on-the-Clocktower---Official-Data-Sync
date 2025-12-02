@@ -1,19 +1,20 @@
 {
   "id": "vortox",
   "name": "Vortox",
-  "team": "demon",
-  "ability": "Each night*, choose a player: they die. Townsfolk abilities yield false info. Each day, if no-one is executed, evil wins.",
   "edition": "snv",
-  "image": "icons/snv/vortox.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 130,
   "otherNightReminder": "The Vortox chooses a player.",
   "reminders": [
     "DEAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a player: they die. Townsfolk abilities yield false info. Each day, if no-one is executed, evil wins.",
+  "flavor": "\"Black is White. Right is Wrong. Left is Right. Up is Long. Down is Sight. Short is Blind. Follow me. Answers find.\"",
+  "image": "icons/snv/vortox.webp",
+  "firstNight": 0,
+  "otherNight": 130,
   "jinxes": [
     {
       "id": "banshee",

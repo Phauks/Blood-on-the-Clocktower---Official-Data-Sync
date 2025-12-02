@@ -1,16 +1,17 @@
 {
   "id": "wizard",
   "name": "Wizard",
-  "team": "minion",
-  "ability": "Once per game, choose to make a wish. If granted, it might have a price & leave a clue as to its nature.",
   "edition": "carousel",
-  "image": "icons/carousel/wizard.webp",
-  "firstNight": 107,
+  "team": "minion",
   "firstNightReminder": "Run the Wizard's ability, if applicable.",
-  "otherNight": 103,
   "otherNightReminder": "Run the Wizard's ability, if applicable.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, choose to make a wish. If granted, it might have a price & leave a clue as to its nature.",
+  "flavor": "\"Every man and every woman is a star. Love is the law, love under will.\"",
+  "image": "icons/carousel/wizard.webp",
+  "firstNight": 107,
+  "otherNight": 103,
   "_remindersFetched": true
 }

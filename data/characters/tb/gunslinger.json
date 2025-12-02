@@ -1,16 +1,17 @@
 {
   "id": "gunslinger",
   "name": "Gunslinger",
-  "team": "traveller",
-  "ability": "Each day, after the 1st vote has been tallied, you may choose a player that voted: they die.",
   "edition": "tb",
-  "image": "icons/tb/gunslinger.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each day, after the 1st vote has been tallied, you may choose a player that voted: they die.",
+  "flavor": "\"It's time someone took matters into their own hands. That someone... is me.\"",
+  "image": "icons/tb/gunslinger.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

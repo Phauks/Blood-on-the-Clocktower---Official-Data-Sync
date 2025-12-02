@@ -1,16 +1,17 @@
 {
   "id": "sentinel",
   "name": "Sentinel",
-  "team": "fabled",
-  "ability": "There might be 1 extra or 1 fewer Outsider in play.",
   "edition": "fabled",
-  "image": "icons/fabled/sentinel.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "There might be 1 extra or 1 fewer Outsider in play.",
+  "flavor": "\"Name, please.Papers, please.Weapons, please.\"",
+  "image": "icons/fabled/sentinel.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

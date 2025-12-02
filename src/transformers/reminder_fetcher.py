@@ -492,7 +492,16 @@ def fetch_reminders_for_edition(
     if incremental and verbose >= 1:
         tqdm.write(f"  [Stats] Fetched: {fetched_count}, Preserved: {preserved_count}, Skipped: {skipped_count}")
     
-    return results
+    # Count total reminder tokens
+    total_tokens = sum(len(tokens) for tokens in results.values())
+    
+    return {
+        "reminders": results,
+        "fetched": fetched_count,
+        "preserved": preserved_count,
+        "skipped": skipped_count,
+        "total_tokens": total_tokens,
+    }
 
 
 def update_character_files_with_reminders(edition: str, reminders: dict[str, list[str]]) -> None:

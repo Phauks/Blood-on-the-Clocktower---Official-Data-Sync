@@ -1,17 +1,18 @@
 {
   "id": "soldier",
   "name": "Soldier",
-  "team": "townsfolk",
-  "ability": "You are safe from the Demon.",
   "edition": "tb",
-  "image": "icons/tb/soldier.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You are safe from the Demon.",
+  "flavor": "\"As David said to Goliath, as Theseus said to the Minotaur, as Arjuna said to Bhagadatta... No.\"",
+  "image": "icons/tb/soldier.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "riot",

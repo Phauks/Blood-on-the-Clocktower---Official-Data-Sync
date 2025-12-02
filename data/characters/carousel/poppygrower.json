@@ -1,19 +1,20 @@
 {
   "id": "poppygrower",
   "name": "Poppy Grower",
-  "team": "townsfolk",
-  "ability": "Minions & Demons do not know each other. If you die, they learn who each other are that night.",
   "edition": "carousel",
-  "image": "icons/carousel/poppygrower.webp",
-  "firstNight": 90,
+  "team": "townsfolk",
   "firstNightReminder": "Do not do the Minion Info and Demon Info steps. Wake the Demon, show the THESE CHARACTERS ARE NOT IN PLAY info token and any three good character tokens that are not in play.",
-  "otherNight": 95,
   "otherNightReminder": "If the Poppy Grower died today or tonight, wake the Minions, show the THIS IS THE DEMON info token and point to the Demon. Put them to sleep. Wake the Demon, show the THESE ARE YOUR MINIONS info token and point to the Minions. Put the Demon to sleep.",
   "reminders": [
     "EVIL WAKES"
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "Minions & Demons do not know each other. If you die, they learn who each other are that night.",
+  "flavor": "\"In the hidden groves of the deep forest, the black poppy dwells. To see its revelry is to be enchanted. To smell its thick aroma is to be lost forever, a slave to the gods of light and dark.\"",
+  "image": "icons/carousel/poppygrower.webp",
+  "firstNight": 90,
+  "otherNight": 95,
   "jinxes": [
     {
       "id": "spy",

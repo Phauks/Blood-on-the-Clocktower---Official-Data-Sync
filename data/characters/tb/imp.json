@@ -1,18 +1,19 @@
 {
   "id": "imp",
   "name": "Imp",
-  "team": "demon",
-  "ability": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.",
   "edition": "tb",
-  "image": "icons/tb/imp.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 123,
   "otherNightReminder": "The Imp chooses a player.  If the Imp chose themselves: Replace 1 alive Minion token with a spare Imp token. Put the old Imp to sleep. Wake the new Imp. Show the YOU ARE token, then show the Imp token.",
   "reminders": [
     "DEAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.",
+  "flavor": "\"We must keep our wits sharp and our sword sharper. Evil walks among us, and will stop at nothing to destroy us good, simple folk, bringing our fine town to ruin. Trust no-one. But, if you must trust someone, trust me.\"",
+  "image": "icons/tb/imp.webp",
+  "firstNight": 0,
+  "otherNight": 123,
   "_remindersFetched": true
 }

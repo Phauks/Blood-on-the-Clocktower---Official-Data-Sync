@@ -1,16 +1,17 @@
 {
   "id": "pacifist",
   "name": "Pacifist",
-  "team": "townsfolk",
-  "ability": "Executed good players might not die.",
   "edition": "bmr",
-  "image": "icons/bmr/pacifist.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Executed good players might not die.",
+  "flavor": "\"Distrust all in whom the impulse to punish is powerful.\"",
+  "image": "icons/bmr/pacifist.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

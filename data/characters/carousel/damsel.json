@@ -1,19 +1,20 @@
 {
   "id": "damsel",
   "name": "Damsel",
-  "team": "outsider",
-  "ability": "All Minions know a Damsel is in play. If a Minion publicly guesses you (once), your team loses.",
   "edition": "carousel",
-  "image": "icons/carousel/damsel.webp",
-  "firstNight": 121,
+  "team": "outsider",
   "firstNightReminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
-  "otherNight": 151,
   "otherNightReminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
   "reminders": [
     "GUESS USED"
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "All Minions know a Damsel is in play. If a Minion publicly guesses you (once), your team loses.",
+  "flavor": "\"Don't touch ze hair, honey.\"",
+  "image": "icons/carousel/damsel.webp",
+  "firstNight": 121,
+  "otherNight": 151,
   "jinxes": [
     {
       "id": "spy",

@@ -1,16 +1,17 @@
 {
   "id": "mutant",
   "name": "Mutant",
-  "team": "outsider",
-  "ability": "If you are “mad” about being an Outsider, you might be executed.",
   "edition": "snv",
-  "image": "icons/snv/mutant.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you are “mad” about being an Outsider, you might be executed.",
+  "flavor": "\"I am not a freak! I am a human being! Have mercy!\"",
+  "image": "icons/snv/mutant.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

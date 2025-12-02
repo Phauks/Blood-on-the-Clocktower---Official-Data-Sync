@@ -1,13 +1,9 @@
 {
   "id": "po",
   "name": "Po",
-  "team": "demon",
-  "ability": "Each night*, you may choose a player: they die. If your last choice was no-one, choose 3 players tonight.",
   "edition": "bmr",
-  "image": "icons/bmr/po.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 127,
   "otherNightReminder": "The Po may choose a player OR chooses 3 players if they chose no-one last night.  or",
   "reminders": [
     "3 ATTACKS",
@@ -17,5 +13,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, you may choose a player: they die. If your last choice was no-one, choose 3 players tonight.",
+  "flavor": "\"Would you like a flower? I'm so lonely.\"",
+  "image": "icons/bmr/po.webp",
+  "firstNight": 0,
+  "otherNight": 127,
   "_remindersFetched": true
 }

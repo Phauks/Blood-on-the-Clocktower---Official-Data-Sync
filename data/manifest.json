@@ -1,10 +1,14 @@
 {
   "schemaVersion": 1,
   "version": "2025.12.02",
-  "generated": "2025-12-02T10:31:37.731332+00:00",
-  "contentHash": "9da113dba563b7bb",
+  "generated": "2025-12-02T20:43:43.692389+00:00",
+  "lastModified": "2025-12-02T20:43:43.692401+00:00",
+  "contentHash": "c87ec91938133619",
   "source": "https://script.bloodontheclocktower.com/",
   "total_characters": 174,
+  "total_reminders": 181,
+  "total_jinxes": 131,
+  "total_flavor": 174,
   "editions": {
     "bmr": [
       "apprentice",
@@ -200,5 +204,13 @@
     "loric": 6,
     "snv": 30,
     "tb": 27
+  },
+  "edition_reminders": {
+    "bmr": 45,
+    "carousel": 66,
+    "fabled": 11,
+    "loric": 4,
+    "snv": 37,
+    "tb": 18
   }
 }

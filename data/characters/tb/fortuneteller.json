@@ -1,18 +1,19 @@
 {
   "id": "fortuneteller",
   "name": "Fortune Teller",
-  "team": "townsfolk",
-  "ability": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you.",
   "edition": "tb",
-  "image": "icons/tb/fortuneteller.webp",
-  "firstNight": 128,
+  "team": "townsfolk",
   "firstNightReminder": "The Fortune Teller chooses 2 players. Nod if either is the Demon (or the RED HERRING).",
-  "otherNight": 160,
   "otherNightReminder": "The Fortune Teller chooses 2 players. Nod if either is the Demon (or the RED HERRING).",
   "reminders": [
     "RED HERRING"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you.",
+  "flavor": "\"I sense great evil in your soul! But... that could just be your perfume. I am allergic to Elderberry.\"",
+  "image": "icons/tb/fortuneteller.webp",
+  "firstNight": 128,
+  "otherNight": 160,
   "_remindersFetched": true
 }

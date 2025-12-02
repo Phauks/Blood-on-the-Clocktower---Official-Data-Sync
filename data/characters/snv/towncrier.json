@@ -1,13 +1,9 @@
 {
   "id": "towncrier",
   "name": "Town Crier",
-  "team": "townsfolk",
-  "ability": "Each night*, you learn if a Minion nominated today.",
   "edition": "snv",
-  "image": "icons/snv/towncrier.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 164,
   "otherNightReminder": "Either nod or shake your head.",
   "reminders": [
     "MINIONS NOT NOMINATED",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, you learn if a Minion nominated today.",
+  "flavor": "\"Hear ye! Hear ye! Witchcraft in the labyrinth! Genius savant reveals all! Town in danger! Hear Ye!\"",
+  "image": "icons/snv/towncrier.webp",
+  "firstNight": 0,
+  "otherNight": 164,
   "_remindersFetched": true
 }

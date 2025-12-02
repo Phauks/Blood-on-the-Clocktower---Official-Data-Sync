@@ -1,18 +1,19 @@
 {
   "id": "devilsadvocate",
   "name": "Devil's Advocate",
-  "team": "minion",
-  "ability": "Each night, choose a living player (different to last night): if executed tomorrow, they don't die.",
   "edition": "bmr",
-  "image": "icons/bmr/devilsadvocate.webp",
-  "firstNight": 111,
+  "team": "minion",
   "firstNightReminder": "The Devil's Advocate chooses a living player.",
-  "otherNight": 109,
   "otherNightReminder": "The Devil's Advocate chooses a living player.",
   "reminders": [
     "SURVIVES EXECUTION"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose a living player (different to last night): if executed tomorrow, they don't die.",
+  "flavor": "\"My client, should the objection be overruled, pleads innocent by virtue of the prosecution's non-observance of statute 27.B - incorrect or misleading conjugation of a verb. The fact that nine of the jury died last night is simplyprima facie,which is, as Wills vs Thule set precedent for, further reason to acquit.\"",
+  "image": "icons/bmr/devilsadvocate.webp",
+  "firstNight": 111,
+  "otherNight": 109,
   "_remindersFetched": true
 }

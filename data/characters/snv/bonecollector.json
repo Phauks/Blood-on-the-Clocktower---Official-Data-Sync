@@ -1,13 +1,9 @@
 {
   "id": "bonecollector",
   "name": "Bone Collector",
-  "team": "traveller",
-  "ability": "Once per game, at night*, choose a dead player: they regain their ability until dusk.",
   "edition": "snv",
-  "image": "icons/snv/bonecollector.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "HAS ABILITY",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night*, choose a dead player: they regain their ability until dusk.",
+  "flavor": "\"I collect many things. Hair. Teeth. Clothes. Fragments of poems. The dreams of lost lovers. My secret arts are not for you to know but my fee is a mere pittance. Bring me the blood of a noblewoman who died of heartbreak under a full moon, and you shall have your answers.\"",
+  "image": "icons/snv/bonecollector.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

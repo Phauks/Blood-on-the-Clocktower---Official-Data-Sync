@@ -1,19 +1,20 @@
 {
   "id": "engineer",
   "name": "Engineer",
-  "team": "townsfolk",
-  "ability": "Once per game, at night, choose which Minions or which Demon is in play.",
   "edition": "carousel",
-  "image": "icons/carousel/engineer.webp",
-  "firstNight": 99,
+  "team": "townsfolk",
   "firstNightReminder": "The Engineer might choose Minions or Demons.  If they do: Put the Engineer to sleep. Wake a target, show them the YOU ARE token and their new character token, then put that target to sleep. Repeat for all players that changed characters.",
-  "otherNight": 97,
   "otherNightReminder": "The Engineer might choose Minions or Demons.  If they do: Put the Engineer to sleep. Wake a target, show them the YOU ARE token and their new character token, then put that target to sleep. Repeat for all players that changed characters.",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night, choose which Minions or which Demon is in play.",
+  "flavor": "\"If it bends, great. If it breaks, well, it probably needed fixing anyway.\"",
+  "image": "icons/carousel/engineer.webp",
+  "firstNight": 99,
+  "otherNight": 97,
   "jinxes": [
     {
       "id": "summoner",

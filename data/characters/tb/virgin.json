@@ -1,18 +1,19 @@
 {
   "id": "virgin",
   "name": "Virgin",
-  "team": "townsfolk",
-  "ability": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.",
   "edition": "tb",
-  "image": "icons/tb/virgin.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.",
+  "flavor": "\"I am pure. Let those who are without sin cast themselves down and suffer in my stead. My reputation shall not be stained with your venomous accusations.\"",
+  "image": "icons/tb/virgin.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

@@ -1,16 +1,17 @@
 {
   "id": "beggar",
   "name": "Beggar",
-  "team": "traveller",
-  "ability": "You must use a vote token to vote. If a dead player gives you theirs, you learn their alignment. You are sober & healthy.",
   "edition": "tb",
-  "image": "icons/tb/beggar.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You must use a vote token to vote. If a dead player gives you theirs, you learn their alignment. You are sober & healthy.",
+  "flavor": "\"Alms for the poor, good Sir? Spare a coin, Madam? Thank you. God bless! You're a right kind soul and no mistake! I'll have some swanky nosh tonight, I will!\"",
+  "image": "icons/tb/beggar.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

@@ -1,16 +1,17 @@
 {
   "id": "gangster",
   "name": "Gangster",
-  "team": "traveller",
-  "ability": "Once per day, you may choose to kill an alive neighbor, if your other alive neighbor agrees.",
   "edition": "carousel",
-  "image": "icons/carousel/gangster.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per day, you may choose to kill an alive neighbor, if your other alive neighbor agrees.",
+  "flavor": "\"I like your shoes. It would be such a shame if you had a little accident, and they got ruined. Now that you mention it, I like your cufflinks too.\"",
+  "image": "icons/carousel/gangster.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

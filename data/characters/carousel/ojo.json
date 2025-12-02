@@ -1,18 +1,19 @@
 {
   "id": "ojo",
   "name": "Ojo",
-  "team": "demon",
-  "ability": "Each night*, choose a character: they die. If they are not in play, the Storyteller chooses who dies.",
   "edition": "carousel",
-  "image": "icons/carousel/ojo.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 133,
   "otherNightReminder": "The Ojo chooses a character.",
   "reminders": [
     "DEAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a character: they die. If they are not in play, the Storyteller chooses who dies.",
+  "flavor": "\"Like a bonfire on a moonless night... I see you, mortal.\"",
+  "image": "icons/carousel/ojo.webp",
+  "firstNight": 0,
+  "otherNight": 133,
   "_remindersFetched": true
 }

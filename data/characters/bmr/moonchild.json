@@ -1,18 +1,19 @@
 {
   "id": "moonchild",
   "name": "Moonchild",
-  "team": "outsider",
-  "ability": "When you learn that you died, publicly choose 1 alive player. Tonight, if it was a good player, they die.",
   "edition": "bmr",
-  "image": "icons/bmr/moonchild.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 155,
   "otherNightReminder": "If the Moonchild is due to kill a good player, they die.",
   "reminders": [
     "DEAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "When you learn that you died, publicly choose 1 alive player. Tonight, if it was a good player, they die.",
+  "flavor": "\"Scorpio looks sideways at the lovers, and you have a choice to make. With silver cross my palm, and your fate shall be revealed. With steel cross my throat, and by the stars you shall regret it.\"",
+  "image": "icons/bmr/moonchild.webp",
+  "firstNight": 0,
+  "otherNight": 155,
   "_remindersFetched": true
 }

@@ -1,19 +1,20 @@
 {
   "id": "princess",
   "name": "Princess",
-  "team": "townsfolk",
-  "ability": "On your 1st day, if you nominated & executed a player, the Demon doesn't kill tonight.",
   "edition": "carousel",
-  "image": "icons/carousel/princess.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 121,
   "otherNightReminder": "If the Princess nominated the player who was executed today, the Demon wakes as normal, but no one dies to the Demon's ability.",
   "reminders": [
     "DOESN'T KILL"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "On your 1st day, if you nominated & executed a player, the Demon doesn't kill tonight.",
+  "flavor": "\"Our words are hounds, bound by silken threads, dear lords. Let kindness weave them true, lest the reigns unravel and rend our court.\"",
+  "image": "icons/carousel/princess.webp",
+  "firstNight": 0,
+  "otherNight": 121,
   "jinxes": [
     {
       "id": "cannibal",

@@ -1,18 +1,19 @@
 {
   "id": "poisoner",
   "name": "Poisoner",
-  "team": "minion",
-  "ability": "Each night, choose a player: they are poisoned tonight and tomorrow day.",
   "edition": "tb",
-  "image": "icons/tb/poisoner.webp",
-  "firstNight": 104,
+  "team": "minion",
   "firstNightReminder": "The Poisoner chooses a player.",
-  "otherNight": 100,
   "otherNightReminder": "The Poisoner chooses a player.",
   "reminders": [
     "POISONED"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose a player: they are poisoned tonight and tomorrow day.",
+  "flavor": "\"Add compound Alpha to compound Beta... NOT TOO MUCH!\"",
+  "image": "icons/tb/poisoner.webp",
+  "firstNight": 104,
+  "otherNight": 100,
   "_remindersFetched": true
 }

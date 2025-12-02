@@ -1,13 +1,9 @@
 {
   "id": "bishop",
   "name": "Bishop",
-  "team": "traveller",
-  "ability": "Only the Storyteller can nominate. At least 1 opposing player must be nominated each day.",
   "edition": "bmr",
-  "image": "icons/bmr/bishop.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NOMINATE EVIL",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Only the Storyteller can nominate. At least 1 opposing player must be nominated each day.",
+  "flavor": "\"In nomine Patris, et Filii, et Spiritus Sancti… Nos mos Dei. Deus vult de nobis.\"",
+  "image": "icons/bmr/bishop.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

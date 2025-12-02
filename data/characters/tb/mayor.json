@@ -1,17 +1,18 @@
 {
   "id": "mayor",
   "name": "Mayor",
-  "team": "townsfolk",
-  "ability": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead.",
   "edition": "tb",
-  "image": "icons/tb/mayor.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead.",
+  "flavor": "\"We must put our differences aside, and cease this senseless killing. We are all taxpayers after all. Well, most of us.\"",
+  "image": "icons/tb/mayor.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "riot",

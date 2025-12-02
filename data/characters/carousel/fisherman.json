@@ -1,16 +1,17 @@
 {
   "id": "fisherman",
   "name": "Fisherman",
-  "team": "townsfolk",
-  "ability": "Once per game, during the day, visit the Storyteller for some advice to help your team win.",
   "edition": "carousel",
-  "image": "icons/carousel/fisherman.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, during the day, visit the Storyteller for some advice to help your team win.",
+  "flavor": "\"This was my favourite part of the river... see how the sunlight makes a rainbow from the monastery to the market? This was the best place for big fish. And the older I get, the bigger they were.\"",
+  "image": "icons/carousel/fisherman.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

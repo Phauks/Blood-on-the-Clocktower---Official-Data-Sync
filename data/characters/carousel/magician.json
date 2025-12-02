@@ -1,17 +1,18 @@
 {
   "id": "magician",
   "name": "Magician",
-  "team": "townsfolk",
-  "ability": "The Demon thinks you are a Minion. Minions think you are a Demon.",
   "edition": "carousel",
-  "image": "icons/carousel/magician.webp",
-  "firstNight": 92,
+  "team": "townsfolk",
   "firstNightReminder": "Include the Magician in the Minion and Demon Info steps.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "The Demon thinks you are a Minion. Minions think you are a Demon.",
+  "flavor": "\"1... 2... Abra... 3... 4... Cadabra... *poof!*And, as you can see, ladies and gentlemen, Captain Farnsworth’s bag of gold has disappeared! Gone! Without a trace! Thank you, and goodnight!\"",
+  "image": "icons/carousel/magician.webp",
+  "firstNight": 92,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "spy",

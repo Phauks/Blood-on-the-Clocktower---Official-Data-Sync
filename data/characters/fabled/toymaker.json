@@ -1,18 +1,19 @@
 {
   "id": "toymaker",
   "name": "Toymaker",
-  "team": "fabled",
-  "ability": "The Demon may choose not to attack & must do this at least once per game. Evil players get normal starting info.",
   "edition": "fabled",
-  "image": "icons/fabled/toymaker.webp",
-  "firstNight": 78,
+  "team": "fabled",
   "firstNightReminder": "Resolve the Minion Info and Demon Info steps even though there are fewer than 7 players.",
-  "otherNight": 92,
   "otherNightReminder": "If it is a night when a Demon attack could end the game, and the Demon is marked FINAL NIGHT: NO ATTACK, then the Demon does not act tonight. (Do not wake them.)",
   "reminders": [
     "FINAL NIGHT: NO ATTACK"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "The Demon may choose not to attack & must do this at least once per game. Evil players get normal starting info.",
+  "flavor": "\"It buzzes! It walks down stairs! It keeps you warm at night! It tastes like sugar! The kiddies love it! Introducing... the brand new... Warm'o-buzzy-wuzzy-walk'a'bot-thingy-contraption! Fun for all ages!\"",
+  "image": "icons/fabled/toymaker.webp",
+  "firstNight": 78,
+  "otherNight": 92,
   "_remindersFetched": true
 }

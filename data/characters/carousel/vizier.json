@@ -1,17 +1,18 @@
 {
   "id": "vizier",
   "name": "Vizier",
-  "team": "minion",
-  "ability": "All players know you are the Vizier. You cannot die during the day. If good voted, you may choose to execute immediately.",
   "edition": "carousel",
-  "image": "icons/carousel/vizier.webp",
-  "firstNight": 150,
+  "team": "minion",
   "firstNightReminder": "Announce the Vizier player to the group.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "All players know you are the Vizier. You cannot die during the day. If good voted, you may choose to execute immediately.",
+  "flavor": "\"An excellent decision, as always, sire. Such a petty crime as bumping into the Bishop indeed deserves your ‘justice’ and ‘mercy’. Take a stroll in the gardens. Visit the gallery and peruse the sculptures of Von Strauf. Relax, sire. Leave everything… to me.\"",
+  "image": "icons/carousel/vizier.webp",
+  "firstNight": 150,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "magician",

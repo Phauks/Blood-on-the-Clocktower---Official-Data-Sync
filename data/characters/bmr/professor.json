@@ -1,13 +1,9 @@
 {
   "id": "professor",
   "name": "Professor",
-  "team": "townsfolk",
-  "ability": "Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.",
   "edition": "bmr",
-  "image": "icons/bmr/professor.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 148,
   "otherNightReminder": "The Professor might choose a dead player.",
   "reminders": [
     "ALIVE",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.",
+  "flavor": "\"The process is simple. Attach the hydraulic confabulator to the modified chi matrix amplifier, add 20 CCs of pseudodorafine, keep his Z levels above 20%, and your husband will be fine. Now, all we need is a lightning strike.\"",
+  "image": "icons/bmr/professor.webp",
+  "firstNight": 0,
+  "otherNight": 148,
   "_remindersFetched": true
 }

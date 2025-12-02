@@ -1,16 +1,17 @@
 {
   "id": "ferryman",
   "name": "Ferryman",
-  "team": "fabled",
-  "ability": "On the final day, all dead players regain their vote token.",
   "edition": "fabled",
-  "image": "icons/fabled/ferryman.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "On the final day, all dead players regain their vote token.",
+  "flavor": "\"When righteous dreams come, they have the weight of truth.\"",
+  "image": "icons/fabled/ferryman.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

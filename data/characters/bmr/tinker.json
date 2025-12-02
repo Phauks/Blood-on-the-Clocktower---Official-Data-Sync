@@ -1,18 +1,19 @@
 {
   "id": "tinker",
   "name": "Tinker",
-  "team": "outsider",
-  "ability": "You might die at any time.",
   "edition": "bmr",
-  "image": "icons/bmr/tinker.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 154,
   "otherNightReminder": "The Tinker might die.",
   "reminders": [
     "DEAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You might die at any time.",
+  "flavor": "\"I think I see the problem. Luckily, I have an idea! This catapult will shoot twice as far with just a minor adjustment...\"",
+  "image": "icons/bmr/tinker.webp",
+  "firstNight": 0,
+  "otherNight": 154,
   "_remindersFetched": true
 }

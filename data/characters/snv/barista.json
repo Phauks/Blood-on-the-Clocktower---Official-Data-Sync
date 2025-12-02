@@ -1,13 +1,9 @@
 {
   "id": "barista",
   "name": "Barista",
-  "team": "traveller",
-  "ability": "Each night, until dusk, 1) a player becomes sober, healthy & gets true info, or 2) their ability works twice. They learn which.",
   "edition": "snv",
-  "image": "icons/snv/barista.webp",
-  "firstNight": 84,
+  "team": "traveller",
   "firstNightReminder": "Choose a player, wake them and tell them which Barista power is affecting them. Treat them accordingly (sober/healthy/true info or activate their ability twice).",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "SOBER AND HEALTHY",
@@ -16,5 +12,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, until dusk, 1) a player becomes sober, healthy & gets true info, or 2) their ability works twice. They learn which.",
+  "flavor": "\"A cup of coffee with no cream, Monsieur? I’m terribly sorry, but we’re fresh out of cream — how about with no milk?\"",
+  "image": "icons/snv/barista.webp",
+  "firstNight": 84,
+  "otherNight": 0,
   "_remindersFetched": true
 }

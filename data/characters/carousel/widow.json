@@ -1,13 +1,9 @@
 {
   "id": "widow",
   "name": "Widow",
-  "team": "minion",
-  "ability": "On your 1st night, look at the Grimoire & choose a player: they are poisoned. 1 good player knows a Widow is in play.",
   "edition": "carousel",
-  "image": "icons/carousel/widow.webp",
-  "firstNight": 105,
+  "team": "minion",
   "firstNightReminder": "Show the Grimoire for as long as the Widow needs. The Widow chooses a player.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "KNOW",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "On your 1st night, look at the Grimoire & choose a player: they are poisoned. 1 good player knows a Widow is in play.",
+  "flavor": "\"More wine? Château d’Ergot ’07 is a very special vintage. My yes, very special indeed.\"",
+  "image": "icons/carousel/widow.webp",
+  "firstNight": 105,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "alchemist",

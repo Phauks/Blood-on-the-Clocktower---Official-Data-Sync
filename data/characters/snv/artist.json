@@ -1,18 +1,19 @@
 {
   "id": "artist",
   "name": "Artist",
-  "team": "townsfolk",
-  "ability": "Once per game, during the day, privately ask the Storyteller any yes/no question.",
   "edition": "snv",
-  "image": "icons/snv/artist.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, during the day, privately ask the Storyteller any yes/no question.",
+  "flavor": "\"Mon Dieu! C'est lumineux! My work, she is... how you say... Magnifique! Dieu est révélé! Oui.\"",
+  "image": "icons/snv/artist.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

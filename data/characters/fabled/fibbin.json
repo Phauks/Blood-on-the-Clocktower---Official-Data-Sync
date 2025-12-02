@@ -1,18 +1,19 @@
 {
   "id": "fibbin",
   "name": "Fibbin",
-  "team": "fabled",
-  "ability": "Once per game, 1 good player might get incorrect information.",
   "edition": "fabled",
-  "image": "icons/fabled/fibbin.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, 1 good player might get incorrect information.",
+  "flavor": "\"Tee-hee-hee.Tee. Hee. Hee.\"",
+  "image": "icons/fabled/fibbin.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

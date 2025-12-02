@@ -1,13 +1,9 @@
 {
   "id": "harpy",
   "name": "Harpy",
-  "team": "minion",
-  "ability": "Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or one or both might die.",
   "edition": "carousel",
-  "image": "icons/carousel/harpy.webp",
-  "firstNight": 116,
+  "team": "minion",
   "firstNightReminder": "The Harpy chooses two players.   Put the Harpy to sleep. Wake the 1st target. Show the THIS CHARACTER SELECTED YOU token, the Harpy token, then point to the 2nd target.",
-  "otherNight": 114,
   "otherNightReminder": "The Harpy chooses two players.   Put the Harpy to sleep. Wake the 1st target. Show the THIS CHARACTER SELECTED YOU token, the Harpy token, then point to the 2nd target.",
   "reminders": [
     "MAD",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or one or both might die.",
+  "flavor": "\"So fair a day I never did see, nor so fowl a presence hanging over me.\"",
+  "image": "icons/carousel/harpy.webp",
+  "firstNight": 116,
+  "otherNight": 114,
   "_remindersFetched": true
 }

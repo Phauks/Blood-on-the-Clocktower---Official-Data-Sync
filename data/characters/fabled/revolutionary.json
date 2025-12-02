@@ -1,18 +1,19 @@
 {
   "id": "revolutionary",
   "name": "Revolutionary",
-  "team": "fabled",
-  "ability": "2 neighboring players are known to be the same alignment. Once per game, 1 of them registers falsely.",
   "edition": "fabled",
-  "image": "icons/fabled/revolutionary.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "REGISTER FALSELY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "2 neighboring players are known to be the same alignment. Once per game, 1 of them registers falsely.",
+  "flavor": "\"United we feigned.Divided, we stalled.\"",
+  "image": "icons/fabled/revolutionary.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

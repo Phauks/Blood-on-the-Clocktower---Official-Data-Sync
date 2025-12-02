@@ -1,13 +1,9 @@
 {
   "id": "leviathan",
   "name": "Leviathan",
-  "team": "demon",
-  "ability": "If more than 1 good player is executed, evil wins. All players know you are in play. After day 5, evil wins.",
   "edition": "carousel",
-  "image": "icons/carousel/leviathan.webp",
-  "firstNight": 149,
+  "team": "demon",
   "firstNightReminder": "Declare that \"The Leviathan is in play.\" Mark the Leviathan with the DAY 1 reminder.",
-  "otherNight": 180,
   "otherNightReminder": "Optionally, declare that \"The Leviathan is in play.\" Replace the reminder token.",
   "reminders": [
     "DAY 1",
@@ -19,6 +15,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If more than 1 good player is executed, evil wins. All players know you are in play. After day 5, evil wins.",
+  "flavor": "\"To the last, I grapple with thee. From Hell’s heart, I stab at thee. For hate’s sake, I spit my last breath at thee.\"",
+  "image": "icons/carousel/leviathan.webp",
+  "firstNight": 149,
+  "otherNight": 180,
   "jinxes": [
     {
       "id": "grandmother",

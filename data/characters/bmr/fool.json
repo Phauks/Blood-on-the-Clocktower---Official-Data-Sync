@@ -1,18 +1,19 @@
 {
   "id": "fool",
   "name": "Fool",
-  "team": "townsfolk",
-  "ability": "The 1st time you die, you don't.",
   "edition": "bmr",
-  "image": "icons/bmr/fool.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "The 1st time you die, you don't.",
+  "flavor": "\"...and the King said 'What?! I've never even owned a pair of rubber pantaloons, let alone a custard cannon!' Ho-ho! Jolly day!\"",
+  "image": "icons/bmr/fool.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

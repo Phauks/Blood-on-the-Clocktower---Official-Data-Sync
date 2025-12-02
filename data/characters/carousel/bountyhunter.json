@@ -1,19 +1,20 @@
 {
   "id": "bountyhunter",
   "name": "Bounty Hunter",
-  "team": "townsfolk",
-  "ability": "You start knowing 1 evil player. If the player you know dies, you learn another evil player tonight. [1 Townsfolk is evil]",
   "edition": "carousel",
-  "image": "icons/carousel/bountyhunter.webp",
-  "firstNight": 140,
+  "team": "townsfolk",
   "firstNightReminder": "Point to the KNOWN player.",
-  "otherNight": 171,
   "otherNightReminder": "If the KNOWN player died today or tonight, point to a new KNOWN player.",
   "reminders": [
     "KNOW"
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "You start knowing 1 evil player. If the player you know dies, you learn another evil player tonight. [1 Townsfolk is evil]",
+  "flavor": "\"Alone, I walk these streets, paved with the sick stench of corruption. Its thickness worms its way into my nostrils, unbidden, burning with revulsion. And anticipation. The illness of this wretched place grows each night. And I... I am the cure.\"",
+  "image": "icons/carousel/bountyhunter.webp",
+  "firstNight": 140,
+  "otherNight": 171,
   "jinxes": [
     {
       "id": "philosopher",

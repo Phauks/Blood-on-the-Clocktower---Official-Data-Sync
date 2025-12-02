@@ -1,17 +1,18 @@
 {
   "id": "ravenkeeper",
   "name": "Ravenkeeper",
-  "team": "townsfolk",
-  "ability": "If you die at night, you are woken to choose a player: you learn their character.",
   "edition": "tb",
-  "image": "icons/tb/ravenkeeper.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 158,
   "otherNightReminder": "If the Ravenkeeper died tonight, the Ravenkeeper chooses a player. Show that player's character token.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you die at night, you are woken to choose a player: you learn their character.",
+  "flavor": "\"My birds will avenge me! Fly! Fly, my sweet and dutiful pets! To the manor and to the river! To the alleys and to the salons! Fly!\"",
+  "image": "icons/tb/ravenkeeper.webp",
+  "firstNight": 0,
+  "otherNight": 158,
   "jinxes": [
     {
       "id": "riot",

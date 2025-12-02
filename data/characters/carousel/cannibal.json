@@ -1,13 +1,9 @@
 {
   "id": "cannibal",
   "name": "Cannibal",
-  "team": "townsfolk",
-  "ability": "You have the ability of the recently killed executee. If they are evil, you are poisoned until a good player dies by execution.",
   "edition": "carousel",
-  "image": "icons/carousel/cannibal.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "LUNCH",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You have the ability of the recently killed executee. If they are evil, you are poisoned until a good player dies by execution.",
+  "flavor": "\"I don’t like clowns. They taste funny.\"",
+  "image": "icons/carousel/cannibal.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "princess",

@@ -1,19 +1,20 @@
 {
   "id": "plaguedoctor",
   "name": "Plague Doctor",
-  "team": "outsider",
-  "ability": "When you die, the Storyteller gains a Minion ability.",
   "edition": "carousel",
-  "image": "icons/carousel/plaguedoctor.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 145,
   "otherNightReminder": "If the Plague Doctor died, the Storyteller gained a Minion ability. If you haven’t done this yet, do so now.",
   "reminders": [
     "STORYTELLER ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "When you die, the Storyteller gains a Minion ability.",
+  "flavor": "\"Pleauze shtay shtill. Thinks nid tiime for hillink. Myrhh-myrhh.\"",
+  "image": "icons/carousel/plaguedoctor.webp",
+  "firstNight": 0,
+  "otherNight": 145,
   "jinxes": [
     {
       "id": "spy",

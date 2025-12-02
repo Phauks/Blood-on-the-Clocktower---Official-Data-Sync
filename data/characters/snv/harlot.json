@@ -1,13 +1,9 @@
 {
   "id": "harlot",
   "name": "Harlot",
-  "team": "traveller",
-  "ability": "Each night*, choose a living player: if they agree, you learn their character, but you both might die.",
   "edition": "snv",
-  "image": "icons/snv/harlot.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "DEAD",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a living player: if they agree, you learn their character, but you both might die.",
+  "flavor": "\"Enchanté, Sailor. You look like you need someone to really listen to your troubles. I'm a good listener. Very, very good.\"",
+  "image": "icons/snv/harlot.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

@@ -1,19 +1,20 @@
 {
   "id": "huntsman",
   "name": "Huntsman",
-  "team": "townsfolk",
-  "ability": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]",
   "edition": "carousel",
-  "image": "icons/carousel/huntsman.webp",
-  "firstNight": 120,
+  "team": "townsfolk",
   "firstNightReminder": "The Huntsman might choose a player.  If that player was the Damsel: Put the Huntsman to sleep. Wake the Damsel and show them the YOU ARE info token and their new character token.",
-  "otherNight": 150,
   "otherNightReminder": "The Huntsman might choose a player.  If that player was the Damsel: Put the Huntsman to sleep. Wake the Damsel and show them the YOU ARE info token and their new character token.",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]",
+  "flavor": "\"My cabin is warm and sturdy. My axe by the door, my boots drying by the fire, and elk stew a-simmering… Hark! A scream echoes through the valley! The rain and the mud and the cold, cold wind mask the scent of the wolves, but I know the path and my pace is steady. I am coming.\"",
+  "image": "icons/carousel/huntsman.webp",
+  "firstNight": 120,
+  "otherNight": 150,
   "jinxes": [
     {
       "id": "marionette",

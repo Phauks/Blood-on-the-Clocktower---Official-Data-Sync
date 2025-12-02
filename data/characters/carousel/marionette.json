@@ -1,19 +1,20 @@
 {
   "id": "marionette",
   "name": "Marionette",
-  "team": "minion",
-  "ability": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]",
   "edition": "carousel",
-  "image": "icons/carousel/marionette.webp",
-  "firstNight": 98,
+  "team": "minion",
   "firstNightReminder": "Wake the Demon. Point to the player marked IS THE MARIONETTE and show the THIS PLAYER IS token and the Marionette character token.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "IS THE MARIONETTE"
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]",
+  "flavor": "\"Words, words. They're all we have to go on.\"",
+  "image": "icons/carousel/marionette.webp",
+  "firstNight": 98,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "mathematician",

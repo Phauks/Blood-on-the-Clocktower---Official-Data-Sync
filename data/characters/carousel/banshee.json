@@ -1,19 +1,20 @@
 {
   "id": "banshee",
   "name": "Banshee",
-  "team": "townsfolk",
-  "ability": "If the Demon kills you, all players learn this. From now on, you may nominate twice per day and vote twice per nomination.",
   "edition": "carousel",
-  "image": "icons/carousel/banshee.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 147,
   "otherNightReminder": "If the Banshee was killed by the Demon tonight, announce to all players that the Banshee has died.",
   "reminders": [
     "HAS ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If the Demon kills you, all players learn this. From now on, you may nominate twice per day and vote twice per nomination.",
+  "flavor": "\"Gorm do shúile, dearg do ghruaig, ní bheidh sé i bhfad, is a mbeidh tú san uaigh.\"",
+  "image": "icons/carousel/banshee.webp",
+  "firstNight": 0,
+  "otherNight": 147,
   "jinxes": [
     {
       "id": "vortox",

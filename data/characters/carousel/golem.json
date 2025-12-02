@@ -1,18 +1,19 @@
 {
   "id": "golem",
   "name": "Golem",
-  "team": "outsider",
-  "ability": "You may only nominate once per game. When you do, if the nominee is not the Demon, they die.",
   "edition": "carousel",
-  "image": "icons/carousel/golem.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "MAY NOT NOMINATE"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You may only nominate once per game. When you do, if the nominee is not the Demon, they die.",
+  "flavor": "\"Golem help? Golem smash! Golem help.\"",
+  "image": "icons/carousel/golem.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

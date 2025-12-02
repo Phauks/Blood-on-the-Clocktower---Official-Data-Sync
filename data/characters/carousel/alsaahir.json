@@ -1,17 +1,18 @@
 {
   "id": "alsaahir",
   "name": "Alsaahir",
-  "team": "townsfolk",
-  "ability": "Each day, if you publicly guess which players are Minion(s) and which are Demon(s), good wins.",
   "edition": "carousel",
-  "image": "icons/carousel/alsaahir.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each day, if you publicly guess which players are Minion(s) and which are Demon(s), good wins.",
+  "flavor": "\"I am here because of you, and you are here because of me.\"",
+  "image": "icons/carousel/alsaahir.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "vizier",

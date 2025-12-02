@@ -1,16 +1,17 @@
 {
   "id": "scapegoat",
   "name": "Scapegoat",
-  "team": "traveller",
-  "ability": "If a player of your alignment is executed, you might be executed instead.",
   "edition": "tb",
-  "image": "icons/tb/scapegoat.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If a player of your alignment is executed, you might be executed instead.",
+  "flavor": "\"Good evening! Thank you for inviting me to the ball. I'm not from around here, but you sure seem like a friendly bunch, by golly. I'm sure we'll get along just dandy. What's all that rope for?\"",
+  "image": "icons/tb/scapegoat.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

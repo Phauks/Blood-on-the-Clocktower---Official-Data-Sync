@@ -1,19 +1,20 @@
 {
   "id": "goblin",
   "name": "Goblin",
-  "team": "minion",
-  "ability": "If you publicly claim to be the Goblin when nominated & are executed that day, your team wins.",
   "edition": "carousel",
-  "image": "icons/carousel/goblin.webp",
-  "firstNight": 0,
+  "team": "minion",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "CLAIMED"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you publicly claim to be the Goblin when nominated & are executed that day, your team wins.",
+  "flavor": "\"You don’t want to insult the goblins. You really, really don’t. On a completely different note… can I have another piece of cake?\"",
+  "image": "icons/carousel/goblin.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "plaguedoctor",

@@ -1,17 +1,18 @@
 {
   "id": "heretic",
   "name": "Heretic",
-  "team": "outsider",
-  "ability": "Whoever wins, loses & whoever loses, wins, even if you are dead.",
   "edition": "carousel",
-  "image": "icons/carousel/heretic.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "Whoever wins, loses & whoever loses, wins, even if you are dead.",
+  "flavor": "\"After the hail has smashed the roof and splintered the glass of the Cathedral windows, it melts again into the earth, like a dying lamb in the desert sun. Such is the parable of the madman.\"",
+  "image": "icons/carousel/heretic.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "godfather",

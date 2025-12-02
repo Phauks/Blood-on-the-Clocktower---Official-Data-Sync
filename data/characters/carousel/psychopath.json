@@ -1,17 +1,18 @@
 {
   "id": "psychopath",
   "name": "Psychopath",
-  "team": "minion",
-  "ability": "Each day, before nominations, you may publicly choose a player: they die. If executed, you only die if you lose roshambo.",
   "edition": "carousel",
-  "image": "icons/carousel/psychopath.webp",
-  "firstNight": 0,
+  "team": "minion",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each day, before nominations, you may publicly choose a player: they die. If executed, you only die if you lose roshambo.",
+  "flavor": "\"Each day, before nominations, you may publicly choose a player: they die. If executed, you only die if you lose roshambo.\"",
+  "image": "icons/carousel/psychopath.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "lilmonsta",

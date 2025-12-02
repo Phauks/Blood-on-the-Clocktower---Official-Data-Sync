@@ -1,13 +1,9 @@
 {
   "id": "fanggu",
   "name": "Fang Gu",
-  "team": "demon",
-  "ability": "Each night*, choose a player: they die. The 1st Outsider this kills becomes an evil Fang Gu & you die instead. [+1 Outsider]",
   "edition": "snv",
-  "image": "icons/snv/fanggu.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 128,
   "otherNightReminder": "The Fang Gu chooses a player.  If they chose an Outsider (once only): Replace the Outsider token with the spare Fang Gu token. Put the Fang Gu to sleep. Wake the target. Show the YOU ARE and Fang Gu tokens & give a thumbs-down.",
   "reminders": [
     "DEAD",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "Each night*, choose a player: they die. The 1st Outsider this kills becomes an evil Fang Gu & you die instead. [+1 Outsider]",
+  "flavor": "\"Your walls and your weapons are but smoke in dreams.\"",
+  "image": "icons/snv/fanggu.webp",
+  "firstNight": 0,
+  "otherNight": 128,
   "jinxes": [
     {
       "id": "scarletwoman",

@@ -16,6 +16,8 @@ import sys
 import time
 from pathlib import Path
 
+from tqdm import tqdm
+
 # Add paths for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
@@ -30,6 +32,35 @@ from config import (
 # Import shared utilities
 from http_client import fetch_with_retry
 from data_loader import load_previous_character_data
+from writers import order_character_fields, strip_internal_fields
+
+
+def is_valid_flavor(flavor: str) -> bool:
+    """Check if flavor text is valid (not garbage HTML or malformed).
+    
+    Args:
+        flavor: Flavor text to validate
+    
+    Returns:
+        bool: True if flavor is valid
+    """
+    if not flavor:
+        return False
+    
+    # Check for garbage HTML patterns
+    garbage_patterns = [
+        ">\n<head>",
+        "<meta charset",
+        "<!DOCTYPE",
+        "<html",
+        "<script",
+    ]
+    
+    if any(pattern in flavor for pattern in garbage_patterns):
+        return False
+    
+    # Valid flavor should start with a quote and be at least 3 chars (e.g., "...")
+    return flavor.startswith('"') and len(flavor) >= 3
 
 
 def needs_flavor_update(character: dict, previous_data: dict[str, dict]) -> bool:
@@ -50,19 +81,23 @@ def needs_flavor_update(character: dict, previous_data: dict[str, dict]) -> bool
     
     previous = previous_data[char_id]
     
-    # Case 2: Flavor text is missing or empty
+    # Case 2: Flavor text is missing, empty, or invalid (garbage HTML)
     current_flavor = character.get("flavor", "")
-    if not current_flavor:
-        previous_flavor = previous.get("flavor", "")
-        if not previous_flavor:
-            # Both empty - need to fetch
-            return True
+    previous_flavor = previous.get("flavor", "")
     
-    # Case 3: Character ability changed (might have new flavor)
+    if not is_valid_flavor(current_flavor) and not is_valid_flavor(previous_flavor):
+        # Both missing or invalid - need to fetch
+        return True
+    
+    # Case 3: Previous flavor is garbage - need to re-fetch
+    if previous_flavor and not is_valid_flavor(previous_flavor):
+        return True
+    
+    # Case 4: Character ability changed (might have new flavor)
     if character.get("ability", "") != previous.get("ability", ""):
         return True
     
-    # Case 4: Character name changed (wiki URL would change)
+    # Case 5: Character name changed (wiki URL would change)
     if character.get("name", "") != previous.get("name", ""):
         return True
     
@@ -71,7 +106,7 @@ def needs_flavor_update(character: dict, previous_data: dict[str, dict]) -> bool
 
 
 def preserve_flavor_text(character: dict, previous_data: dict[str, dict]) -> bool:
-    """Copy flavor text from previous data if available.
+    """Copy flavor text from previous data if available and valid.
     
     Args:
         character: Current character object to update
@@ -84,7 +119,7 @@ def preserve_flavor_text(character: dict, previous_data: dict[str, dict]) -> boo
     
     if char_id in previous_data:
         previous_flavor = previous_data[char_id].get("flavor", "")
-        if previous_flavor:
+        if is_valid_flavor(previous_flavor):
             character["flavor"] = previous_flavor
             return True
     
@@ -94,8 +129,8 @@ def preserve_flavor_text(character: dict, previous_data: dict[str, dict]) -> boo
 def extract_flavor_from_html(html: str) -> str | None:
     """Extract flavor text from wiki page HTML.
     
-    The flavor text is typically in an italicized paragraph near the top
-    of the character page, often in a blockquote or specific div.
+    The flavor text appears in italics after the character infobox,
+    typically in a format like: "Quoted flavor text here."
     
     Args:
         html: Raw HTML content from wiki page
@@ -103,37 +138,91 @@ def extract_flavor_from_html(html: str) -> str | None:
     Returns:
         Extracted flavor text or None if not found
     """
-    # Strategy 1: Look for the main content area's first italic text
-    # Wiki pages typically have flavor in <i> or <em> tags
+    from bs4 import BeautifulSoup
     
-    # Try to find flavor in common wiki structures
-    patterns = [
-        # Pattern 1: Blockquote with italic
-        r'<blockquote[^>]*>\s*<p>\s*<i>([^<]+)</i>',
-        # Pattern 2: Direct italic paragraph
-        r'<p>\s*<i>([^<]{20,200})</i>\s*</p>',
-        # Pattern 3: em tags
-        r'<p>\s*<em>([^<]{20,200})</em>\s*</p>',
-        # Pattern 4: Class-based flavor container
-        r'class="[^"]*flavor[^"]*"[^>]*>([^<]+)<',
-        # Pattern 5: Quote marks around text
-        r'"([^"]{20,200})"',
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    # Strategy 1: Find the main content area and look for italic text with quotes
+    content = soup.find('div', {'id': 'mw-content-text'}) or soup.find('div', {'class': 'mw-parser-output'})
+    if not content:
+        content = soup
+    
+    # Skip patterns for ability text - these are game mechanic phrases
+    ability_patterns = [
+        "you start knowing",    # Common ability opener
+        "each night,",          # Night ability
+        "each night*,",         # Night ability with asterisk
+        "once per game,",       # Limited ability
+        "you are drunk",        # Drunk/poisoned
+        "you are poisoned",     # Drunk/poisoned
+        "you think you are",    # Lunatic-style
+        "you may nominate",     # Nomination ability
+        "players may not",      # Restriction ability
+        "if you die,",          # Death trigger (specific format)
+        "when you die,",        # Death trigger (specific format)
+        "on your 1st night",    # First night specific
+        "the 1st time",         # First occurrence
     ]
     
-    for pattern in patterns:
-        matches = re.findall(pattern, html, re.IGNORECASE | re.DOTALL)
-        for match in matches:
-            # Clean up the match
-            flavor = match.strip()
-            # Skip if it looks like navigation or ability text
-            if any(skip in flavor.lower() for skip in [
-                "you start", "each night", "once per game", "if you",
-                "when you", "navigation", "jump to", "edit", "main page"
-            ]):
+    # Helper function to normalize quotes
+    def normalize_quotes(text: str) -> str:
+        """Replace curly quotes with straight quotes."""
+        return text.replace('\u201c', '"').replace('\u201d', '"').replace('\u2018', "'").replace('\u2019', "'")
+    
+    # Strategy 1: Look for <p class="flavour"> element (new wiki format)
+    flavour_elem = content.find('p', class_='flavour')
+    if flavour_elem:
+        text = normalize_quotes(flavour_elem.get_text(strip=True))
+        if text:
+            # Ensure it's wrapped in quotes (but not double-wrapped)
+            if text.startswith('"') and text.endswith('"'):
+                return text  # Already properly quoted
+            elif not text.startswith('"'):
+                text = f'"{text}"'
+            elif not text.endswith('"'):
+                text = text + '"'
+            return text
+    
+    # Strategy 2: Look for italic elements that contain quoted text (flavor format)
+    # Some flavors are very short (e.g., "Die." for Slayer, "..." for Assassin)
+    for italic in content.find_all(['i', 'em']):
+        text = normalize_quotes(italic.get_text(strip=True))
+        # Flavor text is typically in quotes - can be as short as 3 chars ("...")
+        if text.startswith('"') and text.endswith('"') and 3 <= len(text) <= 500:
+            # Skip ability text patterns
+            lower_text = text.lower()
+            if any(skip in lower_text for skip in ability_patterns):
                 continue
-            # Return first good match
-            if len(flavor) >= 20:
-                return flavor
+            return text
+    
+    # Strategy 3: Look for non-English flavor text (e.g., Japanese for Shugenja)
+    # These may not be in quotes but are in italic after the infobox
+    infobox = content.find('table', class_='infobox')
+    if infobox:
+        # Look for italic text immediately after infobox
+        for sibling in infobox.find_next_siblings():
+            if sibling.name in ['h2', 'h3']:
+                break  # Stop at next section
+            italic = sibling.find('i') or sibling.find('em')
+            if italic:
+                text = italic.get_text(strip=True)
+                # Check for non-ASCII (non-English) text that isn't already captured
+                if text and not text.startswith('"') and any(ord(c) > 127 for c in text):
+                    # Non-English flavor text (e.g., Japanese)
+                    return f'"{text}"'  # Wrap in quotes for consistency
+    
+    # Strategy 4: Look for quoted text directly after the infobox
+    for p in content.find_all('p'):
+        text = normalize_quotes(p.get_text(strip=True))
+        if text.startswith('"') and 3 <= len(text) <= 500:
+            # Check it's not ability text
+            lower_text = text.lower()
+            if any(skip in lower_text for skip in ability_patterns):
+                continue
+            # Extract just the quoted portion
+            end_quote = text.find('"', 1)
+            if end_quote > 0:
+                return text[:end_quote + 1]
     
     return None
 
@@ -176,39 +265,40 @@ def update_flavor_for_characters(characters: dict[str, dict], force: bool = Fals
     print(f"Loaded {len(previous_data)} characters from previous data")
     print("Checking flavor text updates...")
     
+    # First pass: identify characters that need fetching
+    to_fetch = []
     for char_id, character in characters.items():
-        char_name = character.get("name", char_id)
-        
-        # Check if update is needed
         if not force and not needs_flavor_update(character, previous_data):
             # Preserve existing flavor
             if preserve_flavor_text(character, previous_data):
                 stats["preserved"] += 1
             else:
                 stats["skipped"] += 1
-            continue
-        
-        # Need to fetch flavor
-        print(f"  Fetching: {char_name}...", end=" ", flush=True)
-        
-        flavor = fetch_flavor_from_wiki(char_name)
-        
-        if flavor:
-            character["flavor"] = flavor
-            stats["fetched"] += 1
-            print(f"✓ ({len(flavor)} chars)")
         else:
-            # Try to preserve previous flavor on failure
-            if preserve_flavor_text(character, previous_data):
-                stats["failed"] += 1
-                print(f"✗ (preserved previous)")
+            to_fetch.append((char_id, character))
+    
+    # Second pass: fetch with progress bar
+    if to_fetch:
+        pbar = tqdm(to_fetch, desc="Fetching flavor", unit="char")
+        for char_id, character in pbar:
+            char_name = character.get("name", char_id)
+            pbar.set_postfix_str(char_name[:20])
+            
+            flavor = fetch_flavor_from_wiki(char_name)
+            
+            if flavor:
+                character["flavor"] = flavor
+                stats["fetched"] += 1
             else:
-                character["flavor"] = ""
-                stats["failed"] += 1
-                print(f"✗ (no flavor)")
-        
-        # Rate limiting - be nice to the wiki server
-        time.sleep(RATE_LIMIT_SECONDS)
+                # Try to preserve previous flavor on failure
+                if preserve_flavor_text(character, previous_data):
+                    stats["failed"] += 1
+                else:
+                    character["flavor"] = ""
+                    stats["failed"] += 1
+            
+            # Rate limiting - be nice to the wiki server
+            time.sleep(RATE_LIMIT_SECONDS)
     
     print(f"\nFlavor text summary:")
     print(f"  Fetched: {stats['fetched']}")
@@ -226,12 +316,19 @@ def save_updated_characters(characters: dict[str, dict]) -> None:
         edition_dir = CHARACTERS_DIR / edition
         edition_dir.mkdir(parents=True, exist_ok=True)
         
+        # Order fields and save
+        ordered_char = order_character_fields(character)
         char_file = edition_dir / f"{char_id}.json"
         with open(char_file, "w", encoding="utf-8") as f:
-            json.dump(character, f, indent=2, ensure_ascii=False)
+            json.dump(ordered_char, f, indent=2, ensure_ascii=False)
     
-    # Update combined file
-    all_chars = list(characters.values())
+    # Update combined file (strip internal fields, order fields)
+    all_chars = []
+    for char in characters.values():
+        clean_char = strip_internal_fields(char, preserve_reminder_flag=False)
+        ordered_char = order_character_fields(clean_char)
+        all_chars.append(ordered_char)
+    
     all_file = CHARACTERS_DIR / "all_characters.json"
     with open(all_file, "w", encoding="utf-8") as f:
         json.dump(all_chars, f, indent=2, ensure_ascii=False)

@@ -1,13 +1,9 @@
 {
   "id": "grandmother",
   "name": "Grandmother",
-  "team": "townsfolk",
-  "ability": "You start knowing a good player & their character. If the Demon kills them, you die too.",
   "edition": "bmr",
-  "image": "icons/bmr/grandmother.webp",
-  "firstNight": 130,
+  "team": "townsfolk",
   "firstNightReminder": "Point to the grandchild player & show their character token.",
-  "otherNight": 156,
   "otherNightReminder": "If the grandchild was killed by the Demon, the Grandmother dies too.",
   "reminders": [
     "GRANDCHILD",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You start knowing a good player & their character. If the Demon kills them, you die too.",
+  "flavor": "\"Take a jacket if you go outside, dearie. And your thermos. And your scarf. I have a weak heart, you know. Whatever would I do if you caught cold...or worse?\"",
+  "image": "icons/bmr/grandmother.webp",
+  "firstNight": 130,
+  "otherNight": 156,
   "jinxes": [
     {
       "id": "riot",

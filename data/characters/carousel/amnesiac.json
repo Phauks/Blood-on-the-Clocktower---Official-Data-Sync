@@ -1,16 +1,17 @@
 {
   "id": "amnesiac",
   "name": "Amnesiac",
-  "team": "townsfolk",
-  "ability": "You do not know what your ability is. Each day, privately guess what it is: you learn how accurate you are.",
   "edition": "carousel",
-  "image": "icons/carousel/amnesiac.webp",
-  "firstNight": 122,
+  "team": "townsfolk",
   "firstNightReminder": "Run the Amnesiac's ability, if applicable.",
-  "otherNight": 152,
   "otherNightReminder": "Run the Amnesiac's ability, if applicable.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You do not know what your ability is. Each day, privately guess what it is: you learn how accurate you are.",
+  "flavor": "\"Wait. What. Who? Oh, ok. Wait. What?\"",
+  "image": "icons/carousel/amnesiac.webp",
+  "firstNight": 122,
+  "otherNight": 152,
   "_remindersFetched": true
 }

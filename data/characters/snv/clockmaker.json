@@ -1,17 +1,18 @@
 {
   "id": "clockmaker",
   "name": "Clockmaker",
-  "team": "townsfolk",
-  "ability": "You start knowing how many steps from the Demon to its nearest Minion.",
   "edition": "snv",
-  "image": "icons/snv/clockmaker.webp",
-  "firstNight": 131,
+  "team": "townsfolk",
   "firstNightReminder": "Give a finger signal.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You start knowing how many steps from the Demon to its nearest Minion.",
+  "flavor": "\"Do not disturb me. The tick must continue, for the circle is a symbol of life and contains all things - all answers - in its divine machinery. I must work.\"",
+  "image": "icons/snv/clockmaker.webp",
+  "firstNight": 131,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "summoner",

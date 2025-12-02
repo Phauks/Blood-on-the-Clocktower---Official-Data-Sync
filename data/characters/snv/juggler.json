@@ -1,13 +1,9 @@
 {
   "id": "juggler",
   "name": "Juggler",
-  "team": "townsfolk",
-  "ability": "On your 1st day, publicly guess up to 5 players' characters. That night, you learn how many you got correct.",
   "edition": "snv",
-  "image": "icons/snv/juggler.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 167,
   "otherNightReminder": "Give a finger signal.",
   "reminders": [
     "CORRECT",
@@ -18,6 +14,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "On your 1st day, publicly guess up to 5 players' characters. That night, you learn how many you got correct.",
+  "flavor": "\"For my next trick, as per request, I will need a flower, a bag of beans, a toy snake, a paintbrush, and a motorized gasoline-powered hedge trimming device. I warn you, this trick may be my last. Oh dear.\"",
+  "image": "icons/snv/juggler.webp",
+  "firstNight": 0,
+  "otherNight": 167,
   "jinxes": [
     {
       "id": "cannibal",

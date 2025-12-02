@@ -1,17 +1,18 @@
 {
   "id": "mastermind",
   "name": "Mastermind",
-  "team": "minion",
-  "ability": "If the Demon dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses.",
   "edition": "bmr",
-  "image": "icons/bmr/mastermind.webp",
-  "firstNight": 0,
+  "team": "minion",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If the Demon dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses.",
+  "flavor": "\"The tentacles of that monster are nailed to the doors of the church. Mothers and children are dancing in the street. Excellent. Everything is proceeding exactly as I have planned.\"",
+  "image": "icons/bmr/mastermind.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "alchemist",

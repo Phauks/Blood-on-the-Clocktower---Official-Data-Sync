@@ -1,16 +1,17 @@
 {
   "id": "oracle",
   "name": "Oracle",
-  "team": "townsfolk",
-  "ability": "Each night*, you learn how many dead players are evil.",
   "edition": "snv",
-  "image": "icons/snv/oracle.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 165,
   "otherNightReminder": "Give a finger signal.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, you learn how many dead players are evil.",
+  "flavor": "\"Only the chosen may gaze beyond the veil. The dead are restless, and they point in silence toward the icy north.\"",
+  "image": "icons/snv/oracle.webp",
+  "firstNight": 0,
+  "otherNight": 165,
   "_remindersFetched": true
 }

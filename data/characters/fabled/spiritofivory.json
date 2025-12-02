@@ -1,18 +1,19 @@
 {
   "id": "spiritofivory",
   "name": "Spirit of Ivory",
-  "team": "fabled",
-  "ability": "There can't be more than 1 extra evil player.",
   "edition": "fabled",
-  "image": "icons/fabled/spiritofivory.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "NO MORE EVIL"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "There can't be more than 1 extra evil player.",
+  "flavor": "\"The Wasteland calls. Bones rise to flesh, then fall to dust. The great spirit grows. The great spirit watches. The great spirit guides. The human listens, or the human is no more.\"",
+  "image": "icons/fabled/spiritofivory.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

@@ -1,16 +1,17 @@
 {
   "id": "tor",
   "name": "Tor",
-  "team": "loric",
-  "ability": "Players don't know their character or alignment. They learn them when they die.",
   "edition": "loric",
-  "image": "icons/loric/tor.webp",
-  "firstNight": 0,
+  "team": "loric",
   "firstNightReminder": "",
-  "otherNight": 157,
   "otherNightReminder": "If a player died tonight, show the YOU ARE info token, their character token, & a thumbs up or thumbs down.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Players don't know their character or alignment. They learn them when they die.",
+  "flavor": "\"With thunder as my voice and lightning as my blade, I, the eternal guardian, feast upon the fools who dare approach the forbidden gate. Behold, my sacred goal! To purge the beetle from the belly of the rocky earth, to ensnare it in a net of stars on the hilltop where heaven meets earth.\"",
+  "image": "icons/loric/tor.webp",
+  "firstNight": 0,
+  "otherNight": 157,
   "_remindersFetched": true
 }

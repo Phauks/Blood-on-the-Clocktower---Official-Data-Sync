@@ -1,13 +1,9 @@
 {
   "id": "knight",
   "name": "Knight",
-  "team": "townsfolk",
-  "ability": "You start knowing 2 players that are not the Demon.",
   "edition": "carousel",
-  "image": "icons/carousel/knight.webp",
-  "firstNight": 135,
+  "team": "townsfolk",
   "firstNightReminder": "Point to the two non-Demon players marked KNOW.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "KNOW",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "You start knowing 2 players that are not the Demon.",
+  "flavor": "\"When a man lies, he murders some part of the world.\"",
+  "image": "icons/carousel/knight.webp",
+  "firstNight": 135,
+  "otherNight": 0,
   "_remindersFetched": true
 }

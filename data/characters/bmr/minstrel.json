@@ -1,19 +1,20 @@
 {
   "id": "minstrel",
   "name": "Minstrel",
-  "team": "townsfolk",
-  "ability": "When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow.",
   "edition": "bmr",
-  "image": "icons/bmr/minstrel.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "EVERYONE IS DRUNK"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow.",
+  "flavor": "\"And I shall hear, tho' soft you tread above me... And all my dreams will warm and sweeter be... If you'll not fail to tell me that you love me... I simply sleep in peace until you come to me.\"",
+  "image": "icons/bmr/minstrel.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "legion",

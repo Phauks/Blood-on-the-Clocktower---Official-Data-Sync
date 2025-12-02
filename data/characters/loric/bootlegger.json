@@ -1,16 +1,17 @@
 {
   "id": "bootlegger",
   "name": "Bootlegger",
-  "team": "loric",
-  "ability": "This script has homebrew characters or rules.",
   "edition": "loric",
-  "image": "icons/loric/bootlegger.webp",
-  "firstNight": 0,
+  "team": "loric",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "This script has homebrew characters or rules.",
+  "flavor": "\"I've got the latest shipment from home, a brew I'd like to call 'Barrowfog'. Wanna try?\"",
+  "image": "icons/loric/bootlegger.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

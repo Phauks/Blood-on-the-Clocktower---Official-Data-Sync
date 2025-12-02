@@ -1,17 +1,18 @@
 {
   "id": "kazali",
   "name": "Kazali",
-  "team": "demon",
-  "ability": "Each night*, choose a player: they die. [You choose which players are which Minions. -? to +? Outsiders]",
   "edition": "carousel",
-  "image": "icons/carousel/kazali.webp",
-  "firstNight": 82,
+  "team": "demon",
   "firstNightReminder": "Wake the Kazali, allow them to choose Minions.",
-  "otherNight": 138,
   "otherNightReminder": "The Kazali chooses a player.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "Each night*, choose a player: they die. [You choose which players are which Minions. -? to +? Outsiders]",
+  "flavor": "\"Gon(z)a7les6. Take cau8tun. The mech4an4ion is iNvert10d. E99ors insy6tum. Reco{7}fig.\"",
+  "image": "icons/carousel/kazali.webp",
+  "firstNight": 82,
+  "otherNight": 138,
   "jinxes": [
     {
       "id": "bountyhunter",

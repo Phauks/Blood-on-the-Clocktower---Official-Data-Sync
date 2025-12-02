@@ -1,13 +1,9 @@
 {
   "id": "flowergirl",
   "name": "Flowergirl",
-  "team": "townsfolk",
-  "ability": "Each night*, you learn if a Demon voted today.",
   "edition": "snv",
-  "image": "icons/snv/flowergirl.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 163,
   "otherNightReminder": "Either nod or shake your head.",
   "reminders": [
     "DEMON NOT VOTED",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, you learn if a Demon voted today.",
+  "flavor": "\"Yesterday's violets have withered and died, but today my poppies bloom.\"",
+  "image": "icons/snv/flowergirl.webp",
+  "firstNight": 0,
+  "otherNight": 163,
   "_remindersFetched": true
 }

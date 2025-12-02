@@ -1,13 +1,9 @@
 {
   "id": "courtier",
   "name": "Courtier",
-  "team": "townsfolk",
-  "ability": "Once per game, at night, choose a character: they are drunk for 3 nights & 3 days.",
   "edition": "bmr",
-  "image": "icons/bmr/courtier.webp",
-  "firstNight": 106,
+  "team": "townsfolk",
   "firstNightReminder": "The Courtier might choose a character.",
-  "otherNight": 101,
   "otherNightReminder": "The Courtier might choose a character.",
   "reminders": [
     "DRUNK 1",
@@ -17,6 +13,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night, choose a character: they are drunk for 3 nights & 3 days.",
+  "flavor": "\"I am more afraid of an army of one hundred sheep led by a lion than an army of one hundred lions led by a sheep.\"",
+  "image": "icons/bmr/courtier.webp",
+  "firstNight": 106,
+  "otherNight": 101,
   "jinxes": [
     {
       "id": "summoner",

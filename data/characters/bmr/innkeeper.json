@@ -1,13 +1,9 @@
 {
   "id": "innkeeper",
   "name": "Innkeeper",
-  "team": "townsfolk",
-  "ability": "Each night*, choose 2 players: they can't die tonight, but 1 is drunk until dusk.",
   "edition": "bmr",
-  "image": "icons/bmr/innkeeper.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 102,
   "otherNightReminder": "The Innkeeper chooses 2 players.",
   "reminders": [
     "SAFE",
@@ -16,6 +12,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose 2 players: they can't die tonight, but 1 is drunk until dusk.",
+  "flavor": "\"Come inside, fair traveller, and rest your weary bones. Drink and be merry, for the legions of the Dark One shall not harass thee tonight.\"",
+  "image": "icons/bmr/innkeeper.webp",
+  "firstNight": 0,
+  "otherNight": 102,
   "jinxes": [
     {
       "id": "riot",

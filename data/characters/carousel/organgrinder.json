@@ -1,13 +1,9 @@
 {
   "id": "organgrinder",
   "name": "Organ Grinder",
-  "team": "minion",
-  "ability": "All players keep their eyes closed when voting and the vote tally is secret. Each night, choose if you are drunk until dusk.",
   "edition": "carousel",
-  "image": "icons/carousel/organgrinder.webp",
-  "firstNight": 110,
+  "team": "minion",
   "firstNightReminder": "The Organ Grinder either nods their head yes to be drunk, or shakes their head no to be sober.",
-  "otherNight": 108,
   "otherNightReminder": "The Organ Grinder either nods their head yes to be drunk, or shakes their head no to be sober.",
   "reminders": [
     "DRUNK",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "All players keep their eyes closed when voting and the vote tally is secret. Each night, choose if you are drunk until dusk.",
+  "flavor": "\"Round and round the handles go. The more you dance the less you know.\"",
+  "image": "icons/carousel/organgrinder.webp",
+  "firstNight": 110,
+  "otherNight": 108,
   "jinxes": [
     {
       "id": "alchemist",

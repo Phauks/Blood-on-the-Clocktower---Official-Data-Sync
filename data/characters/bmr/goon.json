@@ -1,19 +1,20 @@
 {
   "id": "goon",
   "name": "Goon",
-  "team": "outsider",
-  "ability": "Each night, the 1st player to choose you with their ability is drunk until dusk. You become their alignment.",
   "edition": "bmr",
-  "image": "icons/bmr/goon.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "DRUNK"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, the 1st player to choose you with their ability is drunk until dusk. You become their alignment.",
+  "flavor": "\"Yes boss. I explained fings real good to dat geezer. He don't want me explain it again. Nah boss, I don't need no doctor - it's only a knife wound. Be right come mornin'\"",
+  "image": "icons/bmr/goon.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "pithag",

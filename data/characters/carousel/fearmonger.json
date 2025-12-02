@@ -1,19 +1,20 @@
 {
   "id": "fearmonger",
   "name": "Fearmonger",
-  "team": "minion",
-  "ability": "Each night, choose a player: if you nominate & execute them, their team loses. All players know if you choose a new player.",
   "edition": "carousel",
-  "image": "icons/carousel/fearmonger.webp",
-  "firstNight": 115,
+  "team": "minion",
   "firstNightReminder": "The Fearmonger chooses a player.  Declare that \"the Fearmonger has chosen a player.\"",
-  "otherNight": 113,
   "otherNightReminder": "The Fearmonger chooses a player.  If the player wasn't already marked with the FEAR reminder, declare that \"the Fearmonger has chosen a player.\"",
   "reminders": [
     "FEAR"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose a player: if you nominate & execute them, their team loses. All players know if you choose a new player.",
+  "flavor": "\"Beware of gazing long into the Abyss, lest the Abyss also gaze into you.\"",
+  "image": "icons/carousel/fearmonger.webp",
+  "firstNight": 115,
+  "otherNight": 113,
   "jinxes": [
     {
       "id": "plaguedoctor",

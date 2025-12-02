@@ -1,19 +1,20 @@
 {
   "id": "ogre",
   "name": "Ogre",
-  "team": "outsider",
-  "ability": "On your 1st night, choose a player (not yourself): you become their alignment (you don't know which) even if drunk or poisoned.",
   "edition": "carousel",
-  "image": "icons/carousel/ogre.webp",
-  "firstNight": 144,
+  "team": "outsider",
   "firstNightReminder": "The Ogre points to a player.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "FRIEND"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "On your 1st night, choose a player (not yourself): you become their alignment (you don't know which) even if drunk or poisoned.",
+  "flavor": "\"<grunt><grin></grunt>\"",
+  "image": "icons/carousel/ogre.webp",
+  "firstNight": 144,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "recluse",

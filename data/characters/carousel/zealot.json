@@ -1,17 +1,18 @@
 {
   "id": "zealot",
   "name": "Zealot",
-  "team": "outsider",
-  "ability": "If there are 5 or more players alive, you must vote for every nomination.",
   "edition": "carousel",
-  "image": "icons/carousel/zealot.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If there are 5 or more players alive, you must vote for every nomination.",
+  "flavor": "\"I enjoy talking to you. Your mind appeals to me. It resembles my own mind except that you happen to be insane.\"",
+  "image": "icons/carousel/zealot.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "cannibal",

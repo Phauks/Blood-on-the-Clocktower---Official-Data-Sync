@@ -1,16 +1,17 @@
 {
   "id": "doomsayer",
   "name": "Doomsayer",
-  "team": "fabled",
-  "ability": "If 4 or more players live, each living player may publicly choose (once per game) that a player of their own alignment dies.",
   "edition": "fabled",
-  "image": "icons/fabled/doomsayer.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If 4 or more players live, each living player may publicly choose (once per game) that a player of their own alignment dies.",
+  "flavor": "\"And on the Seventh Day, there shall be a great flood and a pestilence upon the People of the Village of the Ravens! The dead shall rise and the living shall repent! O Woe! O Unholy day! Only by great sacrifice shall they prevail! So sayeth the Sages of Nostros and so sayeth I.\"",
+  "image": "icons/fabled/doomsayer.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

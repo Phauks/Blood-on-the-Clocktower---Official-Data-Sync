@@ -1,18 +1,19 @@
 {
   "id": "gambler",
   "name": "Gambler",
-  "team": "townsfolk",
-  "ability": "Each night*, choose a player & guess their character: if you guess wrong, you die.",
   "edition": "bmr",
-  "image": "icons/bmr/gambler.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 104,
   "otherNightReminder": "The Gambler chooses a player & a character.",
   "reminders": [
     "DEAD"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a player & guess their character: if you guess wrong, you die.",
+  "flavor": "\"Heads, I win. Tails, you lose.\"",
+  "image": "icons/bmr/gambler.webp",
+  "firstNight": 0,
+  "otherNight": 104,
   "_remindersFetched": true
 }

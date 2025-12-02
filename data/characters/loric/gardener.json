@@ -1,16 +1,17 @@
 {
   "id": "gardener",
   "name": "Gardener",
-  "team": "loric",
-  "ability": "The Storyteller assigns 1 or more players' characters.",
   "edition": "loric",
-  "image": "icons/loric/gardener.webp",
-  "firstNight": 0,
+  "team": "loric",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "The Storyteller assigns 1 or more players' characters.",
+  "flavor": "\"Oh now, this won't do. We've got the monkshood mixed in with the wolfsbane and the hemlock is smothering the hellebore! Oh dear me, we'd better start over. Fetch my shears.\"",
+  "image": "icons/loric/gardener.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

@@ -1,16 +1,17 @@
 {
   "id": "highpriestess",
   "name": "High Priestess",
-  "team": "townsfolk",
-  "ability": "Each night, learn which player the Storyteller believes you should talk to most.",
   "edition": "carousel",
-  "image": "icons/carousel/highpriestess.webp",
-  "firstNight": 145,
+  "team": "townsfolk",
   "firstNightReminder": "Point to a player.",
-  "otherNight": 176,
   "otherNightReminder": "Point to a player.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, learn which player the Storyteller believes you should talk to most.",
+  "flavor": "\"There is life behind the personality that uses personalities as masks. There are times when life puts off the mask and deep answers to deep.\"",
+  "image": "icons/carousel/highpriestess.webp",
+  "firstNight": 145,
+  "otherNight": 176,
   "_remindersFetched": true
 }

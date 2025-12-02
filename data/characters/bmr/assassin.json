@@ -1,13 +1,9 @@
 {
   "id": "assassin",
   "name": "Assassin",
-  "team": "minion",
-  "ability": "Once per game, at night*, choose a player: they die, even if for some reason they could not.",
   "edition": "bmr",
-  "image": "icons/bmr/assassin.webp",
-  "firstNight": 0,
+  "team": "minion",
   "firstNightReminder": "",
-  "otherNight": 139,
   "otherNightReminder": "The Assassin might choose a player.",
   "reminders": [
     "DEAD",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night*, choose a player: they die, even if for some reason they could not.",
+  "flavor": "\"...\"",
+  "image": "icons/bmr/assassin.webp",
+  "firstNight": 0,
+  "otherNight": 139,
   "_remindersFetched": true
 }

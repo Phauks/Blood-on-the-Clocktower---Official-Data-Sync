@@ -1,16 +1,17 @@
 {
   "id": "matron",
   "name": "Matron",
-  "team": "traveller",
-  "ability": "Each day, you may choose up to 3 sets of 2 players to swap seats. Players may not leave their seats to talk in private.",
   "edition": "bmr",
-  "image": "icons/bmr/matron.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each day, you may choose up to 3 sets of 2 players to swap seats. Players may not leave their seats to talk in private.",
+  "flavor": "\"Miss Featherbottom, be quiet. Master Rutherford, a teacup needs just the four fingers, please. I know you are a father of nine, but age, or lack there-of as the case may be, is never an excuse for poor manners.\"",
+  "image": "icons/bmr/matron.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

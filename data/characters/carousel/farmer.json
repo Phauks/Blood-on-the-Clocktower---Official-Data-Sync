@@ -1,17 +1,18 @@
 {
   "id": "farmer",
   "name": "Farmer",
-  "team": "townsfolk",
-  "ability": "When you die at night, an alive good player becomes a Farmer.",
   "edition": "carousel",
-  "image": "icons/carousel/farmer.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 153,
   "otherNightReminder": "If the Farmer died tonight, wake an alive good player. Show them the YOU ARE info token and a Farmer character token. Replace their previous token with the Farmer token.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "When you die at night, an alive good player becomes a Farmer.",
+  "flavor": "\"Even the high and mighty need food on the table. Without us, the city starves.\"",
+  "image": "icons/carousel/farmer.webp",
+  "firstNight": 0,
+  "otherNight": 153,
   "jinxes": [
     {
       "id": "riot",

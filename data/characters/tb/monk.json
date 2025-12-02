@@ -1,19 +1,20 @@
 {
   "id": "monk",
   "name": "Monk",
-  "team": "townsfolk",
-  "ability": "Each night*, choose a player (not yourself): they are safe from the Demon tonight.",
   "edition": "tb",
-  "image": "icons/tb/monk.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 107,
   "otherNightReminder": "The Monk chooses a player.",
   "reminders": [
     "SAFE"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a player (not yourself): they are safe from the Demon tonight.",
+  "flavor": "\"'Tis an ill and deathly wind that blows tonight. Come, my brother, take shelter in the abbey while the storm rages. By my word, or by my life, you will be safe.\"",
+  "image": "icons/tb/monk.webp",
+  "firstNight": 0,
+  "otherNight": 107,
   "jinxes": [
     {
       "id": "riot",

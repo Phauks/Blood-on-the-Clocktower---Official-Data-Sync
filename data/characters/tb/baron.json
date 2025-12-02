@@ -1,17 +1,18 @@
 {
   "id": "baron",
   "name": "Baron",
-  "team": "minion",
-  "ability": "There are extra Outsiders in play. [+2 Outsiders]",
   "edition": "tb",
-  "image": "icons/tb/baron.webp",
-  "firstNight": 0,
+  "team": "minion",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "There are extra Outsiders in play. [+2 Outsiders]",
+  "flavor": "\"This town has gone to the dogs, what? Cheap foreign labor... that's the ticket. Stuff them in the mine, I say. A bit of hard work never hurt anyone, and a clip'o'the ears to any brigand who says otherwise. It's all about the bottom line, what?\"",
+  "image": "icons/tb/baron.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "plaguedoctor",

@@ -1,16 +1,17 @@
 {
   "id": "empath",
   "name": "Empath",
-  "team": "townsfolk",
-  "ability": "Each night, you learn how many of your 2 alive neighbors are evil.",
   "edition": "tb",
-  "image": "icons/tb/empath.webp",
-  "firstNight": 127,
+  "team": "townsfolk",
   "firstNightReminder": "Give a finger signal.",
-  "otherNight": 159,
   "otherNightReminder": "Give a finger signal.",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, you learn how many of your 2 alive neighbors are evil.",
+  "flavor": "\"My skin prickles. Something is not right here. I can feel it.\"",
+  "image": "icons/tb/empath.webp",
+  "firstNight": 127,
+  "otherNight": 159,
   "_remindersFetched": true
 }

@@ -1,17 +1,18 @@
 {
   "id": "boomdandy",
   "name": "Boomdandy",
-  "team": "minion",
-  "ability": "If you are executed, all but 3 players die. After a 10 to 1 countdown, the player with the most players pointing at them, dies.",
   "edition": "carousel",
-  "image": "icons/carousel/boomdandy.webp",
-  "firstNight": 0,
+  "team": "minion",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you are executed, all but 3 players die. After a 10 to 1 countdown, the player with the most players pointing at them, dies.",
+  "flavor": "\"Tick... Tick... Tick... TOCK.\"",
+  "image": "icons/carousel/boomdandy.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "plaguedoctor",

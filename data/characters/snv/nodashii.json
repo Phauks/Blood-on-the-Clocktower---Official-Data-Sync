@@ -1,13 +1,9 @@
 {
   "id": "nodashii",
   "name": "No Dashii",
-  "team": "demon",
-  "ability": "Each night*, choose a player: they die. Your 2 Townsfolk neighbors are poisoned.",
   "edition": "snv",
-  "image": "icons/snv/nodashii.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 129,
   "otherNightReminder": "The No Dashii chooses a player.",
   "reminders": [
     "POISONED",
@@ -16,5 +12,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a player: they die. Your 2 Townsfolk neighbors are poisoned.",
+  "flavor": "\"By the sins of Arnoch, I feel thy laden stench. By the curs-ed sun and her foul legion of tiny grinning gods, I corrupt thee. By the blessed night and the hidden depths of the horrid and unholy sea, I end thy squalid life upon this plane.\"",
+  "image": "icons/snv/nodashii.webp",
+  "firstNight": 0,
+  "otherNight": 129,
   "_remindersFetched": true
 }

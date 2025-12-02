@@ -1,13 +1,9 @@
 {
   "id": "mathematician",
   "name": "Mathematician",
-  "team": "townsfolk",
-  "ability": "Each night, you learn how many players’ abilities worked abnormally (since dawn) due to another character's ability.",
   "edition": "snv",
-  "image": "icons/snv/mathematician.webp",
-  "firstNight": 148,
+  "team": "townsfolk",
   "firstNightReminder": "Give a finger signal.",
-  "otherNight": 179,
   "otherNightReminder": "Give a finger signal.",
   "reminders": [
     "ABNORMAL",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, you learn how many players’ abilities worked abnormally (since dawn) due to another character's ability.",
+  "flavor": "\"Any consistent formal system x, within which a certain amount of elementary arithmetic can be carried out is incomplete; that is, there are statements of the language of x which can neither be proved nor disproved in x. Ergo, you are drunk.\"",
+  "image": "icons/snv/mathematician.webp",
+  "firstNight": 148,
+  "otherNight": 179,
   "jinxes": [
     {
       "id": "chambermaid",

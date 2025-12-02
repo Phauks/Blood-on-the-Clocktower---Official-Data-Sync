@@ -1,19 +1,20 @@
 {
   "id": "hatter",
   "name": "Hatter",
-  "team": "outsider",
-  "ability": "If you died today or tonight, the Minion & Demon players may choose new Minion & Demon characters to be.",
   "edition": "carousel",
-  "image": "icons/carousel/hatter.webp",
-  "firstNight": 0,
+  "team": "outsider",
   "firstNightReminder": "",
-  "otherNight": 142,
   "otherNightReminder": "If the Hatter died today or tonight, wake Minions and Demons, allow them to choose new characters.",
   "reminders": [
     "TEA PARTY TONIGHT"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you died today or tonight, the Minion & Demon players may choose new Minion & Demon characters to be.",
+  "flavor": "\"One Hat. Too Hat. Three Hat. Tea Hat. Fore Hat. Thrive Hat. Six Hat. Sticks Hat.\"",
+  "image": "icons/carousel/hatter.webp",
+  "firstNight": 0,
+  "otherNight": 142,
   "jinxes": [
     {
       "id": "summoner",

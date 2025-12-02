@@ -1,17 +1,18 @@
 {
   "id": "boffin",
   "name": "Boffin",
-  "team": "minion",
-  "ability": "The Demon (even if drunk or poisoned) has a not-in-play good character’s ability. You both know which.",
   "edition": "carousel",
-  "image": "icons/carousel/boffin.webp",
-  "firstNight": 87,
+  "team": "minion",
   "firstNightReminder": "Wake the Boffin and the Demon. Show the not-in-play good character token. Put the Boffin and the Demon to sleep.",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "The Demon (even if drunk or poisoned) has a not-in-play good character’s ability. You both know which.",
+  "flavor": "\"Stellar hydrogen, vast, inert; carbon, oxygen, neon gases, all ruined. Molecular chaos, entropy, yields new cosmic phenomena, rebirth from atomic chaos, dense matter collapsing. All in a teeny little bottle.\"",
+  "image": "icons/carousel/boffin.webp",
+  "firstNight": 87,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "alchemist",

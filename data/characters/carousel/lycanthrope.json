@@ -1,13 +1,9 @@
 {
   "id": "lycanthrope",
   "name": "Lycanthrope",
-  "team": "townsfolk",
-  "ability": "Each night*, choose an alive player. If good, they die & the Demon doesn’t kill tonight. One good player registers as evil.",
   "edition": "carousel",
-  "image": "icons/carousel/lycanthrope.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 120,
   "otherNightReminder": "The Lycanthrope chooses a player.",
   "reminders": [
     "FAUX PAW",
@@ -15,5 +11,10 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose an alive player. If good, they die & the Demon doesn’t kill tonight. One good player registers as evil.",
+  "flavor": "\"Beneath the thin veneer of civilisation lies a howling madness.\"",
+  "image": "icons/carousel/lycanthrope.webp",
+  "firstNight": 0,
+  "otherNight": 120,
   "_remindersFetched": true
 }

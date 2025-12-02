@@ -1,13 +1,9 @@
 {
   "id": "philosopher",
   "name": "Philosopher",
-  "team": "townsfolk",
-  "ability": "Once per game, at night, choose a good character: gain that ability. If this character is in play, they are drunk.",
   "edition": "snv",
-  "image": "icons/snv/philosopher.webp",
-  "firstNight": 88,
+  "team": "townsfolk",
   "firstNightReminder": "The Philosopher might choose a character. If necessary, swap their character token.",
-  "otherNight": 94,
   "otherNightReminder": "The Philosopher might choose a character. If necessary, swap their character token.",
   "reminders": [
     "IS THE PHILOSOPHER",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Once per game, at night, choose a good character: gain that ability. If this character is in play, they are drunk.",
+  "flavor": "\"If anything is real, beer is real. Drink, for tomorrow we may die.\"",
+  "image": "icons/snv/philosopher.webp",
+  "firstNight": 88,
+  "otherNight": 94,
   "jinxes": [
     {
       "id": "bountyhunter",

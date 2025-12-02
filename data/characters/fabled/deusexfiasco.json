@@ -1,18 +1,19 @@
 {
   "id": "deusexfiasco",
   "name": "Deus ex Fiasco",
-  "team": "fabled",
-  "ability": "At least once per game, the Storyteller will make a mistake, correct it, and publicly admit to it.",
   "edition": "fabled",
-  "image": "icons/fabled/deusexfiasco.webp",
-  "firstNight": 0,
+  "team": "fabled",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [
     "WHOOPSIE"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "At least once per game, the Storyteller will make a mistake, correct it, and publicly admit to it.",
+  "flavor": "\"It’s not a bug, it’s a feature. It’s not an error, it’s a tweak. It’s not broken, it’s quirky.\"",
+  "image": "icons/fabled/deusexfiasco.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

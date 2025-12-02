@@ -1,19 +1,20 @@
 {
   "id": "legion",
   "name": "Legion",
-  "team": "demon",
-  "ability": "Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]",
   "edition": "carousel",
-  "image": "icons/carousel/legion.webp",
-  "firstNight": 0,
+  "team": "demon",
   "firstNightReminder": "",
-  "otherNight": 122,
   "otherNightReminder": "A player might die.",
   "reminders": [
     "ABOUT TO DIE"
   ],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]",
+  "flavor": "\"We are the chill wind on a winter’s day. We are the shadow in the moonless night. We are the poison in your tea and the whisper in your ear. We are everywhere.\"",
+  "image": "icons/carousel/legion.webp",
+  "firstNight": 0,
+  "otherNight": 122,
   "jinxes": [
     {
       "id": "magician",

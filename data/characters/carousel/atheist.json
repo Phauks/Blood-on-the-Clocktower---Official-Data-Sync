@@ -1,17 +1,18 @@
 {
   "id": "atheist",
   "name": "Atheist",
-  "team": "townsfolk",
-  "ability": "The Storyteller can break the game rules, and if executed, good wins, even if you are dead. [No evil characters]",
   "edition": "carousel",
-  "image": "icons/carousel/atheist.webp",
-  "firstNight": 0,
+  "team": "townsfolk",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": true,
+  "ability": "The Storyteller can break the game rules, and if executed, good wins, even if you are dead. [No evil characters]",
+  "flavor": "\"Let us disperse with unnecessary conjecture and silly paranoia. There is a perfectly rational explanation for everything. Yes, a teacup may indeed be orbiting the planet, too small to see, but I shall drink my tea from the very real china in my very real hands.\"",
+  "image": "icons/carousel/atheist.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "jinxes": [
     {
       "id": "riot",

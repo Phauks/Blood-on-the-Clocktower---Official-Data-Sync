@@ -1,19 +1,20 @@
 {
   "id": "preacher",
   "name": "Preacher",
-  "team": "townsfolk",
-  "ability": "Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability.",
   "edition": "carousel",
-  "image": "icons/carousel/preacher.webp",
-  "firstNight": 100,
+  "team": "townsfolk",
   "firstNightReminder": "The Preacher chooses a player.  If they chose a Minion: Put the Preacher to sleep. Wake the target. Show the THIS CHARACTER SELECTED YOU token and the Preacher token.",
-  "otherNight": 98,
   "otherNightReminder": "The Preacher chooses a player.  If they chose a Minion: Put the Preacher to sleep. Wake the target. Show the THIS CHARACTER SELECTED YOU token and the Preacher token.",
   "reminders": [
     "NO ABILITY"
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability.",
+  "flavor": "\"It is better to be rich and healthy than poor and sick.\"",
+  "image": "icons/carousel/preacher.webp",
+  "firstNight": 100,
+  "otherNight": 98,
   "jinxes": [
     {
       "id": "summoner",

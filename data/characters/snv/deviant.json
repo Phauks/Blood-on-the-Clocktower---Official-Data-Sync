@@ -1,16 +1,17 @@
 {
   "id": "deviant",
   "name": "Deviant",
-  "team": "traveller",
-  "ability": "If you were funny today, you cannot die by exile.",
   "edition": "snv",
-  "image": "icons/snv/deviant.webp",
-  "firstNight": 0,
+  "team": "traveller",
   "firstNightReminder": "",
-  "otherNight": 0,
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "If you were funny today, you cannot die by exile.",
+  "flavor": "\"Twas the lady's quip, forsooth.\"",
+  "image": "icons/snv/deviant.webp",
+  "firstNight": 0,
+  "otherNight": 0,
   "_remindersFetched": true
 }

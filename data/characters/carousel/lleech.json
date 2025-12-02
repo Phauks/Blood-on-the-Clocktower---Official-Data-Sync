@@ -1,13 +1,9 @@
 {
   "id": "lleech",
   "name": "Lleech",
-  "team": "demon",
-  "ability": "Each night*, choose a player: they die. You start by choosing a player: they are poisoned. You die if & only if they are dead.",
   "edition": "carousel",
-  "image": "icons/carousel/lleech.webp",
-  "firstNight": 102,
+  "team": "demon",
   "firstNightReminder": "The Lleech chooses a player.",
-  "otherNight": 135,
   "otherNightReminder": "The Lleech chooses a player.",
   "reminders": [
     "POISONED",
@@ -15,6 +11,11 @@
   ],
   "remindersGlobal": [],
   "setup": false,
+  "ability": "Each night*, choose a player: they die. You start by choosing a player: they are poisoned. You die if & only if they are dead.",
+  "flavor": "\"Tasty, tasty, tasty, tasty, tasty, tasty, tasty, tasty brai- I mean pie! Yes. Tasty pie. That’s what I meant to say.\"",
+  "image": "icons/carousel/lleech.webp",
+  "firstNight": 102,
+  "otherNight": 135,
   "jinxes": [
     {
       "id": "heretic",
