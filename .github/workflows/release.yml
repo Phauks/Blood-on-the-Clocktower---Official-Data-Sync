@@ -131,22 +131,43 @@ jobs:
           python << 'EOF'
           import json
           import os
+          import zipfile
+          import io
           
-          # Load current manifest
+          # Load current manifest and characters
           with open('dist/manifest.json') as f:
               current = json.load(f)
+          with open('dist/characters.json') as f:
+              current_chars = json.load(f)
           
-          # Try to load previous manifest
+          current_char_ids = {c['id'] for c in current_chars}
+          current_char_names = {c['id']: c['name'] for c in current_chars}
+          
+          # Try to load previous release data
           prev_tag = "${{ steps.prev_hash.outputs.latest_tag }}"
           previous = None
+          prev_char_ids = set()
+          prev_char_names = {}
+          
           if prev_tag != "none":
               import urllib.request
               try:
+                  # Get previous manifest
                   url = f"https://github.com/${{ github.repository }}/releases/download/{prev_tag}/manifest.json"
                   with urllib.request.urlopen(url, timeout=10) as resp:
                       previous = json.load(resp)
-              except:
-                  pass
+                  
+                  # Get previous characters from ZIP
+                  zip_url = f"https://github.com/${{ github.repository }}/releases/download/{prev_tag}/botc-data-{prev_tag}.zip"
+                  with urllib.request.urlopen(zip_url, timeout=30) as resp:
+                      zip_data = io.BytesIO(resp.read())
+                      with zipfile.ZipFile(zip_data) as zf:
+                          with zf.open('characters.json') as cf:
+                              prev_chars = json.load(cf)
+                              prev_char_ids = {c['id'] for c in prev_chars}
+                              prev_char_names = {c['id']: c['name'] for c in prev_chars}
+              except Exception as e:
+                  print(f"Could not load previous release: {e}")
           
           lines = []
           
@@ -157,12 +178,17 @@ jobs:
           if previous:
               changes = []
               
-              # Check character count changes
-              prev_chars = previous.get('total_characters', 0)
-              curr_chars = current.get('total_characters', 0)
-              if curr_chars != prev_chars:
-                  diff = curr_chars - prev_chars
-                  changes.append(f"Characters: {prev_chars} → {curr_chars} ({'+' if diff > 0 else ''}{diff})")
+              # Find added/removed characters
+              added_ids = current_char_ids - prev_char_ids
+              removed_ids = prev_char_ids - current_char_ids
+              
+              if added_ids:
+                  added_names = [current_char_names[id] for id in sorted(added_ids)]
+                  changes.append(f"**New characters:** {', '.join(added_names)}")
+              
+              if removed_ids:
+                  removed_names = [prev_char_names[id] for id in sorted(removed_ids)]
+                  changes.append(f"**Removed characters:** {', '.join(removed_names)}")
               
               # Check reminder count changes
               prev_rem = previous.get('total_reminders', 0)
@@ -185,15 +211,16 @@ jobs:
                   diff = curr_flav - prev_flav
                   changes.append(f"Flavor text: {prev_flav} → {curr_flav} ({'+' if diff > 0 else ''}{diff})")
               
-              # Check edition changes
-              prev_counts = previous.get('edition_counts', {})
-              curr_counts = current.get('edition_counts', {})
-              for ed in set(prev_counts.keys()) | set(curr_counts.keys()):
-                  prev_c = prev_counts.get(ed, 0)
-                  curr_c = curr_counts.get(ed, 0)
-                  if prev_c != curr_c:
-                      diff = curr_c - prev_c
-                      changes.append(f"{ed}: {prev_c} → {curr_c} ({'+' if diff > 0 else ''}{diff})")
+              # Check edition character count changes (only if no specific character changes shown)
+              if not added_ids and not removed_ids:
+                  prev_counts = previous.get('edition_counts', {})
+                  curr_counts = current.get('edition_counts', {})
+                  for ed in sorted(set(prev_counts.keys()) | set(curr_counts.keys())):
+                      prev_c = prev_counts.get(ed, 0)
+                      curr_c = curr_counts.get(ed, 0)
+                      if prev_c != curr_c:
+                          diff = curr_c - prev_c
+                          changes.append(f"{ed}: {prev_c} → {curr_c} ({'+' if diff > 0 else ''}{diff})")
               
               if changes:
                   lines.append("### Changes from previous release")
