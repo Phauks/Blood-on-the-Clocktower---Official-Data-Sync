@@ -142,12 +142,14 @@ jobs:
           
           current_char_ids = {c['id'] for c in current_chars}
           current_char_names = {c['id']: c['name'] for c in current_chars}
+          current_char_abilities = {c['id']: c.get('ability', '') for c in current_chars}
           
           # Try to load previous release data
           prev_tag = "${{ steps.prev_hash.outputs.latest_tag }}"
           previous = None
           prev_char_ids = set()
           prev_char_names = {}
+          prev_char_abilities = {}
           
           if prev_tag != "none":
               import urllib.request
@@ -166,6 +168,7 @@ jobs:
                               prev_chars = json.load(cf)
                               prev_char_ids = {c['id'] for c in prev_chars}
                               prev_char_names = {c['id']: c['name'] for c in prev_chars}
+                              prev_char_abilities = {c['id']: c.get('ability', '') for c in prev_chars}
               except Exception as e:
                   print(f"Could not load previous release: {e}")
           
@@ -189,6 +192,16 @@ jobs:
               if removed_ids:
                   removed_names = [prev_char_names[id] for id in sorted(removed_ids)]
                   changes.append(f"**Removed characters:** {', '.join(removed_names)}")
+              
+              # Find characters with changed abilities
+              common_ids = current_char_ids & prev_char_ids
+              ability_changed = []
+              for cid in common_ids:
+                  if current_char_abilities.get(cid, '') != prev_char_abilities.get(cid, ''):
+                      ability_changed.append(current_char_names[cid])
+              
+              if ability_changed:
+                  changes.append(f"**Ability text updated:** {', '.join(sorted(ability_changed))}")
               
               # Check reminder count changes
               prev_rem = previous.get('total_reminders', 0)
