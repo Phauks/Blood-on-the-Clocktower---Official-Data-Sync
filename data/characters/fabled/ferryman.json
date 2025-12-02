@@ -1,0 +1,16 @@
+{
+  "id": "ferryman",
+  "name": "Ferryman",
+  "team": "fabled",
+  "ability": "On the final day, all dead players regain their vote token.",
+  "edition": "fabled",
+  "image": "icons/fabled/ferryman.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

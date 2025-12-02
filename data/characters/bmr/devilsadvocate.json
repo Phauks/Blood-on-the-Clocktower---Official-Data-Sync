@@ -1,0 +1,18 @@
+{
+  "id": "devilsadvocate",
+  "name": "Devil's Advocate",
+  "team": "minion",
+  "ability": "Each night, choose a living player (different to last night): if executed tomorrow, they don't die.",
+  "edition": "bmr",
+  "image": "icons/bmr/devilsadvocate.webp",
+  "firstNight": 111,
+  "firstNightReminder": "The Devil's Advocate chooses a living player.",
+  "otherNight": 109,
+  "otherNightReminder": "The Devil's Advocate chooses a living player.",
+  "reminders": [
+    "SURVIVES EXECUTION"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

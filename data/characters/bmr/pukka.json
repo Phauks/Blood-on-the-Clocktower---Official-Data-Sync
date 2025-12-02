@@ -1,0 +1,25 @@
+{
+  "id": "pukka",
+  "name": "Pukka",
+  "team": "demon",
+  "ability": "Each night, choose a player: they are poisoned. The previously poisoned player dies then becomes healthy.",
+  "edition": "bmr",
+  "image": "icons/bmr/pukka.webp",
+  "firstNight": 118,
+  "firstNightReminder": "The Pukka chooses a player.",
+  "otherNight": 125,
+  "otherNightReminder": "The Pukka chooses a player.  The previously poisoned player dies then becomes healthy.",
+  "reminders": [
+    "POISONED",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "summoner",
+      "reason": "The Summoner may summon a Pukka on the 2nd night instead of the 3rd."
+    }
+  ],
+  "_remindersFetched": true
+}

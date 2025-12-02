@@ -1,0 +1,16 @@
+{
+  "id": "saint",
+  "name": "Saint",
+  "team": "outsider",
+  "ability": "If you die by execution, your team loses.",
+  "edition": "tb",
+  "image": "icons/tb/saint.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

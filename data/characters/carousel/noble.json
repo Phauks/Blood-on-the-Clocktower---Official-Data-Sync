@@ -1,0 +1,19 @@
+{
+  "id": "noble",
+  "name": "Noble",
+  "team": "townsfolk",
+  "ability": "You start knowing 3 players, 1 and only 1 of which is evil.",
+  "edition": "carousel",
+  "image": "icons/carousel/noble.webp",
+  "firstNight": 136,
+  "firstNightReminder": "Point to all three players marked KNOW.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "KNOW",
+    "KNOW"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

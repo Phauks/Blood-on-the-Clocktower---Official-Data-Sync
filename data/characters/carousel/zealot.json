@@ -1,0 +1,30 @@
+{
+  "id": "zealot",
+  "name": "Zealot",
+  "team": "outsider",
+  "ability": "If there are 5 or more players alive, you must vote for every nomination.",
+  "edition": "carousel",
+  "image": "icons/carousel/zealot.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "cannibal",
+      "reason": "If the Cannibal gains the Zealot ability, the Cannibal learns this."
+    },
+    {
+      "id": "vizier",
+      "reason": "The Zealot might register as evil to the Vizier."
+    },
+    {
+      "id": "legion",
+      "reason": "The Zealot might register as evil to Legion."
+    }
+  ],
+  "_remindersFetched": true
+}

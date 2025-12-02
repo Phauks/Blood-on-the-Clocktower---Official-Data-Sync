@@ -1,0 +1,22 @@
+{
+  "id": "boomdandy",
+  "name": "Boomdandy",
+  "team": "minion",
+  "ability": "If you are executed, all but 3 players die. After a 10 to 1 countdown, the player with the most players pointing at them, dies.",
+  "edition": "carousel",
+  "image": "icons/carousel/boomdandy.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Boomdandy ability, a player becomes the Boomdandy."
+    }
+  ],
+  "_remindersFetched": true
+}

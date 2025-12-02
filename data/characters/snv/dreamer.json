@@ -1,0 +1,16 @@
+{
+  "id": "dreamer",
+  "name": "Dreamer",
+  "team": "townsfolk",
+  "ability": "Each night, choose a player (not yourself or Travellers): you learn 1 good & 1 evil character, 1 of which is correct.",
+  "edition": "snv",
+  "image": "icons/snv/dreamer.webp",
+  "firstNight": 132,
+  "firstNightReminder": "The Dreamer points to a player. Show 1 good & 1 evil character token, 1 of which is their character.",
+  "otherNight": 162,
+  "otherNightReminder": "The Dreamer points to a player. Show 1 good & 1 evil character token, 1 of which is their character.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

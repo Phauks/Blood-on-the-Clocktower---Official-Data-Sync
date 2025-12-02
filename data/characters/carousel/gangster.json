@@ -1,0 +1,16 @@
+{
+  "id": "gangster",
+  "name": "Gangster",
+  "team": "traveller",
+  "ability": "Once per day, you may choose to kill an alive neighbor, if your other alive neighbor agrees.",
+  "edition": "carousel",
+  "image": "icons/carousel/gangster.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

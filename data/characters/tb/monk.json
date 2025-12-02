@@ -1,0 +1,28 @@
+{
+  "id": "monk",
+  "name": "Monk",
+  "team": "townsfolk",
+  "ability": "Each night*, choose a player (not yourself): they are safe from the Demon tonight.",
+  "edition": "tb",
+  "image": "icons/tb/monk.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 107,
+  "otherNightReminder": "The Monk chooses a player.",
+  "reminders": [
+    "SAFE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "If Riot nominates and executes the Monk-protected player, good wins."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan nominates and executes the Monk-protected player, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

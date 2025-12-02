@@ -1,0 +1,18 @@
+{
+  "id": "bureaucrat",
+  "name": "Bureaucrat",
+  "team": "traveller",
+  "ability": "Each night, choose a player (not yourself): their vote counts as 3 votes tomorrow.",
+  "edition": "tb",
+  "image": "icons/tb/bureaucrat.webp",
+  "firstNight": 85,
+  "firstNightReminder": "The Bureaucrat chooses a player.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "3 VOTES"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

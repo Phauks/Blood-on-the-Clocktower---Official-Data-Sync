@@ -1,0 +1,19 @@
+{
+  "id": "bonecollector",
+  "name": "Bone Collector",
+  "team": "traveller",
+  "ability": "Once per game, at night*, choose a dead player: they regain their ability until dusk.",
+  "edition": "snv",
+  "image": "icons/snv/bonecollector.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "HAS ABILITY",
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

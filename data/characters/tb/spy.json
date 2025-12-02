@@ -1,0 +1,46 @@
+{
+  "id": "spy",
+  "name": "Spy",
+  "team": "minion",
+  "ability": "Each night, you see the Grimoire. You might register as good & as a Townsfolk or Outsider, even if dead.",
+  "edition": "tb",
+  "image": "icons/tb/spy.webp",
+  "firstNight": 143,
+  "firstNightReminder": "Show the Grimoire for as long as the Spy needs.",
+  "otherNight": 175,
+  "otherNightReminder": "Show the Grimoire for as long as the Spy needs.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "alchemist",
+      "reason": "An Alchemist-Spy has no Spy ability & a Spy is in play. After each execution, a living Alchemist-Spy may publicly guess a living player as the Spy. If correct, the Demon must choose the Spy tonight."
+    },
+    {
+      "id": "magician",
+      "reason": "When the Spy sees the Grimoire, the Demon and Magician's character tokens are removed."
+    },
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Spy ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "heretic",
+      "reason": "Only 1 jinxed character can be in play."
+    },
+    {
+      "id": "poppygrower",
+      "reason": "If the Poppy Grower has their ability, the Spy does not see the Grimoire."
+    },
+    {
+      "id": "ogre",
+      "reason": "The Spy registers as evil to the Ogre."
+    },
+    {
+      "id": "damsel",
+      "reason": "If the Spy is (or has been) in play, the Damsel is poisoned."
+    }
+  ],
+  "_remindersFetched": true
+}

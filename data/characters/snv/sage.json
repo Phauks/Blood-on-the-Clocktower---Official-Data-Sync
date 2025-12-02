@@ -1,0 +1,30 @@
+{
+  "id": "sage",
+  "name": "Sage",
+  "team": "townsfolk",
+  "ability": "If the Demon kills you, you learn that it is 1 of 2 players.",
+  "edition": "snv",
+  "image": "icons/snv/sage.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 146,
+  "otherNightReminder": "If the Demon killed the Sage, wake the Sage and point to 2 players, 1 of which is the Demon.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "recluse",
+      "reason": "The Recluse might register as the Demon to the Sage."
+    },
+    {
+      "id": "riot",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Sage uses their ability but does not die."
+    },
+    {
+      "id": "leviathan",
+      "reason": "Each night*, the Leviathan chooses an alive good player (different to previous nights): a chosen Sage uses their ability but does not die."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "bootlegger",
+  "name": "Bootlegger",
+  "team": "loric",
+  "ability": "This script has homebrew characters or rules.",
+  "edition": "loric",
+  "image": "icons/loric/bootlegger.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

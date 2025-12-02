@@ -1,0 +1,24 @@
+{
+  "id": "slayer",
+  "name": "Slayer",
+  "team": "townsfolk",
+  "ability": "Once per game, during the day, publicly choose a player: if they are the Demon, they die.",
+  "edition": "tb",
+  "image": "icons/tb/slayer.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "lleech",
+      "reason": "If the Slayer slays the Lleech host, the host dies."
+    }
+  ],
+  "_remindersFetched": true
+}

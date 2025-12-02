@@ -1,0 +1,30 @@
+{
+  "id": "innkeeper",
+  "name": "Innkeeper",
+  "team": "townsfolk",
+  "ability": "Each night*, choose 2 players: they can't die tonight, but 1 is drunk until dusk.",
+  "edition": "bmr",
+  "image": "icons/bmr/innkeeper.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 102,
+  "otherNightReminder": "The Innkeeper chooses 2 players.",
+  "reminders": [
+    "SAFE",
+    "SAFE",
+    "DRUNK"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "If Riot nominates and executes an Innkeeper-protected player, good wins."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan nominates and executes an Innkeeper-protected player, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

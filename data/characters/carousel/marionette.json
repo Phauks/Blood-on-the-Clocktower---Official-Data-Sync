@@ -1,0 +1,56 @@
+{
+  "id": "marionette",
+  "name": "Marionette",
+  "team": "minion",
+  "ability": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]",
+  "edition": "carousel",
+  "image": "icons/carousel/marionette.webp",
+  "firstNight": 98,
+  "firstNightReminder": "Wake the Demon. Point to the player marked IS THE MARIONETTE and show the THIS PLAYER IS token and the Marionette character token.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "IS THE MARIONETTE"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "mathematician",
+      "reason": "The Mathematician might learn if the Marionette's ability yielded false info or failed to work properly."
+    },
+    {
+      "id": "alchemist",
+      "reason": "An Alchemist-Marionette has no Marionette ability & the Marionette is in play."
+    },
+    {
+      "id": "magician",
+      "reason": "If the Magician is alive, the Demon doesn't know which neighbor is the Marionette."
+    },
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Marionette ability, one of the Demon's good neighbors becomes the Marionette."
+    },
+    {
+      "id": "balloonist",
+      "reason": "If the Marionette thinks that they are the Balloonist, an Outsider might have been added during setup."
+    },
+    {
+      "id": "huntsman",
+      "reason": "If the Marionette thinks that they are the Huntsman, the Damsel was added during setup."
+    },
+    {
+      "id": "summoner",
+      "reason": "If there would be a Marionette in play, they enter play after the Demon & must start as their neighbor."
+    },
+    {
+      "id": "lilmonsta",
+      "reason": "If there would be a Marionette in play, they enter play after the Demon & must start as their neighbor."
+    },
+    {
+      "id": "kazali",
+      "reason": "If there would be a Marionette in play, they enter play after the Demon & must start as their neighbor."
+    }
+  ],
+  "_remindersFetched": true
+}

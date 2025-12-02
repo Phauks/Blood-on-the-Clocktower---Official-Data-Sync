@@ -1,0 +1,18 @@
+{
+  "id": "moonchild",
+  "name": "Moonchild",
+  "team": "outsider",
+  "ability": "When you learn that you died, publicly choose 1 alive player. Tonight, if it was a good player, they die.",
+  "edition": "bmr",
+  "image": "icons/bmr/moonchild.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 155,
+  "otherNightReminder": "If the Moonchild is due to kill a good player, they die.",
+  "reminders": [
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

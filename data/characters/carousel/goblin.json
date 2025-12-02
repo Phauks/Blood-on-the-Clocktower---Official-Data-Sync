@@ -1,0 +1,28 @@
+{
+  "id": "goblin",
+  "name": "Goblin",
+  "team": "minion",
+  "ability": "If you publicly claim to be the Goblin when nominated & are executed that day, your team wins.",
+  "edition": "carousel",
+  "image": "icons/carousel/goblin.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "CLAIMED"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Goblin ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "cerenovus",
+      "reason": "The Cerenovus may choose to make a player mad that they are the Goblin."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,37 @@
+{
+  "id": "cannibal",
+  "name": "Cannibal",
+  "team": "townsfolk",
+  "ability": "You have the ability of the recently killed executee. If they are evil, you are poisoned until a good player dies by execution.",
+  "edition": "carousel",
+  "image": "icons/carousel/cannibal.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "LUNCH",
+    "POISONED"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "princess",
+      "reason": "If the Cannibal nominated, executed, & killed the Princess today, the Demon doesn’t kill tonight."
+    },
+    {
+      "id": "juggler",
+      "reason": "If the Juggler guesses on their first day and dies by execution, tonight the living Cannibal learns how many guesses the Juggler got correct."
+    },
+    {
+      "id": "butler",
+      "reason": "If the Cannibal gains the Butler ability, the Cannibal learns this."
+    },
+    {
+      "id": "zealot",
+      "reason": "If the Cannibal gains the Zealot ability, the Cannibal learns this."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,34 @@
+{
+  "id": "politician",
+  "name": "Politician",
+  "team": "outsider",
+  "ability": "If you were the player most responsible for your team losing, you change alignment & win, even if dead.",
+  "edition": "carousel",
+  "image": "icons/carousel/politician.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "pithag",
+      "reason": "If the Pit-Hag turns an evil player into the Politician, they can't turn good due to their own ability."
+    },
+    {
+      "id": "vizier",
+      "reason": "The Politician might register as evil to the Vizier."
+    },
+    {
+      "id": "boffin",
+      "reason": "The Demon cannot have the Politician ability."
+    },
+    {
+      "id": "legion",
+      "reason": "The Politician might register as evil to Legion."
+    }
+  ],
+  "_remindersFetched": true
+}

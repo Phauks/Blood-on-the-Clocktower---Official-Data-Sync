@@ -1,0 +1,32 @@
+{
+  "id": "damsel",
+  "name": "Damsel",
+  "team": "outsider",
+  "ability": "All Minions know a Damsel is in play. If a Minion publicly guesses you (once), your team loses.",
+  "edition": "carousel",
+  "image": "icons/carousel/damsel.webp",
+  "firstNight": 121,
+  "firstNightReminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
+  "otherNight": 151,
+  "otherNightReminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
+  "reminders": [
+    "GUESS USED"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "spy",
+      "reason": "If the Spy is (or has been) in play, the Damsel is poisoned."
+    },
+    {
+      "id": "pithag",
+      "reason": "If a Pit-Hag creates a Damsel, the Storyteller chooses which player it is."
+    },
+    {
+      "id": "widow",
+      "reason": "If the Widow is (or has been) in play, the Damsel is poisoned."
+    }
+  ],
+  "_remindersFetched": true
+}

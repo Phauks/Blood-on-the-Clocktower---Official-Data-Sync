@@ -1,0 +1,18 @@
+{
+  "id": "apprentice",
+  "name": "Apprentice",
+  "team": "traveller",
+  "ability": "On your 1st night, you gain a Townsfolk ability (if good), or a Minion ability (if evil).",
+  "edition": "bmr",
+  "image": "icons/bmr/apprentice.webp",
+  "firstNight": 83,
+  "firstNightReminder": "Show the Apprentice the YOU ARE card, then a Townsfolk or Minion token. In the Grimoire, replace the Apprentice token with that character token, and put the Apprentice's IS THE APPRENTICE reminder by that character token.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "IS THE APPRENTICE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

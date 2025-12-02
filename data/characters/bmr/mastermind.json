@@ -1,0 +1,34 @@
+{
+  "id": "mastermind",
+  "name": "Mastermind",
+  "team": "minion",
+  "ability": "If the Demon dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses.",
+  "edition": "bmr",
+  "image": "icons/bmr/mastermind.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "alchemist",
+      "reason": "An Alchemist-Mastermind has no Mastermind ability & the Mastermind is not-in-play."
+    },
+    {
+      "id": "vigormortis",
+      "reason": "A Mastermind that has their ability keeps it if the Vigormortis dies."
+    },
+    {
+      "id": "lleech",
+      "reason": "If the Mastermind is alive and the Lleech host dies by execution, the Lleech lives but loses their ability."
+    },
+    {
+      "id": "alhadikhia",
+      "reason": "If the Al-Hadikhia dies by execution, and the Mastermind is alive, the Al-Hadikhia chooses 3 good players tonight: if all 3 choose to live, evil wins. Otherwise, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

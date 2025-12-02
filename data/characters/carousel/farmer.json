@@ -1,0 +1,26 @@
+{
+  "id": "farmer",
+  "name": "Farmer",
+  "team": "townsfolk",
+  "ability": "When you die at night, an alive good player becomes a Farmer.",
+  "edition": "carousel",
+  "image": "icons/carousel/farmer.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 153,
+  "otherNightReminder": "If the Farmer died tonight, wake an alive good player. Show them the YOU ARE info token and a Farmer character token. Replace their previous token with the Farmer token.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Farmer uses their ability but does not die."
+    },
+    {
+      "id": "leviathan",
+      "reason": "Each night*, the Leviathan chooses an alive good player (different to previous nights): a chosen Farmer uses their ability but does not die."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mutant",
+  "name": "Mutant",
+  "team": "outsider",
+  "ability": "If you are “mad” about being an Outsider, you might be executed.",
+  "edition": "snv",
+  "image": "icons/snv/mutant.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

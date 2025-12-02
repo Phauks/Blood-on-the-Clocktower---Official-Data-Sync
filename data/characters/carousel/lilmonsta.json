@@ -1,0 +1,49 @@
+{
+  "id": "lilmonsta",
+  "name": "Lil' Monsta",
+  "team": "demon",
+  "ability": "Each night, Minions choose who babysits Lil' Monsta & \"is the Demon\". Each night*, a player might die. [+1 Minion]",
+  "edition": "carousel",
+  "image": "icons/carousel/lilmonsta.webp",
+  "firstNight": 101,
+  "firstNightReminder": "Wake all Minions, allow them to choose a babysitter.",
+  "otherNight": 136,
+  "otherNightReminder": "Wake all Minions, allow them to choose a babysitter.  A player might die.",
+  "reminders": [
+    "IS THE DEMON",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "marionette",
+      "reason": "If there would be a Marionette in play, they enter play after the Demon & must start as their neighbor."
+    },
+    {
+      "id": "magician",
+      "reason": "If the Magician is alive, the Storyteller chooses which Minion babysits Lil' Monsta."
+    },
+    {
+      "id": "poppygrower",
+      "reason": "If Lil' Monsta & the Poppy Grower are alive, Minions wake one by one, until one of them chooses to take the Lil' Monsta token."
+    },
+    {
+      "id": "hatter",
+      "reason": "If the Hatter dies & the Demon chooses Lil' Monsta, they also choose a Minion to become."
+    },
+    {
+      "id": "psychopath",
+      "reason": "If the Psychopath is babysitting Lil' Monsta, they die when executed."
+    },
+    {
+      "id": "scarletwoman",
+      "reason": "If Lil' Monsta dies with 5 or more players alive, the Scarlet Woman babysits Lil' Monsta for the rest of the game."
+    },
+    {
+      "id": "vizier",
+      "reason": "If the Vizier is babysitting Lil' Monsta, they die when executed."
+    }
+  ],
+  "_remindersFetched": true
+}

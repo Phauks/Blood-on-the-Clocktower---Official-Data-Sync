@@ -1,0 +1,16 @@
+{
+  "id": "deviant",
+  "name": "Deviant",
+  "team": "traveller",
+  "ability": "If you were funny today, you cannot die by exile.",
+  "edition": "snv",
+  "image": "icons/snv/deviant.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

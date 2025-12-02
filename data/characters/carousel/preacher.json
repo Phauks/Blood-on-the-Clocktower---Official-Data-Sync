@@ -1,0 +1,32 @@
+{
+  "id": "preacher",
+  "name": "Preacher",
+  "team": "townsfolk",
+  "ability": "Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability.",
+  "edition": "carousel",
+  "image": "icons/carousel/preacher.webp",
+  "firstNight": 100,
+  "firstNightReminder": "The Preacher chooses a player.  If they chose a Minion: Put the Preacher to sleep. Wake the target. Show the THIS CHARACTER SELECTED YOU token and the Preacher token.",
+  "otherNight": 98,
+  "otherNightReminder": "The Preacher chooses a player.  If they chose a Minion: Put the Preacher to sleep. Wake the target. Show the THIS CHARACTER SELECTED YOU token and the Preacher token.",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "summoner",
+      "reason": "If the living Summoner has no ability, the Storyteller has the Summoner ability."
+    },
+    {
+      "id": "vizier",
+      "reason": "If the Vizier loses their ability, they learn this, and cannot die during the day."
+    },
+    {
+      "id": "legion",
+      "reason": "If the Preacher chooses Legion, Legion keeps their ability, but the Preacher might learn they are Legion."
+    }
+  ],
+  "_remindersFetched": true
+}

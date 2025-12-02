@@ -1,0 +1,18 @@
+{
+  "id": "imp",
+  "name": "Imp",
+  "team": "demon",
+  "ability": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.",
+  "edition": "tb",
+  "image": "icons/tb/imp.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 123,
+  "otherNightReminder": "The Imp chooses a player.  If the Imp chose themselves: Replace 1 alive Minion token with a spare Imp token. Put the old Imp to sleep. Wake the new Imp. Show the YOU ARE token, then show the Imp token.",
+  "reminders": [
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "pixie",
+  "name": "Pixie",
+  "team": "townsfolk",
+  "ability": "You start knowing 1 in-play Townsfolk. If you were mad that you were this character, you gain their ability when they die.",
+  "edition": "carousel",
+  "image": "icons/carousel/pixie.webp",
+  "firstNight": 119,
+  "firstNightReminder": "Show the Townsfolk character token marked MAD.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "MAD",
+    "HAS ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

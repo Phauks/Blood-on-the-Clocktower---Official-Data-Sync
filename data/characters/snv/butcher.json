@@ -1,0 +1,16 @@
+{
+  "id": "butcher",
+  "name": "Butcher",
+  "team": "traveller",
+  "ability": "Each day, after the 1st execution, you may nominate again.",
+  "edition": "snv",
+  "image": "icons/snv/butcher.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

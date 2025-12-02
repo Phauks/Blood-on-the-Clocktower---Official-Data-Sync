@@ -1,0 +1,28 @@
+{
+  "id": "juggler",
+  "name": "Juggler",
+  "team": "townsfolk",
+  "ability": "On your 1st day, publicly guess up to 5 players' characters. That night, you learn how many you got correct.",
+  "edition": "snv",
+  "image": "icons/snv/juggler.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 167,
+  "otherNightReminder": "Give a finger signal.",
+  "reminders": [
+    "CORRECT",
+    "CORRECT",
+    "CORRECT",
+    "CORRECT",
+    "CORRECT"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "cannibal",
+      "reason": "If the Juggler guesses on their first day and dies by execution, tonight the living Cannibal learns how many guesses the Juggler got correct."
+    }
+  ],
+  "_remindersFetched": true
+}

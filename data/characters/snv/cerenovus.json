@@ -1,0 +1,24 @@
+{
+  "id": "cerenovus",
+  "name": "Cerenovus",
+  "team": "minion",
+  "ability": "Each night, choose a player & a good character: they are “mad” they are this character tomorrow, or might be executed.",
+  "edition": "snv",
+  "image": "icons/snv/cerenovus.webp",
+  "firstNight": 114,
+  "firstNightReminder": "The Cerenovus chooses a player & a character.  Put the Cerenovus to sleep. Wake the target. Show the THIS CHARACTER SELECTED YOU token, the Cerenovus token, then the madness-character token.",
+  "otherNight": 111,
+  "otherNightReminder": "The Cerenovus chooses a player & a character.  Put the Cerenovus to sleep. Wake the target. Show the THIS CHARACTER SELECTED YOU token, the Cerenovus token, then the madness-character token.",
+  "reminders": [
+    "MAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "goblin",
+      "reason": "The Cerenovus may choose to make a player mad that they are the Goblin."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,41 @@
+{
+  "id": "widow",
+  "name": "Widow",
+  "team": "minion",
+  "ability": "On your 1st night, look at the Grimoire & choose a player: they are poisoned. 1 good player knows a Widow is in play.",
+  "edition": "carousel",
+  "image": "icons/carousel/widow.webp",
+  "firstNight": 105,
+  "firstNightReminder": "Show the Grimoire for as long as the Widow needs. The Widow chooses a player.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "KNOW",
+    "POISONED"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "alchemist",
+      "reason": "An Alchemist-Widow has no Widow ability & a Widow is in play. After each execution, a living Alchemist-Widow may publicly guess a living player as the Widow. If correct, the Demon must choose the Widow tonight."
+    },
+    {
+      "id": "magician",
+      "reason": "When the Widow sees the Grimoire, the Demon and Magician's character tokens are removed."
+    },
+    {
+      "id": "heretic",
+      "reason": "Only 1 jinxed character can be in play."
+    },
+    {
+      "id": "poppygrower",
+      "reason": "If the Poppy Grower has their ability, the Widow does not see the Grimoire."
+    },
+    {
+      "id": "damsel",
+      "reason": "If the Widow is (or has been) in play, the Damsel is poisoned."
+    }
+  ],
+  "_remindersFetched": true
+}

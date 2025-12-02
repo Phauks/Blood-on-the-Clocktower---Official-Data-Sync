@@ -1,0 +1,19 @@
+{
+  "id": "professor",
+  "name": "Professor",
+  "team": "townsfolk",
+  "ability": "Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.",
+  "edition": "bmr",
+  "image": "icons/bmr/professor.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 148,
+  "otherNightReminder": "The Professor might choose a dead player.",
+  "reminders": [
+    "ALIVE",
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

@@ -1,0 +1,32 @@
+{
+  "id": "exorcist",
+  "name": "Exorcist",
+  "team": "townsfolk",
+  "ability": "Each night*, choose a player (different to last night): the Demon, if chosen, learns who you are then doesn't wake tonight.",
+  "edition": "bmr",
+  "image": "icons/bmr/exorcist.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 119,
+  "otherNightReminder": "The Exorcist chooses a player.  Put the Exorcist to sleep. If the Exorcist chose the Demon: Wake the Demon. Show the THIS CHARACTER SELECTED YOU & Exorcist tokens. Point to the Exorcist.",
+  "reminders": [
+    "CHOSEN"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "yaggababble",
+      "reason": "If the Exorcist chooses the Yaggababble, the Yaggababble does not kill tonight."
+    },
+    {
+      "id": "riot",
+      "reason": "If Riot nominates and executes the Exorcist-chosen player, good wins."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan nominates and executes the Exorcist-chosen player, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

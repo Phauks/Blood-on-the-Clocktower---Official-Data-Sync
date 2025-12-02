@@ -1,0 +1,16 @@
+{
+  "id": "buddhist",
+  "name": "Buddhist",
+  "team": "fabled",
+  "ability": "For the first 2 minutes of each day, veteran players may not talk.",
+  "edition": "fabled",
+  "image": "icons/fabled/buddhist.webp",
+  "firstNight": 77,
+  "firstNightReminder": "Declare which players are affected by the Buddhist.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

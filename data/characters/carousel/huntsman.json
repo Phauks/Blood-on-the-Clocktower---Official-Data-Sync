@@ -1,0 +1,24 @@
+{
+  "id": "huntsman",
+  "name": "Huntsman",
+  "team": "townsfolk",
+  "ability": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]",
+  "edition": "carousel",
+  "image": "icons/carousel/huntsman.webp",
+  "firstNight": 120,
+  "firstNightReminder": "The Huntsman might choose a player.  If that player was the Damsel: Put the Huntsman to sleep. Wake the Damsel and show them the YOU ARE info token and their new character token.",
+  "otherNight": 150,
+  "otherNightReminder": "The Huntsman might choose a player.  If that player was the Damsel: Put the Huntsman to sleep. Wake the Damsel and show them the YOU ARE info token and their new character token.",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "marionette",
+      "reason": "If the Marionette thinks that they are the Huntsman, the Damsel was added during setup."
+    }
+  ],
+  "_remindersFetched": true
+}

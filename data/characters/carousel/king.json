@@ -1,0 +1,26 @@
+{
+  "id": "king",
+  "name": "King",
+  "team": "townsfolk",
+  "ability": "Each night, if the dead equal or outnumber the living, you learn 1 alive character. The Demon knows you are the King.",
+  "edition": "carousel",
+  "image": "icons/carousel/king.webp",
+  "firstNight": 96,
+  "firstNightReminder": "Wake the Demon. Show the THIS PLAYER IS token and the King token, then point to the King.",
+  "otherNight": 170,
+  "otherNightReminder": "If the dead equal or outnumber the living, show the character token of an alive player.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "If Riot is in play, and at least 1 player is dead, the King learns an alive character each night."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan is in play, and at least 1 player is dead, the King learns an alive character each night."
+    }
+  ],
+  "_remindersFetched": true
+}

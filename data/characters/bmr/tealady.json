@@ -1,0 +1,19 @@
+{
+  "id": "tealady",
+  "name": "Tea Lady",
+  "team": "townsfolk",
+  "ability": "If both your alive neighbors are good, they can't die.",
+  "edition": "bmr",
+  "image": "icons/bmr/tealady.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "CANNOT DIE",
+    "CANNOT DIE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

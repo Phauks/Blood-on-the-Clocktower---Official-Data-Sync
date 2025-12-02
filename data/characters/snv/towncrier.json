@@ -1,0 +1,19 @@
+{
+  "id": "towncrier",
+  "name": "Town Crier",
+  "team": "townsfolk",
+  "ability": "Each night*, you learn if a Minion nominated today.",
+  "edition": "snv",
+  "image": "icons/snv/towncrier.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 164,
+  "otherNightReminder": "Either nod or shake your head.",
+  "reminders": [
+    "MINIONS NOT NOMINATED",
+    "MINION NOMINATED"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

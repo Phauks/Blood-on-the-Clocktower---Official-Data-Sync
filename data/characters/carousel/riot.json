@@ -1,0 +1,70 @@
+{
+  "id": "riot",
+  "name": "Riot",
+  "team": "demon",
+  "ability": "On day 3, Minions become Riot & nominees die but nominate an alive player immediately. This must happen.",
+  "edition": "carousel",
+  "image": "icons/carousel/riot.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "DAY 1",
+    "DAY 2",
+    "DAY 3"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "grandmother",
+      "reason": "If Riot is in play and the Grandchild dies by execution, evil wins."
+    },
+    {
+      "id": "king",
+      "reason": "If Riot is in play, and at least 1 player is dead, the King learns an alive character each night."
+    },
+    {
+      "id": "innkeeper",
+      "reason": "If Riot nominates and executes an Innkeeper-protected player, good wins."
+    },
+    {
+      "id": "monk",
+      "reason": "If Riot nominates and executes the Monk-protected player, good wins."
+    },
+    {
+      "id": "exorcist",
+      "reason": "If Riot nominates and executes the Exorcist-chosen player, good wins."
+    },
+    {
+      "id": "soldier",
+      "reason": "If Riot nominates and executes the Soldier, good wins."
+    },
+    {
+      "id": "farmer",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Farmer uses their ability but does not die."
+    },
+    {
+      "id": "ravenkeeper",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Ravenkeeper uses their ability but does not die."
+    },
+    {
+      "id": "sage",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Sage uses their ability but does not die."
+    },
+    {
+      "id": "banshee",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Banshee dies & gains their ability."
+    },
+    {
+      "id": "mayor",
+      "reason": "The Mayor may choose to stop the riot. If they do so when only 1 Riot is alive, good wins. Otherwise, evil wins."
+    },
+    {
+      "id": "atheist",
+      "reason": "During a riot, if the Storyteller is nominated, players vote. If they are \"about to die\", the game ends. If not, they nominate again."
+    }
+  ],
+  "_remindersFetched": true
+}

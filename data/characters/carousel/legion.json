@@ -1,0 +1,52 @@
+{
+  "id": "legion",
+  "name": "Legion",
+  "team": "demon",
+  "ability": "Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]",
+  "edition": "carousel",
+  "image": "icons/carousel/legion.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 122,
+  "otherNightReminder": "A player might die.",
+  "reminders": [
+    "ABOUT TO DIE"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "magician",
+      "reason": "The Magician wakes with Legion and might register as evil. Legion knows if a Magician is in play, but not which player it is."
+    },
+    {
+      "id": "preacher",
+      "reason": "If the Preacher chooses Legion, Legion keeps their ability, but the Preacher might learn they are Legion."
+    },
+    {
+      "id": "engineer",
+      "reason": "If Legion is created, all evil players become Legion. If Legion is in play, the Engineer starts knowing this but has no ability."
+    },
+    {
+      "id": "minstrel",
+      "reason": "If Legion died by execution today, Legion keeps their ability, but the Minstrel might learn they are Legion."
+    },
+    {
+      "id": "hatter",
+      "reason": "If Legion is created, all evil players become Legion. If Legion is in play, the Hatter has no ability."
+    },
+    {
+      "id": "politician",
+      "reason": "The Politician might register as evil to Legion."
+    },
+    {
+      "id": "zealot",
+      "reason": "The Zealot might register as evil to Legion."
+    },
+    {
+      "id": "summoner",
+      "reason": "If Legion is summoned, all evil players become Legion."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "snitch",
+  "name": "Snitch",
+  "team": "outsider",
+  "ability": "Each Minion gets 3 bluffs.",
+  "edition": "carousel",
+  "image": "icons/carousel/snitch.webp",
+  "firstNight": 93,
+  "firstNightReminder": "Wake each Minion. Show the THESE CHARACTERS ARE NOT IN PLAY token and three not-in-play character tokens. Put each Minion to sleep.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": true,
+  "_remindersFetched": true
+}

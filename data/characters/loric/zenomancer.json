@@ -1,0 +1,20 @@
+{
+  "id": "zenomancer",
+  "name": "Zenomancer",
+  "team": "loric",
+  "ability": "One or more players each have a goal. When achieved, that player learns a piece of true info.",
+  "edition": "loric",
+  "image": "icons/loric/zenomancer.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "GOAL",
+    "GOAL",
+    "GOAL"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

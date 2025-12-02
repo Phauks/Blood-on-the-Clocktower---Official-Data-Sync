@@ -1,0 +1,16 @@
+{
+  "id": "matron",
+  "name": "Matron",
+  "team": "traveller",
+  "ability": "Each day, you may choose up to 3 sets of 2 players to swap seats. Players may not leave their seats to talk in private.",
+  "edition": "bmr",
+  "image": "icons/bmr/matron.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

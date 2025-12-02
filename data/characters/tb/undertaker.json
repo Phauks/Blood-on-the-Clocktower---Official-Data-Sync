@@ -1,0 +1,18 @@
+{
+  "id": "undertaker",
+  "name": "Undertaker",
+  "team": "townsfolk",
+  "ability": "Each night*, you learn which character died by execution today.",
+  "edition": "tb",
+  "image": "icons/tb/undertaker.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 161,
+  "otherNightReminder": "If a player was executed today, show their character token.",
+  "reminders": [
+    "DIED TODAY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

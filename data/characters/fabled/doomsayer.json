@@ -1,0 +1,16 @@
+{
+  "id": "doomsayer",
+  "name": "Doomsayer",
+  "team": "fabled",
+  "ability": "If 4 or more players live, each living player may publicly choose (once per game) that a player of their own alignment dies.",
+  "edition": "fabled",
+  "image": "icons/fabled/doomsayer.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "harlot",
+  "name": "Harlot",
+  "team": "traveller",
+  "ability": "Each night*, choose a living player: if they agree, you learn their character, but you both might die.",
+  "edition": "snv",
+  "image": "icons/snv/harlot.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "DEAD",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

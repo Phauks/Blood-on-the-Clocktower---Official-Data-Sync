@@ -1,0 +1,1400 @@
+{
+  "firstNight": [
+    {
+      "order": 1,
+      "id": "dusk",
+      "name": "Dusk",
+      "reminder": "Start the Night Phase.",
+      "tokens": []
+    },
+    {
+      "order": 2,
+      "id": "angel",
+      "name": "Angel",
+      "reminder": "Announce which players are protected by the Angel. Add the PROTECTED token to the relevant players.",
+      "tokens": [
+        "PROTECTED"
+      ]
+    },
+    {
+      "order": 3,
+      "id": "buddhist",
+      "name": "Buddhist",
+      "reminder": "Declare which players are affected by the Buddhist.",
+      "tokens": []
+    },
+    {
+      "order": 4,
+      "id": "toymaker",
+      "name": "Toymaker",
+      "reminder": "Resolve the Minion Info and Demon Info steps even though there are fewer than 7 players.",
+      "tokens": []
+    },
+    {
+      "order": 5,
+      "id": "wraith",
+      "name": "Wraith",
+      "reminder": "Wake the Wraith whenever other evil players wake.",
+      "tokens": []
+    },
+    {
+      "order": 6,
+      "id": "lordoftyphon",
+      "name": "Lord of Typhon",
+      "reminder": "Replace neighbors of the Lord of Typhon with Minions, wake them, tell them their new alignment and character, then do minion info.",
+      "tokens": []
+    },
+    {
+      "order": 7,
+      "id": "kazali",
+      "name": "Kazali",
+      "reminder": "Wake the Kazali, allow them to choose Minions.",
+      "tokens": []
+    },
+    {
+      "order": 8,
+      "id": "barista",
+      "name": "Barista",
+      "reminder": "Choose a player, wake them and tell them which Barista power is affecting them. Treat them accordingly (sober/healthy/true info or activate their ability twice).",
+      "tokens": []
+    },
+    {
+      "order": 9,
+      "id": "bureaucrat",
+      "name": "Bureaucrat",
+      "reminder": "The Bureaucrat chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 10,
+      "id": "thief",
+      "name": "Thief",
+      "reminder": "The Thief chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 11,
+      "id": "boffin",
+      "name": "Boffin",
+      "reminder": "Wake the Boffin and the Demon. Show the not-in-play good character token. Put the Boffin and the Demon to sleep.",
+      "tokens": []
+    },
+    {
+      "order": 12,
+      "id": "philosopher",
+      "name": "Philosopher",
+      "reminder": "The Philosopher might choose a character. If necessary, swap their character token.",
+      "tokens": []
+    },
+    {
+      "order": 13,
+      "id": "alchemist",
+      "name": "Alchemist",
+      "reminder": "Show the YOU ARE token and the character token of a Minion.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 14,
+      "id": "poppygrower",
+      "name": "Poppy Grower",
+      "reminder": "Do not do the Minion Info and Demon Info steps. Wake the Demon, show the THESE CHARACTERS ARE NOT IN PLAY info token and any three good character tokens that are not in play.",
+      "tokens": [
+        "THESE CHARACTERS ARE NOT IN PLAY"
+      ]
+    },
+    {
+      "order": 15,
+      "id": "yaggababble",
+      "name": "Yaggababble",
+      "reminder": "Choose a secret phrase. Wake the Yaggababble and let them know their secret phrase.",
+      "tokens": []
+    },
+    {
+      "order": 16,
+      "id": "magician",
+      "name": "Magician",
+      "reminder": "Include the Magician in the Minion and Demon Info steps.",
+      "tokens": []
+    },
+    {
+      "order": 17,
+      "id": "snitch",
+      "name": "Snitch",
+      "reminder": "Wake each Minion. Show the THESE CHARACTERS ARE NOT IN PLAY token and three not-in-play character tokens. Put each Minion to sleep.",
+      "tokens": [
+        "THESE CHARACTERS ARE NOT IN PLAY"
+      ]
+    },
+    {
+      "order": 18,
+      "id": "summoner",
+      "name": "Summoner",
+      "reminder": "Show the THESE CHARACTERS ARE NOT IN PLAY token. Show 3 not-in-play good character tokens.",
+      "tokens": [
+        "THESE CHARACTERS ARE NOT IN PLAY"
+      ]
+    },
+    {
+      "order": 19,
+      "id": "king",
+      "name": "King",
+      "reminder": "Wake the Demon. Show the THIS PLAYER IS token and the King token, then point to the King.",
+      "tokens": [
+        "THIS PLAYER IS"
+      ]
+    },
+    {
+      "order": 20,
+      "id": "sailor",
+      "name": "Sailor",
+      "reminder": "The Sailor chooses a living player.",
+      "tokens": []
+    },
+    {
+      "order": 21,
+      "id": "lilmonsta",
+      "name": "Lil' Monsta",
+      "reminder": "Wake all Minions, allow them to choose a babysitter.",
+      "tokens": []
+    },
+    {
+      "order": 22,
+      "id": "lleech",
+      "name": "Lleech",
+      "reminder": "The Lleech chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 23,
+      "id": "poisoner",
+      "name": "Poisoner",
+      "reminder": "The Poisoner chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 24,
+      "id": "widow",
+      "name": "Widow",
+      "reminder": "Show the Grimoire for as long as the Widow needs. The Widow chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 25,
+      "id": "wizard",
+      "name": "Wizard",
+      "reminder": "Run the Wizard's ability, if applicable.",
+      "tokens": []
+    },
+    {
+      "order": 26,
+      "id": "godfather",
+      "name": "Godfather",
+      "reminder": "Show the character tokens of all in-play Outsiders.",
+      "tokens": []
+    },
+    {
+      "order": 27,
+      "id": "organgrinder",
+      "name": "Organ Grinder",
+      "reminder": "The Organ Grinder either nods their head yes to be drunk, or shakes their head no to be sober.",
+      "tokens": []
+    },
+    {
+      "order": 28,
+      "id": "devilsadvocate",
+      "name": "Devil's Advocate",
+      "reminder": "The Devil's Advocate chooses a living player.",
+      "tokens": []
+    },
+    {
+      "order": 29,
+      "id": "eviltwin",
+      "name": "Evil Twin",
+      "reminder": "Wake both twins. Allow eye contact. Show the good twin's character token to the Evil Twin &amp; vice versa.",
+      "tokens": []
+    },
+    {
+      "order": 30,
+      "id": "witch",
+      "name": "Witch",
+      "reminder": "The Witch chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 31,
+      "id": "fearmonger",
+      "name": "Fearmonger",
+      "reminder": "The Fearmonger chooses a player.  Declare that \"the Fearmonger has chosen a player.\"",
+      "tokens": []
+    },
+    {
+      "order": 32,
+      "id": "mezepheles",
+      "name": "Mezepheles",
+      "reminder": "Show the written word.",
+      "tokens": []
+    },
+    {
+      "order": 33,
+      "id": "pukka",
+      "name": "Pukka",
+      "reminder": "The Pukka chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 34,
+      "id": "pixie",
+      "name": "Pixie",
+      "reminder": "Show the Townsfolk character token marked MAD.",
+      "tokens": [
+        "MAD"
+      ]
+    },
+    {
+      "order": 35,
+      "id": "damsel",
+      "name": "Damsel",
+      "reminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 36,
+      "id": "amnesiac",
+      "name": "Amnesiac",
+      "reminder": "Run the Amnesiac's ability, if applicable.",
+      "tokens": []
+    },
+    {
+      "order": 37,
+      "id": "chef",
+      "name": "Chef",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 38,
+      "id": "empath",
+      "name": "Empath",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 39,
+      "id": "fortuneteller",
+      "name": "Fortune Teller",
+      "reminder": "The Fortune Teller chooses 2 players. Nod if either is the Demon (or the RED HERRING).",
+      "tokens": [
+        "RED HERRING"
+      ]
+    },
+    {
+      "order": 40,
+      "id": "butler",
+      "name": "Butler",
+      "reminder": "The Butler chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 41,
+      "id": "grandmother",
+      "name": "Grandmother",
+      "reminder": "Point to the grandchild player &amp; show their character token.",
+      "tokens": []
+    },
+    {
+      "order": 42,
+      "id": "clockmaker",
+      "name": "Clockmaker",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 43,
+      "id": "dreamer",
+      "name": "Dreamer",
+      "reminder": "The Dreamer points to a player. Show 1 good &amp; 1 evil character token, 1 of which is their character.",
+      "tokens": []
+    },
+    {
+      "order": 44,
+      "id": "seamstress",
+      "name": "Seamstress",
+      "reminder": "The Seamstress might choose 2 players. Nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 45,
+      "id": "steward",
+      "name": "Steward",
+      "reminder": "Point to the good player marked KNOW.",
+      "tokens": [
+        "KNOW"
+      ]
+    },
+    {
+      "order": 46,
+      "id": "knight",
+      "name": "Knight",
+      "reminder": "Point to the two non-Demon players marked KNOW.",
+      "tokens": [
+        "KNOW"
+      ]
+    },
+    {
+      "order": 47,
+      "id": "noble",
+      "name": "Noble",
+      "reminder": "Point to all three players marked KNOW.",
+      "tokens": [
+        "KNOW"
+      ]
+    },
+    {
+      "order": 48,
+      "id": "balloonist",
+      "name": "Balloonist",
+      "reminder": "Show any player.",
+      "tokens": []
+    },
+    {
+      "order": 49,
+      "id": "shugenja",
+      "name": "Shugenja",
+      "reminder": "Point clockwise or anticlockwise around the circle.",
+      "tokens": []
+    },
+    {
+      "order": 50,
+      "id": "villageidiot",
+      "name": "Village Idiot",
+      "reminder": "Choose a Village Idiot to be drunk. Wake the Village Idiots one at a time, they choose a player, show either good or evil thumbs according to the alignment of that player.",
+      "tokens": []
+    },
+    {
+      "order": 51,
+      "id": "bountyhunter",
+      "name": "Bounty Hunter",
+      "reminder": "Point to the KNOWN player.",
+      "tokens": [
+        "KNOWN"
+      ]
+    },
+    {
+      "order": 52,
+      "id": "cultleader",
+      "name": "Cult Leader",
+      "reminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 53,
+      "id": "spy",
+      "name": "Spy",
+      "reminder": "Show the Grimoire for as long as the Spy needs.",
+      "tokens": []
+    },
+    {
+      "order": 54,
+      "id": "ogre",
+      "name": "Ogre",
+      "reminder": "The Ogre points to a player.",
+      "tokens": []
+    },
+    {
+      "order": 55,
+      "id": "highpriestess",
+      "name": "High Priestess",
+      "reminder": "Point to a player.",
+      "tokens": []
+    },
+    {
+      "order": 56,
+      "id": "general",
+      "name": "General",
+      "reminder": "Give a thumb signal.",
+      "tokens": []
+    },
+    {
+      "order": 57,
+      "id": "chambermaid",
+      "name": "Chambermaid",
+      "reminder": "The Chambermaid chooses 2 living players. Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 58,
+      "id": "mathematician",
+      "name": "Mathematician",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 59,
+      "id": "dawn",
+      "name": "Dawn",
+      "reminder": "Wait for a few seconds. End the Night Phase.",
+      "tokens": []
+    },
+    {
+      "order": 60,
+      "id": "vizier",
+      "name": "Vizier",
+      "reminder": "Announce the Vizier player to the group.",
+      "tokens": []
+    },
+    {
+      "order": 61,
+      "id": "dusk",
+      "name": "Dusk",
+      "reminder": "Start the Night Phase.",
+      "tokens": []
+    },
+    {
+      "order": 62,
+      "id": "toymaker",
+      "name": "Toymaker",
+      "reminder": "If it is a night when a Demon attack could end the game, and the Demon is marked FINAL NIGHT: NO ATTACK, then the Demon does not act tonight. (Do not wake them.)",
+      "tokens": [
+        "FINAL NIGHT: NO ATTACK"
+      ]
+    },
+    {
+      "order": 63,
+      "id": "wraith",
+      "name": "Wraith",
+      "reminder": "Wake the Wraith whenever other evil players wake.",
+      "tokens": []
+    },
+    {
+      "order": 64,
+      "id": "philosopher",
+      "name": "Philosopher",
+      "reminder": "The Philosopher might choose a character. If necessary, swap their character token.",
+      "tokens": []
+    },
+    {
+      "order": 65,
+      "id": "sailor",
+      "name": "Sailor",
+      "reminder": "The Sailor chooses a living player.",
+      "tokens": []
+    },
+    {
+      "order": 66,
+      "id": "poisoner",
+      "name": "Poisoner",
+      "reminder": "The Poisoner chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 67,
+      "id": "wizard",
+      "name": "Wizard",
+      "reminder": "Run the Wizard's ability, if applicable.",
+      "tokens": []
+    },
+    {
+      "order": 68,
+      "id": "gambler",
+      "name": "Gambler",
+      "reminder": "The Gambler chooses a player &amp; a character.",
+      "tokens": []
+    },
+    {
+      "order": 69,
+      "id": "acrobat",
+      "name": "Acrobat",
+      "reminder": "The Acrobat chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 70,
+      "id": "monk",
+      "name": "Monk",
+      "reminder": "The Monk chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 71,
+      "id": "organgrinder",
+      "name": "Organ Grinder",
+      "reminder": "The Organ Grinder either nods their head yes to be drunk, or shakes their head no to be sober.",
+      "tokens": []
+    },
+    {
+      "order": 72,
+      "id": "devilsadvocate",
+      "name": "Devil's Advocate",
+      "reminder": "The Devil's Advocate chooses a living player.",
+      "tokens": []
+    },
+    {
+      "order": 73,
+      "id": "witch",
+      "name": "Witch",
+      "reminder": "The Witch chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 74,
+      "id": "pithag",
+      "name": "Pit-Hag",
+      "reminder": "The Pit-Hag chooses a player &amp; a character. If they chose a character that is not in play: Put the Pit-Hag to sleep. Wake the target. Show the YOU ARE token &amp; their new character token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 75,
+      "id": "scarletwoman",
+      "name": "Scarlet Woman",
+      "reminder": "If the Scarlet Woman became the Demon today, show them the YOU ARE token, then the Demon token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 76,
+      "id": "summoner",
+      "name": "Summoner",
+      "reminder": "Change the Summoner reminder token to the relevant night. If it is night 3, the Summoner chooses a player and a Demon. Put the Summoner to sleep. Wake the chosen player. Show the YOU ARE token, a thumbs down and the chosen Demon token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 77,
+      "id": "lunatic",
+      "name": "Lunatic",
+      "reminder": "Do whatever needs to be done to simulate the Demon acting. Put the Lunatic to sleep. Wake the Demon. Show the Lunatic token &amp; point to them, then their target(s).",
+      "tokens": []
+    },
+    {
+      "order": 78,
+      "id": "lycanthrope",
+      "name": "Lycanthrope",
+      "reminder": "The Lycanthrope chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 79,
+      "id": "princess",
+      "name": "Princess",
+      "reminder": "If the Princess nominated the player who was executed today, the Demon wakes as normal, but no one dies to the Demon's ability.",
+      "tokens": []
+    },
+    {
+      "order": 80,
+      "id": "legion",
+      "name": "Legion",
+      "reminder": "A player might die.",
+      "tokens": []
+    },
+    {
+      "order": 81,
+      "id": "zombuul",
+      "name": "Zombuul",
+      "reminder": "If no one died today, the Zombuul chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 82,
+      "id": "nodashii",
+      "name": "No Dashii",
+      "reminder": "The No Dashii chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 83,
+      "id": "vortox",
+      "name": "Vortox",
+      "reminder": "The Vortox chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 84,
+      "id": "lordoftyphon",
+      "name": "Lord of Typhon",
+      "reminder": "The Lord of Typhon chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 85,
+      "id": "ojo",
+      "name": "Ojo",
+      "reminder": "The Ojo chooses a character.",
+      "tokens": []
+    },
+    {
+      "order": 86,
+      "id": "lleech",
+      "name": "Lleech",
+      "reminder": "The Lleech chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 87,
+      "id": "yaggababble",
+      "name": "Yaggababble",
+      "reminder": "For each time the Yaggababble said the phrase today, you may choose a player. They die.",
+      "tokens": []
+    },
+    {
+      "order": 88,
+      "id": "kazali",
+      "name": "Kazali",
+      "reminder": "The Kazali chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 89,
+      "id": "godfather",
+      "name": "Godfather",
+      "reminder": "If an Outsider died today, the Godfather chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 90,
+      "id": "gossip",
+      "name": "Gossip",
+      "reminder": "If the Gossip is due to kill a player, they die.",
+      "tokens": []
+    },
+    {
+      "order": 91,
+      "id": "hatter",
+      "name": "Hatter",
+      "reminder": "If the Hatter died today or tonight, wake Minions and Demons, allow them to choose new characters.",
+      "tokens": []
+    },
+    {
+      "order": 92,
+      "id": "sweetheart",
+      "name": "Sweetheart",
+      "reminder": "If the Sweetheart died, a player became drunk immediately. If you haven't done this yet, do so now.",
+      "tokens": []
+    },
+    {
+      "order": 93,
+      "id": "plaguedoctor",
+      "name": "Plague Doctor",
+      "reminder": "If the Plague Doctor died, the Storyteller gained a Minion ability. If you haven\u2019t done this yet, do so now.",
+      "tokens": []
+    },
+    {
+      "order": 94,
+      "id": "sage",
+      "name": "Sage",
+      "reminder": "If the Demon killed the Sage, wake the Sage and point to 2 players, 1 of which is the Demon.",
+      "tokens": []
+    },
+    {
+      "order": 95,
+      "id": "banshee",
+      "name": "Banshee",
+      "reminder": "If the Banshee was killed by the Demon tonight, announce to all players that the Banshee has died.",
+      "tokens": []
+    },
+    {
+      "order": 96,
+      "id": "choirboy",
+      "name": "Choirboy",
+      "reminder": "If the Demon killed the King, point to the Demon player.",
+      "tokens": []
+    },
+    {
+      "order": 97,
+      "id": "damsel",
+      "name": "Damsel",
+      "reminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 98,
+      "id": "amnesiac",
+      "name": "Amnesiac",
+      "reminder": "Run the Amnesiac's ability, if applicable.",
+      "tokens": []
+    },
+    {
+      "order": 99,
+      "id": "farmer",
+      "name": "Farmer",
+      "reminder": "If the Farmer died tonight, wake an alive good player. Show them the YOU ARE info token and a Farmer character token. Replace their previous token with the Farmer token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 100,
+      "id": "tinker",
+      "name": "Tinker",
+      "reminder": "The Tinker might die.",
+      "tokens": []
+    },
+    {
+      "order": 101,
+      "id": "moonchild",
+      "name": "Moonchild",
+      "reminder": "If the Moonchild is due to kill a good player, they die.",
+      "tokens": []
+    },
+    {
+      "order": 102,
+      "id": "grandmother",
+      "name": "Grandmother",
+      "reminder": "If the grandchild was killed by the Demon, the Grandmother dies too.",
+      "tokens": []
+    },
+    {
+      "order": 103,
+      "id": "tor",
+      "name": "Tor",
+      "reminder": "If a player died tonight, show the YOU ARE info token, their character token, &amp; a thumbs up or thumbs down.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 104,
+      "id": "ravenkeeper",
+      "name": "Ravenkeeper",
+      "reminder": "If the Ravenkeeper died tonight, the Ravenkeeper chooses a player. Show that player's character token.",
+      "tokens": []
+    },
+    {
+      "order": 105,
+      "id": "empath",
+      "name": "Empath",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 106,
+      "id": "fortuneteller",
+      "name": "Fortune Teller",
+      "reminder": "The Fortune Teller chooses 2 players. Nod if either is the Demon (or the RED HERRING).",
+      "tokens": [
+        "RED HERRING"
+      ]
+    },
+    {
+      "order": 107,
+      "id": "undertaker",
+      "name": "Undertaker",
+      "reminder": "If a player was executed today, show their character token.",
+      "tokens": []
+    },
+    {
+      "order": 108,
+      "id": "dreamer",
+      "name": "Dreamer",
+      "reminder": "The Dreamer points to a player. Show 1 good &amp; 1 evil character token, 1 of which is their character.",
+      "tokens": []
+    },
+    {
+      "order": 109,
+      "id": "flowergirl",
+      "name": "Flowergirl",
+      "reminder": "Either nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 110,
+      "id": "towncrier",
+      "name": "Town Crier",
+      "reminder": "Either nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 111,
+      "id": "oracle",
+      "name": "Oracle",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 112,
+      "id": "seamstress",
+      "name": "Seamstress",
+      "reminder": "The Seamstress might choose 2 players. Nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 113,
+      "id": "juggler",
+      "name": "Juggler",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 114,
+      "id": "balloonist",
+      "name": "Balloonist",
+      "reminder": "Show a player with a different character type to previously.",
+      "tokens": []
+    },
+    {
+      "order": 115,
+      "id": "villageidiot",
+      "name": "Village Idiot",
+      "reminder": "Wake the Village Idiots one at a time, they choose a player, show either good or evil thumbs according to the alignment of that player.",
+      "tokens": []
+    },
+    {
+      "order": 116,
+      "id": "king",
+      "name": "King",
+      "reminder": "If the dead equal or outnumber the living, show the character token of an alive player.",
+      "tokens": []
+    },
+    {
+      "order": 117,
+      "id": "cultleader",
+      "name": "Cult Leader",
+      "reminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 118,
+      "id": "butler",
+      "name": "Butler",
+      "reminder": "The Butler chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 119,
+      "id": "spy",
+      "name": "Spy",
+      "reminder": "Show the Grimoire for as long as the Spy needs.",
+      "tokens": []
+    },
+    {
+      "order": 120,
+      "id": "highpriestess",
+      "name": "High Priestess",
+      "reminder": "Point to a player.",
+      "tokens": []
+    },
+    {
+      "order": 121,
+      "id": "general",
+      "name": "General",
+      "reminder": "Give a thumb signal.",
+      "tokens": []
+    },
+    {
+      "order": 122,
+      "id": "chambermaid",
+      "name": "Chambermaid",
+      "reminder": "The Chambermaid chooses 2 living players. Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 123,
+      "id": "mathematician",
+      "name": "Mathematician",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 124,
+      "id": "dawn",
+      "name": "Dawn",
+      "reminder": "Wait for a few seconds. End the Night Phase.",
+      "tokens": []
+    },
+    {
+      "order": 125,
+      "id": "leviathan",
+      "name": "Leviathan",
+      "reminder": "Optionally, declare that \"The Leviathan is in play.\" Replace the reminder token.",
+      "tokens": []
+    }
+  ],
+  "otherNight": [
+    {
+      "order": 1,
+      "id": "dusk",
+      "name": "Dusk",
+      "reminder": "Start the Night Phase.",
+      "tokens": []
+    },
+    {
+      "order": 2,
+      "id": "toymaker",
+      "name": "Toymaker",
+      "reminder": "If it is a night when a Demon attack could end the game, and the Demon is marked FINAL NIGHT: NO ATTACK, then the Demon does not act tonight. (Do not wake them.)",
+      "tokens": [
+        "FINAL NIGHT: NO ATTACK"
+      ]
+    },
+    {
+      "order": 3,
+      "id": "wraith",
+      "name": "Wraith",
+      "reminder": "Wake the Wraith whenever other evil players wake.",
+      "tokens": []
+    },
+    {
+      "order": 4,
+      "id": "philosopher",
+      "name": "Philosopher",
+      "reminder": "The Philosopher might choose a character. If necessary, swap their character token.",
+      "tokens": []
+    },
+    {
+      "order": 5,
+      "id": "sailor",
+      "name": "Sailor",
+      "reminder": "The Sailor chooses a living player.",
+      "tokens": []
+    },
+    {
+      "order": 6,
+      "id": "poisoner",
+      "name": "Poisoner",
+      "reminder": "The Poisoner chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 7,
+      "id": "wizard",
+      "name": "Wizard",
+      "reminder": "Run the Wizard's ability, if applicable.",
+      "tokens": []
+    },
+    {
+      "order": 8,
+      "id": "gambler",
+      "name": "Gambler",
+      "reminder": "The Gambler chooses a player &amp; a character.",
+      "tokens": []
+    },
+    {
+      "order": 9,
+      "id": "acrobat",
+      "name": "Acrobat",
+      "reminder": "The Acrobat chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 10,
+      "id": "monk",
+      "name": "Monk",
+      "reminder": "The Monk chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 11,
+      "id": "organgrinder",
+      "name": "Organ Grinder",
+      "reminder": "The Organ Grinder either nods their head yes to be drunk, or shakes their head no to be sober.",
+      "tokens": []
+    },
+    {
+      "order": 12,
+      "id": "devilsadvocate",
+      "name": "Devil's Advocate",
+      "reminder": "The Devil's Advocate chooses a living player.",
+      "tokens": []
+    },
+    {
+      "order": 13,
+      "id": "witch",
+      "name": "Witch",
+      "reminder": "The Witch chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 14,
+      "id": "pithag",
+      "name": "Pit-Hag",
+      "reminder": "The Pit-Hag chooses a player &amp; a character. If they chose a character that is not in play: Put the Pit-Hag to sleep. Wake the target. Show the YOU ARE token &amp; their new character token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 15,
+      "id": "scarletwoman",
+      "name": "Scarlet Woman",
+      "reminder": "If the Scarlet Woman became the Demon today, show them the YOU ARE token, then the Demon token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 16,
+      "id": "summoner",
+      "name": "Summoner",
+      "reminder": "Change the Summoner reminder token to the relevant night. If it is night 3, the Summoner chooses a player and a Demon. Put the Summoner to sleep. Wake the chosen player. Show the YOU ARE token, a thumbs down and the chosen Demon token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 17,
+      "id": "lunatic",
+      "name": "Lunatic",
+      "reminder": "Do whatever needs to be done to simulate the Demon acting. Put the Lunatic to sleep. Wake the Demon. Show the Lunatic token &amp; point to them, then their target(s).",
+      "tokens": []
+    },
+    {
+      "order": 18,
+      "id": "lycanthrope",
+      "name": "Lycanthrope",
+      "reminder": "The Lycanthrope chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 19,
+      "id": "princess",
+      "name": "Princess",
+      "reminder": "If the Princess nominated the player who was executed today, the Demon wakes as normal, but no one dies to the Demon's ability.",
+      "tokens": []
+    },
+    {
+      "order": 20,
+      "id": "legion",
+      "name": "Legion",
+      "reminder": "A player might die.",
+      "tokens": []
+    },
+    {
+      "order": 21,
+      "id": "zombuul",
+      "name": "Zombuul",
+      "reminder": "If no one died today, the Zombuul chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 22,
+      "id": "nodashii",
+      "name": "No Dashii",
+      "reminder": "The No Dashii chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 23,
+      "id": "vortox",
+      "name": "Vortox",
+      "reminder": "The Vortox chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 24,
+      "id": "lordoftyphon",
+      "name": "Lord of Typhon",
+      "reminder": "The Lord of Typhon chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 25,
+      "id": "ojo",
+      "name": "Ojo",
+      "reminder": "The Ojo chooses a character.",
+      "tokens": []
+    },
+    {
+      "order": 26,
+      "id": "lleech",
+      "name": "Lleech",
+      "reminder": "The Lleech chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 27,
+      "id": "yaggababble",
+      "name": "Yaggababble",
+      "reminder": "For each time the Yaggababble said the phrase today, you may choose a player. They die.",
+      "tokens": []
+    },
+    {
+      "order": 28,
+      "id": "kazali",
+      "name": "Kazali",
+      "reminder": "The Kazali chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 29,
+      "id": "godfather",
+      "name": "Godfather",
+      "reminder": "If an Outsider died today, the Godfather chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 30,
+      "id": "gossip",
+      "name": "Gossip",
+      "reminder": "If the Gossip is due to kill a player, they die.",
+      "tokens": []
+    },
+    {
+      "order": 31,
+      "id": "hatter",
+      "name": "Hatter",
+      "reminder": "If the Hatter died today or tonight, wake Minions and Demons, allow them to choose new characters.",
+      "tokens": []
+    },
+    {
+      "order": 32,
+      "id": "sweetheart",
+      "name": "Sweetheart",
+      "reminder": "If the Sweetheart died, a player became drunk immediately. If you haven't done this yet, do so now.",
+      "tokens": []
+    },
+    {
+      "order": 33,
+      "id": "plaguedoctor",
+      "name": "Plague Doctor",
+      "reminder": "If the Plague Doctor died, the Storyteller gained a Minion ability. If you haven\u2019t done this yet, do so now.",
+      "tokens": []
+    },
+    {
+      "order": 34,
+      "id": "sage",
+      "name": "Sage",
+      "reminder": "If the Demon killed the Sage, wake the Sage and point to 2 players, 1 of which is the Demon.",
+      "tokens": []
+    },
+    {
+      "order": 35,
+      "id": "banshee",
+      "name": "Banshee",
+      "reminder": "If the Banshee was killed by the Demon tonight, announce to all players that the Banshee has died.",
+      "tokens": []
+    },
+    {
+      "order": 36,
+      "id": "choirboy",
+      "name": "Choirboy",
+      "reminder": "If the Demon killed the King, point to the Demon player.",
+      "tokens": []
+    },
+    {
+      "order": 37,
+      "id": "damsel",
+      "name": "Damsel",
+      "reminder": "If the Damsel was chosen by the Huntsman, show them the YOU ARE info token and their new character token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 38,
+      "id": "amnesiac",
+      "name": "Amnesiac",
+      "reminder": "Run the Amnesiac's ability, if applicable.",
+      "tokens": []
+    },
+    {
+      "order": 39,
+      "id": "farmer",
+      "name": "Farmer",
+      "reminder": "If the Farmer died tonight, wake an alive good player. Show them the YOU ARE info token and a Farmer character token. Replace their previous token with the Farmer token.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 40,
+      "id": "tinker",
+      "name": "Tinker",
+      "reminder": "The Tinker might die.",
+      "tokens": []
+    },
+    {
+      "order": 41,
+      "id": "moonchild",
+      "name": "Moonchild",
+      "reminder": "If the Moonchild is due to kill a good player, they die.",
+      "tokens": []
+    },
+    {
+      "order": 42,
+      "id": "grandmother",
+      "name": "Grandmother",
+      "reminder": "If the grandchild was killed by the Demon, the Grandmother dies too.",
+      "tokens": []
+    },
+    {
+      "order": 43,
+      "id": "tor",
+      "name": "Tor",
+      "reminder": "If a player died tonight, show the YOU ARE info token, their character token, &amp; a thumbs up or thumbs down.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 44,
+      "id": "ravenkeeper",
+      "name": "Ravenkeeper",
+      "reminder": "If the Ravenkeeper died tonight, the Ravenkeeper chooses a player. Show that player's character token.",
+      "tokens": []
+    },
+    {
+      "order": 45,
+      "id": "empath",
+      "name": "Empath",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 46,
+      "id": "fortuneteller",
+      "name": "Fortune Teller",
+      "reminder": "The Fortune Teller chooses 2 players. Nod if either is the Demon (or the RED HERRING).",
+      "tokens": [
+        "RED HERRING"
+      ]
+    },
+    {
+      "order": 47,
+      "id": "undertaker",
+      "name": "Undertaker",
+      "reminder": "If a player was executed today, show their character token.",
+      "tokens": []
+    },
+    {
+      "order": 48,
+      "id": "dreamer",
+      "name": "Dreamer",
+      "reminder": "The Dreamer points to a player. Show 1 good &amp; 1 evil character token, 1 of which is their character.",
+      "tokens": []
+    },
+    {
+      "order": 49,
+      "id": "flowergirl",
+      "name": "Flowergirl",
+      "reminder": "Either nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 50,
+      "id": "towncrier",
+      "name": "Town Crier",
+      "reminder": "Either nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 51,
+      "id": "oracle",
+      "name": "Oracle",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 52,
+      "id": "seamstress",
+      "name": "Seamstress",
+      "reminder": "The Seamstress might choose 2 players. Nod or shake your head.",
+      "tokens": []
+    },
+    {
+      "order": 53,
+      "id": "juggler",
+      "name": "Juggler",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 54,
+      "id": "balloonist",
+      "name": "Balloonist",
+      "reminder": "Show a player with a different character type to previously.",
+      "tokens": []
+    },
+    {
+      "order": 55,
+      "id": "villageidiot",
+      "name": "Village Idiot",
+      "reminder": "Wake the Village Idiots one at a time, they choose a player, show either good or evil thumbs according to the alignment of that player.",
+      "tokens": []
+    },
+    {
+      "order": 56,
+      "id": "king",
+      "name": "King",
+      "reminder": "If the dead equal or outnumber the living, show the character token of an alive player.",
+      "tokens": []
+    },
+    {
+      "order": 57,
+      "id": "cultleader",
+      "name": "Cult Leader",
+      "reminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
+      "tokens": [
+        "YOU ARE"
+      ]
+    },
+    {
+      "order": 58,
+      "id": "butler",
+      "name": "Butler",
+      "reminder": "The Butler chooses a player.",
+      "tokens": []
+    },
+    {
+      "order": 59,
+      "id": "spy",
+      "name": "Spy",
+      "reminder": "Show the Grimoire for as long as the Spy needs.",
+      "tokens": []
+    },
+    {
+      "order": 60,
+      "id": "highpriestess",
+      "name": "High Priestess",
+      "reminder": "Point to a player.",
+      "tokens": []
+    },
+    {
+      "order": 61,
+      "id": "general",
+      "name": "General",
+      "reminder": "Give a thumb signal.",
+      "tokens": []
+    },
+    {
+      "order": 62,
+      "id": "chambermaid",
+      "name": "Chambermaid",
+      "reminder": "The Chambermaid chooses 2 living players. Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 63,
+      "id": "mathematician",
+      "name": "Mathematician",
+      "reminder": "Give a finger signal.",
+      "tokens": []
+    },
+    {
+      "order": 64,
+      "id": "dawn",
+      "name": "Dawn",
+      "reminder": "Wait for a few seconds. End the Night Phase.",
+      "tokens": []
+    },
+    {
+      "order": 65,
+      "id": "leviathan",
+      "name": "Leviathan",
+      "reminder": "Optionally, declare that \"The Leviathan is in play.\" Replace the reminder token.",
+      "tokens": []
+    }
+  ]
+}

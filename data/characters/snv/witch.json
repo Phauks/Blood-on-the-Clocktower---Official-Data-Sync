@@ -1,0 +1,18 @@
+{
+  "id": "witch",
+  "name": "Witch",
+  "team": "minion",
+  "ability": "Each night, choose a player: if they nominate tomorrow, they die. If just 3 players live, you lose this ability.",
+  "edition": "snv",
+  "image": "icons/snv/witch.webp",
+  "firstNight": 113,
+  "firstNightReminder": "The Witch chooses a player.",
+  "otherNight": 110,
+  "otherNightReminder": "The Witch chooses a player.",
+  "reminders": [
+    "CURSED"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

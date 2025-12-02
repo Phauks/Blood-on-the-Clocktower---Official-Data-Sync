@@ -1,0 +1,36 @@
+{
+  "id": "scarletwoman",
+  "name": "Scarlet Woman",
+  "team": "minion",
+  "ability": "If there are 5 or more players alive & the Demon dies, you become the Demon. (Travellers don't count.)",
+  "edition": "tb",
+  "image": "icons/tb/scarletwoman.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 116,
+  "otherNightReminder": "If the Scarlet Woman became the Demon today, show them the YOU ARE token, then the Demon token.",
+  "reminders": [
+    "IS THE DEMON"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Scarlet Woman ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "fanggu",
+      "reason": "If there would be two Demons, one of which was the Scarlet Woman, the Scarlet Woman remains the Scarlet Woman."
+    },
+    {
+      "id": "alhadikhia",
+      "reason": "If there would be two Demons, one of which was the Scarlet Woman, the Scarlet Woman becomes the Scarlet Woman again."
+    },
+    {
+      "id": "lilmonsta",
+      "reason": "If Lil' Monsta dies with 5 or more players alive, the Scarlet Woman babysits Lil' Monsta for the rest of the game."
+    }
+  ],
+  "_remindersFetched": true
+}

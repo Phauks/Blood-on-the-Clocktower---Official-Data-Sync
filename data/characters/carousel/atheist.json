@@ -1,0 +1,22 @@
+{
+  "id": "atheist",
+  "name": "Atheist",
+  "team": "townsfolk",
+  "ability": "The Storyteller can break the game rules, and if executed, good wins, even if you are dead. [No evil characters]",
+  "edition": "carousel",
+  "image": "icons/carousel/atheist.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "During a riot, if the Storyteller is nominated, players vote. If they are \"about to die\", the game ends. If not, they nominate again."
+    }
+  ],
+  "_remindersFetched": true
+}

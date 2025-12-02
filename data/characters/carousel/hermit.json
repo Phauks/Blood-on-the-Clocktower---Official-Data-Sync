@@ -1,0 +1,16 @@
+{
+  "id": "hermit",
+  "name": "Hermit",
+  "team": "outsider",
+  "ability": "You have all Outsider abilities. [-0 or -1 Outsider]",
+  "edition": "carousel",
+  "image": "icons/carousel/hermit.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": true,
+  "_remindersFetched": true
+}

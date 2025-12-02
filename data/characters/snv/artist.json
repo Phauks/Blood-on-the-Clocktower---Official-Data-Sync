@@ -1,0 +1,18 @@
+{
+  "id": "artist",
+  "name": "Artist",
+  "team": "townsfolk",
+  "ability": "Once per game, during the day, privately ask the Storyteller any yes/no question.",
+  "edition": "snv",
+  "image": "icons/snv/artist.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

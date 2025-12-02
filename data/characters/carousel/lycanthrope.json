@@ -1,0 +1,19 @@
+{
+  "id": "lycanthrope",
+  "name": "Lycanthrope",
+  "team": "townsfolk",
+  "ability": "Each night*, choose an alive player. If good, they die & the Demon doesn’t kill tonight. One good player registers as evil.",
+  "edition": "carousel",
+  "image": "icons/carousel/lycanthrope.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 120,
+  "otherNightReminder": "The Lycanthrope chooses a player.",
+  "reminders": [
+    "FAUX PAW",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

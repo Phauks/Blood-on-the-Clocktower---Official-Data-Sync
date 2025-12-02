@@ -1,0 +1,18 @@
+{
+  "id": "nightwatchman",
+  "name": "Nightwatchman",
+  "team": "townsfolk",
+  "ability": "Once per game, at night, choose a player: they learn you are the Nightwatchman.",
+  "edition": "carousel",
+  "image": "icons/carousel/nightwatchman.webp",
+  "firstNight": 141,
+  "firstNightReminder": "The Nightwatchman might choose a player  Put the Nightwatchman to sleep. Wake the target and show the THIS PLAYER IS and Nightwatchman tokens and point to the Nightwatchman.",
+  "otherNight": 172,
+  "otherNightReminder": "The Nightwatchman might choose a player  Put the Nightwatchman to sleep. Wake the target and show the THIS PLAYER IS and Nightwatchman tokens and point to the Nightwatchman.",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

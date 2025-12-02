@@ -1,0 +1,25 @@
+{
+  "id": "godfather",
+  "name": "Godfather",
+  "team": "minion",
+  "ability": "You start knowing which Outsiders are in play. If 1 died today, choose a player tonight: they die. [-1 or +1 Outsider]",
+  "edition": "bmr",
+  "image": "icons/bmr/godfather.webp",
+  "firstNight": 109,
+  "firstNightReminder": "Show the character tokens of all in-play Outsiders.",
+  "otherNight": 140,
+  "otherNightReminder": "If an Outsider died today, the Godfather chooses a player.",
+  "reminders": [
+    "DIED TODAY",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "heretic",
+      "reason": "Only 1 jinxed character can be in play."
+    }
+  ],
+  "_remindersFetched": true
+}

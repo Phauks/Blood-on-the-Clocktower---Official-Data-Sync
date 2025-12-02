@@ -1,0 +1,18 @@
+{
+  "id": "seamstress",
+  "name": "Seamstress",
+  "team": "townsfolk",
+  "ability": "Once per game, at night, choose 2 players (not yourself): you learn if they are the same alignment.",
+  "edition": "snv",
+  "image": "icons/snv/seamstress.webp",
+  "firstNight": 133,
+  "firstNightReminder": "The Seamstress might choose 2 players. Nod or shake your head.",
+  "otherNight": 166,
+  "otherNightReminder": "The Seamstress might choose 2 players. Nod or shake your head.",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

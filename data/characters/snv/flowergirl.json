@@ -1,0 +1,19 @@
+{
+  "id": "flowergirl",
+  "name": "Flowergirl",
+  "team": "townsfolk",
+  "ability": "Each night*, you learn if a Demon voted today.",
+  "edition": "snv",
+  "image": "icons/snv/flowergirl.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 163,
+  "otherNightReminder": "Either nod or shake your head.",
+  "reminders": [
+    "DEMON NOT VOTED",
+    "DEMON VOTED"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

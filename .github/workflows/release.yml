@@ -1,0 +1,114 @@
+# Blood on the Clocktower Data Release Workflow
+#
+# This workflow creates versioned releases of the character data package
+# for use by the Token Generator application.
+#
+# Triggers:
+# - Daily at midnight UTC (schedule)
+# - Manual dispatch (workflow_dispatch)
+# - Push to main with changes to data/ folder
+#
+# Creates:
+# - ZIP file with characters.json, manifest.json, and icons/
+# - GitHub Release with version tag
+
+name: Create Data Release
+
+on:
+  # Run daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      version_suffix:
+        description: 'Optional version suffix (e.g., "-beta1")'
+        required: false
+        default: ''
+  
+  # Auto-trigger on data changes
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/characters/**'
+      - 'data/icons/**'
+      - 'data/manifest.json'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+      
+      - name: Scrape latest data
+        run: |
+          python src/scrapers/character_scraper.py --all
+      
+      - name: Run packager
+        run: |
+          python src/transformers/packager.py -v
+      
+      - name: Get version from manifest
+        id: version
+        run: |
+          VERSION=$(python -c "import json; print(json.load(open('dist/manifest.json'))['version'])")
+          echo "version=${VERSION}${{ github.event.inputs.version_suffix }}" >> $GITHUB_OUTPUT
+      
+      - name: Create release ZIP
+        run: |
+          mkdir -p release
+          cd dist && zip -r ../release/botc-data-v${{ steps.version.outputs.version }}.zip .
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Blood on the Clocktower Data v${{ steps.version.outputs.version }}
+          body: |
+            ## Character Data Release v${{ steps.version.outputs.version }}
+            
+            This release contains the latest official character data from Blood on the Clocktower.
+            
+            ### Contents
+            - `characters.json` - All character data with local image paths
+            - `manifest.json` - Version info and content hash for update checking
+            - `icons/` - Character icon images (WebP format)
+            
+            ### Usage
+            Download and extract the ZIP file to use with the Token Generator.
+            
+            ### Update Checking
+            Your application can check `manifest.json` for:
+            - `version` - Date-based version string
+            - `contentHash` - SHA256 hash of character data
+            - `schemaVersion` - Data format version (increment on breaking changes)
+          files: |
+            release/botc-data-v${{ steps.version.outputs.version }}.zip
+            dist/manifest.json
+          draft: false
+          prerelease: ${{ contains(github.event.inputs.version_suffix, 'beta') || contains(github.event.inputs.version_suffix, 'alpha') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload artifact (for PR builds)
+        uses: actions/upload-artifact@v4
+        with:
+          name: botc-data-v${{ steps.version.outputs.version }}
+          path: |
+            release/
+            dist/
+          retention-days: 30

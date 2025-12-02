@@ -1,0 +1,28 @@
+{
+  "id": "butler",
+  "name": "Butler",
+  "team": "outsider",
+  "ability": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.",
+  "edition": "tb",
+  "image": "icons/tb/butler.webp",
+  "firstNight": 129,
+  "firstNightReminder": "The Butler chooses a player.",
+  "otherNight": 174,
+  "otherNightReminder": "The Butler chooses a player.",
+  "reminders": [
+    "MASTER"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "cannibal",
+      "reason": "If the Cannibal gains the Butler ability, the Cannibal learns this."
+    },
+    {
+      "id": "organgrinder",
+      "reason": "If the Organ Grinder is causing eyes closed voting, the Butler may raise their hand to vote but their vote is only counted if their master voted too."
+    }
+  ],
+  "_remindersFetched": true
+}

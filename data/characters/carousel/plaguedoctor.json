@@ -1,0 +1,56 @@
+{
+  "id": "plaguedoctor",
+  "name": "Plague Doctor",
+  "team": "outsider",
+  "ability": "When you die, the Storyteller gains a Minion ability.",
+  "edition": "carousel",
+  "image": "icons/carousel/plaguedoctor.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 145,
+  "otherNightReminder": "If the Plague Doctor died, the Storyteller gained a Minion ability. If you haven’t done this yet, do so now.",
+  "reminders": [
+    "STORYTELLER ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "spy",
+      "reason": "If the Storyteller would gain the Spy ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "fearmonger",
+      "reason": "If the Storyteller would gain the Fearmonger ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "marionette",
+      "reason": "If the Storyteller would gain the Marionette ability, one of the Demon's good neighbors becomes the Marionette."
+    },
+    {
+      "id": "wraith",
+      "reason": "If the Storyteller would gain the Wraith ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "eviltwin",
+      "reason": "If the Storyteller would gain the Evil Twin ability, a player becomes the Evil Twin."
+    },
+    {
+      "id": "goblin",
+      "reason": "If the Storyteller would gain the Goblin ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "boomdandy",
+      "reason": "If the Storyteller would gain the Boomdandy ability, a player becomes the Boomdandy."
+    },
+    {
+      "id": "scarletwoman",
+      "reason": "If the Storyteller would gain the Scarlet Woman ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "baron",
+      "reason": "If the Storyteller would gain the Baron ability, up to two players become Outsiders."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "knight",
+  "name": "Knight",
+  "team": "townsfolk",
+  "ability": "You start knowing 2 players that are not the Demon.",
+  "edition": "carousel",
+  "image": "icons/carousel/knight.webp",
+  "firstNight": 135,
+  "firstNightReminder": "Point to the two non-Demon players marked KNOW.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "KNOW",
+    "KNOW"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

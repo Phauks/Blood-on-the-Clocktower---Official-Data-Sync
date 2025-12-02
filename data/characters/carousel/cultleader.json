@@ -1,0 +1,26 @@
+{
+  "id": "cultleader",
+  "name": "Cult Leader",
+  "team": "townsfolk",
+  "ability": "Each night, you become the alignment of an alive neighbor. If all good players choose to join your cult, your team wins.",
+  "edition": "carousel",
+  "image": "icons/carousel/cultleader.webp",
+  "firstNight": 142,
+  "firstNightReminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
+  "otherNight": 173,
+  "otherNightReminder": "The Cult Leader might change alignment. If so, show the YOU ARE info token and a thumbs up or down for their new alignment.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "pithag",
+      "reason": "If the Pit-Hag turns an evil player into the Cult Leader, they can't turn good due to their own ability."
+    },
+    {
+      "id": "boffin",
+      "reason": "If the Demon has the Cult Leader ability, they can’t turn good due to this ability."
+    }
+  ],
+  "_remindersFetched": true
+}

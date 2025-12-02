@@ -1,0 +1,19 @@
+{
+  "id": "angel",
+  "name": "Angel",
+  "team": "fabled",
+  "ability": "Something bad might happen to whoever is most responsible for the death of a new player.",
+  "edition": "fabled",
+  "image": "icons/fabled/angel.webp",
+  "firstNight": 76,
+  "firstNightReminder": "Announce which players are protected by the Angel. Add the PROTECTED token to the relevant players.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "PROTECTED",
+    "SOMETHING BAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

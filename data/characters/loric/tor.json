@@ -1,0 +1,16 @@
+{
+  "id": "tor",
+  "name": "Tor",
+  "team": "loric",
+  "ability": "Players don't know their character or alignment. They learn them when they die.",
+  "edition": "loric",
+  "image": "icons/loric/tor.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 157,
+  "otherNightReminder": "If a player died tonight, show the YOU ARE info token, their character token, & a thumbs up or thumbs down.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

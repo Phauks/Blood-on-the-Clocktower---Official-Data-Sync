@@ -1,0 +1,16 @@
+{
+  "id": "chef",
+  "name": "Chef",
+  "team": "townsfolk",
+  "ability": "You start knowing how many pairs of evil players there are.",
+  "edition": "tb",
+  "image": "icons/tb/chef.webp",
+  "firstNight": 126,
+  "firstNightReminder": "Give a finger signal.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

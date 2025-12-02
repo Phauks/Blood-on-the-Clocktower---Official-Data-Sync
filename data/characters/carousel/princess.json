@@ -1,0 +1,28 @@
+{
+  "id": "princess",
+  "name": "Princess",
+  "team": "townsfolk",
+  "ability": "On your 1st day, if you nominated & executed a player, the Demon doesn't kill tonight.",
+  "edition": "carousel",
+  "image": "icons/carousel/princess.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 121,
+  "otherNightReminder": "If the Princess nominated the player who was executed today, the Demon wakes as normal, but no one dies to the Demon's ability.",
+  "reminders": [
+    "DOESN'T KILL"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "cannibal",
+      "reason": "If the Cannibal nominated, executed, & killed the Princess today, the Demon doesn’t kill tonight."
+    },
+    {
+      "id": "alhadikhia",
+      "reason": "If the Princess nominated & executed a player on their 1st day, no one dies to the Al-Hadikhia tonight."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,26 @@
+{
+  "id": "soldier",
+  "name": "Soldier",
+  "team": "townsfolk",
+  "ability": "You are safe from the Demon.",
+  "edition": "tb",
+  "image": "icons/tb/soldier.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "If Riot nominates and executes the Soldier, good wins."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan nominates and executes the Soldier, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

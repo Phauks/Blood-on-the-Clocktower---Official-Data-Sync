@@ -1,0 +1,18 @@
+{
+  "id": "gossip",
+  "name": "Gossip",
+  "team": "townsfolk",
+  "ability": "Each day, you may make a public statement. Tonight, if it was true, a player dies.",
+  "edition": "bmr",
+  "image": "icons/bmr/gossip.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 141,
+  "otherNightReminder": "If the Gossip is due to kill a player, they die.",
+  "reminders": [
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

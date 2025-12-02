@@ -1,0 +1,18 @@
+{
+  "id": "hellslibrarian",
+  "name": "Hell's Librarian",
+  "team": "fabled",
+  "ability": "Something bad might happen to whoever talks when the Storyteller has asked for silence.",
+  "edition": "fabled",
+  "image": "icons/fabled/hellslibrarian.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "SOMETHING BAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

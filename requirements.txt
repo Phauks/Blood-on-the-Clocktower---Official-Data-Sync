@@ -1,0 +1,17 @@
+# Blood on the Clocktower - Official Data Sync
+# Python 3.12+ required
+
+# Browser automation for SPA scraping
+playwright>=1.56.0
+
+# HTTP client for wiki flavor text fetching
+requests>=2.32.0
+
+# HTML parsing for wiki scraping
+beautifulsoup4>=4.12.0
+
+# JSON Schema validation against official botc-release schema
+jsonschema>=4.25.0
+
+# Progress bars for CLI tools
+tqdm>=4.66.0

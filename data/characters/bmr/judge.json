@@ -1,0 +1,18 @@
+{
+  "id": "judge",
+  "name": "Judge",
+  "team": "traveller",
+  "ability": "Once per game, if another player nominated, you may choose to force the current execution to pass or fail.",
+  "edition": "bmr",
+  "image": "icons/bmr/judge.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

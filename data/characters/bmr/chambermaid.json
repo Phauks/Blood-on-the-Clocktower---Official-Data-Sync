@@ -1,0 +1,22 @@
+{
+  "id": "chambermaid",
+  "name": "Chambermaid",
+  "team": "townsfolk",
+  "ability": "Each night, choose 2 alive players (not yourself): you learn how many woke tonight due to their ability.",
+  "edition": "bmr",
+  "image": "icons/bmr/chambermaid.webp",
+  "firstNight": 147,
+  "firstNightReminder": "The Chambermaid chooses 2 living players. Give a finger signal.",
+  "otherNight": 178,
+  "otherNightReminder": "The Chambermaid chooses 2 living players. Give a finger signal.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "mathematician",
+      "reason": "The Chambermaid can detect if the Mathematician will wake tonight."
+    }
+  ],
+  "_remindersFetched": true
+}

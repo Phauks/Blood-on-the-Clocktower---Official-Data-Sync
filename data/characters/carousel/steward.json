@@ -1,0 +1,18 @@
+{
+  "id": "steward",
+  "name": "Steward",
+  "team": "townsfolk",
+  "ability": "You start knowing 1 good player.",
+  "edition": "carousel",
+  "image": "icons/carousel/steward.webp",
+  "firstNight": 134,
+  "firstNightReminder": "Point to the good player marked KNOW.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "KNOW"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

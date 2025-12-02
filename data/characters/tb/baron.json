@@ -1,0 +1,26 @@
+{
+  "id": "baron",
+  "name": "Baron",
+  "team": "minion",
+  "ability": "There are extra Outsiders in play. [+2 Outsiders]",
+  "edition": "tb",
+  "image": "icons/tb/baron.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Baron ability, up to two players become Outsiders."
+    },
+    {
+      "id": "heretic",
+      "reason": "Only 1 jinxed character can be in play."
+    }
+  ],
+  "_remindersFetched": true
+}

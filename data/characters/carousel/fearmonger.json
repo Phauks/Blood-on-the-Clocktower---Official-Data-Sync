@@ -1,0 +1,28 @@
+{
+  "id": "fearmonger",
+  "name": "Fearmonger",
+  "team": "minion",
+  "ability": "Each night, choose a player: if you nominate & execute them, their team loses. All players know if you choose a new player.",
+  "edition": "carousel",
+  "image": "icons/carousel/fearmonger.webp",
+  "firstNight": 115,
+  "firstNightReminder": "The Fearmonger chooses a player.  Declare that \"the Fearmonger has chosen a player.\"",
+  "otherNight": 113,
+  "otherNightReminder": "The Fearmonger chooses a player.  If the player wasn't already marked with the FEAR reminder, declare that \"the Fearmonger has chosen a player.\"",
+  "reminders": [
+    "FEAR"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Fearmonger ability, a Minion gains it, and learns this."
+    },
+    {
+      "id": "vizier",
+      "reason": "The Vizier wakes with the Fearmonger, learns who they choose and cannot choose to immediately execute that player."
+    }
+  ],
+  "_remindersFetched": true
+}

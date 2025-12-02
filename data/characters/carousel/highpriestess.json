@@ -1,0 +1,16 @@
+{
+  "id": "highpriestess",
+  "name": "High Priestess",
+  "team": "townsfolk",
+  "ability": "Each night, learn which player the Storyteller believes you should talk to most.",
+  "edition": "carousel",
+  "image": "icons/carousel/highpriestess.webp",
+  "firstNight": 145,
+  "firstNightReminder": "Point to a player.",
+  "otherNight": 176,
+  "otherNightReminder": "Point to a player.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

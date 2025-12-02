@@ -1,0 +1,18 @@
+{
+  "id": "deusexfiasco",
+  "name": "Deus ex Fiasco",
+  "team": "fabled",
+  "ability": "At least once per game, the Storyteller will make a mistake, correct it, and publicly admit to it.",
+  "edition": "fabled",
+  "image": "icons/fabled/deusexfiasco.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "WHOOPSIE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

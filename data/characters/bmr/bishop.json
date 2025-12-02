@@ -1,0 +1,19 @@
+{
+  "id": "bishop",
+  "name": "Bishop",
+  "team": "traveller",
+  "ability": "Only the Storyteller can nominate. At least 1 opposing player must be nominated each day.",
+  "edition": "bmr",
+  "image": "icons/bmr/bishop.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NOMINATE EVIL",
+    "NOMINATE GOOD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

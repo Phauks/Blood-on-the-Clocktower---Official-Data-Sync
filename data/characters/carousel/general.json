@@ -1,0 +1,16 @@
+{
+  "id": "general",
+  "name": "General",
+  "team": "townsfolk",
+  "ability": "Each night, you learn which alignment the Storyteller believes is winning: good, evil, or neither.",
+  "edition": "carousel",
+  "image": "icons/carousel/general.webp",
+  "firstNight": 146,
+  "firstNightReminder": "Give a thumb signal.",
+  "otherNight": 177,
+  "otherNightReminder": "Give a thumb signal.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

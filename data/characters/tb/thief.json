@@ -1,0 +1,18 @@
+{
+  "id": "thief",
+  "name": "Thief",
+  "team": "traveller",
+  "ability": "Each night, choose a player (not yourself): their vote counts negatively tomorrow.",
+  "edition": "tb",
+  "image": "icons/tb/thief.webp",
+  "firstNight": 86,
+  "firstNightReminder": "The Thief chooses a player.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NEGATIVE VOTE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

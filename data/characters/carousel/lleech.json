@@ -1,0 +1,33 @@
+{
+  "id": "lleech",
+  "name": "Lleech",
+  "team": "demon",
+  "ability": "Each night*, choose a player: they die. You start by choosing a player: they are poisoned. You die if & only if they are dead.",
+  "edition": "carousel",
+  "image": "icons/carousel/lleech.webp",
+  "firstNight": 102,
+  "firstNightReminder": "The Lleech chooses a player.",
+  "otherNight": 135,
+  "otherNightReminder": "The Lleech chooses a player.",
+  "reminders": [
+    "POISONED",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "heretic",
+      "reason": "Only 1 jinxed character can be in play."
+    },
+    {
+      "id": "slayer",
+      "reason": "If the Slayer slays the Lleech host, the host dies."
+    },
+    {
+      "id": "mastermind",
+      "reason": "If the Mastermind is alive and the Lleech host dies by execution, the Lleech lives but loses their ability."
+    }
+  ],
+  "_remindersFetched": true
+}

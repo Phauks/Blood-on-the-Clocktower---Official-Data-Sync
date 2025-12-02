@@ -1,0 +1,36 @@
+{
+  "id": "poppygrower",
+  "name": "Poppy Grower",
+  "team": "townsfolk",
+  "ability": "Minions & Demons do not know each other. If you die, they learn who each other are that night.",
+  "edition": "carousel",
+  "image": "icons/carousel/poppygrower.webp",
+  "firstNight": 90,
+  "firstNightReminder": "Do not do the Minion Info and Demon Info steps. Wake the Demon, show the THESE CHARACTERS ARE NOT IN PLAY info token and any three good character tokens that are not in play.",
+  "otherNight": 95,
+  "otherNightReminder": "If the Poppy Grower died today or tonight, wake the Minions, show the THIS IS THE DEMON info token and point to the Demon. Put them to sleep. Wake the Demon, show the THESE ARE YOUR MINIONS info token and point to the Minions. Put the Demon to sleep.",
+  "reminders": [
+    "EVIL WAKES"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "spy",
+      "reason": "If the Poppy Grower has their ability, the Spy does not see the Grimoire."
+    },
+    {
+      "id": "widow",
+      "reason": "If the Poppy Grower has their ability, the Widow does not see the Grimoire."
+    },
+    {
+      "id": "summoner",
+      "reason": "If the Poppy Grower is alive on the 3rd night, the Summoner chooses which Demon but not which player."
+    },
+    {
+      "id": "lilmonsta",
+      "reason": "If Lil' Monsta & the Poppy Grower are alive, Minions wake one by one, until one of them chooses to take the Lil' Monsta token."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,16 @@
+{
+  "id": "gunslinger",
+  "name": "Gunslinger",
+  "team": "traveller",
+  "ability": "Each day, after the 1st vote has been tallied, you may choose a player that voted: they die.",
+  "edition": "tb",
+  "image": "icons/tb/gunslinger.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

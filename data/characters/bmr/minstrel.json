@@ -1,0 +1,24 @@
+{
+  "id": "minstrel",
+  "name": "Minstrel",
+  "team": "townsfolk",
+  "ability": "When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow.",
+  "edition": "bmr",
+  "image": "icons/bmr/minstrel.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "EVERYONE IS DRUNK"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "legion",
+      "reason": "If Legion died by execution today, Legion keeps their ability, but the Minstrel might learn they are Legion."
+    }
+  ],
+  "_remindersFetched": true
+}

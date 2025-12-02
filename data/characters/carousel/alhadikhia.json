@@ -1,0 +1,34 @@
+{
+  "id": "alhadikhia",
+  "name": "Al-Hadikhia",
+  "team": "demon",
+  "ability": "Each night*, you may choose 3 players (all players learn who): each silently chooses to live or die, but if all live, all die.",
+  "edition": "carousel",
+  "image": "icons/carousel/alhadikhia.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 134,
+  "otherNightReminder": "The Al-Hadikhia chooses three players.    Wake the player marked 1 and say \"the Al-Hadikhia has chosen\", then the player's name, then \"Do you choose to live?\" They either nod or shake their head. Put them to sleep and add or remove shrouds accordingly. Repeat for players marked 2 and 3. If all three players are now alive, add a shroud to all three.",
+  "reminders": [
+    "1",
+    "2",
+    "3"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "scarletwoman",
+      "reason": "If there would be two Demons, one of which was the Scarlet Woman, the Scarlet Woman becomes the Scarlet Woman again."
+    },
+    {
+      "id": "princess",
+      "reason": "If the Princess nominated & executed a player on their 1st day, no one dies to the Al-Hadikhia tonight."
+    },
+    {
+      "id": "mastermind",
+      "reason": "If the Al-Hadikhia dies by execution, and the Mastermind is alive, the Al-Hadikhia chooses 3 good players tonight: if all 3 choose to live, evil wins. Otherwise, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

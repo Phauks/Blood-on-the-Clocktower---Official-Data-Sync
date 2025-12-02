@@ -1,0 +1,16 @@
+{
+  "id": "fisherman",
+  "name": "Fisherman",
+  "team": "townsfolk",
+  "ability": "Once per game, during the day, visit the Storyteller for some advice to help your team win.",
+  "edition": "carousel",
+  "image": "icons/carousel/fisherman.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

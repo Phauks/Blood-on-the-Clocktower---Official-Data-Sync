@@ -1,0 +1,16 @@
+{
+  "id": "gardener",
+  "name": "Gardener",
+  "team": "loric",
+  "ability": "The Storyteller assigns 1 or more players' characters.",
+  "edition": "loric",
+  "image": "icons/loric/gardener.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

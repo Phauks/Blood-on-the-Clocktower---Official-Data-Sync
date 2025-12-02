@@ -1,0 +1,16 @@
+{
+  "id": "voudon",
+  "name": "Voudon",
+  "team": "traveller",
+  "ability": "Only you & the dead can vote. They don't need a vote token to do so. A 50% majority isn't required.",
+  "edition": "bmr",
+  "image": "icons/bmr/voudon.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

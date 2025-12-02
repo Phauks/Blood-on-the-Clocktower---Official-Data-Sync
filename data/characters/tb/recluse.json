@@ -1,0 +1,26 @@
+{
+  "id": "recluse",
+  "name": "Recluse",
+  "team": "outsider",
+  "ability": "You might register as evil & as a Minion or Demon, even if dead.",
+  "edition": "tb",
+  "image": "icons/tb/recluse.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "sage",
+      "reason": "The Recluse might register as the Demon to the Sage."
+    },
+    {
+      "id": "ogre",
+      "reason": "If the Recluse registers as evil to the Ogre, the Ogre learns that they are evil."
+    }
+  ],
+  "_remindersFetched": true
+}

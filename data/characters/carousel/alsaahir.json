@@ -1,0 +1,22 @@
+{
+  "id": "alsaahir",
+  "name": "Alsaahir",
+  "team": "townsfolk",
+  "ability": "Each day, if you publicly guess which players are Minion(s) and which are Demon(s), good wins.",
+  "edition": "carousel",
+  "image": "icons/carousel/alsaahir.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "vizier",
+      "reason": "The Storyteller doesn't declare the Vizier is in play."
+    }
+  ],
+  "_remindersFetched": true
+}

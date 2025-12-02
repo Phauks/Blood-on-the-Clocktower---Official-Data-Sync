@@ -1,0 +1,30 @@
+{
+  "id": "kazali",
+  "name": "Kazali",
+  "team": "demon",
+  "ability": "Each night*, choose a player: they die. [You choose which players are which Minions. -? to +? Outsiders]",
+  "edition": "carousel",
+  "image": "icons/carousel/kazali.webp",
+  "firstNight": 82,
+  "firstNightReminder": "Wake the Kazali, allow them to choose Minions.",
+  "otherNight": 138,
+  "otherNightReminder": "The Kazali chooses a player.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "bountyhunter",
+      "reason": "If the Kazali turns the Bounty Hunter into a Minion, an evil Townsfolk is not created."
+    },
+    {
+      "id": "marionette",
+      "reason": "If there would be a Marionette in play, they enter play after the Demon & must start as their neighbor."
+    },
+    {
+      "id": "summoner",
+      "reason": "If the Summoner creates a second living Demon, deaths tonight are arbitrary."
+    }
+  ],
+  "_remindersFetched": true
+}

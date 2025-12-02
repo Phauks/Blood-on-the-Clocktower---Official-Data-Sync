@@ -1,0 +1,30 @@
+{
+  "id": "wraith",
+  "name": "Wraith",
+  "team": "minion",
+  "ability": "You may choose to open your eyes at night. You wake when other evil players do.",
+  "edition": "carousel",
+  "image": "icons/carousel/wraith.webp",
+  "firstNight": 80,
+  "firstNightReminder": "Wake the Wraith whenever other evil players wake.",
+  "otherNight": 93,
+  "otherNightReminder": "Wake the Wraith whenever other evil players wake.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "alchemist",
+      "reason": "An Alchemist-Wraith has no Wraith ability & a Wraith is in play. After each execution, a living Alchemist-Wraith may publicly guess a living player as the Wraith. If correct, the Demon must choose the Wraith tonight."
+    },
+    {
+      "id": "magician",
+      "reason": "After each execution, the living Magician may publicly guess a living player as the Wraith. If correct, the Demon must choose the Wraith tonight."
+    },
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Wraith ability, a Minion gains it, and learns this."
+    }
+  ],
+  "_remindersFetched": true
+}

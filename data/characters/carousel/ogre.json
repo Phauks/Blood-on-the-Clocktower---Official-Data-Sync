@@ -1,0 +1,36 @@
+{
+  "id": "ogre",
+  "name": "Ogre",
+  "team": "outsider",
+  "ability": "On your 1st night, choose a player (not yourself): you become their alignment (you don't know which) even if drunk or poisoned.",
+  "edition": "carousel",
+  "image": "icons/carousel/ogre.webp",
+  "firstNight": 144,
+  "firstNightReminder": "The Ogre points to a player.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "FRIEND"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "recluse",
+      "reason": "If the Recluse registers as evil to the Ogre, the Ogre learns that they are evil."
+    },
+    {
+      "id": "spy",
+      "reason": "The Spy registers as evil to the Ogre."
+    },
+    {
+      "id": "pithag",
+      "reason": "If the Pit-Hag turns an evil player into the Ogre, they can't turn good due to their own ability."
+    },
+    {
+      "id": "boffin",
+      "reason": "The Demon cannot have the Ogre ability."
+    }
+  ],
+  "_remindersFetched": true
+}

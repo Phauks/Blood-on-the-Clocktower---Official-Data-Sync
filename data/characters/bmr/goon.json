@@ -1,0 +1,28 @@
+{
+  "id": "goon",
+  "name": "Goon",
+  "team": "outsider",
+  "ability": "Each night, the 1st player to choose you with their ability is drunk until dusk. You become their alignment.",
+  "edition": "bmr",
+  "image": "icons/bmr/goon.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "DRUNK"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "pithag",
+      "reason": "If the Pit-Hag turns an evil player into the Goon, they can't turn good due to their own ability."
+    },
+    {
+      "id": "boffin",
+      "reason": "If the Demon has the Goon ability, they can’t turn good due to this ability."
+    }
+  ],
+  "_remindersFetched": true
+}

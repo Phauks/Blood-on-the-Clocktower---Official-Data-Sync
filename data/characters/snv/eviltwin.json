@@ -1,0 +1,24 @@
+{
+  "id": "eviltwin",
+  "name": "Evil Twin",
+  "team": "minion",
+  "ability": "You & an opposing player know each other. If the good player is executed, evil wins. Good can't win if you both live.",
+  "edition": "snv",
+  "image": "icons/snv/eviltwin.webp",
+  "firstNight": 112,
+  "firstNightReminder": "Wake both twins. Allow eye contact. Show the good twin's character token to the Evil Twin & vice versa.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "TWIN"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "plaguedoctor",
+      "reason": "If the Storyteller would gain the Evil Twin ability, a player becomes the Evil Twin."
+    }
+  ],
+  "_remindersFetched": true
+}

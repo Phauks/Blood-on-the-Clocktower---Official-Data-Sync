@@ -1,0 +1,20 @@
+{
+  "id": "shabaloth",
+  "name": "Shabaloth",
+  "team": "demon",
+  "ability": "Each night*, choose 2 players: they die. A dead player you chose last night might be regurgitated.",
+  "edition": "bmr",
+  "image": "icons/bmr/shabaloth.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 126,
+  "otherNightReminder": "A previously chosen player might be resurrected.  The Shabaloth chooses 2 players.",
+  "reminders": [
+    "DEAD",
+    "DEAD",
+    "ALIVE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

@@ -1,0 +1,28 @@
+{
+  "id": "drunk",
+  "name": "Drunk",
+  "team": "outsider",
+  "ability": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.",
+  "edition": "tb",
+  "image": "icons/tb/drunk.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "IS THE DRUNK"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "mathematician",
+      "reason": "The Mathematician might learn if the Drunk's ability yielded false info or failed to work properly."
+    },
+    {
+      "id": "boffin",
+      "reason": "The Demon cannot have the Drunk ability."
+    }
+  ],
+  "_remindersFetched": true
+}

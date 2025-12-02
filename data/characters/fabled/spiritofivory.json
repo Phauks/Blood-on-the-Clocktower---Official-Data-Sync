@@ -1,0 +1,18 @@
+{
+  "id": "spiritofivory",
+  "name": "Spirit of Ivory",
+  "team": "fabled",
+  "ability": "There can't be more than 1 extra evil player.",
+  "edition": "fabled",
+  "image": "icons/fabled/spiritofivory.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NO MORE EVIL"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

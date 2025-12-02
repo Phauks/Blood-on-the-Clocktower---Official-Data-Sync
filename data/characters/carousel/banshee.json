@@ -1,0 +1,32 @@
+{
+  "id": "banshee",
+  "name": "Banshee",
+  "team": "townsfolk",
+  "ability": "If the Demon kills you, all players learn this. From now on, you may nominate twice per day and vote twice per nomination.",
+  "edition": "carousel",
+  "image": "icons/carousel/banshee.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 147,
+  "otherNightReminder": "If the Banshee was killed by the Demon tonight, announce to all players that the Banshee has died.",
+  "reminders": [
+    "HAS ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "vortox",
+      "reason": "If the Vortox kills the Banshee, all players learn that the Banshee has died."
+    },
+    {
+      "id": "riot",
+      "reason": "Each night*, Riot chooses an alive good player (different to previous nights): a chosen Banshee dies & gains their ability."
+    },
+    {
+      "id": "leviathan",
+      "reason": "Each night*, the Leviathan chooses an alive good player (different to previous nights): a chosen Banshee dies & gains their ability."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,78 @@
+{
+  "id": "summoner",
+  "name": "Summoner",
+  "team": "minion",
+  "ability": "You get 3 bluffs. On the 3rd night, choose a player: they become an evil Demon of your choice. [No Demon]",
+  "edition": "carousel",
+  "image": "icons/carousel/summoner.webp",
+  "firstNight": 95,
+  "firstNightReminder": "Show the THESE CHARACTERS ARE NOT IN PLAY token. Show 3 not-in-play good character tokens.",
+  "otherNight": 117,
+  "otherNightReminder": "Change the Summoner reminder token to the relevant night. If it is night 3, the Summoner chooses a player and a Demon. Put the Summoner to sleep. Wake the chosen player. Show the YOU ARE token, a thumbs down and the chosen Demon token.",
+  "reminders": [
+    "NIGHT 1",
+    "NIGHT 2",
+    "NIGHT 3"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "alchemist",
+      "reason": "The Alchemist-Summoner does not get bluffs, and chooses which Demon but not which player. If they die before this happens, evil wins. [No Demon]"
+    },
+    {
+      "id": "marionette",
+      "reason": "If there would be a Marionette in play, they enter play after the Demon & must start as their neighbor."
+    },
+    {
+      "id": "clockmaker",
+      "reason": "The Summoner registers as the Demon to the Clockmaker."
+    },
+    {
+      "id": "preacher",
+      "reason": "If the living Summoner has no ability, the Storyteller has the Summoner ability."
+    },
+    {
+      "id": "engineer",
+      "reason": "If the living Summoner is removed from play, the Storyteller has the Summoner ability."
+    },
+    {
+      "id": "courtier",
+      "reason": "If the living Summoner has no ability, the Storyteller has the Summoner ability."
+    },
+    {
+      "id": "poppygrower",
+      "reason": "If the Poppy Grower is alive on the 3rd night, the Summoner chooses which Demon but not which player."
+    },
+    {
+      "id": "hatter",
+      "reason": "If the Summoner creates a second living Demon, deaths tonight are arbitrary."
+    },
+    {
+      "id": "pithag",
+      "reason": "If the Summoner creates a second living Demon, deaths tonight are arbitrary."
+    },
+    {
+      "id": "pukka",
+      "reason": "The Summoner may summon a Pukka on the 2nd night instead of the 3rd."
+    },
+    {
+      "id": "kazali",
+      "reason": "If the Summoner creates a second living Demon, deaths tonight are arbitrary."
+    },
+    {
+      "id": "zombuul",
+      "reason": "If the Summoner summons a dead player into the Zombuul, the Zombuul has already \"died once\"."
+    },
+    {
+      "id": "lordoftyphon",
+      "reason": "If a Lord of Typhon is summoned, they must neighbor a Minion & their other neighbor becomes an evil Minion."
+    },
+    {
+      "id": "legion",
+      "reason": "If Legion is summoned, all evil players become Legion."
+    }
+  ],
+  "_remindersFetched": true
+}

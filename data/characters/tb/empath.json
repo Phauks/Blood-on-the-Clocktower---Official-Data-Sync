@@ -1,0 +1,16 @@
+{
+  "id": "empath",
+  "name": "Empath",
+  "team": "townsfolk",
+  "ability": "Each night, you learn how many of your 2 alive neighbors are evil.",
+  "edition": "tb",
+  "image": "icons/tb/empath.webp",
+  "firstNight": 127,
+  "firstNightReminder": "Give a finger signal.",
+  "otherNight": 159,
+  "otherNightReminder": "Give a finger signal.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

@@ -1,0 +1,26 @@
+{
+  "id": "mayor",
+  "name": "Mayor",
+  "team": "townsfolk",
+  "ability": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead.",
+  "edition": "tb",
+  "image": "icons/tb/mayor.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "The Mayor may choose to stop the riot. If they do so when only 1 Riot is alive, good wins. Otherwise, evil wins."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan and the Mayor are alive on day 5 & no execution occurs, good wins."
+    }
+  ],
+  "_remindersFetched": true
+}

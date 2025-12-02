@@ -1,0 +1,31 @@
+{
+  "id": "courtier",
+  "name": "Courtier",
+  "team": "townsfolk",
+  "ability": "Once per game, at night, choose a character: they are drunk for 3 nights & 3 days.",
+  "edition": "bmr",
+  "image": "icons/bmr/courtier.webp",
+  "firstNight": 106,
+  "firstNightReminder": "The Courtier might choose a character.",
+  "otherNight": 101,
+  "otherNightReminder": "The Courtier might choose a character.",
+  "reminders": [
+    "DRUNK 1",
+    "DRUNK 2",
+    "DRUNK 3",
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "summoner",
+      "reason": "If the living Summoner has no ability, the Storyteller has the Summoner ability."
+    },
+    {
+      "id": "vizier",
+      "reason": "If the Vizier loses their ability, they learn this, and cannot die during the day."
+    }
+  ],
+  "_remindersFetched": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "fool",
+  "name": "Fool",
+  "team": "townsfolk",
+  "ability": "The 1st time you die, you don't.",
+  "edition": "bmr",
+  "image": "icons/bmr/fool.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "NO ABILITY"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

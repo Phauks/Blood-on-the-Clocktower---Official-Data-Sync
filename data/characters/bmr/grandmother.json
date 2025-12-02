@@ -1,0 +1,29 @@
+{
+  "id": "grandmother",
+  "name": "Grandmother",
+  "team": "townsfolk",
+  "ability": "You start knowing a good player & their character. If the Demon kills them, you die too.",
+  "edition": "bmr",
+  "image": "icons/bmr/grandmother.webp",
+  "firstNight": 130,
+  "firstNightReminder": "Point to the grandchild player & show their character token.",
+  "otherNight": 156,
+  "otherNightReminder": "If the grandchild was killed by the Demon, the Grandmother dies too.",
+  "reminders": [
+    "GRANDCHILD",
+    "DEAD"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "jinxes": [
+    {
+      "id": "riot",
+      "reason": "If Riot is in play and the Grandchild dies by execution, evil wins."
+    },
+    {
+      "id": "leviathan",
+      "reason": "If the Leviathan is in play and the Grandchild dies by execution, evil wins."
+    }
+  ],
+  "_remindersFetched": true
+}

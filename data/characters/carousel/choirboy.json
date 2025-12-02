@@ -1,0 +1,16 @@
+{
+  "id": "choirboy",
+  "name": "Choirboy",
+  "team": "townsfolk",
+  "ability": "If the Demon kills the King, you learn which player is the Demon. [+the King]",
+  "edition": "carousel",
+  "image": "icons/carousel/choirboy.webp",
+  "firstNight": 0,
+  "firstNightReminder": "",
+  "otherNight": 149,
+  "otherNightReminder": "If the Demon killed the King, point to the Demon player.",
+  "reminders": [],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

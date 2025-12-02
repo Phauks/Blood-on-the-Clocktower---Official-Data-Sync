@@ -1,0 +1,18 @@
+{
+  "id": "stormcatcher",
+  "name": "Storm Catcher",
+  "team": "loric",
+  "ability": "Name a good character. If in play, they can only die by execution, but evil players learn which player it is.",
+  "edition": "loric",
+  "image": "icons/loric/stormcatcher.webp",
+  "firstNight": 79,
+  "firstNightReminder": "At the start of the night, announce which character is stormcaught. If that character is in play, mark that player as STORMCAUGHT.  Wake each evil player and show them the character token, then the marked player. If not in play, wake each evil player, show them the THESE CHARACTERS ARE NOT IN PLAY token and the relevant character token.",
+  "otherNight": 0,
+  "otherNightReminder": "",
+  "reminders": [
+    "SAFE"
+  ],
+  "remindersGlobal": [],
+  "setup": false,
+  "_remindersFetched": true
+}

@@ -1,0 +1,24 @@
+{
+  "id": "balloonist",
+  "name": "Balloonist",
+  "team": "townsfolk",
+  "ability": "Each night, you learn a player of a different character type than last night. [+0 or +1 Outsider]",
+  "edition": "carousel",
+  "image": "icons/carousel/balloonist.webp",
+  "firstNight": 137,
+  "firstNightReminder": "Show any player.",
+  "otherNight": 168,
+  "otherNightReminder": "Show a player with a different character type to previously.",
+  "reminders": [
+    "KNOW"
+  ],
+  "remindersGlobal": [],
+  "setup": true,
+  "jinxes": [
+    {
+      "id": "marionette",
+      "reason": "If the Marionette thinks that they are the Balloonist, an Outsider might have been added during setup."
+    }
+  ],
+  "_remindersFetched": true
+}
