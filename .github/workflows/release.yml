@@ -11,6 +11,8 @@
 # Creates:
 # - ZIP file with characters.json, manifest.json, and icons/
 # - GitHub Release with version tag
+#
+# Note: Only creates a release if data actually changed (compares contentHash)
 
 name: Create Data Release
 
@@ -26,6 +28,11 @@ on:
         description: 'Optional version suffix (e.g., "-beta1")'
         required: false
         default: ''
+      force_release:
+        description: 'Force release even if no changes detected'
+        type: boolean
+        required: false
+        default: false
   
   # Auto-trigger on data changes
   push:
@@ -43,6 +50,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tag comparison
       
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -54,6 +63,22 @@ jobs:
           pip install -r requirements.txt
           playwright install chromium
       
+      - name: Get previous content hash
+        id: prev_hash
+        run: |
+          # Get the latest release tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "none")
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          
+          # Try to get contentHash from previous release manifest
+          if [ "$LATEST_TAG" != "none" ]; then
+            # Download previous manifest from release
+            PREV_HASH=$(curl -sL "https://github.com/${{ github.repository }}/releases/download/${LATEST_TAG}/manifest.json" 2>/dev/null | python -c "import sys,json; print(json.load(sys.stdin).get('contentHash',''))" 2>/dev/null || echo "")
+            echo "prev_hash=$PREV_HASH" >> $GITHUB_OUTPUT
+          else
+            echo "prev_hash=" >> $GITHUB_OUTPUT
+          fi
+      
       - name: Scrape latest data
         run: |
           python src/scrapers/character_scraper.py --all
@@ -62,18 +87,51 @@ jobs:
         run: |
           python src/transformers/packager.py -v
       
+      - name: Check for changes
+        id: changes
+        run: |
+          NEW_HASH=$(python -c "import json; print(json.load(open('dist/manifest.json'))['contentHash'])")
+          PREV_HASH="${{ steps.prev_hash.outputs.prev_hash }}"
+          
+          echo "new_hash=$NEW_HASH" >> $GITHUB_OUTPUT
+          echo "Previous hash: $PREV_HASH"
+          echo "New hash: $NEW_HASH"
+          
+          if [ "$NEW_HASH" = "$PREV_HASH" ] && [ "${{ github.event.inputs.force_release }}" != "true" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected, skipping release"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected, creating release"
+          fi
+      
+      - name: No changes detected
+        if: steps.changes.outputs.has_changes != 'true'
+        run: |
+          echo "::notice::No data changes detected. Skipping release."
+          echo "Current hash: ${{ steps.changes.outputs.new_hash }}"
+          echo "Previous hash: ${{ steps.prev_hash.outputs.prev_hash }}"
+
       - name: Get version from manifest
         id: version
+        if: steps.changes.outputs.has_changes == 'true'
         run: |
           VERSION=$(python -c "import json; print(json.load(open('dist/manifest.json'))['version'])")
-          echo "version=${VERSION}${{ github.event.inputs.version_suffix }}" >> $GITHUB_OUTPUT
+          SUFFIX="${{ github.event.inputs.version_suffix }}"
+          
+          # Add run number to ensure unique tags (allows multiple releases per day)
+          FULL_VERSION="${VERSION}${SUFFIX}-r${{ github.run_number }}"
+          echo "version=$FULL_VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $FULL_VERSION"
       
       - name: Create release ZIP
+        if: steps.changes.outputs.has_changes == 'true'
         run: |
           mkdir -p release
           cd dist && zip -r ../release/botc-data-v${{ steps.version.outputs.version }}.zip .
       
       - name: Create GitHub Release
+        if: steps.changes.outputs.has_changes == 'true'
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.version.outputs.version }}
@@ -91,11 +149,13 @@ jobs:
             ### Usage
             Download and extract the ZIP file to use with the Token Generator.
             
-            ### Update Checking
-            Your application can check `manifest.json` for:
-            - `version` - Date-based version string
-            - `contentHash` - SHA256 hash of character data
+            ### Manifest Fields
+            Your application can use `manifest.json` for:
+            - `version` / `generated` / `lastModified` - Version and timestamp info
+            - `contentHash` - SHA256 hash of character data (for update checking)
             - `schemaVersion` - Data format version (increment on breaking changes)
+            - `total_characters` / `total_reminders` / `total_jinxes` / `total_flavor` - Data counts
+            - `edition_counts` / `edition_reminders` - Per-edition statistics
           files: |
             release/botc-data-v${{ steps.version.outputs.version }}.zip
             dist/manifest.json
@@ -105,6 +165,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Upload artifact (for PR builds)
+        if: steps.changes.outputs.has_changes == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: botc-data-v${{ steps.version.outputs.version }}
