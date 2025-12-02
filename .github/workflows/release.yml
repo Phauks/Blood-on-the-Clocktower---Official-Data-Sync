@@ -195,13 +195,18 @@ jobs:
               
               # Find characters with changed abilities
               common_ids = current_char_ids & prev_char_ids
-              ability_changed = []
-              for cid in common_ids:
-                  if current_char_abilities.get(cid, '') != prev_char_abilities.get(cid, ''):
-                      ability_changed.append(current_char_names[cid])
+              ability_changes = []
+              for cid in sorted(common_ids):
+                  old_ability = prev_char_abilities.get(cid, '')
+                  new_ability = current_char_abilities.get(cid, '')
+                  if old_ability != new_ability:
+                      name = current_char_names[cid]
+                      ability_changes.append(f"**{name}**\n  - Old: _{old_ability}_\n  - New: _{new_ability}_")
               
-              if ability_changed:
-                  changes.append(f"**Ability text updated:** {', '.join(sorted(ability_changed))}")
+              if ability_changes:
+                  changes.append("**Ability text updated:**")
+                  for ac in ability_changes:
+                      changes.append(ac)
               
               # Check reminder count changes
               prev_rem = previous.get('total_reminders', 0)
