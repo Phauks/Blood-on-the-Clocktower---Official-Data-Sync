@@ -87,6 +87,61 @@ jobs:
         run: |
           python src/transformers/packager.py -v
       
+      - name: Update README with current counts
+        run: |
+          python << 'EOF'
+          import json
+          import re
+          
+          # Load manifest
+          with open('dist/manifest.json') as f:
+              m = json.load(f)
+          
+          counts = m.get('edition_counts', {})
+          reminders = m.get('edition_reminders', {})
+          total_chars = m.get('total_characters', 0)
+          total_rems = m.get('total_reminders', 0)
+          
+          # Build new table
+          editions = [
+              ('Trouble Brewing', 'tb'),
+              ('Bad Moon Rising', 'bmr'),
+              ('Sects & Violets', 'snv'),
+              ('Unreleased (Carousel)', 'carousel'),
+              ('Fabled', 'fabled'),
+              ('Loric', 'loric'),
+          ]
+          
+          lines = [
+              '## Editions',
+              '',
+              '| Edition | Code | Characters | Reminders |',
+              '|---------|------|------------|-----------|',
+          ]
+          for name, code in editions:
+              c = counts.get(code, 0)
+              r = reminders.get(code, 0)
+              lines.append(f'| {name} | `{code}` | {c} | {r} |')
+          lines.append(f'| **Total** | | **{total_chars}** | **{total_rems}** |')
+          lines.append('')
+          lines.append('## Data Sources')
+          
+          new_section = '\n'.join(lines)
+          
+          # Read and update README
+          with open('README.md', 'r') as f:
+              content = f.read()
+          
+          # Replace the Editions section
+          pattern = r'## Editions\n.*?(?=\n## Data Sources)'
+          content = re.sub(pattern, new_section.replace('## Data Sources', ''), content, flags=re.DOTALL)
+          
+          with open('README.md', 'w') as f:
+              f.write(content)
+          
+          print(f"Updated README: {total_chars} characters, {total_rems} reminders")
+          EOF
+      
       - name: Check for changes
         id: changes
         run: |
@@ -111,6 +166,15 @@ jobs:
           echo "::notice::No data changes detected. Skipping release."
           echo "Current hash: ${{ steps.changes.outputs.new_hash }}"
           echo "Previous hash: ${{ steps.prev_hash.outputs.prev_hash }}"
+
+      - name: Commit README updates
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --staged --quiet || git commit -m "Update README with current character counts"
+          git push || echo "No changes to push"
 
       - name: Get version from manifest
         id: version

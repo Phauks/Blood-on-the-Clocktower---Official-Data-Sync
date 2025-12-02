@@ -132,14 +132,15 @@ See [`examples/update_checker.py`](examples/update_checker.py) for a complete im
 
 ## Editions
 
-| Edition | Code | Characters |
-|---------|------|------------|
-| Trouble Brewing | `tb` | 27 |
-| Bad Moon Rising | `bmr` | 30 |
-| Sects & Violets | `snv` | 30 |
-| Unreleased (Carousel) | `carousel` | 68 |
-| Fabled | `fabled` | 13 |
-| Loric | `loric` | 6 |
+| Edition | Code | Characters | Reminders |
+|---------|------|------------|-----------|
+| Trouble Brewing | `tb` | 27 | 18 |
+| Bad Moon Rising | `bmr` | 30 | 45 |
+| Sects & Violets | `snv` | 30 | 37 |
+| Unreleased (Carousel) | `carousel` | 68 | 66 |
+| Fabled | `fabled` | 13 | 11 |
+| Loric | `loric` | 6 | 4 |
+| **Total** | | **174** | **181** |
 
 ## Data Sources
 
