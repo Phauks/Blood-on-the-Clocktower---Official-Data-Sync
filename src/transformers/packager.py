@@ -51,16 +51,38 @@ def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
     Returns:
         The manifest dict
     """
-    # Build editions index
+    # Build editions index and count stats
     editions: dict[str, list[str]] = {}
+    edition_reminders: dict[str, int] = {}
+    total_reminders = 0
+    total_jinxes = 0
+    total_flavor = 0
+    
     for char in characters:
         edition = char["edition"]
         if edition not in editions:
             editions[edition] = []
+            edition_reminders[edition] = 0
         editions[edition].append(char["id"])
+        
+        # Count reminders
+        char_reminders = len(char.get("reminders", []))
+        edition_reminders[edition] += char_reminders
+        total_reminders += char_reminders
+        
+        # Count jinxes (each jinx stored bidirectionally, so divide by 2 at end)
+        total_jinxes += len(char.get("jinxes", []))
+        
+        # Count characters with flavor text
+        if char.get("flavor"):
+            total_flavor += 1
+    
+    # Jinxes are stored on both characters, so divide by 2
+    total_jinxes = total_jinxes // 2
     
     # Sort editions alphabetically and character IDs within each edition
     editions = {k: sorted(v) for k, v in sorted(editions.items())}
+    edition_reminders = {k: v for k, v in sorted(edition_reminders.items())}
     
     # Compute content hash for integrity checking
     char_json = json.dumps(characters, sort_keys=True, ensure_ascii=False)
@@ -70,11 +92,16 @@ def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
         "schemaVersion": SCHEMA_VERSION,
         "version": datetime.now(timezone.utc).strftime("%Y.%m.%d"),
         "generated": datetime.now(timezone.utc).isoformat(),
+        "lastModified": datetime.now(timezone.utc).isoformat(),
         "contentHash": content_hash,
         "source": SCRIPT_TOOL_URL,
         "total_characters": len(characters),
+        "total_reminders": total_reminders,
+        "total_jinxes": total_jinxes,
+        "total_flavor": total_flavor,
         "editions": editions,
         "edition_counts": {k: len(v) for k, v in editions.items()},
+        "edition_reminders": edition_reminders,
     }
     
     manifest_file = output_dir / "manifest.json"
