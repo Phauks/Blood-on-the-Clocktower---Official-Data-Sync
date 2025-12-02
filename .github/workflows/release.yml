@@ -124,6 +124,99 @@ jobs:
           echo "version=$FULL_VERSION" >> $GITHUB_OUTPUT
           echo "Version: $FULL_VERSION"
       
+      - name: Generate changelog
+        id: changelog
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          python << 'EOF'
+          import json
+          import os
+          
+          # Load current manifest
+          with open('dist/manifest.json') as f:
+              current = json.load(f)
+          
+          # Try to load previous manifest
+          prev_tag = "${{ steps.prev_hash.outputs.latest_tag }}"
+          previous = None
+          if prev_tag != "none":
+              import urllib.request
+              try:
+                  url = f"https://github.com/${{ github.repository }}/releases/download/{prev_tag}/manifest.json"
+                  with urllib.request.urlopen(url, timeout=10) as resp:
+                      previous = json.load(resp)
+              except:
+                  pass
+          
+          lines = []
+          
+          # Summary stats
+          lines.append(f"**{current.get('total_characters', '?')}** characters, **{current.get('total_reminders', '?')}** reminder tokens, **{current.get('total_jinxes', '?')}** jinxes, **{current.get('total_flavor', '?')}** with flavor text")
+          lines.append("")
+          
+          if previous:
+              changes = []
+              
+              # Check character count changes
+              prev_chars = previous.get('total_characters', 0)
+              curr_chars = current.get('total_characters', 0)
+              if curr_chars != prev_chars:
+                  diff = curr_chars - prev_chars
+                  changes.append(f"Characters: {prev_chars} → {curr_chars} ({'+' if diff > 0 else ''}{diff})")
+              
+              # Check reminder count changes
+              prev_rem = previous.get('total_reminders', 0)
+              curr_rem = current.get('total_reminders', 0)
+              if curr_rem != prev_rem:
+                  diff = curr_rem - prev_rem
+                  changes.append(f"Reminders: {prev_rem} → {curr_rem} ({'+' if diff > 0 else ''}{diff})")
+              
+              # Check jinx count changes
+              prev_jinx = previous.get('total_jinxes', 0)
+              curr_jinx = current.get('total_jinxes', 0)
+              if curr_jinx != prev_jinx:
+                  diff = curr_jinx - prev_jinx
+                  changes.append(f"Jinxes: {prev_jinx} → {curr_jinx} ({'+' if diff > 0 else ''}{diff})")
+              
+              # Check flavor count changes
+              prev_flav = previous.get('total_flavor', 0)
+              curr_flav = current.get('total_flavor', 0)
+              if curr_flav != prev_flav:
+                  diff = curr_flav - prev_flav
+                  changes.append(f"Flavor text: {prev_flav} → {curr_flav} ({'+' if diff > 0 else ''}{diff})")
+              
+              # Check edition changes
+              prev_counts = previous.get('edition_counts', {})
+              curr_counts = current.get('edition_counts', {})
+              for ed in set(prev_counts.keys()) | set(curr_counts.keys()):
+                  prev_c = prev_counts.get(ed, 0)
+                  curr_c = curr_counts.get(ed, 0)
+                  if prev_c != curr_c:
+                      diff = curr_c - prev_c
+                      changes.append(f"{ed}: {prev_c} → {curr_c} ({'+' if diff > 0 else ''}{diff})")
+              
+              if changes:
+                  lines.append("### Changes from previous release")
+                  for c in changes:
+                      lines.append(f"- {c}")
+              else:
+                  lines.append("### Changes")
+                  lines.append("- Data content updated (ability text, jinxes, or other fields modified)")
+          else:
+              lines.append("### Initial Release")
+              lines.append("- First automated release with change tracking")
+          
+          changelog = "\n".join(lines)
+          
+          # Write to output (escape for GitHub Actions)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write("changelog<<CHANGELOG_EOF\n")
+              f.write(changelog)
+              f.write("\nCHANGELOG_EOF\n")
+          
+          print(changelog)
+          EOF
+      
       - name: Create release ZIP
         if: steps.changes.outputs.has_changes == 'true'
         run: |
@@ -137,25 +230,12 @@ jobs:
           tag_name: v${{ steps.version.outputs.version }}
           name: Blood on the Clocktower Data v${{ steps.version.outputs.version }}
           body: |
-            ## Character Data Release v${{ steps.version.outputs.version }}
+            ## Character Data Release
             
-            This release contains the latest official character data from Blood on the Clocktower.
+            ${{ steps.changelog.outputs.changelog }}
             
-            ### Contents
-            - `characters.json` - All character data with local image paths
-            - `manifest.json` - Version info and content hash for update checking
-            - `icons/` - Character icon images (WebP format)
-            
-            ### Usage
-            Download and extract the ZIP file to use with the Token Generator.
-            
-            ### Manifest Fields
-            Your application can use `manifest.json` for:
-            - `version` / `generated` / `lastModified` - Version and timestamp info
-            - `contentHash` - SHA256 hash of character data (for update checking)
-            - `schemaVersion` - Data format version (increment on breaking changes)
-            - `total_characters` / `total_reminders` / `total_jinxes` / `total_flavor` - Data counts
-            - `edition_counts` / `edition_reminders` - Per-edition statistics
+            ---
+            📖 See [README](https://github.com/${{ github.repository }}#readme) for usage and manifest field documentation.
           files: |
             release/botc-data-v${{ steps.version.outputs.version }}.zip
             dist/manifest.json

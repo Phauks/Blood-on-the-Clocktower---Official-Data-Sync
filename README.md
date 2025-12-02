@@ -83,11 +83,37 @@ The `manifest.json` includes fields for update checking:
 {
   "schemaVersion": 1,
   "version": "2025.12.02",
+  "generated": "2025-12-02T00:00:00Z",
+  "lastModified": "2025-12-02T00:00:00Z",
   "contentHash": "abc123...",
+  "source": "https://script.bloodontheclocktower.com/",
   "total_characters": 174,
-  "editions": { "tb": [...], "bmr": [...], ... }
+  "total_reminders": 181,
+  "total_jinxes": 131,
+  "total_flavor": 174,
+  "editions": ["tb", "bmr", "snv", "carousel", "fabled", "loric"],
+  "edition_counts": { "tb": 27, "bmr": 30, ... },
+  "edition_reminders": { "tb": 18, "bmr": 45, ... }
 }
 ```
+
+### Manifest Fields
+
+| Field | Description |
+|-------|-------------|
+| `schemaVersion` | Data format version (increments on breaking changes) |
+| `version` | Date-based version string (YYYY.MM.DD) |
+| `generated` | ISO timestamp when data was generated |
+| `lastModified` | ISO timestamp of last data modification |
+| `contentHash` | SHA256 hash of character data for update checking |
+| `source` | Official data source URL |
+| `total_characters` | Total number of characters |
+| `total_reminders` | Total reminder tokens across all characters |
+| `total_jinxes` | Total jinx entries across all characters |
+| `total_flavor` | Characters with flavor text |
+| `editions` | List of edition codes |
+| `edition_counts` | Character count per edition |
+| `edition_reminders` | Reminder token count per edition |
 
 See [`examples/update_checker.py`](examples/update_checker.py) for a complete implementation.
 
