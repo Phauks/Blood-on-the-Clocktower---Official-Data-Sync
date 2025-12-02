@@ -239,7 +239,7 @@ jobs:
           lines = []
           
           # Summary stats
-          lines.append(f"**{current.get('total_characters', '?')}** characters, **{current.get('total_reminders', '?')}** reminder tokens, **{current.get('total_jinxes', '?')}** jinxes, **{current.get('total_flavor', '?')}** with flavor text")
+          lines.append(f"**{current.get('total_characters', '?')}** characters, **{current.get('total_reminders', '?')}** reminder tokens, **{current.get('total_jinxes', '?')}** jinxes")
           lines.append("")
           
           if previous:
@@ -285,13 +285,6 @@ jobs:
               if curr_jinx != prev_jinx:
                   diff = curr_jinx - prev_jinx
                   changes.append(f"Jinxes: {prev_jinx} → {curr_jinx} ({'+' if diff > 0 else ''}{diff})")
-              
-              # Check flavor count changes
-              prev_flav = previous.get('total_flavor', 0)
-              curr_flav = current.get('total_flavor', 0)
-              if curr_flav != prev_flav:
-                  diff = curr_flav - prev_flav
-                  changes.append(f"Flavor text: {prev_flav} → {curr_flav} ({'+' if diff > 0 else ''}{diff})")
               
               # Check edition character count changes (only if no specific character changes shown)
               if not added_ids and not removed_ids:
