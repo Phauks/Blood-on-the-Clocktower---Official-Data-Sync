@@ -26,9 +26,11 @@ ICONS_DIR = DIST_DIR / "icons"  # Icons stored directly in dist for packaging
 # HTTP settings (used by all fetchers)
 # =============================================================================
 REQUEST_TIMEOUT = 30  # seconds
+ASYNC_REQUEST_TIMEOUT = 30  # seconds for aiohttp
 RATE_LIMIT_SECONDS = 1.0  # delay between wiki requests
 HTTP_MAX_RETRIES = 3  # retry attempts on transient failures
 HTTP_RETRY_BACKOFF = 1.0  # base backoff time (exponential: 1s, 2s, 4s)
+HTTP_MAX_SIZE = 10 * 1024 * 1024  # 10 MB - max response size
 USER_AGENT = (
     "BOTC-Data-Sync/1.0 (https://github.com/Phauks/Blood-on-the-Clocktower---Official-Data-Sync)"
 )
@@ -53,3 +55,23 @@ VALID_EDITIONS = {"tb", "bmr", "snv", "carousel", "fabled", "loric"}
 
 # Valid team types
 VALID_TEAMS = {"townsfolk", "outsider", "minion", "demon", "traveller", "fabled", "loric"}
+
+# =============================================================================
+# Batch processing settings
+# =============================================================================
+WIKI_FETCH_BATCH_SIZE = 5  # concurrent wiki requests
+DOWNLOAD_BATCH_SIZE = 10  # concurrent icon downloads
+
+# =============================================================================
+# Validation settings
+# =============================================================================
+MAX_ABILITY_LENGTH = 500  # characters
+MAX_NAME_LENGTH = 30  # characters
+MAX_REMINDER_LENGTH = 30  # characters
+MAX_REMINDER_COUNT = 10  # tokens per character
+MIN_FLAVOR_LENGTH = 3  # minimum valid flavor text
+
+# =============================================================================
+# Schema version
+# =============================================================================
+SCHEMA_VERSION = 1  # increment on breaking data format changes

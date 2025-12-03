@@ -11,19 +11,16 @@ from pathlib import Path
 
 # Handle both direct script execution and module import
 try:
-    from .config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL
+    from .config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
     from ..utils.logger import get_logger
 except ImportError:
-    from config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL
+    from config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
     import sys
     from pathlib import Path as TmpPath
     sys.path.insert(0, str(TmpPath(__file__).parent.parent / "utils"))
     from logger import get_logger
 
 logger = get_logger(__name__)
-
-# Schema version - increment when breaking changes are made to data format
-SCHEMA_VERSION = 1
 
 # Internal fields to strip when saving (except _remindersFetched which needs to persist)
 INTERNAL_FIELDS_TO_STRIP = {"_imageUrl"}

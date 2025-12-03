@@ -12,15 +12,12 @@ from pathlib import Path
 
 # Handle both direct script execution and module import
 try:
-    from ..scrapers.config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL
+    from ..scrapers.config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
 except ImportError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-    from config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL
-
-# Schema version - increment when breaking changes are made to data format
-SCHEMA_VERSION = 1
+    from config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
 
 
 def load_all_characters(characters_dir: Path | None = None) -> list[dict]:

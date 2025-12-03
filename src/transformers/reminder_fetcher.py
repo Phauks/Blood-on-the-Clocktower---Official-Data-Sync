@@ -47,6 +47,7 @@ from config import (
     WIKI_BASE_URL,
     CHARACTERS_DIR,
     RATE_LIMIT_SECONDS,
+    ASYNC_REQUEST_TIMEOUT,
     USER_AGENT,
 )
 
@@ -279,7 +280,7 @@ async def fetch_wiki_page_async(
     # Fetch with semaphore to limit concurrent requests
     async with semaphore:
         try:
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=30)) as response:
+            async with session.get(url, timeout=aiohttp.ClientTimeout(total=ASYNC_REQUEST_TIMEOUT)) as response:
                 if response.status == 200:
                     html_content = await response.text()
                     return (char_name, html_content)
@@ -332,7 +333,7 @@ async def fetch_wiki_pages_batch(
 
     # Create aiohttp session with proper headers
     headers = {"User-Agent": USER_AGENT}
-    timeout = aiohttp.ClientTimeout(total=30)
+    timeout = aiohttp.ClientTimeout(total=ASYNC_REQUEST_TIMEOUT)
 
     async with aiohttp.ClientSession(headers=headers, timeout=timeout) as session:
         # Process in batches
