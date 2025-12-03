@@ -11,12 +11,12 @@ Modules:
 """
 
 from .config import (
-    SCRIPT_TOOL_URL,
-    WIKI_BASE_URL,
     CHARACTERS_DIR,
     DATA_DIR,
+    SCRIPT_TOOL_URL,
     VALID_EDITIONS,
     VALID_TEAMS,
+    WIKI_BASE_URL,
 )
 
 __all__ = [

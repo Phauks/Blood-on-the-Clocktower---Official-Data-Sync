@@ -6,7 +6,6 @@ Provides validation functions that can be integrated into the scraper pipeline.
 
 import sys
 from pathlib import Path
-from typing import Any
 
 # Add parent to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -17,7 +16,7 @@ from logger import get_logger
 logger = get_logger(__name__)
 
 try:
-    from validators.schema_validator import validate_character, CHARACTER_SCHEMA
+    from validators.schema_validator import CHARACTER_SCHEMA, validate_character
 except ImportError:
     # Fallback if validators module not available
     def validate_character(char: dict) -> list[str]:
@@ -57,7 +56,7 @@ def validate_characters(characters: dict, strict: bool = False) -> tuple[int, in
 
 def print_validation_summary(valid: int, errors: int, error_messages: list[str]) -> None:
     """Print a summary of validation results."""
-    logger.info(f"\n=== Validation Summary ===")
+    logger.info("\n=== Validation Summary ===")
     logger.info(f"Valid characters: {valid}")
     logger.info(f"Characters with errors: {errors}")
 

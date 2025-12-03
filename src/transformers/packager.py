@@ -8,15 +8,20 @@ for use by the Token Generator application.
 import hashlib
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 # Handle both direct script execution and module import
 try:
-    from ..scrapers.config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
+    from ..scrapers.config import (
+        CHARACTERS_DIR,
+        DIST_DIR,
+        SCHEMA_VERSION,
+        SCRIPT_TOOL_URL,
+    )
 except ImportError:
     sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-    from config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
+    from config import CHARACTERS_DIR, DIST_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
 
 # Add utils to path for logger
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
@@ -40,7 +45,7 @@ def load_all_characters(characters_dir: Path | None = None) -> list[dict]:
     if not all_file.exists():
         raise FileNotFoundError(f"Character data not found: {all_file}")
 
-    with open(all_file, "r", encoding="utf-8") as f:
+    with open(all_file, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -85,7 +90,7 @@ def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
 
     # Sort editions alphabetically and character IDs within each edition
     editions = {k: sorted(v) for k, v in sorted(editions.items())}
-    edition_reminders = {k: v for k, v in sorted(edition_reminders.items())}
+    edition_reminders = dict(sorted(edition_reminders.items()))
 
     # Compute content hash for integrity checking
     char_json = json.dumps(characters, sort_keys=True, ensure_ascii=False)
@@ -93,9 +98,9 @@ def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
 
     manifest = {
         "schemaVersion": SCHEMA_VERSION,
-        "version": datetime.now(timezone.utc).strftime("%Y.%m.%d"),
-        "generated": datetime.now(timezone.utc).isoformat(),
-        "lastModified": datetime.now(timezone.utc).isoformat(),
+        "version": datetime.now(UTC).strftime("%Y.%m.%d"),
+        "generated": datetime.now(UTC).isoformat(),
+        "lastModified": datetime.now(UTC).isoformat(),
         "contentHash": content_hash,
         "source": SCRIPT_TOOL_URL,
         "total_characters": len(characters),
@@ -187,10 +192,10 @@ def verify_package(dist_dir: Path | None = None, verbose: int = 0) -> bool:
         logger.error(f"Error: characters.json not found in {pkg_dir}")
         return False
 
-    with open(manifest_file, "r", encoding="utf-8") as f:
+    with open(manifest_file, encoding="utf-8") as f:
         manifest = json.load(f)
 
-    with open(chars_file, "r", encoding="utf-8") as f:
+    with open(chars_file, encoding="utf-8") as f:
         characters = json.load(f)
 
     # Compute hash

@@ -4,10 +4,9 @@ Shared utilities for interacting with the Blood on the Clocktower wiki.
 Provides common functions for fetching and parsing wiki pages.
 """
 
+import sys
 import urllib.parse
 from pathlib import Path
-from typing import Optional
-import sys
 
 # Add paths for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
@@ -66,7 +65,7 @@ def construct_wiki_url(character_name: str, validate: bool = True) -> str:
     return url
 
 
-def fetch_wiki_page(character_name: str, char_id: Optional[str] = None) -> Optional[str]:
+def fetch_wiki_page(character_name: str, char_id: str | None = None) -> str | None:
     """Fetch wiki page HTML for a character.
 
     Args:

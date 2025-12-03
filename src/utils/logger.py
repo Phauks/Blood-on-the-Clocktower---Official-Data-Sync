@@ -7,7 +7,6 @@ Provides consistent logging across all modules with appropriate log levels.
 import logging
 import sys
 from pathlib import Path
-from typing import Optional
 
 # Log levels
 DEBUG = logging.DEBUG
@@ -20,7 +19,7 @@ CRITICAL = logging.CRITICAL
 def setup_logger(
     name: str,
     level: int = logging.INFO,
-    log_file: Optional[Path] = None,
+    log_file: Path | None = None,
     verbose: bool = False
 ) -> logging.Logger:
     """Configure and return a logger instance.

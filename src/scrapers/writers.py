@@ -6,17 +6,18 @@ Functions for saving character data to JSON files and creating manifests.
 
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 # Handle both direct script execution and module import
 try:
-    from .config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
     from ..utils.logger import get_logger
+    from .config import CHARACTERS_DIR, DATA_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
 except ImportError:
-    from config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
     import sys
     from pathlib import Path as TmpPath
+
+    from config import CHARACTERS_DIR, DATA_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
     sys.path.insert(0, str(TmpPath(__file__).parent.parent / "utils"))
     from logger import get_logger
 
@@ -130,7 +131,7 @@ def save_characters_by_edition(characters: dict, output_dir: Path | None = None)
             # Preserve _remindersFetched, reminders, and flavor from existing file
             if char_file.exists():
                 try:
-                    with open(char_file, "r", encoding="utf-8") as f:
+                    with open(char_file, encoding="utf-8") as f:
                         existing = json.load(f)
                     # Preserve reminder data if it was previously fetched
                     if existing.get("_remindersFetched", False):
@@ -140,7 +141,7 @@ def save_characters_by_edition(characters: dict, output_dir: Path | None = None)
                     # Preserve flavor text if it exists
                     if existing.get("flavor"):
                         char["flavor"] = existing["flavor"]
-                except (json.JSONDecodeError, IOError):
+                except (OSError, json.JSONDecodeError):
                     pass
 
             # Ensure flavor field exists (empty string if not set)
@@ -215,7 +216,7 @@ def create_manifest(characters: dict, output_dir: Path | None = None) -> dict:
 
     # Sort editions alphabetically and character IDs within each edition
     editions = {k: sorted(v) for k, v in sorted(editions.items())}
-    edition_reminders = {k: v for k, v in sorted(edition_reminders.items())}
+    edition_reminders = dict(sorted(edition_reminders.items()))
 
     # Compute content hash from character data (for integrity checking)
     # Strip internal fields before hashing to match what gets saved
@@ -225,9 +226,9 @@ def create_manifest(characters: dict, output_dir: Path | None = None) -> dict:
 
     manifest = {
         "schemaVersion": SCHEMA_VERSION,
-        "version": datetime.now(timezone.utc).strftime("%Y.%m.%d"),
-        "generated": datetime.now(timezone.utc).isoformat(),
-        "lastModified": datetime.now(timezone.utc).isoformat(),
+        "version": datetime.now(UTC).strftime("%Y.%m.%d"),
+        "generated": datetime.now(UTC).isoformat(),
+        "lastModified": datetime.now(UTC).isoformat(),
         "contentHash": content_hash,
         "source": SCRIPT_TOOL_URL,
         "total_characters": len(characters),

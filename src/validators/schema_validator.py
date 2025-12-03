@@ -11,10 +11,8 @@ but we extract the character object schema for validation.
 import json
 import sys
 from pathlib import Path
-from typing import Any
 
-import jsonschema
-from jsonschema import Draft202012Validator, ValidationError
+from jsonschema import Draft202012Validator
 
 # Add utils to path for logger
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
@@ -316,7 +314,7 @@ def load_all_characters() -> list[dict]:
             f"Character data not found at {all_file}. Run character_scraper.py first."
         )
 
-    with open(all_file, "r", encoding="utf-8") as f:
+    with open(all_file, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -375,7 +373,7 @@ def main():
     logger.info("Loading character data...")
 
     if args.file:
-        with open(args.file, "r", encoding="utf-8") as f:
+        with open(args.file, encoding="utf-8") as f:
             data = json.load(f)
             # Handle both single character and array
             characters = data if isinstance(data, list) else [data]

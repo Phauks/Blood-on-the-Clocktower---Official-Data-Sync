@@ -14,7 +14,13 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(python src/scrapers/character_scraper.py:*)",
-      "Bash(python -m pytest:*)"
+      "Bash(python -m pytest:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(ruff check:*)",
+      "Bash(python -m ruff check:*)"
     ],
     "deny": [],
     "ask": []

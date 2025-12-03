@@ -9,7 +9,7 @@ Provides robust HTTP request handling for wiki scraping with:
 """
 
 import time
-from typing import Callable, Optional
+from collections.abc import Callable
 
 import requests
 from requests.exceptions import RequestException
@@ -22,10 +22,10 @@ try:
     # Add scrapers to path for config access
     sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
     from config import (
-        REQUEST_TIMEOUT,
-        RATE_LIMIT_SECONDS,
         HTTP_MAX_RETRIES,
         HTTP_RETRY_BACKOFF,
+        RATE_LIMIT_SECONDS,
+        REQUEST_TIMEOUT,
         USER_AGENT,
     )
 except ImportError:
@@ -39,12 +39,12 @@ except ImportError:
 
 def fetch_with_retry(
     url: str,
-    max_retries: Optional[int] = None,
-    timeout: Optional[int] = None,
-    backoff_factor: Optional[float] = None,
-    on_retry: Optional[Callable[[int, Exception], None]] = None,
+    max_retries: int | None = None,
+    timeout: int | None = None,
+    backoff_factor: float | None = None,
+    on_retry: Callable[[int, Exception], None] | None = None,
     max_size_mb: int = 10,
-) -> Optional[requests.Response]:
+) -> requests.Response | None:
     """Fetch a URL with automatic retry on transient failures.
 
     Uses exponential backoff: wait = backoff_factor * (2 ** attempt)
@@ -77,7 +77,6 @@ def fetch_with_retry(
         backoff_factor = HTTP_RETRY_BACKOFF
 
     max_size_bytes = max_size_mb * 1024 * 1024
-    last_exception = None
 
     for attempt in range(max_retries + 1):
         try:
@@ -120,7 +119,6 @@ def fetch_with_retry(
             return response
 
         except RequestException as e:
-            last_exception = e
 
             # Don't retry on client errors (4xx) except 429 (rate limit)
             if hasattr(e, "response") and e.response is not None:
@@ -141,14 +139,14 @@ def fetch_with_retry(
 
             time.sleep(wait_time)
 
-        except ValueError as e:
+        except ValueError:
             # Size limit exceeded - don't retry
             raise
 
     return None
 
 
-def fetch_url(url: str, timeout: Optional[int] = None) -> Optional[str]:
+def fetch_url(url: str, timeout: int | None = None) -> str | None:
     """Simple URL fetch without retry (for backwards compatibility).
 
     Args:
@@ -162,7 +160,7 @@ def fetch_url(url: str, timeout: Optional[int] = None) -> Optional[str]:
     return response.text if response else None
 
 
-def fetch_json(url: str, timeout: Optional[int] = None) -> Optional[dict]:
+def fetch_json(url: str, timeout: int | None = None) -> dict | None:
     """Fetch URL and parse as JSON.
 
     Args:
@@ -181,7 +179,7 @@ def fetch_json(url: str, timeout: Optional[int] = None) -> Optional[dict]:
     return None
 
 
-def rate_limit(seconds: Optional[float] = None) -> None:
+def rate_limit(seconds: float | None = None) -> None:
     """Sleep for rate limiting.
 
     Args:

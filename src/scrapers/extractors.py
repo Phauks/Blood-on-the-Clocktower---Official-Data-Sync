@@ -4,28 +4,29 @@ Extraction functions for Blood on the Clocktower scraper.
 Functions for extracting character data, night order, and jinxes from the page.
 """
 
-from typing import Dict, Any, List, Tuple
+from typing import Any
+
 from playwright.sync_api import Page
 
 # Handle both direct script execution and module import
 try:
-    from .parsers import (
-        parse_edition_from_icon,
-        parse_character_id_from_icon,
-        construct_full_icon_url,
-        construct_local_image_path,
-        detect_setup_flag,
-    )
     from .config import CLICK_DELAY
-except ImportError:
-    from parsers import (
-        parse_edition_from_icon,
-        parse_character_id_from_icon,
+    from .parsers import (
         construct_full_icon_url,
         construct_local_image_path,
         detect_setup_flag,
+        parse_character_id_from_icon,
+        parse_edition_from_icon,
     )
+except ImportError:
     from config import CLICK_DELAY
+    from parsers import (
+        construct_full_icon_url,
+        construct_local_image_path,
+        detect_setup_flag,
+        parse_character_id_from_icon,
+        parse_edition_from_icon,
+    )
 
 # Import logging
 try:
@@ -39,7 +40,7 @@ except ImportError:
 logger = get_logger(__name__)
 
 
-def extract_characters(page: Page) -> Dict[str, Dict[str, Any]]:
+def extract_characters(page: Page) -> dict[str, dict[str, Any]]:
     """Extract all characters from #all-characters sidebar.
 
     Args:
@@ -98,7 +99,7 @@ def extract_characters(page: Page) -> Dict[str, Dict[str, Any]]:
 
 
 def extract_night_order(
-    page: Page, characters: Dict[str, Dict[str, Any]], selector: str, night_type: str
+    page: Page, characters: dict[str, dict[str, Any]], selector: str, night_type: str
 ) -> None:
     """Extract night order from first-night or other-night sheet.
 
@@ -143,7 +144,7 @@ def extract_night_order(
             characters[char_id][night_type] = order
 
 
-def extract_jinxes(page: Page, characters: Dict[str, Dict[str, Any]]) -> int:
+def extract_jinxes(page: Page, characters: dict[str, dict[str, Any]]) -> int:
     """Extract all jinxes from the Djinn section.
 
     Jinxes are stored bidirectionally on both characters involved.
@@ -249,7 +250,7 @@ def add_all_characters_to_script(page: Page) -> None:
     logger.info(f"Added {result['added']} characters to script ({result['failed']} failed)")
 
 
-def clean_character_data(characters: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+def clean_character_data(characters: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
     """Clean up character data before output.
 
     Removes empty jinxes arrays for cleaner JSON output.
@@ -264,7 +265,7 @@ def clean_character_data(characters: Dict[str, Dict[str, Any]]) -> Dict[str, Dic
         Internal fields (underscore-prefixed like _imageUrl) are NOT stripped here.
         They are stripped in writers.py when saving to JSON files.
     """
-    for char_id, char in list(characters.items()):
+    for _char_id, char in list(characters.items()):
         # Remove empty jinxes arrays for cleaner output
         if "jinxes" in char and not char["jinxes"]:
             del char["jinxes"]
@@ -273,8 +274,8 @@ def clean_character_data(characters: Dict[str, Dict[str, Any]]) -> Dict[str, Dic
 
 
 def filter_characters_by_edition(
-    characters: Dict[str, Dict[str, Any]], editions: List[str]
-) -> Dict[str, Dict[str, Any]]:
+    characters: dict[str, dict[str, Any]], editions: list[str]
+) -> dict[str, dict[str, Any]]:
     """Filter characters to only include specified editions.
 
     Args:

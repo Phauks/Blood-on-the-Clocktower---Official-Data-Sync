@@ -18,9 +18,9 @@ except ImportError:
 
 # Handle both direct script execution and module import
 try:
-    from .config import ICONS_DIR, RATE_LIMIT_SECONDS
+    from .config import ICONS_DIR
 except ImportError:
-    from config import ICONS_DIR, RATE_LIMIT_SECONDS
+    from config import ICONS_DIR
 
 # Add utils to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
@@ -155,7 +155,7 @@ def download_character_images(
     else:
         iterator = to_download
 
-    for char_id, image_url, local_path in iterator:
+    for _char_id, image_url, local_path in iterator:
         success = download_image(image_url, local_path, verbose=verbose)
 
         if success:

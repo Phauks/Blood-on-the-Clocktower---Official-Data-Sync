@@ -11,9 +11,9 @@ from urllib.parse import urlparse
 
 # Handle both direct script execution and module import
 try:
-    from .config import SETUP_EXCEPTIONS, BASE_ICON_URL, WIKI_BASE_URL
+    from .config import BASE_ICON_URL, SETUP_EXCEPTIONS, WIKI_BASE_URL
 except ImportError:
-    from config import SETUP_EXCEPTIONS, BASE_ICON_URL, WIKI_BASE_URL
+    from config import BASE_ICON_URL, SETUP_EXCEPTIONS, WIKI_BASE_URL
 
 # Add utils to path for logger
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
@@ -115,10 +115,7 @@ def detect_setup_flag(character_id: str, ability_text: str) -> bool:
         return True
 
     # Primary detection: any bracket text indicates setup modification
-    if re.search(r"\[.*\]", ability_text):
-        return True
-
-    return False
+    return bool(re.search(r"\[.*\]", ability_text))
 
 
 def character_name_to_wiki_url(name: str) -> str:

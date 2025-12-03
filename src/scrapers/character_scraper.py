@@ -39,25 +39,25 @@ from logger import get_logger
 
 logger = get_logger(__name__)
 
-from config import (
-    SCRIPT_TOOL_URL,
+from config import (  # noqa: E402
     CHARACTERS_DIR,
-    ICONS_DIR,
     DATA_DIR,
     DEFAULT_TIMEOUT,
+    ICONS_DIR,
     PAGE_RENDER_DELAY,
+    SCRIPT_TOOL_URL,
     VALID_EDITIONS,
 )
-from extractors import (
-    extract_characters,
-    extract_night_order,
-    extract_jinxes,
+from extractors import (  # noqa: E402
     add_all_characters_to_script,
     clean_character_data,
+    extract_characters,
+    extract_jinxes,
+    extract_night_order,
     filter_characters_by_edition,
 )
-from writers import save_characters_by_edition, create_manifest
-from validation import validate_characters, print_validation_summary
+from validation import print_validation_summary, validate_characters  # noqa: E402
+from writers import create_manifest, save_characters_by_edition  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:
@@ -332,7 +332,7 @@ def main() -> int:
                     total_fetched += result.get("fetched", 0)
                     total_preserved += result.get("preserved", 0)
 
-            logger.info(f"\nReminder summary:")
+            logger.info("\nReminder summary:")
             logger.info(f"  Fetched: {total_fetched}, Preserved: {total_preserved}")
             logger.info(f"  Total reminder tokens: {total_tokens}")
             logger.info("\n✓ Reminder tokens fetched (only new/changed characters)!")
@@ -345,9 +345,9 @@ def main() -> int:
         logger.info("\n--- Phase 8: Fetching flavor text from wiki (incremental) ---")
         try:
             from flavor_fetcher import (
-                update_flavor_for_characters,
                 load_scraped_characters,
                 save_updated_characters,
+                update_flavor_for_characters,
             )
 
             # Load current character data

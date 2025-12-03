@@ -6,8 +6,8 @@ Modules:
 - data_loader: Character data loading utilities
 """
 
-from .http_client import fetch_url, fetch_with_retry
 from .data_loader import load_previous_character_data
+from .http_client import fetch_url, fetch_with_retry
 
 __all__ = [
     "fetch_url",

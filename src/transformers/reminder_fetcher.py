@@ -21,10 +21,9 @@ import asyncio
 import html
 import json
 import re
-import time
 import sys
+import time
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
 
 try:
     import aiohttp
@@ -42,15 +41,15 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 
 # Import from config (consolidated constants)
 from config import (
+    ASYNC_REQUEST_TIMEOUT,
     CHARACTERS_DIR,
     RATE_LIMIT_SECONDS,
-    ASYNC_REQUEST_TIMEOUT,
     USER_AGENT,
 )
+from data_loader import load_previous_character_data
 
 # Import shared utilities
 from http_client import fetch_with_retry
-from data_loader import load_previous_character_data
 from logger import get_logger
 from wiki_client import construct_wiki_url
 
@@ -122,11 +121,8 @@ def needs_reminder_update(character: dict, previous_data: dict[str, dict]) -> bo
         return True
 
     # Case 4: Character name changed (wiki URL would change)
-    if character.get("name", "") != previous.get("name", ""):
-        return True
-
     # Otherwise, no update needed
-    return False
+    return character.get("name", "") != previous.get("name", "")
 
 
 def preserve_reminders(character: dict, previous_data: dict[str, dict]) -> bool:
@@ -223,7 +219,7 @@ def fetch_wiki_page(char_name: str) -> str | None:
 
 async def fetch_wiki_page_async(
     session: "aiohttp.ClientSession", char_name: str, semaphore: asyncio.Semaphore, verbose: int = 0
-) -> Tuple[str, Optional[str]]:
+) -> tuple[str, str | None]:
     """Async version of fetch_wiki_page for batch processing.
 
     Args:
@@ -269,7 +265,7 @@ async def fetch_wiki_page_async(
                     if verbose >= 1:
                         tqdm.write(f"    HTTP {response.status} for {char_name}")
                     return (char_name, None)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             if verbose >= 1:
                 tqdm.write(f"    Timeout fetching {char_name}")
             return (char_name, None)
@@ -282,11 +278,11 @@ async def fetch_wiki_page_async(
 
 
 async def fetch_wiki_pages_batch(
-    characters: List[Tuple[str, str]],
+    characters: list[tuple[str, str]],
     batch_size: int = 5,
     rate_limit_delay: float = 1.0,
     verbose: int = 0,
-) -> Dict[str, Optional[str]]:
+) -> dict[str, str | None]:
     """Fetch multiple wiki pages concurrently with rate limiting.
 
     Args:
@@ -643,7 +639,7 @@ def fetch_reminders_for_edition(
         filtered_files = []
         for char_file in char_files:
             try:
-                with open(char_file, "r", encoding="utf-8") as f:
+                with open(char_file, encoding="utf-8") as f:
                     char_data = json.load(f)
                 if char_data.get("team", "").lower() == team_filter.lower():
                     filtered_files.append(char_file)
@@ -665,7 +661,7 @@ def fetch_reminders_for_edition(
 
     for char_file in char_files:
         try:
-            with open(char_file, "r", encoding="utf-8") as f:
+            with open(char_file, encoding="utf-8") as f:
                 character = json.load(f)
         except (json.JSONDecodeError, OSError) as e:
             if verbose >= 1:
@@ -683,19 +679,18 @@ def fetch_reminders_for_edition(
             continue
 
         # Incremental mode: check if update needed
-        if incremental and previous_data:
-            if not needs_reminder_update(character, previous_data):
-                # Preserve existing reminders
-                if preserve_reminders(character, previous_data):
-                    results[char_id] = character.get("reminders", [])
-                    preserved_count += 1
-                    if verbose >= 2:
-                        logger.debug(f"  {char_name} -> (preserved: {results[char_id]})")
-                else:
-                    skipped_count += 1
-                    if verbose >= 2:
-                        logger.debug(f"  {char_name} -> (skipped, no changes)")
-                continue
+        if incremental and previous_data and not needs_reminder_update(character, previous_data):
+            # Preserve existing reminders
+            if preserve_reminders(character, previous_data):
+                results[char_id] = character.get("reminders", [])
+                preserved_count += 1
+                if verbose >= 2:
+                    logger.debug(f"  {char_name} -> (preserved: {results[char_id]})")
+            else:
+                skipped_count += 1
+                if verbose >= 2:
+                    logger.debug(f"  {char_name} -> (skipped, no changes)")
+            continue
 
         # Add to fetch list
         characters_to_fetch.append((char_id, char_name))
@@ -802,7 +797,7 @@ def update_character_files_with_reminders(edition: str, reminders: dict[str, lis
             continue
 
         try:
-            with open(char_file, "r", encoding="utf-8") as f:
+            with open(char_file, encoding="utf-8") as f:
                 character = json.load(f)
 
             # Update reminders (empty array is valid - not all characters have tokens)
@@ -940,7 +935,7 @@ def main():
             update_character_files_with_reminders(edition, reminders)
 
     # Summary
-    logger.info(f"\n=== Summary ===")
+    logger.info("\n=== Summary ===")
     total = len(all_reminders)
     with_tokens = sum(1 for r in all_reminders.values() if r)
     logger.info(f"Characters processed: {total}")

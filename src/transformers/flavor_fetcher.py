@@ -11,7 +11,6 @@ This minimizes wiki requests from total character count to only when necessary.
 """
 
 import json
-import re
 import sys
 import time
 from pathlib import Path
@@ -27,13 +26,13 @@ from config import (
     CHARACTERS_DIR,
     RATE_LIMIT_SECONDS,
 )
+from data_loader import load_previous_character_data
 
 # Import shared utilities
 from http_client import fetch_with_retry
-from data_loader import load_previous_character_data
-from writers import order_character_fields, strip_internal_fields
 from logger import get_logger
 from wiki_client import construct_wiki_url
+from writers import order_character_fields, strip_internal_fields
 
 logger = get_logger(__name__)
 
@@ -101,11 +100,8 @@ def needs_flavor_update(character: dict, previous_data: dict[str, dict]) -> bool
         return True
 
     # Case 5: Character name changed (wiki URL would change)
-    if character.get("name", "") != previous.get("name", ""):
-        return True
-
     # Otherwise, no update needed
-    return False
+    return character.get("name", "") != previous.get("name", "")
 
 
 def preserve_flavor_text(character: dict, previous_data: dict[str, dict]) -> bool:
@@ -309,7 +305,7 @@ def update_flavor_for_characters(characters: dict[str, dict], force: bool = Fals
             # Rate limiting - be nice to the wiki server
             time.sleep(RATE_LIMIT_SECONDS)
 
-    logger.info(f"\nFlavor text summary:")
+    logger.info("\nFlavor text summary:")
     logger.info(f"  Fetched: {stats['fetched']}")
     logger.info(f"  Preserved: {stats['preserved']}")
     logger.info(f"  Failed: {stats['failed']}")
@@ -354,7 +350,7 @@ def load_scraped_characters() -> dict[str, dict]:
             f"Character data not found at {all_file}. Run character_scraper.py first."
         )
 
-    with open(all_file, "r", encoding="utf-8") as f:
+    with open(all_file, encoding="utf-8") as f:
         characters_list = json.load(f)
 
     return {char["id"]: char for char in characters_list}

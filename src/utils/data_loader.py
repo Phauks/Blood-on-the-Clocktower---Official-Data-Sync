@@ -7,7 +7,7 @@ used by multiple modules (reminder_fetcher, flavor_fetcher, etc.).
 
 import json
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Any
 
 # Import config - handle both module and direct execution
 try:
@@ -27,8 +27,8 @@ logger = get_logger(__name__)
 
 
 def load_previous_character_data(
-    characters_dir: Optional[Path] = None,
-) -> Dict[str, Dict[str, Any]]:
+    characters_dir: Path | None = None,
+) -> dict[str, dict[str, Any]]:
     """Load all existing character JSON files from data/characters/*/*.json.
 
     Args:
@@ -51,7 +51,7 @@ def load_previous_character_data(
             continue
 
         try:
-            with open(char_file, "r", encoding="utf-8") as f:
+            with open(char_file, encoding="utf-8") as f:
                 character = json.load(f)
                 char_id = character.get("id")
                 if char_id:
@@ -62,7 +62,7 @@ def load_previous_character_data(
     return previous_data
 
 
-def load_character_file(char_file: Path) -> Optional[Dict[str, Any]]:
+def load_character_file(char_file: Path) -> dict[str, Any] | None:
     """Load a single character JSON file.
 
     Args:
@@ -72,13 +72,13 @@ def load_character_file(char_file: Path) -> Optional[Dict[str, Any]]:
         Character dictionary or None if loading failed
     """
     try:
-        with open(char_file, "r", encoding="utf-8") as f:
+        with open(char_file, encoding="utf-8") as f:
             return json.load(f)
     except Exception:
         return None
 
 
-def save_character_file(char_file: Path, character: Dict[str, Any]) -> bool:
+def save_character_file(char_file: Path, character: dict[str, Any]) -> bool:
     """Save a character dictionary to JSON file.
 
     Args:
@@ -102,8 +102,8 @@ def save_character_file(char_file: Path, character: Dict[str, Any]) -> bool:
 
 
 def get_character_files_by_edition(
-    edition: str, characters_dir: Optional[Path] = None
-) -> List[Path]:
+    edition: str, characters_dir: Path | None = None
+) -> list[Path]:
     """Get all character JSON files for an edition.
 
     Args:
