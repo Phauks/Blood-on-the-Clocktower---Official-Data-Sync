@@ -53,6 +53,9 @@ from config import (
 # Import shared utilities
 from http_client import fetch_with_retry
 from data_loader import load_previous_character_data
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 # Info tokens to exclude (not reminder tokens)
 INFO_TOKEN_EXCLUSIONS = [
@@ -641,7 +644,7 @@ def fetch_reminders_for_edition(
     """
     edition_dir = CHARACTERS_DIR / edition
     if not edition_dir.exists():
-        print(f"Edition directory not found: {edition_dir}")
+        logger.error(f"Edition directory not found: {edition_dir}")
         return {}
 
     # Load previous data if incremental mode and not already provided
@@ -681,7 +684,7 @@ def fetch_reminders_for_edition(
                 character = json.load(f)
         except Exception as e:
             if verbose >= 1:
-                print(f"  Error loading {char_file.name}: {e}")
+                logger.error(f"  Error loading {char_file.name}: {e}")
             continue
 
         char_id = character.get("id", char_file.stem)
@@ -690,7 +693,7 @@ def fetch_reminders_for_edition(
 
         if dry_run:
             if verbose >= 1:
-                print(f"  {char_name}... (dry run)")
+                logger.info(f"  {char_name}... (dry run)")
             results[char_id] = ["DRY_RUN"]
             continue
 
@@ -702,11 +705,11 @@ def fetch_reminders_for_edition(
                     results[char_id] = character.get("reminders", [])
                     preserved_count += 1
                     if verbose >= 2:
-                        print(f"  {char_name} -> (preserved: {results[char_id]})")
+                        logger.debug(f"  {char_name} -> (preserved: {results[char_id]})")
                 else:
                     skipped_count += 1
                     if verbose >= 2:
-                        print(f"  {char_name} -> (skipped, no changes)")
+                        logger.debug(f"  {char_name} -> (skipped, no changes)")
                 continue
 
         # Add to fetch list
@@ -717,7 +720,7 @@ def fetch_reminders_for_edition(
         if verbose >= 1:
             mode_msg = " (incremental)" if incremental else ""
             async_msg = f" [async batch mode, {batch_size} concurrent]"
-            print(
+            logger.info(
                 f"\nFetching reminders for {len(characters_to_fetch)} characters in '{edition}'{filter_msg}{mode_msg}{async_msg}..."
             )
 
@@ -741,21 +744,21 @@ def fetch_reminders_for_edition(
 
                 if verbose >= 1:
                     if reminders:
-                        print(f"  {char_name} -> {reminders}")
+                        logger.info(f"  {char_name} -> {reminders}")
                     else:
-                        print(f"  {char_name} -> (no tokens found)")
+                        logger.info(f"  {char_name} -> (no tokens found)")
             else:
                 results[char_id] = []
                 fetched_count += 1
                 if verbose >= 1:
-                    print(f"  {char_name} -> (fetch failed)")
+                    logger.warning(f"  {char_name} -> (fetch failed)")
 
     # Fallback to sync mode
     elif characters_to_fetch and not dry_run:
         if verbose >= 1:
             mode_msg = " (incremental)" if incremental else ""
             sync_msg = "" if not use_async else " [async not available, using sync mode]"
-            print(
+            logger.info(
                 f"\nFetching reminders for {len(characters_to_fetch)} characters in '{edition}'{filter_msg}{mode_msg}{sync_msg}..."
             )
 
@@ -832,7 +835,7 @@ def update_character_files_with_reminders(edition: str, reminders: dict[str, lis
                 f.write("\n")
 
         except Exception as e:
-            print(f"Error updating {char_file.name}: {e}")
+            logger.error(f"Error updating {char_file.name}: {e}")
 
 
 def fetch_single_character(char_id: str, char_name: str) -> None:
@@ -842,12 +845,12 @@ def fetch_single_character(char_id: str, char_name: str) -> None:
         char_id: Character ID
         char_name: Character display name
     """
-    print(f"Fetching reminders for '{char_name}' (id: {char_id})...")
+    logger.info(f"Fetching reminders for '{char_name}' (id: {char_id})...")
     reminders = get_reminders_for_character(char_id, char_name)
     if reminders:
-        print(f"  Reminders: {reminders}")
+        logger.info(f"  Reminders: {reminders}")
     else:
-        print("  No reminders found")
+        logger.info("  No reminders found")
 
 
 def get_all_editions() -> list[str]:
@@ -951,15 +954,15 @@ def main():
             update_character_files_with_reminders(edition, reminders)
 
     # Summary
-    print(f"\n=== Summary ===")
+    logger.info(f"\n=== Summary ===")
     total = len(all_reminders)
     with_tokens = sum(1 for r in all_reminders.values() if r)
-    print(f"Characters processed: {total}")
-    print(f"Characters with tokens: {with_tokens}")
-    print(f"Characters without tokens: {total - with_tokens}")
+    logger.info(f"Characters processed: {total}")
+    logger.info(f"Characters with tokens: {with_tokens}")
+    logger.info(f"Characters without tokens: {total - with_tokens}")
 
     if args.update and not args.dry_run:
-        print("Files updated!")
+        logger.info("Files updated!")
 
 
 if __name__ == "__main__":

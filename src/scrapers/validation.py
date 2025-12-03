@@ -10,6 +10,11 @@ from typing import Any
 
 # Add parent to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 try:
     from validators.schema_validator import validate_character, CHARACTER_SCHEMA
@@ -52,14 +57,14 @@ def validate_characters(characters: dict, strict: bool = False) -> tuple[int, in
 
 def print_validation_summary(valid: int, errors: int, error_messages: list[str]) -> None:
     """Print a summary of validation results."""
-    print(f"\n=== Validation Summary ===")
-    print(f"Valid characters: {valid}")
-    print(f"Characters with errors: {errors}")
+    logger.info(f"\n=== Validation Summary ===")
+    logger.info(f"Valid characters: {valid}")
+    logger.info(f"Characters with errors: {errors}")
 
     if error_messages:
-        print(f"\nErrors ({len(error_messages)} total):")
+        logger.info(f"\nErrors ({len(error_messages)} total):")
         # Group errors by type
         for msg in error_messages[:10]:  # Show first 10
-            print(f"  - {msg}")
+            logger.error(f"  - {msg}")
         if len(error_messages) > 10:
-            print(f"  ... and {len(error_messages) - 10} more errors")
+            logger.info(f"  ... and {len(error_messages) - 10} more errors")

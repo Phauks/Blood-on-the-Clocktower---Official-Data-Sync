@@ -12,8 +12,15 @@ from pathlib import Path
 # Handle both direct script execution and module import
 try:
     from .config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL
+    from ..utils.logger import get_logger
 except ImportError:
     from config import CHARACTERS_DIR, DATA_DIR, SCRIPT_TOOL_URL
+    import sys
+    from pathlib import Path as TmpPath
+    sys.path.insert(0, str(TmpPath(__file__).parent.parent / "utils"))
+    from logger import get_logger
+
+logger = get_logger(__name__)
 
 # Schema version - increment when breaking changes are made to data format
 SCHEMA_VERSION = 1
@@ -149,7 +156,7 @@ def save_characters_by_edition(characters: dict, output_dir: Path | None = None)
             with open(char_file, "w", encoding="utf-8") as f:
                 json.dump(ordered_char, f, indent=2, ensure_ascii=False)
 
-        print(f"Saved {len(chars)} characters to {edition_dir}")
+        logger.info(f"Saved {len(chars)} characters to {edition_dir}")
 
     # Save combined file (strip ALL internal fields, order fields for distribution)
     all_chars = []
@@ -164,7 +171,7 @@ def save_characters_by_edition(characters: dict, output_dir: Path | None = None)
     all_file = char_dir / "all_characters.json"
     with open(all_file, "w", encoding="utf-8") as f:
         json.dump(all_chars, f, indent=2, ensure_ascii=False)
-    print(f"Saved combined file with {len(all_chars)} characters to {all_file}")
+    logger.info(f"Saved combined file with {len(all_chars)} characters to {all_file}")
 
 
 def create_manifest(characters: dict, output_dir: Path | None = None) -> dict:
@@ -238,6 +245,6 @@ def create_manifest(characters: dict, output_dir: Path | None = None) -> dict:
     manifest_file = data_dir / "manifest.json"
     with open(manifest_file, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
-    print(f"Saved manifest to {manifest_file}")
+    logger.info(f"Saved manifest to {manifest_file}")
 
     return manifest

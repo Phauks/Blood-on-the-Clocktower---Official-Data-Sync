@@ -20,6 +20,11 @@ except ImportError:
     PROJECT_ROOT = Path(__file__).parent.parent.parent
     CHARACTERS_DIR = PROJECT_ROOT / "data" / "characters"
 
+# Import logging
+from logger import get_logger
+
+logger = get_logger(__name__)
+
 
 def load_previous_character_data(
     characters_dir: Optional[Path] = None,
@@ -52,7 +57,7 @@ def load_previous_character_data(
                 if char_id:
                     previous_data[char_id] = character
         except Exception as e:
-            print(f"Warning: Could not load {char_file}: {e}")
+            logger.warning(f"Could not load {char_file}: {e}")
 
     return previous_data
 
@@ -92,7 +97,7 @@ def save_character_file(char_file: Path, character: Dict[str, Any]) -> bool:
             f.write("\n")
         return True
     except Exception as e:
-        print(f"Error saving {char_file}: {e}")
+        logger.error(f"Error saving {char_file}: {e}")
         return False
 
 

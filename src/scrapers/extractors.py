@@ -27,6 +27,17 @@ except ImportError:
     )
     from config import CLICK_DELAY
 
+# Import logging
+try:
+    from ..utils.logger import get_logger
+except ImportError:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+    from logger import get_logger
+
+logger = get_logger(__name__)
+
 
 def extract_characters(page: Page) -> Dict[str, Dict[str, Any]]:
     """Extract all characters from #all-characters sidebar.
@@ -40,7 +51,7 @@ def extract_characters(page: Page) -> Dict[str, Dict[str, Any]]:
     characters = {}
 
     char_elements = page.query_selector_all("#all-characters .item[data-id]")
-    print(f"Found {len(char_elements)} characters in sidebar")
+    logger.info(f"Found {len(char_elements)} characters in sidebar")
 
     for elem in char_elements:
         char_id = elem.get_attribute("data-id")
@@ -103,7 +114,7 @@ def extract_night_order(
     reminder_key = f"{night_type}Reminder"
 
     items = page.query_selector_all(f"{selector} .item")
-    print(f"Found {len(items)} items in {night_type} order")
+    logger.info(f"Found {len(items)} items in {night_type} order")
 
     order = 0
     for item in items:
@@ -148,7 +159,7 @@ def extract_jinxes(page: Page, characters: Dict[str, Dict[str, Any]]) -> int:
         Modifies the characters dictionary by adding jinx entries
     """
     jinx_items = page.query_selector_all(".jinxes-container .jinxes .item")
-    print(f"Found {len(jinx_items)} jinx pairs")
+    logger.info(f"Found {len(jinx_items)} jinx pairs")
 
     jinx_count = 0
 
@@ -213,7 +224,7 @@ def add_all_characters_to_script(page: Page) -> None:
     count = page.evaluate("""
         () => document.querySelectorAll('#all-characters .item[data-id]').length
     """)
-    print(f"Adding {count} characters to script...")
+    logger.info(f"Adding {count} characters to script...")
 
     # Click all characters in a single JavaScript call (MUCH faster)
     result = page.evaluate("""
@@ -235,7 +246,7 @@ def add_all_characters_to_script(page: Page) -> None:
 
     # Wait for the script to update
     page.wait_for_timeout(CLICK_DELAY)
-    print(f"Added {result['added']} characters to script ({result['failed']} failed)")
+    logger.info(f"Added {result['added']} characters to script ({result['failed']} failed)")
 
 
 def clean_character_data(characters: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
