@@ -46,8 +46,11 @@ def setup_logger(
     if logger.handlers:
         return logger
 
-    # Console handler
-    console_handler = logging.StreamHandler(sys.stdout)
+    # Console handler with UTF-8 encoding
+    import io
+    # Wrap stdout with UTF-8 encoding to handle Unicode characters (like checkmarks)
+    utf8_stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    console_handler = logging.StreamHandler(utf8_stdout)
     console_handler.setLevel(logging.DEBUG if verbose else logging.INFO)
 
     # Format: "[INFO] module: message"
@@ -77,4 +80,10 @@ def get_logger(name: str) -> logging.Logger:
     Returns:
         Logger instance
     """
-    return logging.getLogger(name)
+    logger = logging.getLogger(name)
+
+    # If logger has no handlers, set it up with defaults
+    if not logger.handlers:
+        return setup_logger(name)
+
+    return logger

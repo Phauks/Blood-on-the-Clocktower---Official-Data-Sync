@@ -7,6 +7,7 @@ for use by the Token Generator application.
 
 import hashlib
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -14,10 +15,14 @@ from pathlib import Path
 try:
     from ..scrapers.config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
 except ImportError:
-    import sys
-
     sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
     from config import DATA_DIR, CHARACTERS_DIR, DIST_DIR, SCRIPT_TOOL_URL, SCHEMA_VERSION
+
+# Add utils to path for logger
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 
 def load_all_characters(characters_dir: Path | None = None) -> list[dict]:
@@ -128,33 +133,33 @@ def package_data(
     dist_dir.mkdir(parents=True, exist_ok=True)
 
     if verbose >= 1:
-        print(f"Creating distribution package in {dist_dir}...")
+        logger.info(f"Creating distribution package in {dist_dir}...")
 
     # Load character data
     characters = load_all_characters(characters_dir)
     if verbose >= 1:
-        print(f"  Loaded {len(characters)} characters")
+        logger.info(f"  Loaded {len(characters)} characters")
 
     # Save characters.json
     chars_file = dist_dir / "characters.json"
     with open(chars_file, "w", encoding="utf-8") as f:
         json.dump(characters, f, indent=2, ensure_ascii=False)
     if verbose >= 1:
-        print(f"  Created {chars_file.name}")
+        logger.info(f"  Created {chars_file.name}")
 
     # Create manifest
     manifest = create_dist_manifest(characters, dist_dir)
     if verbose >= 1:
-        print(f"  Created manifest.json (v{manifest['version']}, hash: {manifest['contentHash']})")
+        logger.info(f"  Created manifest.json (v{manifest['version']}, hash: {manifest['contentHash']})")
 
     # Count icons (already in dist/icons from image_downloader)
     icons_dir = dist_dir / "icons"
     icon_count = sum(1 for _ in icons_dir.rglob("*.webp")) if icons_dir.exists() else 0
 
-    print(f"Package created: {dist_dir}")
-    print(f"  - characters.json ({len(characters)} characters)")
-    print(f"  - manifest.json (v{manifest['version']})")
-    print(f"  - icons/ ({icon_count} images)")
+    logger.info(f"Package created: {dist_dir}")
+    logger.info(f"  - characters.json ({len(characters)} characters)")
+    logger.info(f"  - manifest.json (v{manifest['version']})")
+    logger.info(f"  - icons/ ({icon_count} images)")
 
     return dist_dir
 
@@ -175,11 +180,11 @@ def verify_package(dist_dir: Path | None = None, verbose: int = 0) -> bool:
     chars_file = pkg_dir / "characters.json"
 
     if not manifest_file.exists():
-        print(f"Error: manifest.json not found in {pkg_dir}")
+        logger.error(f"Error: manifest.json not found in {pkg_dir}")
         return False
 
     if not chars_file.exists():
-        print(f"Error: characters.json not found in {pkg_dir}")
+        logger.error(f"Error: characters.json not found in {pkg_dir}")
         return False
 
     with open(manifest_file, "r", encoding="utf-8") as f:
@@ -193,11 +198,11 @@ def verify_package(dist_dir: Path | None = None, verbose: int = 0) -> bool:
     computed_hash = hashlib.sha256(char_json.encode()).hexdigest()[:16]
 
     if computed_hash != manifest["contentHash"]:
-        print(f"Hash mismatch! Expected: {manifest['contentHash']}, Got: {computed_hash}")
+        logger.error(f"Hash mismatch! Expected: {manifest['contentHash']}, Got: {computed_hash}")
         return False
 
     if verbose >= 1:
-        print(f"Package verified: {manifest['total_characters']} characters, hash OK")
+        logger.info(f"Package verified: {manifest['total_characters']} characters, hash OK")
 
     return True
 

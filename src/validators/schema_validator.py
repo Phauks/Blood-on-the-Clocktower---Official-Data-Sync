@@ -16,6 +16,12 @@ from typing import Any
 import jsonschema
 from jsonschema import Draft202012Validator, ValidationError
 
+# Add utils to path for logger
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from logger import get_logger
+
+logger = get_logger(__name__)
+
 # Output paths
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
@@ -320,38 +326,38 @@ def print_validation_report(
     total_characters: int,
 ) -> None:
     """Print a formatted validation report."""
-    print("\n" + "=" * 60)
-    print("VALIDATION REPORT")
-    print("=" * 60)
+    logger.info("\n" + "=" * 60)
+    logger.info("VALIDATION REPORT")
+    logger.info("=" * 60)
 
-    print(f"\nTotal characters: {total_characters}")
+    logger.info(f"\nTotal characters: {total_characters}")
 
     # Schema validation results
     if schema_errors:
-        print(f"\n❌ Schema errors: {len(schema_errors)} characters have issues")
+        logger.error(f"\n❌ Schema errors: {len(schema_errors)} characters have issues")
         for char_id, errors in sorted(schema_errors.items()):
-            print(f"\n  {char_id}:")
+            logger.error(f"\n  {char_id}:")
             for error in errors:
-                print(f"    - {error}")
+                logger.error(f"    - {error}")
     else:
-        print("\n✓ Schema validation: All characters pass")
+        logger.info("\n✓ Schema validation: All characters pass")
 
     # Data integrity results
     if integrity_issues:
-        print(f"\n⚠️  Data integrity issues: {len(integrity_issues)}")
+        logger.warning(f"\n⚠️  Data integrity issues: {len(integrity_issues)}")
         for issue in integrity_issues:
-            print(f"    - {issue}")
+            logger.warning(f"    - {issue}")
     else:
-        print("\n✓ Data integrity: No issues found")
+        logger.info("\n✓ Data integrity: No issues found")
 
     # Summary
-    print("\n" + "-" * 60)
+    logger.info("\n" + "-" * 60)
     if not schema_errors and not integrity_issues:
-        print("✓ All validations passed!")
+        logger.info("✓ All validations passed!")
     else:
         total_issues = len(schema_errors) + len(integrity_issues)
-        print(f"⚠️  Total issues found: {total_issues}")
-    print("=" * 60)
+        logger.warning(f"⚠️  Total issues found: {total_issues}")
+    logger.info("=" * 60)
 
 
 def main():
@@ -366,7 +372,7 @@ def main():
     args = parser.parse_args()
 
     # Load characters
-    print("Loading character data...")
+    logger.info("Loading character data...")
 
     if args.file:
         with open(args.file, "r", encoding="utf-8") as f:
@@ -376,13 +382,13 @@ def main():
     else:
         characters = load_all_characters()
 
-    print(f"Loaded {len(characters)} characters")
+    logger.info(f"Loaded {len(characters)} characters")
 
     # Run validations
-    print("\nValidating against schema...")
+    logger.info("\nValidating against schema...")
     schema_errors = validate_all_characters(characters, strict=args.strict)
 
-    print("Checking data integrity...")
+    logger.info("Checking data integrity...")
     integrity_issues = check_data_integrity(characters)
 
     # Print report

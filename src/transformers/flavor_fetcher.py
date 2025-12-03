@@ -24,7 +24,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 
 # Import from config (consolidated constants)
 from config import (
-    WIKI_BASE_URL,
     CHARACTERS_DIR,
     RATE_LIMIT_SECONDS,
 )
@@ -33,6 +32,10 @@ from config import (
 from http_client import fetch_with_retry
 from data_loader import load_previous_character_data
 from writers import order_character_fields, strip_internal_fields
+from logger import get_logger
+from wiki_client import construct_wiki_url
+
+logger = get_logger(__name__)
 
 
 def is_valid_flavor(flavor: str) -> bool:
@@ -243,9 +246,8 @@ def fetch_flavor_from_wiki(char_name: str) -> str | None:
     Returns:
         Flavor text or None if not found
     """
-    # Construct wiki URL (spaces become underscores)
-    wiki_name = char_name.replace(" ", "_")
-    url = f"{WIKI_BASE_URL}/{wiki_name}"
+    # Construct wiki URL using shared utility
+    url = construct_wiki_url(char_name)
 
     response = fetch_with_retry(url)
     if response is None:
@@ -269,8 +271,8 @@ def update_flavor_for_characters(characters: dict[str, dict], force: bool = Fals
 
     stats = {"fetched": 0, "preserved": 0, "failed": 0, "skipped": 0}
 
-    print(f"Loaded {len(previous_data)} characters from previous data")
-    print("Checking flavor text updates...")
+    logger.info(f"Loaded {len(previous_data)} characters from previous data")
+    logger.info("Checking flavor text updates...")
 
     # First pass: identify characters that need fetching
     to_fetch = []
@@ -307,11 +309,11 @@ def update_flavor_for_characters(characters: dict[str, dict], force: bool = Fals
             # Rate limiting - be nice to the wiki server
             time.sleep(RATE_LIMIT_SECONDS)
 
-    print(f"\nFlavor text summary:")
-    print(f"  Fetched: {stats['fetched']}")
-    print(f"  Preserved: {stats['preserved']}")
-    print(f"  Failed: {stats['failed']}")
-    print(f"  Skipped: {stats['skipped']}")
+    logger.info(f"\nFlavor text summary:")
+    logger.info(f"  Fetched: {stats['fetched']}")
+    logger.info(f"  Preserved: {stats['preserved']}")
+    logger.info(f"  Failed: {stats['failed']}")
+    logger.info(f"  Skipped: {stats['skipped']}")
 
     return stats
 
@@ -340,7 +342,7 @@ def save_updated_characters(characters: dict[str, dict]) -> None:
     with open(all_file, "w", encoding="utf-8") as f:
         json.dump(all_chars, f, indent=2, ensure_ascii=False)
 
-    print(f"Saved {len(characters)} characters with flavor text")
+    logger.info(f"Saved {len(characters)} characters with flavor text")
 
 
 def load_scraped_characters() -> dict[str, dict]:
@@ -367,22 +369,22 @@ def main():
     args = parser.parse_args()
 
     # Load scraped character data
-    print("Loading character data...")
+    logger.info("Loading character data...")
     characters = load_scraped_characters()
-    print(f"Loaded {len(characters)} characters")
+    logger.info(f"Loaded {len(characters)} characters")
 
     # Update flavor text
-    print("\n--- Updating flavor text ---")
+    logger.info("\n--- Updating flavor text ---")
     stats = update_flavor_for_characters(characters, force=args.force)
 
     # Save if any fetches were made
     if stats["fetched"] > 0:
-        print("\n--- Saving updated characters ---")
+        logger.info("\n--- Saving updated characters ---")
         save_updated_characters(characters)
     else:
-        print("\nNo new flavor text fetched, skipping save.")
+        logger.info("\nNo new flavor text fetched, skipping save.")
 
-    print("\n✓ Flavor text update complete!")
+    logger.info("\n✓ Flavor text update complete!")
     return 0
 
 

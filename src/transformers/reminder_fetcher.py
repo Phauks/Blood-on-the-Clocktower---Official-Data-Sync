@@ -22,8 +22,6 @@ import html
 import json
 import re
 import time
-import urllib.parse
-from urllib.parse import urlparse
 import sys
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
@@ -44,7 +42,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 
 # Import from config (consolidated constants)
 from config import (
-    WIKI_BASE_URL,
     CHARACTERS_DIR,
     RATE_LIMIT_SECONDS,
     ASYNC_REQUEST_TIMEOUT,
@@ -55,6 +52,7 @@ from config import (
 from http_client import fetch_with_retry
 from data_loader import load_previous_character_data
 from logger import get_logger
+from wiki_client import construct_wiki_url
 
 logger = get_logger(__name__)
 
@@ -208,18 +206,8 @@ def fetch_wiki_page(char_name: str) -> str | None:
     if not re.match(r"^[a-zA-Z0-9\s\-'À-ÿ]+$", char_name):
         raise ValueError(f"Invalid characters in character name: {char_name!r}")
 
-    # Replace spaces with underscores, then URL-encode special characters
-    wiki_name = char_name.replace(" ", "_")
-    # URL-encode special characters (apostrophes, etc.) but keep underscores
-    wiki_name = urllib.parse.quote(wiki_name, safe="_")
-    url = f"{WIKI_BASE_URL}/{wiki_name}"
-
-    # Validate final URL matches expected domain (prevent SSRF)
-    parsed = urlparse(url)
-    if not parsed.scheme in ("http", "https"):
-        raise ValueError(f"Invalid URL scheme: {parsed.scheme}")
-    if not parsed.netloc.endswith("bloodontheclocktower.com"):
-        raise ValueError(f"URL does not match expected domain: {url}")
+    # Construct and validate wiki URL using shared utility
+    url = construct_wiki_url(char_name, validate=True)
 
     # Use shared HTTP client with retry logic
     response = fetch_with_retry(
@@ -262,19 +250,12 @@ async def fetch_wiki_page_async(
             tqdm.write(f"    Invalid characters in character name: {char_name}")
         return (char_name, None)
 
-    # Build and validate URL
-    wiki_name = char_name.replace(" ", "_")
-    wiki_name = urllib.parse.quote(wiki_name, safe="_")
-    url = f"{WIKI_BASE_URL}/{wiki_name}"
-
-    parsed = urlparse(url)
-    if not parsed.scheme in ("http", "https"):
+    # Build and validate URL using shared utility
+    try:
+        url = construct_wiki_url(char_name, validate=True)
+    except ValueError as e:
         if verbose >= 1:
-            tqdm.write(f"    Invalid URL scheme for {char_name}: {parsed.scheme}")
-        return (char_name, None)
-    if not parsed.netloc.endswith("bloodontheclocktower.com"):
-        if verbose >= 1:
-            tqdm.write(f"    Invalid URL domain for {char_name}: {url}")
+            tqdm.write(f"    Invalid URL for {char_name}: {e}")
         return (char_name, None)
 
     # Fetch with semaphore to limit concurrent requests
@@ -292,9 +273,11 @@ async def fetch_wiki_page_async(
             if verbose >= 1:
                 tqdm.write(f"    Timeout fetching {char_name}")
             return (char_name, None)
-        except Exception as e:
+        except (aiohttp.ClientError, OSError) as e:
+            # ClientError covers connection errors, HTTP errors, etc.
+            # OSError covers network-level issues
             if verbose >= 1:
-                tqdm.write(f"    Error fetching {char_name}: {e}")
+                logger.warning(f"    Error fetching {char_name}: {e}")
             return (char_name, None)
 
 
@@ -664,8 +647,9 @@ def fetch_reminders_for_edition(
                     char_data = json.load(f)
                 if char_data.get("team", "").lower() == team_filter.lower():
                     filtered_files.append(char_file)
-            except Exception:
-                pass
+            except (json.JSONDecodeError, OSError) as e:
+                # Skip files that can't be read or parsed
+                logger.debug(f"Skipping {char_file.name}: {e}")
         char_files = filtered_files
 
     filter_msg = f" (team: {team_filter})" if team_filter else ""
@@ -683,7 +667,7 @@ def fetch_reminders_for_edition(
         try:
             with open(char_file, "r", encoding="utf-8") as f:
                 character = json.load(f)
-        except Exception as e:
+        except (json.JSONDecodeError, OSError) as e:
             if verbose >= 1:
                 logger.error(f"  Error loading {char_file.name}: {e}")
             continue
@@ -835,7 +819,8 @@ def update_character_files_with_reminders(edition: str, reminders: dict[str, lis
                 json.dump(character, f, indent=2, ensure_ascii=False)
                 f.write("\n")
 
-        except Exception as e:
+        except (OSError, TypeError) as e:
+            # OSError for file write errors, TypeError for JSON serialization errors
             logger.error(f"Error updating {char_file.name}: {e}")
 
 

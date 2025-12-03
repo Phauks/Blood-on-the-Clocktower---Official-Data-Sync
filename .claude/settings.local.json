@@ -12,7 +12,9 @@
       "Bash(python -m ruff format:*)",
       "Bash(if exist IMPLEMENTATION_SUMMARY.md del IMPLEMENTATION_SUMMARY.md)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(python src/scrapers/character_scraper.py:*)",
+      "Bash(python -m pytest:*)"
     ],
     "deny": [],
     "ask": []

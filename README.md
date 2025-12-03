@@ -21,15 +21,22 @@ Download the latest release ZIP from [Releases](../../releases). It contains:
 
 ### For Developers
 
+**Setup:**
 ```bash
 # Clone the repository
 git clone https://github.com/Phauks/Blood-on-the-Clocktower---Official-Data-Sync.git
 cd Blood-on-the-Clocktower---Official-Data-Sync
 
-# Install dependencies
+# Install dependencies (includes testing tools)
 pip install -r requirements.txt
 playwright install chromium
 
+# Verify installation
+pytest  # Run tests (should see 28 passing)
+```
+
+**Running the Scraper:**
+```bash
 # Run full pipeline (scrape + validate + images + reminders + package)
 python src/scrapers/character_scraper.py --all
 
@@ -39,6 +46,21 @@ python src/scrapers/character_scraper.py --images     # Download icons
 python src/scrapers/character_scraper.py --reminders  # Fetch reminder tokens
 python src/scrapers/character_scraper.py --package    # Create dist/ package
 ```
+
+**Testing:**
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=src --cov-report=html
+
+# Run specific test categories
+pytest -m unit         # Fast unit tests only
+pytest -m integration  # Integration tests only
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development guidelines.
 
 ## Output Structure
 

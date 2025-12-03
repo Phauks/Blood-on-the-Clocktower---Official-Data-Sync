@@ -169,34 +169,120 @@ pytest -v
 pytest -n auto
 ```
 
+### Testing Guidelines
+
+**When to Write Unit Tests:**
+- Pure functions with no external dependencies (parsers, validators, utilities)
+- Edge cases: empty strings, None, invalid input, boundary conditions
+- Security validation: path traversal, SSRF, injection attempts
+- Fast execution (<10ms per test)
+
+**When to Write Integration Tests:**
+- Multi-module interactions (HTTP client with retry logic)
+- Mocked external services (wiki fetching, HTTP requests)
+- File I/O operations with temporary directories
+- Moderate execution time (10-100ms per test)
+
+**When to Write E2E Tests:**
+- Full pipeline workflows (scraper → validator → writer)
+- Real network requests (optional, marked with `@pytest.mark.e2e`)
+- Slow execution (>100ms per test)
+
+**Test Markers:**
+```python
+@pytest.mark.unit          # Fast, isolated unit test
+@pytest.mark.integration   # Integration test with mocks
+@pytest.mark.e2e           # End-to-end test (slow)
+@pytest.mark.slow          # Any slow test (>100ms)
+```
+
+### Available Test Fixtures
+
+The following fixtures are available in `tests/conftest.py`:
+
+```python
+# Sample data fixtures
+sample_character         # Dict with single character data
+sample_characters        # List of multiple characters
+
+# Directory fixtures (auto-cleanup)
+temp_dir                 # Temporary directory for test outputs
+test_output_dir          # Test output directory in tests/
+project_root             # Project root Path
+data_dir                 # Data directory Path
+
+# Mock fixtures
+mock_response            # Mock HTTP response object
+mock_wiki_page           # Mock wiki HTML page content
+```
+
+**Example using fixtures:**
+```python
+def test_save_character_file(sample_character, temp_dir):
+    """Should save character to JSON file."""
+    save_character_file(sample_character, "tb", "washerwoman", temp_dir)
+    output_file = temp_dir / "tb" / "washerwoman.json"
+    assert output_file.exists()
+```
+
 ### Writing Tests
 
-- Use descriptive test names: `test_parse_edition_from_icon_returns_correct_edition()`
-- Test edge cases: empty strings, None, invalid input
-- Mock external dependencies (HTTP requests, file I/O)
-- Aim for 80%+ code coverage
+- **Descriptive names**: `test_parse_edition_from_icon_returns_correct_edition()`
+- **Test edge cases**: empty strings, None, invalid input
+- **Mock external dependencies**: HTTP requests, file I/O
+- **One assertion per test**: Clear failure messages
+- **Docstrings**: Explain what behavior is being tested
 
-Example test:
+**Example test:**
 
 ```python
 import pytest
 from src.scrapers.parsers import parse_edition_from_icon
 
-def test_parse_edition_from_icon_extracts_correct_edition():
-    """Should extract edition from icon path."""
-    result = parse_edition_from_icon("src/assets/icons/tb/washerwoman_g.webp")
-    assert result == "tb"
+class TestParseEditionFromIcon:
+    """Tests for parse_edition_from_icon function."""
 
-def test_parse_edition_from_icon_returns_unknown_for_invalid_path():
-    """Should return 'unknown' for malformed paths."""
-    result = parse_edition_from_icon("invalid/path")
-    assert result == "unknown"
+    @pytest.mark.unit
+    def test_extracts_correct_edition(self):
+        """Should extract edition from icon path."""
+        result = parse_edition_from_icon("src/assets/icons/tb/washerwoman_g.webp")
+        assert result == "tb"
 
-def test_parse_edition_from_icon_prevents_path_traversal():
-    """Should reject path traversal attempts."""
-    with pytest.raises(ValueError):
-        parse_edition_from_icon("../../etc/passwd")
+    @pytest.mark.unit
+    def test_returns_unknown_for_invalid_path(self):
+        """Should return 'unknown' for malformed paths."""
+        result = parse_edition_from_icon("invalid/path")
+        assert result == "unknown"
+
+    @pytest.mark.unit
+    def test_handles_different_editions(self):
+        """Should extract various edition codes."""
+        assert parse_edition_from_icon("icons/bmr/moonchild.webp") == "bmr"
+        assert parse_edition_from_icon("icons/snv/artist.webp") == "snv"
 ```
+
+### Code Coverage Expectations
+
+**Target Coverage:**
+- **Parsers & Utilities**: 80%+ (src/scrapers/parsers.py, src/utils/)
+- **Validators**: 85%+ (src/validators/)
+- **Scrapers**: 60%+ (src/scrapers/character_scraper.py) - harder to test due to Playwright
+- **Overall Project**: 70%+
+
+**Running with Coverage:**
+```bash
+# Generate HTML coverage report
+pytest --cov=src --cov-report=html --cov-report=term
+
+# View report
+open htmlcov/index.html  # macOS
+start htmlcov/index.html  # Windows
+```
+
+**Coverage Requirements:**
+- All new code should include tests
+- Coverage should not decrease with PRs
+- Focus on critical paths and security-sensitive code
 
 ---
 

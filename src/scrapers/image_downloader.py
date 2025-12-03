@@ -25,6 +25,9 @@ except ImportError:
 # Add utils to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from http_client import fetch_with_retry
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 # Image-specific rate limit (faster than wiki)
 IMAGE_RATE_LIMIT = 0.2
@@ -43,14 +46,14 @@ def download_image(url: str, output_path: Path, verbose: int = 0) -> bool:
     """
     response = fetch_with_retry(
         url,
-        on_retry=lambda attempt, e: print(f"    Retry {attempt} for {output_path.name}: {e}")
+        on_retry=lambda attempt, e: logger.debug(f"    Retry {attempt} for {output_path.name}: {e}")
         if verbose >= 1
         else None,
     )
 
     if not response:
         if verbose >= 1:
-            print(f"    Failed to download {url} after retries")
+            logger.warning(f"    Failed to download {url} after retries")
         return False
 
     try:
@@ -62,13 +65,13 @@ def download_image(url: str, output_path: Path, verbose: int = 0) -> bool:
             f.write(response.content)
 
         if verbose >= 2:
-            print(f"    Downloaded: {output_path.name}")
+            logger.debug(f"    Downloaded: {output_path.name}")
 
         return True
 
     except Exception as e:
         if verbose >= 1:
-            print(f"    Failed to save {output_path}: {e}")
+            logger.error(f"    Failed to save {output_path}: {e}")
         return False
 
 
@@ -133,18 +136,18 @@ def download_character_images(
         if incremental and local_path.exists():
             stats["skipped"] += 1
             if verbose >= 2:
-                print(f"  Skipped (exists): {char_id}")
+                logger.debug(f"  Skipped (exists): {char_id}")
             continue
 
         to_download.append((char_id, image_url, local_path))
 
     if not to_download:
         if verbose >= 1:
-            print(f"  All {stats['skipped']} images already downloaded")
+            logger.info(f"  All {stats['skipped']} images already downloaded")
         return stats
 
     if verbose >= 1:
-        print(f"  Downloading {len(to_download)} images ({stats['skipped']} already exist)...")
+        logger.info(f"  Downloading {len(to_download)} images ({stats['skipped']} already exist)...")
 
     # Download with optional progress bar
     if show_progress and HAS_TQDM and not verbose:
@@ -166,40 +169,6 @@ def download_character_images(
     return stats
 
 
-def update_character_image_paths(characters: dict, icons_dir: Path | None = None) -> None:
-    """Update character data with local image paths.
-
-    NOTE: This function is largely deprecated since 'image' now stores local paths
-    by default. Kept for backward compatibility.
-
-    Modifies characters dict in-place to add 'imageLocal' field pointing to
-    the local icon file path (relative to data directory).
-
-    Args:
-        characters: Dict of character data to update
-        icons_dir: Icons directory (default: data/icons)
-    """
-    if icons_dir is None:
-        icons_dir = ICONS_DIR
-
-    for char_id, char_data in characters.items():
-        # Use _imageUrl if available, fallback to image
-        image_url = char_data.get("_imageUrl") or char_data.get("image", "")
-        edition = char_data.get("edition", "unknown")
-
-        # Skip if no URL
-        if not image_url or not image_url.startswith("http"):
-            continue
-
-        local_path = get_local_icon_path(char_id, edition, image_url)
-
-        # Store relative path from data directory
-        if local_path.exists():
-            # Relative path: icons/{edition}/{char_id}.webp
-            relative_path = local_path.relative_to(icons_dir.parent)
-            char_data["imageLocal"] = str(relative_path).replace("\\", "/")
-
-
 if __name__ == "__main__":
     # Test: download a single character image
     import argparse
@@ -214,8 +183,8 @@ if __name__ == "__main__":
 
     if args.url and args.char:
         local_path = get_local_icon_path(args.char, args.edition, args.url)
-        print(f"Downloading {args.char} to {local_path}...")
+        logger.info(f"Downloading {args.char} to {local_path}...")
         success = download_image(args.url, local_path, verbose=args.verbose)
-        print("Success!" if success else "Failed!")
+        logger.info("Success!" if success else "Failed!")
     else:
-        print("Usage: python image_downloader.py --char imp --url <url> --edition tb")
+        logger.info("Usage: python image_downloader.py --char imp --url <url> --edition tb")

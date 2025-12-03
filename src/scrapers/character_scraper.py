@@ -31,8 +31,13 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-# Add transformers to path for reminder fetcher
+# Add paths for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "transformers"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 from config import (
     SCRIPT_TOOL_URL,
@@ -156,7 +161,7 @@ Examples:
 
 def scrape_characters(headless: bool = True, timeout: int = DEFAULT_TIMEOUT) -> dict:
     """Main scraper function. Returns character data dict."""
-    print(f"Starting scrape of {SCRIPT_TOOL_URL}")
+    logger.info(f"Starting scrape of {SCRIPT_TOOL_URL}")
 
     with sync_playwright() as p:
         # Launch browser
@@ -164,34 +169,34 @@ def scrape_characters(headless: bool = True, timeout: int = DEFAULT_TIMEOUT) -> 
         page = browser.new_page()
 
         # Navigate to script tool
-        print("Loading page...")
+        logger.info("Loading page...")
         page.goto(SCRIPT_TOOL_URL, timeout=timeout)
 
         # Wait for character list to load (Single Page Application renders content dynamically)
-        print("Waiting for Single Page Application to render...")
+        logger.info("Waiting for Single Page Application to render...")
         page.wait_for_selector("#all-characters .item[data-id]", state="attached", timeout=timeout)
         # Give the page a moment to fully render
         page.wait_for_timeout(PAGE_RENDER_DELAY)
-        print("Page loaded successfully")
+        logger.info("Page loaded successfully")
 
         # Phase 1: Extract character list
-        print("\n--- Phase 1: Extracting characters ---")
+        logger.info("\n--- Phase 1: Extracting characters ---")
         characters = extract_characters(page)
 
         # Phase 2: Add all characters to script (enables night order and jinxes)
-        print("\n--- Phase 2: Adding characters to script ---")
+        logger.info("\n--- Phase 2: Adding characters to script ---")
         add_all_characters_to_script(page)
 
         # Phase 3: Extract first night order from active script
-        print("\n--- Phase 3: Extracting first night order ---")
+        logger.info("\n--- Phase 3: Extracting first night order ---")
         extract_night_order(page, characters, ".first-night", "firstNight")
 
         # Phase 4: Extract other night order from active script
-        print("\n--- Phase 4: Extracting other night order ---")
+        logger.info("\n--- Phase 4: Extracting other night order ---")
         extract_night_order(page, characters, ".other-night", "otherNight")
 
         # Phase 5: Extract jinxes (should now be visible with Djinn in script)
-        print("\n--- Phase 5: Extracting jinxes ---")
+        logger.info("\n--- Phase 5: Extracting jinxes ---")
         jinx_count = extract_jinxes(page, characters)
 
         browser.close()
@@ -200,19 +205,19 @@ def scrape_characters(headless: bool = True, timeout: int = DEFAULT_TIMEOUT) -> 
     characters = clean_character_data(characters)
 
     # Print summary
-    print("\n=== Extraction Summary ===")
-    print(f"Total characters: {len(characters)}")
-    print(f"Total jinx pairs: {jinx_count}")
+    logger.info("\n=== Extraction Summary ===")
+    logger.info(f"Total characters: {len(characters)}")
+    logger.info(f"Total jinx pairs: {jinx_count}")
 
     chars_with_first_night = sum(1 for c in characters.values() if c["firstNight"] > 0)
     chars_with_other_night = sum(1 for c in characters.values() if c["otherNight"] > 0)
     chars_with_setup = sum(1 for c in characters.values() if c["setup"])
     chars_with_jinxes = sum(1 for c in characters.values() if "jinxes" in c and c["jinxes"])
 
-    print(f"Characters with first night action: {chars_with_first_night}")
-    print(f"Characters with other night action: {chars_with_other_night}")
-    print(f"Characters with setup: {chars_with_setup}")
-    print(f"Characters with jinxes: {chars_with_jinxes}")
+    logger.info(f"Characters with first night action: {chars_with_first_night}")
+    logger.info(f"Characters with other night action: {chars_with_other_night}")
+    logger.info(f"Characters with setup: {chars_with_setup}")
+    logger.info(f"Characters with jinxes: {chars_with_jinxes}")
 
     # Count by edition
     edition_counts = {}
@@ -220,9 +225,9 @@ def scrape_characters(headless: bool = True, timeout: int = DEFAULT_TIMEOUT) -> 
         edition = char["edition"]
         edition_counts[edition] = edition_counts.get(edition, 0) + 1
 
-    print("\nBy edition:")
+    logger.info("\nBy edition:")
     for edition, count in sorted(edition_counts.items()):
-        print(f"  {edition}: {count}")
+        logger.info(f"  {edition}: {count}")
 
     return characters
 
@@ -252,21 +257,21 @@ def main() -> int:
 
     # Filter by edition if requested
     if args.edition:
-        print(f"\n--- Filtering to editions: {', '.join(args.edition)} ---")
+        logger.info(f"\n--- Filtering to editions: {', '.join(args.edition)} ---")
         characters = filter_characters_by_edition(characters, args.edition)
-        print(f"Filtered to {len(characters)} characters")
+        logger.info(f"Filtered to {len(characters)} characters")
 
     # Validate if requested
     if args.validate:
-        print("\n--- Phase 6: Validating data ---")
+        logger.info("\n--- Phase 6: Validating data ---")
         valid, errors, error_messages = validate_characters(characters)
         print_validation_summary(valid, errors, error_messages)
         if errors > 0:
-            print("\n⚠ Validation found issues (non-blocking)")
+            logger.warning("\n⚠ Validation found issues (non-blocking)")
 
     # Download images if requested (BEFORE saving, while _imageUrl is still present)
     if args.images:
-        print("\n--- Downloading character icons (incremental) ---")
+        logger.info("\n--- Downloading character icons (incremental) ---")
         try:
             from image_downloader import download_character_images
 
@@ -274,11 +279,11 @@ def main() -> int:
                 characters, icons_dir=ICONS_DIR, incremental=True, verbose=0, show_progress=True
             )
 
-            print(
+            logger.info(
                 f"\n✓ Images: {stats['downloaded']} downloaded, {stats['skipped']} skipped, {stats['failed']} failed"
             )
         except ImportError as e:
-            print(f"\n⚠ Could not import image_downloader: {e}")
+            logger.warning(f"\n⚠ Could not import image_downloader: {e}")
 
     # Load previous data BEFORE saving (for incremental reminder fetching)
     previous_data = None
@@ -291,13 +296,13 @@ def main() -> int:
             pass
 
     # Save output (this strips internal fields like _imageUrl)
-    print("\n--- Saving data ---")
+    logger.info("\n--- Saving data ---")
     save_characters_by_edition(characters, char_dir)
     create_manifest(characters, data_dir)
 
     # Fetch reminders from wiki if requested
     if args.reminders:
-        print("\n--- Phase 7: Fetching reminder tokens from wiki (incremental) ---")
+        logger.info("\n--- Phase 7: Fetching reminder tokens from wiki (incremental) ---")
         try:
             from reminder_fetcher import (
                 fetch_reminders_for_edition,
@@ -327,17 +332,17 @@ def main() -> int:
                     total_fetched += result.get("fetched", 0)
                     total_preserved += result.get("preserved", 0)
 
-            print(f"\nReminder summary:")
-            print(f"  Fetched: {total_fetched}, Preserved: {total_preserved}")
-            print(f"  Total reminder tokens: {total_tokens}")
-            print("\n✓ Reminder tokens fetched (only new/changed characters)!")
+            logger.info(f"\nReminder summary:")
+            logger.info(f"  Fetched: {total_fetched}, Preserved: {total_preserved}")
+            logger.info(f"  Total reminder tokens: {total_tokens}")
+            logger.info("\n✓ Reminder tokens fetched (only new/changed characters)!")
         except ImportError as e:
-            print(f"\n⚠ Could not import reminder_fetcher: {e}")
-            print("  Run 'pip install beautifulsoup4 tqdm' and try again.")
+            logger.warning(f"\n⚠ Could not import reminder_fetcher: {e}")
+            logger.warning("  Run 'pip install beautifulsoup4 tqdm' and try again.")
 
     # Fetch flavor text from wiki if requested
     if args.flavor:
-        print("\n--- Phase 8: Fetching flavor text from wiki (incremental) ---")
+        logger.info("\n--- Phase 8: Fetching flavor text from wiki (incremental) ---")
         try:
             from flavor_fetcher import (
                 update_flavor_for_characters,
@@ -355,25 +360,25 @@ def main() -> int:
             if stats["fetched"] > 0:
                 save_updated_characters(char_data)
 
-            print("\n✓ Flavor text fetched (only new/changed characters)!")
+            logger.info("\n✓ Flavor text fetched (only new/changed characters)!")
         except ImportError as e:
-            print(f"\n⚠ Could not import flavor_fetcher: {e}")
-            print("  Run 'pip install beautifulsoup4' and try again.")
+            logger.warning(f"\n⚠ Could not import flavor_fetcher: {e}")
+            logger.warning("  Run 'pip install beautifulsoup4' and try again.")
 
     # Create distribution package if requested
     if args.package:
-        print("\n--- Phase 9: Creating distribution package ---")
+        logger.info("\n--- Phase 9: Creating distribution package ---")
         try:
             from packager import package_data
 
             package_data(verbose=1)
-            print("\n✓ Distribution package created in dist/")
+            logger.info("\n✓ Distribution package created in dist/")
         except ImportError as e:
-            print(f"\n⚠ Could not import packager: {e}")
+            logger.warning(f"\n⚠ Could not import packager: {e}")
 
     # Regenerate manifest with updated data (reminders, flavor, etc.)
     if args.reminders or args.flavor:
-        print("\n--- Updating manifest with fetched data ---")
+        logger.info("\n--- Updating manifest with fetched data ---")
         try:
             from data_loader import load_previous_character_data as load_all_chars
 
@@ -383,7 +388,7 @@ def main() -> int:
         except ImportError:
             pass
 
-    print("\n✓ Scraping complete!")
+    logger.info("\n✓ Scraping complete!")
     return 0
 
 

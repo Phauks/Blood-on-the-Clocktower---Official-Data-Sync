@@ -118,6 +118,102 @@ The scraper is organized into modular components:
   - `save_character_file(char_data, edition, char_id)` - Save character JSON
   - `get_character_files_by_edition()` - List all character files by edition
 
+- **`logger.py`** - Centralized logging:
+  - `setup_logger(name, level)` - Configure logger with console and file handlers
+  - `get_logger(name)` - Get or create logger instance
+  - UTF-8 encoding support for Unicode characters (checkmarks, etc.)
+  - Logs to both console (INFO+) and file (DEBUG+)
+
+- **`wiki_client.py`** - Wiki URL construction and fetching:
+  - `normalize_wiki_name(character_name)` - Convert name to wiki URL format
+  - `construct_wiki_url(character_name, validate)` - Build full wiki URL with SSRF protection
+  - `fetch_wiki_page(character_name)` - Fetch wiki page with retry logic
+  - `rate_limit(seconds)` - Rate limiting for wiki requests
+
+## Logging
+
+The project uses Python's built-in `logging` module with centralized configuration in `src/utils/logger.py`.
+
+**Getting a Logger:**
+```python
+from logger import get_logger
+
+logger = get_logger(__name__)  # Auto-configures if needed
+logger.info("Starting process")
+logger.warning("Potential issue detected")
+logger.error("Operation failed")
+logger.debug("Detailed debug information")
+```
+
+**Log Levels:**
+- **DEBUG**: Detailed information for debugging (file only)
+- **INFO**: Confirmation that things are working (console + file)
+- **WARNING**: Something unexpected but handled (console + file)
+- **ERROR**: Serious problem, operation failed (console + file)
+
+**Verbose Mode:**
+Many scripts support `-v` flag for more detailed output:
+```bash
+python src/transformers/reminder_fetcher.py -v
+python src/scrapers/character_scraper.py -v
+```
+
+**Log Output:**
+- Console: INFO level and above, with color-coded levels
+- File: `scraper.log` with DEBUG level and above, includes timestamps
+- UTF-8 encoding ensures Unicode characters (✓, ✗) display correctly on Windows
+
+## Configuration
+
+All configurable constants are centralized in `src/scrapers/config.py`:
+
+**URLs and Endpoints:**
+```python
+SCRIPT_TOOL_URL = "https://script.bloodontheclocktower.com"
+WIKI_BASE_URL = "https://wiki.bloodontheclocktower.com"
+BASE_ICON_URL = "https://script.bloodontheclocktower.com/"
+```
+
+**File Paths:**
+```python
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+DATA_DIR = PROJECT_ROOT / "data"
+CHARACTERS_DIR = DATA_DIR / "characters"
+ICONS_DIR = DATA_DIR / "icons"
+```
+
+**HTTP Settings:**
+```python
+REQUEST_TIMEOUT = 30          # seconds
+HTTP_MAX_RETRIES = 3          # number of retry attempts
+HTTP_RETRY_BACKOFF = 1.0      # base backoff in seconds (1s → 2s → 4s)
+USER_AGENT = "BOTC-Data-Sync/1.0"
+```
+
+**Scraper Settings:**
+```python
+PAGE_LOAD_TIMEOUT = 60000     # milliseconds for Playwright
+PAGE_RENDER_DELAY = 2000      # milliseconds for Vue.js to render
+CLICK_DELAY = 500             # milliseconds after adding characters
+RATE_LIMIT_SECONDS = 0.5      # delay between wiki requests
+IMAGE_RATE_LIMIT = 0.2        # delay between icon downloads
+```
+
+**Setup Characters:**
+```python
+SETUP_EXCEPTIONS = {
+    "drunk",          # False identity without bracket text
+    "sentinel",       # Fabled with prose description
+    "deusexfiasco",   # Fabled: Storyteller makes mistakes
+}
+```
+
+**How to Modify Settings:**
+1. Edit values in `config.py`
+2. All modules import from this central location
+3. Changes apply project-wide automatically
+4. Restart any running processes to pick up changes
+
 ## Reminder Token Fetcher (src/transformers/reminder_fetcher.py)
 
 Fetches reminder tokens from the official wiki (incremental updates only):
@@ -171,6 +267,82 @@ All character data is extracted from a single page load of the script tool:
 - **Total Characters:** 174
 - **Total Jinxes:** 131 pairs
 - **Editions:** tb (Trouble Brewing), bmr (Bad Moon Rising), snv (Sects & Violets), carousel, loric, fabled
+
+## Testing
+
+The project uses pytest for testing with organized test categories.
+
+**Running Tests:**
+```bash
+# Run all tests
+pytest
+
+# Run with verbose output
+pytest -v
+
+# Run specific test file
+pytest tests/unit/test_parsers.py
+
+# Run specific test class
+pytest tests/unit/test_parsers.py::TestParseEditionFromIcon
+
+# Run specific test
+pytest tests/unit/test_parsers.py::TestParseEditionFromIcon::test_parse_tb_edition
+
+# Run tests by marker
+pytest -m unit        # Unit tests only
+pytest -m integration # Integration tests only
+pytest -m e2e         # End-to-end tests only
+pytest -m slow        # Slow tests only
+
+# Run with coverage report
+pytest --cov=src --cov-report=html --cov-report=term
+```
+
+**Test Organization:**
+- `tests/unit/` - Fast, isolated tests for individual functions
+- `tests/integration/` - Tests for multi-module interactions
+- `tests/e2e/` - End-to-end tests (may require network access)
+- `tests/conftest.py` - Shared pytest fixtures
+
+**Test Markers:**
+- `@pytest.mark.unit` - Unit test (fast, no external dependencies)
+- `@pytest.mark.integration` - Integration test (multiple modules)
+- `@pytest.mark.e2e` - End-to-end test (slow, may use network)
+- `@pytest.mark.slow` - Any test that takes significant time
+
+**Available Fixtures (tests/conftest.py):**
+- `sample_character` - Sample character data dictionary
+- `sample_characters` - List of multiple characters
+- `temp_dir` - Temporary directory for test outputs (auto-cleanup)
+- `mock_response` - Mock HTTP response object
+- `mock_wiki_page` - Mock wiki HTML page
+- `project_root` - Project root directory path
+- `data_dir` - Data directory path
+- `test_output_dir` - Test output directory (auto-cleanup)
+
+**Writing Tests:**
+```python
+import pytest
+from parsers import parse_edition_from_icon
+
+class TestParseEdition:
+    """Tests for parse_edition_from_icon function."""
+
+    @pytest.mark.unit
+    def test_parse_tb_edition(self):
+        """Should extract 'tb' edition from icon path."""
+        icon_src = "src/assets/icons/tb/washerwoman_g.webp"
+        assert parse_edition_from_icon(icon_src) == "tb"
+```
+
+**Test Coverage Goals:**
+- Unit tests: 80%+ coverage for parsers, utilities, validators
+- Integration tests: Critical workflows (HTTP retry, wiki fetching)
+- E2E tests: Full scraper pipeline (optional, slow)
+
+**Test Configuration:**
+See `pytest.ini` for pytest settings including markers, test paths, and output options.
 
 ## Development Notes
 

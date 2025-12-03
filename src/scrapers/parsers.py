@@ -5,6 +5,7 @@ Functions for parsing icon URLs, detecting setup flags, and text processing.
 """
 
 import re
+import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -13,6 +14,12 @@ try:
     from .config import SETUP_EXCEPTIONS, BASE_ICON_URL, WIKI_BASE_URL
 except ImportError:
     from config import SETUP_EXCEPTIONS, BASE_ICON_URL, WIKI_BASE_URL
+
+# Add utils to path for logger
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 
 def parse_edition_from_icon(icon_src: str) -> str:
@@ -88,9 +95,9 @@ def construct_local_image_path(edition: str, char_id: str, icon_src: str) -> str
             ext_candidate = Path(icon_src).suffix.lower()
             if ext_candidate in allowed_extensions:
                 ext = ext_candidate
-        except Exception:
+        except (ValueError, OSError) as e:
             # If Path parsing fails, use default .webp
-            pass
+            logger.debug(f"Failed to parse extension from {icon_src}: {e}")
 
     return f"icons/{edition}/{char_id}{ext}"
 
