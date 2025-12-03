@@ -93,4 +93,5 @@ def rate_limit(delay: float) -> None:
         delay: Delay in seconds
     """
     import time
+
     time.sleep(delay)

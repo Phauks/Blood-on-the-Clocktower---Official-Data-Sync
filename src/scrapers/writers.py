@@ -18,6 +18,7 @@ except ImportError:
     from pathlib import Path as TmpPath
 
     from config import CHARACTERS_DIR, DATA_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
+
     sys.path.insert(0, str(TmpPath(__file__).parent.parent / "utils"))
     from logger import get_logger
 

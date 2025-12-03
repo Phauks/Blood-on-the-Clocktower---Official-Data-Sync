@@ -119,7 +119,6 @@ def fetch_with_retry(
             return response
 
         except RequestException as e:
-
             # Don't retry on client errors (4xx) except 429 (rate limit)
             if hasattr(e, "response") and e.response is not None:
                 status = e.response.status_code

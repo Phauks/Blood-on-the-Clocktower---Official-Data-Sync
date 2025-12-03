@@ -155,7 +155,9 @@ def package_data(
     # Create manifest
     manifest = create_dist_manifest(characters, dist_dir)
     if verbose >= 1:
-        logger.info(f"  Created manifest.json (v{manifest['version']}, hash: {manifest['contentHash']})")
+        logger.info(
+            f"  Created manifest.json (v{manifest['version']}, hash: {manifest['contentHash']})"
+        )
 
     # Count icons (already in dist/icons from image_downloader)
     icons_dir = dist_dir / "icons"

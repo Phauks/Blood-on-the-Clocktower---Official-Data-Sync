@@ -147,7 +147,9 @@ def download_character_images(
         return stats
 
     if verbose >= 1:
-        logger.info(f"  Downloading {len(to_download)} images ({stats['skipped']} already exist)...")
+        logger.info(
+            f"  Downloading {len(to_download)} images ({stats['skipped']} already exist)..."
+        )
 
     # Download with optional progress bar
     if show_progress and HAS_TQDM and not verbose:

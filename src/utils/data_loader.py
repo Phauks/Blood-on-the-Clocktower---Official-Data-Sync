@@ -101,9 +101,7 @@ def save_character_file(char_file: Path, character: dict[str, Any]) -> bool:
         return False
 
 
-def get_character_files_by_edition(
-    edition: str, characters_dir: Path | None = None
-) -> list[Path]:
+def get_character_files_by_edition(edition: str, characters_dir: Path | None = None) -> list[Path]:
     """Get all character JSON files for an edition.
 
     Args:

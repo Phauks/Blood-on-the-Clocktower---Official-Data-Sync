@@ -257,7 +257,9 @@ async def fetch_wiki_page_async(
     # Fetch with semaphore to limit concurrent requests
     async with semaphore:
         try:
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=ASYNC_REQUEST_TIMEOUT)) as response:
+            async with session.get(
+                url, timeout=aiohttp.ClientTimeout(total=ASYNC_REQUEST_TIMEOUT)
+            ) as response:
                 if response.status == 200:
                     html_content = await response.text()
                     return (char_name, html_content)

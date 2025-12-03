@@ -45,9 +45,9 @@ CLICK_DELAY = 500  # 500ms after adding characters
 # Characters that need setup: true but don't have bracket text in their ability
 # Most setup characters are detected via [bracket text] patterns automatically
 SETUP_EXCEPTIONS = {
-    "drunk",          # False identity: "You do not know you are the Drunk"
-    "sentinel",       # Fabled with prose: "might be 1 extra or 1 fewer Outsider"
-    "deusexfiasco",   # Fabled: Storyteller makes mistakes
+    "drunk",  # False identity: "You do not know you are the Drunk"
+    "sentinel",  # Fabled with prose: "might be 1 extra or 1 fewer Outsider"
+    "deusexfiasco",  # Fabled: Storyteller makes mistakes
 }
 
 # Valid editions

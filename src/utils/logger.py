@@ -17,10 +17,7 @@ CRITICAL = logging.CRITICAL
 
 
 def setup_logger(
-    name: str,
-    level: int = logging.INFO,
-    log_file: Path | None = None,
-    verbose: bool = False
+    name: str, level: int = logging.INFO, log_file: Path | None = None, verbose: bool = False
 ) -> logging.Logger:
     """Configure and return a logger instance.
 
@@ -47,15 +44,15 @@ def setup_logger(
 
     # Console handler with UTF-8 encoding
     import io
+
     # Wrap stdout with UTF-8 encoding to handle Unicode characters (like checkmarks)
-    utf8_stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    utf8_stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
     console_handler = logging.StreamHandler(utf8_stdout)
     console_handler.setLevel(logging.DEBUG if verbose else logging.INFO)
 
     # Format: "[INFO] module: message"
     formatter = logging.Formatter(
-        fmt="[%(levelname)s] %(name)s: %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S"
+        fmt="[%(levelname)s] %(name)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
     )
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
