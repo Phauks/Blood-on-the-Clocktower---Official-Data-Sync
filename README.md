@@ -142,6 +142,7 @@ See [`examples/update_checker.py`](examples/update_checker.py) for a complete im
 | Loric | `loric` | 6 | 4 |
 | **Total** | | **174** | **181** |
 
+
 ## Data Sources
 
 - **Character Data**: [Official Script Tool](https://script.bloodontheclocktower.com/)
