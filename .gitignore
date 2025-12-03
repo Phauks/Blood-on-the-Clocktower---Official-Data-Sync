@@ -46,3 +46,9 @@ playwright-report/
 *.tmp
 *.temp
 *.log
+
+# Archived research
+/research/
+
+# Temporary implementation docs
+IMPLEMENTATION_SUMMARY*.md

@@ -9,7 +9,10 @@
       "WebFetch(domain:wiki.bloodontheclocktower.com)",
       "Bash(ruff format:*)",
       "Bash(pip install:*)",
-      "Bash(python -m ruff format:*)"
+      "Bash(python -m ruff format:*)",
+      "Bash(if exist IMPLEMENTATION_SUMMARY.md del IMPLEMENTATION_SUMMARY.md)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
