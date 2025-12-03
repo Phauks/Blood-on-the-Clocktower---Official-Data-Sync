@@ -1,0 +1,73 @@
+# Dependabot Configuration
+# Automatically checks for dependency updates and creates pull requests
+#
+# Documentation: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+updates:
+  # Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Phauks"  # Replace with actual maintainer username
+    assignees:
+      - "Phauks"  # Replace with actual maintainer username
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # Group minor and patch updates together
+    groups:
+      production-dependencies:
+        patterns:
+          - "playwright"
+          - "requests"
+          - "aiohttp"
+          - "beautifulsoup4"
+          - "jsonschema"
+          - "tqdm"
+      development-dependencies:
+        patterns:
+          - "pytest*"
+          - "ruff"
+          - "mypy"
+          - "pre-commit"
+          - "responses"
+          - "ipython"
+          - "ipdb"
+    # Allow both direct and indirect dependencies
+    allow:
+      - dependency-type: "all"
+    # Ignore specific dependencies or versions if needed
+    ignore:
+      # Example: Ignore major version updates for specific packages
+      # - dependency-name: "requests"
+      #   update-types: ["version-update:semver-major"]
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Phauks"
+    assignees:
+      - "Phauks"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"

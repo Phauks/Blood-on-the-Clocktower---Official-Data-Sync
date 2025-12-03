@@ -1,0 +1,132 @@
+# Blood on the Clocktower Data Sync - Test Suite
+#
+# Runs on:
+# - Every push to main
+# - Every pull request
+# - Manual dispatch
+#
+# Validates:
+# - Code passes linting (ruff)
+# - Type checking passes (mypy)
+# - Unit tests pass
+# - Code coverage meets threshold
+
+name: Test Suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff mypy
+
+      - name: Run ruff linting
+        run: |
+          ruff check src/
+          ruff format --check src/
+
+      - name: Run mypy type checking
+        run: |
+          mypy src/ --install-types --non-interactive
+        continue-on-error: true  # Don't fail build yet, but show warnings
+
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+          playwright install chromium
+
+      - name: Run unit tests
+        run: |
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term-missing
+        continue-on-error: true  # Tests don't exist yet, don't fail
+
+      - name: Upload coverage to Codecov
+        if: matrix.python-version == '3.12'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false  # Don't fail if codecov is down
+        continue-on-error: true
+
+  validate-schema:
+    name: Validate Data Schema
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run schema validator
+        run: |
+          python src/validators/schema_validator.py
+        continue-on-error: true  # Don't fail if no data exists yet
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+        continue-on-error: true  # Don't fail build on vulnerabilities yet
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+        continue-on-error: true

@@ -1,0 +1,26 @@
+# Development Dependencies for Blood on the Clocktower Data Sync
+# Install with: pip install -r requirements-dev.txt
+
+# Include production dependencies
+-r requirements.txt
+
+# Testing Framework
+pytest>=8.0.0
+pytest-cov>=4.1.0           # Coverage reporting
+pytest-mock>=3.12.0         # Mocking utilities
+pytest-asyncio>=0.23.0      # Async test support
+pytest-timeout>=2.2.0       # Prevent hanging tests
+pytest-xdist>=3.5.0         # Parallel test execution
+
+# Web Scraping Test Utilities
+responses>=0.24.0           # Mock HTTP requests for testing
+pytest-playwright>=0.4.0    # Playwright test utilities
+
+# Code Quality
+ruff>=0.8.0                 # Fast Python linter and formatter
+mypy>=1.13.0                # Static type checking
+pre-commit>=3.5.0           # Git hooks for code quality
+
+# Development Tools
+ipython>=8.28.0             # Enhanced Python shell
+ipdb>=0.13.0                # Debugger

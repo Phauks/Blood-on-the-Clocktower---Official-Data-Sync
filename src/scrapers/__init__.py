@@ -21,7 +21,7 @@ from .config import (
 
 __all__ = [
     "SCRIPT_TOOL_URL",
-    "WIKI_BASE_URL", 
+    "WIKI_BASE_URL",
     "CHARACTERS_DIR",
     "DATA_DIR",
     "VALID_EDITIONS",

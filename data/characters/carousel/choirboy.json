@@ -7,7 +7,7 @@
   "otherNightReminder": "If the Demon killed the King, point to the Demon player.",
   "reminders": [],
   "remindersGlobal": [],
-  "setup": false,
+  "setup": true,
   "ability": "If the Demon kills the King, you learn which player is the Demon. [+the King]",
   "flavor": "\"I saw it, I did. I was in the pews, tidying the hymn books, when a dreadful tune started from the pipe organ. The organist had a long cloak, and long fingers on the keys. And a hat that looked… just like… yours.\"",
   "image": "icons/carousel/choirboy.webp",

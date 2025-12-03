@@ -7,6 +7,9 @@ playwright>=1.56.0
 # HTTP client for wiki flavor text fetching
 requests>=2.32.0
 
+# Async HTTP client for batch wiki fetching (5x faster)
+aiohttp>=3.10.0
+
 # HTML parsing for wiki scraping
 beautifulsoup4>=4.12.0
 

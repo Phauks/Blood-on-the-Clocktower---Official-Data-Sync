@@ -7,7 +7,7 @@
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
-  "setup": true,
+  "setup": false,
   "ability": "The Demon thinks you are a Minion. Minions think you are a Demon.",
   "flavor": "\"1... 2... Abra... 3... 4... Cadabra... *poof!*And, as you can see, ladies and gentlemen, Captain Farnsworth’s bag of gold has disappeared! Gone! Without a trace! Thank you, and goodnight!\"",
   "image": "icons/carousel/magician.webp",

@@ -9,7 +9,7 @@
     "NO ABILITY"
   ],
   "remindersGlobal": [],
-  "setup": false,
+  "setup": true,
   "ability": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]",
   "flavor": "\"My cabin is warm and sturdy. My axe by the door, my boots drying by the fire, and elk stew a-simmering… Hark! A scream echoes through the valley! The rain and the mud and the cold, cold wind mask the scent of the wolves, but I know the path and my pace is steady. I am coming.\"",
   "image": "icons/carousel/huntsman.webp",

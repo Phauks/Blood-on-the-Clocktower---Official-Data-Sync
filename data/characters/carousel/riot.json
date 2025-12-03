@@ -11,7 +11,7 @@
     "DAY 3"
   ],
   "remindersGlobal": [],
-  "setup": true,
+  "setup": false,
   "ability": "On day 3, Minions become Riot & nominees die but nominate an alive player immediately. This must happen.",
   "flavor": "\"Larga vida a la revolución! Mi revolucion!\"",
   "image": "icons/carousel/riot.webp",

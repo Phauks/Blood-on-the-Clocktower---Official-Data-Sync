@@ -9,7 +9,7 @@
     "GUESS USED"
   ],
   "remindersGlobal": [],
-  "setup": true,
+  "setup": false,
   "ability": "All Minions know a Damsel is in play. If a Minion publicly guesses you (once), your team loses.",
   "flavor": "\"Don't touch ze hair, honey.\"",
   "image": "icons/carousel/damsel.webp",

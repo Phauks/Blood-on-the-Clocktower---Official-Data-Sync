@@ -6,7 +6,10 @@
       "WebSearch",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(python -c:*)",
-      "WebFetch(domain:wiki.bloodontheclocktower.com)"
+      "WebFetch(domain:wiki.bloodontheclocktower.com)",
+      "Bash(ruff format:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m ruff format:*)"
     ],
     "deny": [],
     "ask": []

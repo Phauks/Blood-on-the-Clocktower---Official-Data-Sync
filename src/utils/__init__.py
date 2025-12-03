@@ -11,6 +11,6 @@ from .data_loader import load_previous_character_data
 
 __all__ = [
     "fetch_url",
-    "fetch_with_retry", 
+    "fetch_with_retry",
     "load_previous_character_data",
 ]

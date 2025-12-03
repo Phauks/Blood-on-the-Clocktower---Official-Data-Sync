@@ -22,7 +22,9 @@ DATA_DIR = PROJECT_ROOT / "data"
 CHARACTERS_DIR = DATA_DIR / "characters"
 
 # Official schema URL
-SCHEMA_URL = "https://raw.githubusercontent.com/ThePandemoniumInstitute/botc-release/main/script-schema.json"
+SCHEMA_URL = (
+    "https://raw.githubusercontent.com/ThePandemoniumInstitute/botc-release/main/script-schema.json"
+)
 
 # Extracted character schema (from official script-schema.json)
 # This is the "Script Character" object schema from the official spec
@@ -152,9 +154,18 @@ CHARACTER_SCHEMA = {
                     "name": {
                         "type": "string",
                         "enum": [
-                            "grimoire", "pointing", "ghost-votes", "distribute-roles",
-                            "bag-disabled", "bag-duplicate", "multiplier", "hidden",
-                            "replace-character", "player", "card", "open-eyes"
+                            "grimoire",
+                            "pointing",
+                            "ghost-votes",
+                            "distribute-roles",
+                            "bag-disabled",
+                            "bag-duplicate",
+                            "multiplier",
+                            "hidden",
+                            "replace-character",
+                            "player",
+                            "card",
+                            "open-eyes",
                         ],
                     },
                     "value": {
@@ -165,7 +176,15 @@ CHARACTER_SCHEMA = {
                     },
                     "time": {
                         "type": "string",
-                        "enum": ["pregame", "day", "night", "firstNight", "firstDay", "otherNight", "otherDay"],
+                        "enum": [
+                            "pregame",
+                            "day",
+                            "night",
+                            "firstNight",
+                            "firstDay",
+                            "otherNight",
+                            "otherDay",
+                        ],
                     },
                     "global": {
                         "type": "string",
@@ -180,7 +199,7 @@ CHARACTER_SCHEMA = {
 
 def create_lenient_schema() -> dict:
     """Create a more lenient schema for validation.
-    
+
     The official schema uses additionalProperties: false, but we may have
     extra fields. This version allows additional properties.
     """
@@ -191,49 +210,49 @@ def create_lenient_schema() -> dict:
 
 def validate_character(character: dict, strict: bool = False) -> list[str]:
     """Validate a single character against the schema.
-    
+
     Args:
         character: Character data dict
         strict: If True, use strict schema (no additional properties)
-    
+
     Returns:
         List of validation error messages (empty if valid)
     """
     schema = CHARACTER_SCHEMA if strict else create_lenient_schema()
     validator = Draft202012Validator(schema)
-    
+
     errors = []
     for error in validator.iter_errors(character):
         path = " -> ".join(str(p) for p in error.path) if error.path else "root"
         errors.append(f"{path}: {error.message}")
-    
+
     return errors
 
 
 def validate_all_characters(characters: list[dict], strict: bool = False) -> dict[str, list[str]]:
     """Validate all characters and return errors by character ID.
-    
+
     Args:
         characters: List of character data dicts
         strict: If True, use strict schema validation
-    
+
     Returns:
         Dict mapping character ID to list of errors (only includes characters with errors)
     """
     all_errors = {}
-    
+
     for character in characters:
         char_id = character.get("id", "unknown")
         errors = validate_character(character, strict=strict)
         if errors:
             all_errors[char_id] = errors
-    
+
     return all_errors
 
 
 def check_data_integrity(characters: list[dict]) -> list[str]:
     """Check data integrity beyond schema validation.
-    
+
     Checks:
     - All character IDs are unique
     - All jinx references point to valid characters
@@ -241,7 +260,7 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
     - Required fields are not empty strings
     """
     issues = []
-    
+
     # Build ID set
     char_ids = set()
     for char in characters:
@@ -249,7 +268,7 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
         if char_id in char_ids:
             issues.append(f"Duplicate character ID: {char_id}")
         char_ids.add(char_id)
-    
+
     # Check jinx references
     for char in characters:
         char_id = char.get("id", "unknown")
@@ -257,18 +276,18 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
             jinx_id = jinx.get("id", "")
             if jinx_id and jinx_id not in char_ids:
                 issues.append(f"{char_id}: Jinx references unknown character '{jinx_id}'")
-    
+
     # Check night order values
     for char in characters:
         char_id = char.get("id", "unknown")
         first_night = char.get("firstNight", 0)
         other_night = char.get("otherNight", 0)
-        
+
         if first_night < 0 or first_night > 200:
             issues.append(f"{char_id}: Invalid firstNight value {first_night}")
         if other_night < 0 or other_night > 200:
             issues.append(f"{char_id}: Invalid otherNight value {other_night}")
-    
+
     # Check for empty required fields
     for char in characters:
         char_id = char.get("id", "unknown")
@@ -278,17 +297,19 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
             issues.append(f"{char_id}: Empty ability")
         if not char.get("team"):
             issues.append(f"{char_id}: Empty team")
-    
+
     return issues
 
 
 def load_all_characters() -> list[dict]:
     """Load all characters from the combined JSON file."""
     all_file = CHARACTERS_DIR / "all_characters.json"
-    
+
     if not all_file.exists():
-        raise FileNotFoundError(f"Character data not found at {all_file}. Run character_scraper.py first.")
-    
+        raise FileNotFoundError(
+            f"Character data not found at {all_file}. Run character_scraper.py first."
+        )
+
     with open(all_file, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -302,9 +323,9 @@ def print_validation_report(
     print("\n" + "=" * 60)
     print("VALIDATION REPORT")
     print("=" * 60)
-    
+
     print(f"\nTotal characters: {total_characters}")
-    
+
     # Schema validation results
     if schema_errors:
         print(f"\n❌ Schema errors: {len(schema_errors)} characters have issues")
@@ -314,7 +335,7 @@ def print_validation_report(
                 print(f"    - {error}")
     else:
         print("\n✓ Schema validation: All characters pass")
-    
+
     # Data integrity results
     if integrity_issues:
         print(f"\n⚠️  Data integrity issues: {len(integrity_issues)}")
@@ -322,7 +343,7 @@ def print_validation_report(
             print(f"    - {issue}")
     else:
         print("\n✓ Data integrity: No issues found")
-    
+
     # Summary
     print("\n" + "-" * 60)
     if not schema_errors and not integrity_issues:
@@ -336,15 +357,17 @@ def print_validation_report(
 def main():
     """Main entry point for validation."""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Validate BOTC character data")
     parser.add_argument("--strict", action="store_true", help="Use strict schema validation")
-    parser.add_argument("--file", type=str, help="Validate a specific JSON file instead of all_characters.json")
+    parser.add_argument(
+        "--file", type=str, help="Validate a specific JSON file instead of all_characters.json"
+    )
     args = parser.parse_args()
-    
+
     # Load characters
     print("Loading character data...")
-    
+
     if args.file:
         with open(args.file, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -352,19 +375,19 @@ def main():
             characters = data if isinstance(data, list) else [data]
     else:
         characters = load_all_characters()
-    
+
     print(f"Loaded {len(characters)} characters")
-    
+
     # Run validations
     print("\nValidating against schema...")
     schema_errors = validate_all_characters(characters, strict=args.strict)
-    
+
     print("Checking data integrity...")
     integrity_issues = check_data_integrity(characters)
-    
+
     # Print report
     print_validation_report(schema_errors, integrity_issues, len(characters))
-    
+
     # Exit code
     if schema_errors or integrity_issues:
         return 1

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "version": "2025.12.02",
-  "generated": "2025-12-02T20:43:43.692389+00:00",
-  "lastModified": "2025-12-02T20:43:43.692401+00:00",
-  "contentHash": "c87ec91938133619",
+  "version": "2025.12.03",
+  "generated": "2025-12-03T08:00:18.878782+00:00",
+  "lastModified": "2025-12-03T08:00:18.878802+00:00",
+  "contentHash": "e5cf4e8e41e0545f",
   "source": "https://script.bloodontheclocktower.com/",
   "total_characters": 174,
   "total_reminders": 181,

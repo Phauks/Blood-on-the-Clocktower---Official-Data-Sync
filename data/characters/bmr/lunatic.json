@@ -11,7 +11,7 @@
     "CHOSEN"
   ],
   "remindersGlobal": [],
-  "setup": true,
+  "setup": false,
   "ability": "You think you are a Demon, but you are not. The Demon knows who you are & who you choose at night.",
   "flavor": "\"I am the night... I think.\"",
   "image": "icons/bmr/lunatic.webp",

@@ -17,23 +17,24 @@ except ImportError:
     # Fallback if validators module not available
     def validate_character(char: dict) -> list[str]:
         return []
+
     CHARACTER_SCHEMA = {}
 
 
 def validate_characters(characters: dict, strict: bool = False) -> tuple[int, int, list[str]]:
     """Validate all characters against the schema.
-    
+
     Args:
         characters: Character data dict
         strict: If True, raise exception on validation failure
-    
+
     Returns:
         Tuple of (valid_count, error_count, error_messages)
     """
     valid = 0
     errors = 0
     error_messages = []
-    
+
     for char_id, char in characters.items():
         error_list = validate_character(char)
         if not error_list:
@@ -45,7 +46,7 @@ def validate_characters(characters: dict, strict: bool = False) -> tuple[int, in
                 error_messages.append(msg)
                 if strict:
                     raise ValueError(msg)
-    
+
     return valid, errors, error_messages
 
 
@@ -54,7 +55,7 @@ def print_validation_summary(valid: int, errors: int, error_messages: list[str])
     print(f"\n=== Validation Summary ===")
     print(f"Valid characters: {valid}")
     print(f"Characters with errors: {errors}")
-    
+
     if error_messages:
         print(f"\nErrors ({len(error_messages)} total):")
         # Group errors by type

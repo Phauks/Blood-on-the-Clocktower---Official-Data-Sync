@@ -5,17 +5,19 @@ Functions for parsing icon URLs, detecting setup flags, and text processing.
 """
 
 import re
+from pathlib import Path
+from urllib.parse import urlparse
 
 # Handle both direct script execution and module import
 try:
-    from .config import SETUP_CHARACTERS, BASE_ICON_URL, WIKI_BASE_URL
+    from .config import SETUP_EXCEPTIONS, BASE_ICON_URL, WIKI_BASE_URL
 except ImportError:
-    from config import SETUP_CHARACTERS, BASE_ICON_URL, WIKI_BASE_URL
+    from config import SETUP_EXCEPTIONS, BASE_ICON_URL, WIKI_BASE_URL
 
 
 def parse_edition_from_icon(icon_src: str) -> str:
     """Extract edition from icon path.
-    
+
     Example: "src/assets/icons/tb/washerwoman_g.webp" -> "tb"
     """
     match = re.search(r"/icons/([^/]+)/", icon_src)
@@ -24,7 +26,7 @@ def parse_edition_from_icon(icon_src: str) -> str:
 
 def parse_character_id_from_icon(icon_src: str) -> str | None:
     """Extract character ID from icon path.
-    
+
     Examples:
         "src/assets/icons/carousel/bountyhunter_g.webp" -> "bountyhunter"
         "src/assets/icons/tb/spy_e.webp" -> "spy"
@@ -41,63 +43,110 @@ def construct_full_icon_url(icon_src: str) -> str:
     # Remove leading "./" or "src/" if present
     clean_path = icon_src.lstrip("./")
     if not clean_path.startswith("src/"):
-        clean_path = f"src/{clean_path}" if not clean_path.startswith("assets/") else f"src/{clean_path}"
+        clean_path = (
+            f"src/{clean_path}" if not clean_path.startswith("assets/") else f"src/{clean_path}"
+        )
     return f"{BASE_ICON_URL}{clean_path}"
 
 
 def construct_local_image_path(edition: str, char_id: str, icon_src: str) -> str:
     """Construct local image path for a character.
-    
+
     Args:
         edition: Edition ID (e.g., "tb", "bmr")
         char_id: Character ID (e.g., "washerwoman")
         icon_src: Original icon source URL (to extract file extension)
-    
+
     Returns:
         Local path like "icons/tb/washerwoman.webp"
+
+    Raises:
+        ValueError: If edition or char_id contains invalid characters (path traversal attempt)
+
+    Security:
+        Validates inputs to prevent directory traversal attacks
     """
-    # Extract extension from original URL, default to .webp
-    ext = ".webp"
+    # Sanitize inputs - only allow lowercase alphanumeric, hyphens, and underscores
+    # This prevents path traversal attacks like "../../../etc/passwd"
+    if not re.match(r"^[a-z0-9_-]+$", edition):
+        raise ValueError(
+            f"Invalid edition name: {edition!r}. Must contain only lowercase letters, numbers, hyphens, and underscores."
+        )
+
+    if not re.match(r"^[a-z0-9_-]+$", char_id):
+        raise ValueError(
+            f"Invalid character ID: {char_id!r}. Must contain only lowercase letters, numbers, hyphens, and underscores."
+        )
+
+    # Validate and extract extension from icon source
+    allowed_extensions = {".webp", ".png", ".jpg", ".jpeg", ".gif", ".svg"}
+    ext = ".webp"  # Default extension
+
     if "." in icon_src:
-        ext = "." + icon_src.rsplit(".", 1)[-1]
-    
+        # Extract extension safely using Path
+        try:
+            ext_candidate = Path(icon_src).suffix.lower()
+            if ext_candidate in allowed_extensions:
+                ext = ext_candidate
+        except Exception:
+            # If Path parsing fails, use default .webp
+            pass
+
     return f"icons/{edition}/{char_id}{ext}"
 
 
 def detect_setup_flag(character_id: str, ability_text: str) -> bool:
     """Detect if a character requires setup: true.
-    
-    Uses hybrid approach:
-    1. Check explicit list (most reliable)
-    2. Pattern matching on ability text (catches new characters)
+
+    Setup characters have [bracket text] in their ability that modifies
+    game composition (e.g., [+2 Outsiders], [No evil characters], [+the King]).
+
+    A few exceptions exist for characters without bracket text.
     """
-    # Check explicit list first
-    if character_id in SETUP_CHARACTERS:
+    # Check exception list (characters without bracket text)
+    if character_id in SETUP_EXCEPTIONS:
         return True
-    
-    ability_lower = ability_text.lower()
-    
-    # Pattern 1: False identity
-    false_identity_patterns = [
-        r"you do not know you are",
-        r"you think you are",
-        r"you think you have",
-    ]
-    for pattern in false_identity_patterns:
-        if re.search(pattern, ability_lower):
-            return True
-    
-    # Pattern 2: Setup text in brackets [+N Outsider], [1 Townsfolk is evil], etc.
-    if re.search(r"\[[^\]]*(?:outsider|townsfolk|minion|demon|evil|good)[^\]]*\]", ability_lower):
+
+    # Primary detection: any bracket text indicates setup modification
+    if re.search(r"\[.*\]", ability_text):
         return True
-    
+
     return False
 
 
 def character_name_to_wiki_url(name: str) -> str:
     """Convert character name to wiki URL.
-    
+
     Example: "Fortune Teller" -> "https://wiki.bloodontheclocktower.com/Fortune_Teller"
+
+    Args:
+        name: Character name (e.g., "Fortune Teller", "Al-Hadikhia")
+
+    Returns:
+        Full wiki URL
+
+    Raises:
+        ValueError: If name is too long or contains suspicious characters
+
+    Security:
+        Validates character name length and format to prevent SSRF attacks
     """
+    # Validate name is reasonable
+    if not name or len(name) > 100:
+        raise ValueError(f"Invalid character name length: {len(name)}")
+
+    # Check for suspicious characters that might indicate injection attempt
+    # Allow: letters, numbers, spaces, hyphens, apostrophes, accented characters
+    if not re.match(r"^[a-zA-Z0-9\s\-'À-ÿ]+$", name):
+        raise ValueError(f"Invalid characters in character name: {name!r}")
+
+    # URL-encode the name safely
     wiki_name = name.replace(" ", "_").replace("'", "%27")
-    return f"{WIKI_BASE_URL}{wiki_name}"
+    url = f"{WIKI_BASE_URL}/{wiki_name}"
+
+    # Validate final URL matches expected domain
+    parsed = urlparse(url)
+    if not parsed.netloc.endswith("bloodontheclocktower.com"):
+        raise ValueError(f"Generated URL does not match expected domain: {url}")
+
+    return url

@@ -1,0 +1,59 @@
+# Pre-commit hooks for Blood on the Clocktower Data Sync
+#
+# Installation:
+#   pip install pre-commit
+#   pre-commit install
+#
+# Manual run:
+#   pre-commit run --all-files
+
+repos:
+  # Ruff - Fast Python linter and formatter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      # Run the linter
+      - id: ruff
+        args: [--fix]
+      # Run the formatter
+      - id: ruff-format
+
+  # Mypy - Static type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - types-requests
+          - types-beautifulsoup4
+        args: [--ignore-missing-imports, --no-strict-optional]
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # Prevent large files from being committed
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      # Ensure files end with a newline
+      - id: end-of-file-fixer
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+      # Check YAML syntax
+      - id: check-yaml
+      # Check JSON syntax
+      - id: check-json
+      # Check for merge conflicts
+      - id: check-merge-conflict
+      # Detect private keys
+      - id: detect-private-key
+      # Ensure Python files are valid syntax
+      - id: check-ast
+
+  # Security: Check for secrets
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: [--baseline, .secrets.baseline]
+        exclude: package.lock.json

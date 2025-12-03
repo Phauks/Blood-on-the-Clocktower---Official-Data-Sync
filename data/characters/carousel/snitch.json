@@ -7,7 +7,7 @@
   "otherNightReminder": "",
   "reminders": [],
   "remindersGlobal": [],
-  "setup": true,
+  "setup": false,
   "ability": "Each Minion gets 3 bluffs.",
   "flavor": "\"Each Minion gets 3 bluffs.\"",
   "image": "icons/carousel/snitch.webp",

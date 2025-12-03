@@ -9,7 +9,7 @@
     "WHOOPSIE"
   ],
   "remindersGlobal": [],
-  "setup": false,
+  "setup": true,
   "ability": "At least once per game, the Storyteller will make a mistake, correct it, and publicly admit to it.",
   "flavor": "\"It’s not a bug, it’s a feature. It’s not an error, it’s a tweak. It’s not broken, it’s quirky.\"",
   "image": "icons/fabled/deusexfiasco.webp",
