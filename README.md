@@ -161,8 +161,8 @@ See [`examples/update_checker.py`](examples/update_checker.py) for a complete im
 | Sects & Violets | `snv` | 30 | 37 |
 | Unreleased (Carousel) | `carousel` | 68 | 66 |
 | Fabled | `fabled` | 13 | 11 |
-| Loric | `loric` | 7 | 4 |
-| **Total** | | **175** | **181** |
+| Loric | `loric` | 8 | 4 |
+| **Total** | | **176** | **181** |
 
 
 ## Data Sources
