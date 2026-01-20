@@ -61,15 +61,20 @@ VALID_TEAMS = {"townsfolk", "outsider", "minion", "demon", "traveller", "fabled"
 # =============================================================================
 WIKI_FETCH_BATCH_SIZE = 5  # concurrent wiki requests
 DOWNLOAD_BATCH_SIZE = 10  # concurrent icon downloads
+IMAGE_RATE_LIMIT = 0.2  # delay between icon downloads (seconds)
 
 # =============================================================================
 # Validation settings
 # =============================================================================
 MAX_ABILITY_LENGTH = 500  # characters
-MAX_NAME_LENGTH = 30  # characters
+MAX_NAME_LENGTH = 30  # characters (for schema validation)
+MAX_INPUT_NAME_LENGTH = 100  # characters (security limit for user input)
 MAX_REMINDER_LENGTH = 30  # characters
 MAX_REMINDER_COUNT = 10  # tokens per character
 MIN_FLAVOR_LENGTH = 3  # minimum valid flavor text
+
+# Character name pattern for wiki URLs (letters, numbers, spaces, hyphens, apostrophes, accented chars)
+CHARACTER_NAME_PATTERN = r"^[a-zA-Z0-9\s\-'À-ÿ]+$"
 
 # =============================================================================
 # Schema version

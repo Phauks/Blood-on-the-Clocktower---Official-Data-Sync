@@ -8,33 +8,63 @@ Provides robust HTTP request handling for wiki scraping with:
 - Request size limits to prevent memory exhaustion
 """
 
+import contextlib
 import time
 from collections.abc import Callable
 
 import requests
+from requests.adapters import HTTPAdapter
 from requests.exceptions import RequestException
+from urllib3.util.retry import Retry
 
-# Import config - handle both module and direct execution
-try:
-    import sys
-    from pathlib import Path
+from src.scrapers.config import (
+    HTTP_MAX_RETRIES,
+    HTTP_RETRY_BACKOFF,
+    RATE_LIMIT_SECONDS,
+    REQUEST_TIMEOUT,
+    USER_AGENT,
+)
 
-    # Add scrapers to path for config access
-    sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-    from config import (
-        HTTP_MAX_RETRIES,
-        HTTP_RETRY_BACKOFF,
-        RATE_LIMIT_SECONDS,
-        REQUEST_TIMEOUT,
-        USER_AGENT,
-    )
-except ImportError:
-    # Fallback defaults
-    REQUEST_TIMEOUT = 30
-    RATE_LIMIT_SECONDS = 1.0
-    HTTP_MAX_RETRIES = 3
-    HTTP_RETRY_BACKOFF = 2.0
-    USER_AGENT = "BOTC-Data-Sync/1.0"
+# Module-level session for connection pooling
+_session: requests.Session | None = None
+
+
+def get_session() -> requests.Session:
+    """Get or create a session with connection pooling.
+
+    Returns:
+        Configured requests.Session with connection pooling enabled
+
+    Note:
+        Session is created on first use and reused for subsequent requests.
+        This enables TCP connection reuse for better performance.
+    """
+    global _session
+    if _session is None:
+        _session = requests.Session()
+        _session.headers.update({"User-Agent": USER_AGENT})
+
+        # Configure connection pooling with retry adapter
+        adapter = HTTPAdapter(
+            pool_connections=10,  # Number of connection pools
+            pool_maxsize=10,  # Connections per pool
+            max_retries=Retry(total=0),  # We handle retries ourselves
+        )
+        _session.mount("http://", adapter)
+        _session.mount("https://", adapter)
+
+    return _session
+
+
+def close_session() -> None:
+    """Close the HTTP session and release connections.
+
+    Call this at the end of your application to clean up resources.
+    """
+    global _session
+    if _session is not None:
+        _session.close()
+        _session = None
 
 
 def fetch_with_retry(
@@ -78,13 +108,15 @@ def fetch_with_retry(
 
     max_size_bytes = max_size_mb * 1024 * 1024
 
+    session = get_session()
+
     for attempt in range(max_retries + 1):
+        response = None
         try:
             # Use streaming to check size before downloading entire response
-            response = requests.get(
+            response = session.get(
                 url,
                 timeout=timeout,
-                headers={"User-Agent": USER_AGENT},
                 stream=True,
                 verify=True,  # Explicit HTTPS verification
                 allow_redirects=False,  # Prevent redirect-based attacks
@@ -96,7 +128,6 @@ def fetch_with_retry(
             if content_length:
                 size = int(content_length)
                 if size > max_size_bytes:
-                    response.close()
                     raise ValueError(
                         f"Response size ({size / 1024 / 1024:.2f}MB) exceeds "
                         f"maximum allowed ({max_size_mb}MB)"
@@ -110,15 +141,25 @@ def fetch_with_retry(
                 if chunk:
                     total_size += len(chunk)
                     if total_size > max_size_bytes:
-                        response.close()
                         raise ValueError(f"Response size exceeded {max_size_mb}MB during download")
                     content_chunks.append(chunk)
 
             # Reconstruct response with validated content
             response._content = b"".join(content_chunks)
+            # Don't close the response here - we return it for the caller to use
             return response
 
+        except ValueError:
+            # Size limit exceeded - close response and re-raise
+            if response is not None:
+                response.close()
+            raise
+
         except RequestException as e:
+            # Close response if it was opened
+            if response is not None:
+                response.close()
+
             # Don't retry on client errors (4xx) except 429 (rate limit)
             if hasattr(e, "response") and e.response is not None:
                 status = e.response.status_code
@@ -132,15 +173,20 @@ def fetch_with_retry(
             # Calculate backoff time
             wait_time = backoff_factor * (2**attempt)
 
+            # Respect Retry-After header if present (for 429 responses)
+            if hasattr(e, "response") and e.response is not None:
+                retry_after = e.response.headers.get("Retry-After")
+                if retry_after:
+                    # Retry-After can be seconds (integer) or HTTP-date
+                    # Use contextlib.suppress for cleaner error handling
+                    with contextlib.suppress(ValueError):
+                        wait_time = max(wait_time, float(retry_after))
+
             # Call retry callback if provided
             if on_retry:
                 on_retry(attempt + 1, e)
 
             time.sleep(wait_time)
-
-        except ValueError:
-            # Size limit exceeded - don't retry
-            raise
 
     return None
 

@@ -5,7 +5,6 @@ Downloads character icon images from the official script tool and saves them loc
 Supports incremental downloads (only fetches new/missing images).
 """
 
-import sys
 import time
 from pathlib import Path
 
@@ -16,21 +15,11 @@ try:
 except ImportError:
     HAS_TQDM = False
 
-# Handle both direct script execution and module import
-try:
-    from .config import ICONS_DIR
-except ImportError:
-    from config import ICONS_DIR
-
-# Add utils to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-from http_client import fetch_with_retry
-from logger import get_logger
+from src.scrapers.config import ICONS_DIR, IMAGE_RATE_LIMIT
+from src.utils.http_client import fetch_with_retry
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
-
-# Image-specific rate limit (faster than wiki)
-IMAGE_RATE_LIMIT = 0.2
 
 
 def download_image(url: str, output_path: Path, verbose: int = 0) -> bool:
@@ -69,7 +58,7 @@ def download_image(url: str, output_path: Path, verbose: int = 0) -> bool:
 
         return True
 
-    except Exception as e:
+    except OSError as e:
         if verbose >= 1:
             logger.error(f"    Failed to save {output_path}: {e}")
         return False

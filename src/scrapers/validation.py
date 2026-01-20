@@ -4,25 +4,10 @@ Blood on the Clocktower - Schema Validator Integration
 Provides validation functions that can be integrated into the scraper pipeline.
 """
 
-import sys
-from pathlib import Path
-
-# Add parent to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-
-from logger import get_logger
+from src.utils.logger import get_logger
+from src.validators.schema_validator import validate_character
 
 logger = get_logger(__name__)
-
-try:
-    from validators.schema_validator import CHARACTER_SCHEMA, validate_character
-except ImportError:
-    # Fallback if validators module not available
-    def validate_character(char: dict) -> list[str]:
-        return []
-
-    CHARACTER_SCHEMA = {}
 
 
 def validate_characters(characters: dict, strict: bool = False) -> tuple[int, int, list[str]]:

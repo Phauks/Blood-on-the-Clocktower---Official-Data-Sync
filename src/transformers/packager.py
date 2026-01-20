@@ -7,25 +7,11 @@ for use by the Token Generator application.
 
 import hashlib
 import json
-import sys
-from datetime import UTC, datetime
 from pathlib import Path
 
-# Handle both direct script execution and module import
-try:
-    from ..scrapers.config import (
-        CHARACTERS_DIR,
-        DIST_DIR,
-        SCHEMA_VERSION,
-        SCRIPT_TOOL_URL,
-    )
-except ImportError:
-    sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-    from config import CHARACTERS_DIR, DIST_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
-
-# Add utils to path for logger
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-from logger import get_logger
+from src.scrapers.config import CHARACTERS_DIR, DIST_DIR
+from src.utils.logger import get_logger
+from src.utils.manifest_utils import build_manifest, compute_manifest_stats, save_manifest
 
 logger = get_logger(__name__)
 
@@ -59,62 +45,13 @@ def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
     Returns:
         The manifest dict
     """
-    # Build editions index and count stats
-    editions: dict[str, list[str]] = {}
-    edition_reminders: dict[str, int] = {}
-    total_reminders = 0
-    total_jinxes = 0
-    total_flavor = 0
+    # Compute stats and build manifest using shared utilities
+    stats = compute_manifest_stats(characters)
+    manifest = build_manifest(stats)
 
-    for char in characters:
-        edition = char["edition"]
-        if edition not in editions:
-            editions[edition] = []
-            edition_reminders[edition] = 0
-        editions[edition].append(char["id"])
-
-        # Count reminders
-        char_reminders = len(char.get("reminders", []))
-        edition_reminders[edition] += char_reminders
-        total_reminders += char_reminders
-
-        # Count jinxes (each jinx stored bidirectionally, so divide by 2 at end)
-        total_jinxes += len(char.get("jinxes", []))
-
-        # Count characters with flavor text
-        if char.get("flavor"):
-            total_flavor += 1
-
-    # Jinxes are stored on both characters, so divide by 2
-    total_jinxes = total_jinxes // 2
-
-    # Sort editions alphabetically and character IDs within each edition
-    editions = {k: sorted(v) for k, v in sorted(editions.items())}
-    edition_reminders = dict(sorted(edition_reminders.items()))
-
-    # Compute content hash for integrity checking
-    char_json = json.dumps(characters, sort_keys=True, ensure_ascii=False)
-    content_hash = hashlib.sha256(char_json.encode()).hexdigest()[:16]
-
-    manifest = {
-        "schemaVersion": SCHEMA_VERSION,
-        "version": datetime.now(UTC).strftime("%Y.%m.%d"),
-        "generated": datetime.now(UTC).isoformat(),
-        "lastModified": datetime.now(UTC).isoformat(),
-        "contentHash": content_hash,
-        "source": SCRIPT_TOOL_URL,
-        "total_characters": len(characters),
-        "total_reminders": total_reminders,
-        "total_jinxes": total_jinxes,
-        "total_flavor": total_flavor,
-        "editions": editions,
-        "edition_counts": {k: len(v) for k, v in editions.items()},
-        "edition_reminders": edition_reminders,
-    }
-
+    # Save manifest
     manifest_file = output_dir / "manifest.json"
-    with open(manifest_file, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2, ensure_ascii=False)
+    save_manifest(manifest, manifest_file)
 
     return manifest
 
@@ -202,7 +139,7 @@ def verify_package(dist_dir: Path | None = None, verbose: int = 0) -> bool:
 
     # Compute hash
     char_json = json.dumps(characters, sort_keys=True, ensure_ascii=False)
-    computed_hash = hashlib.sha256(char_json.encode()).hexdigest()[:16]
+    computed_hash = hashlib.sha256(char_json.encode()).hexdigest()
 
     if computed_hash != manifest["contentHash"]:
         logger.error(f"Hash mismatch! Expected: {manifest['contentHash']}, Got: {computed_hash}")

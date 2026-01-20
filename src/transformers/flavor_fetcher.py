@@ -11,28 +11,16 @@ This minimizes wiki requests from total character count to only when necessary.
 """
 
 import json
-import sys
 import time
-from pathlib import Path
 
 from tqdm import tqdm
 
-# Add paths for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-
-# Import from config (consolidated constants)
-from config import (
-    CHARACTERS_DIR,
-    RATE_LIMIT_SECONDS,
-)
-from data_loader import load_previous_character_data
-
-# Import shared utilities
-from http_client import fetch_with_retry
-from logger import get_logger
-from wiki_client import construct_wiki_url
-from writers import order_character_fields, strip_internal_fields
+from src.scrapers.config import CHARACTERS_DIR, RATE_LIMIT_SECONDS
+from src.scrapers.writers import order_character_fields, strip_internal_fields
+from src.utils.data_loader import load_previous_character_data
+from src.utils.http_client import fetch_with_retry
+from src.utils.logger import get_logger
+from src.utils.wiki_client import construct_wiki_url
 
 logger = get_logger(__name__)
 

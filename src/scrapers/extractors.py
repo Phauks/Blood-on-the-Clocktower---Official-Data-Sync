@@ -8,35 +8,15 @@ from typing import Any
 
 from playwright.sync_api import Page
 
-# Handle both direct script execution and module import
-try:
-    from .config import CLICK_DELAY
-    from .parsers import (
-        construct_full_icon_url,
-        construct_local_image_path,
-        detect_setup_flag,
-        parse_character_id_from_icon,
-        parse_edition_from_icon,
-    )
-except ImportError:
-    from config import CLICK_DELAY
-    from parsers import (
-        construct_full_icon_url,
-        construct_local_image_path,
-        detect_setup_flag,
-        parse_character_id_from_icon,
-        parse_edition_from_icon,
-    )
-
-# Import logging
-try:
-    from ..utils.logger import get_logger
-except ImportError:
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-    from logger import get_logger
+from src.scrapers.config import CLICK_DELAY
+from src.scrapers.parsers import (
+    construct_full_icon_url,
+    construct_local_image_path,
+    detect_setup_flag,
+    parse_character_id_from_icon,
+    parse_edition_from_icon,
+)
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

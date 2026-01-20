@@ -31,15 +31,11 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-# Add paths for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / "transformers"))
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-
-from logger import get_logger
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-from config import (  # noqa: E402
+from src.scrapers.config import (  # noqa: E402
     CHARACTERS_DIR,
     DATA_DIR,
     DEFAULT_TIMEOUT,
@@ -48,7 +44,7 @@ from config import (  # noqa: E402
     SCRIPT_TOOL_URL,
     VALID_EDITIONS,
 )
-from extractors import (  # noqa: E402
+from src.scrapers.extractors import (  # noqa: E402
     add_all_characters_to_script,
     clean_character_data,
     extract_characters,
@@ -56,8 +52,8 @@ from extractors import (  # noqa: E402
     extract_night_order,
     filter_characters_by_edition,
 )
-from validation import print_validation_summary, validate_characters  # noqa: E402
-from writers import create_manifest, save_characters_by_edition  # noqa: E402
+from src.scrapers.validation import print_validation_summary, validate_characters  # noqa: E402
+from src.scrapers.writers import create_manifest, save_characters_by_edition  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:
@@ -273,7 +269,7 @@ def main() -> int:
     if args.images:
         logger.info("\n--- Downloading character icons (incremental) ---")
         try:
-            from image_downloader import download_character_images
+            from src.scrapers.image_downloader import download_character_images
 
             stats = download_character_images(
                 characters, icons_dir=ICONS_DIR, incremental=True, verbose=0, show_progress=True
@@ -289,7 +285,7 @@ def main() -> int:
     previous_data = None
     if args.reminders:
         try:
-            from reminder_fetcher import load_previous_character_data
+            from src.transformers.reminder_fetcher import load_previous_character_data
 
             previous_data = load_previous_character_data()
         except ImportError:
@@ -304,7 +300,7 @@ def main() -> int:
     if args.reminders:
         logger.info("\n--- Phase 7: Fetching reminder tokens from wiki (incremental) ---")
         try:
-            from reminder_fetcher import (
+            from src.transformers.reminder_fetcher import (
                 fetch_reminders_for_edition,
                 update_character_files_with_reminders,
             )
@@ -344,7 +340,7 @@ def main() -> int:
     if args.flavor:
         logger.info("\n--- Phase 8: Fetching flavor text from wiki (incremental) ---")
         try:
-            from flavor_fetcher import (
+            from src.transformers.flavor_fetcher import (
                 load_scraped_characters,
                 save_updated_characters,
                 update_flavor_for_characters,

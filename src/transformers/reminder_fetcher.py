@@ -21,9 +21,7 @@ import asyncio
 import html
 import json
 import re
-import sys
 import time
-from pathlib import Path
 
 try:
     import aiohttp
@@ -35,23 +33,16 @@ except ImportError:
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-# Add paths for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-
-# Import from config (consolidated constants)
-from config import (
+from src.scrapers.config import (
     ASYNC_REQUEST_TIMEOUT,
     CHARACTERS_DIR,
     RATE_LIMIT_SECONDS,
     USER_AGENT,
 )
-from data_loader import load_previous_character_data
-
-# Import shared utilities
-from http_client import fetch_with_retry
-from logger import get_logger
-from wiki_client import construct_wiki_url
+from src.utils.data_loader import load_previous_character_data
+from src.utils.http_client import fetch_with_retry
+from src.utils.logger import get_logger
+from src.utils.wiki_client import construct_wiki_url, validate_character_name
 
 logger = get_logger(__name__)
 
@@ -194,13 +185,8 @@ def fetch_wiki_page(char_name: str) -> str | None:
     Security:
         Validates character name and resulting URL to prevent SSRF attacks
     """
-    # Validate character name
-    if not char_name or len(char_name) > 100:
-        raise ValueError(f"Invalid character name length: {len(char_name)}")
-
-    # Check for suspicious characters (allow letters, numbers, spaces, hyphens, apostrophes, accents)
-    if not re.match(r"^[a-zA-Z0-9\s\-'À-ÿ]+$", char_name):
-        raise ValueError(f"Invalid characters in character name: {char_name!r}")
+    # Validate character name using shared utility
+    validate_character_name(char_name)
 
     # Construct and validate wiki URL using shared utility
     url = construct_wiki_url(char_name, validate=True)
@@ -232,26 +218,15 @@ async def fetch_wiki_page_async(
         Tuple of (char_name, html_content or None)
 
     Security:
-        Same validation as sync version
+        Same validation as sync version via shared validate_character_name
     """
-    # Validate character name
-    if not char_name or len(char_name) > 100:
-        if verbose >= 1:
-            tqdm.write(f"    Invalid character name length for {char_name}")
-        return (char_name, None)
-
-    # Check for suspicious characters
-    if not re.match(r"^[a-zA-Z0-9\s\-'À-ÿ]+$", char_name):
-        if verbose >= 1:
-            tqdm.write(f"    Invalid characters in character name: {char_name}")
-        return (char_name, None)
-
-    # Build and validate URL using shared utility
+    # Validate character name and build URL using shared utilities
     try:
+        validate_character_name(char_name)
         url = construct_wiki_url(char_name, validate=True)
     except ValueError as e:
         if verbose >= 1:
-            tqdm.write(f"    Invalid URL for {char_name}: {e}")
+            tqdm.write(f"    Invalid character name or URL for {char_name}: {e}")
         return (char_name, None)
 
     # Fetch with semaphore to limit concurrent requests

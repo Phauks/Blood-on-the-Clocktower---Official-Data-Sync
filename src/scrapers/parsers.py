@@ -5,19 +5,11 @@ Functions for parsing icon URLs, detecting setup flags, and text processing.
 """
 
 import re
-import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
-# Handle both direct script execution and module import
-try:
-    from .config import BASE_ICON_URL, SETUP_EXCEPTIONS, WIKI_BASE_URL
-except ImportError:
-    from config import BASE_ICON_URL, SETUP_EXCEPTIONS, WIKI_BASE_URL
-
-# Add utils to path for logger
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-from logger import get_logger
+from src.scrapers.config import BASE_ICON_URL, SETUP_EXCEPTIONS, WIKI_BASE_URL
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -14,9 +14,7 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
-# Add utils to path for logger
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-from logger import get_logger
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

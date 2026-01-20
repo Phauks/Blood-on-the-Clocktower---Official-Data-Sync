@@ -4,23 +4,12 @@ Writer functions for Blood on the Clocktower scraper.
 Functions for saving character data to JSON files and creating manifests.
 """
 
-import hashlib
 import json
-from datetime import UTC, datetime
 from pathlib import Path
 
-# Handle both direct script execution and module import
-try:
-    from ..utils.logger import get_logger
-    from .config import CHARACTERS_DIR, DATA_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
-except ImportError:
-    import sys
-    from pathlib import Path as TmpPath
-
-    from config import CHARACTERS_DIR, DATA_DIR, SCHEMA_VERSION, SCRIPT_TOOL_URL
-
-    sys.path.insert(0, str(TmpPath(__file__).parent.parent / "utils"))
-    from logger import get_logger
+from src.scrapers.config import CHARACTERS_DIR, DATA_DIR
+from src.utils.logger import get_logger
+from src.utils.manifest_utils import build_manifest, compute_manifest_stats, save_manifest
 
 logger = get_logger(__name__)
 
@@ -187,63 +176,13 @@ def create_manifest(characters: dict, output_dir: Path | None = None) -> dict:
     """
     data_dir = output_dir or DATA_DIR
 
-    editions = {}
-    edition_reminders = {}  # Track reminder counts per edition
-    total_reminders = 0
-    total_jinxes = 0
-    total_flavor = 0
+    # Compute stats and build manifest using shared utilities
+    stats = compute_manifest_stats(characters.values())
+    manifest = build_manifest(stats)
 
-    for char in characters.values():
-        edition = char["edition"]
-        if edition not in editions:
-            editions[edition] = []
-            edition_reminders[edition] = 0
-        editions[edition].append(char["id"])
-
-        # Count reminders
-        char_reminders = len(char.get("reminders", []))
-        edition_reminders[edition] += char_reminders
-        total_reminders += char_reminders
-
-        # Count jinxes (each jinx stored bidirectionally, so divide by 2 at end)
-        total_jinxes += len(char.get("jinxes", []))
-
-        # Count characters with flavor text
-        if char.get("flavor"):
-            total_flavor += 1
-
-    # Jinxes are stored on both characters, so divide by 2
-    total_jinxes = total_jinxes // 2
-
-    # Sort editions alphabetically and character IDs within each edition
-    editions = {k: sorted(v) for k, v in sorted(editions.items())}
-    edition_reminders = dict(sorted(edition_reminders.items()))
-
-    # Compute content hash from character data (for integrity checking)
-    # Strip internal fields before hashing to match what gets saved
-    all_chars = [strip_internal_fields(char) for char in characters.values()]
-    char_json = json.dumps(all_chars, sort_keys=True, ensure_ascii=False)
-    content_hash = hashlib.sha256(char_json.encode()).hexdigest()[:16]
-
-    manifest = {
-        "schemaVersion": SCHEMA_VERSION,
-        "version": datetime.now(UTC).strftime("%Y.%m.%d"),
-        "generated": datetime.now(UTC).isoformat(),
-        "lastModified": datetime.now(UTC).isoformat(),
-        "contentHash": content_hash,
-        "source": SCRIPT_TOOL_URL,
-        "total_characters": len(characters),
-        "total_reminders": total_reminders,
-        "total_jinxes": total_jinxes,
-        "total_flavor": total_flavor,
-        "editions": editions,
-        "edition_counts": {k: len(v) for k, v in editions.items()},
-        "edition_reminders": edition_reminders,
-    }
-
+    # Save manifest
     manifest_file = data_dir / "manifest.json"
-    with open(manifest_file, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2, ensure_ascii=False)
+    save_manifest(manifest, manifest_file)
     logger.info(f"Saved manifest to {manifest_file}")
 
     return manifest

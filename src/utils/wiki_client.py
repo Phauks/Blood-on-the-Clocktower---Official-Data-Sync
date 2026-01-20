@@ -4,15 +4,39 @@ Shared utilities for interacting with the Blood on the Clocktower wiki.
 Provides common functions for fetching and parsing wiki pages.
 """
 
-import sys
+import re
 import urllib.parse
-from pathlib import Path
 
-# Add paths for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
+from src.scrapers.config import (
+    CHARACTER_NAME_PATTERN,
+    MAX_INPUT_NAME_LENGTH,
+    WIKI_BASE_URL,
+)
+from src.utils.http_client import fetch_with_retry
 
-from config import WIKI_BASE_URL
-from http_client import fetch_with_retry
+
+def validate_character_name(char_name: str) -> None:
+    """Validate character name for wiki URL construction.
+
+    Args:
+        char_name: Character name to validate
+
+    Raises:
+        ValueError: If character name is invalid or potentially malicious
+
+    Security:
+        - Validates length to prevent buffer overflow attacks
+        - Validates pattern to prevent URL injection attacks
+    """
+    if not char_name:
+        raise ValueError("Character name cannot be empty")
+
+    if len(char_name) > MAX_INPUT_NAME_LENGTH:
+        raise ValueError(f"Character name too long: {len(char_name)} > {MAX_INPUT_NAME_LENGTH}")
+
+    # Check for suspicious characters (allow letters, numbers, spaces, hyphens, apostrophes, accents)
+    if not re.match(CHARACTER_NAME_PATTERN, char_name):
+        raise ValueError(f"Invalid characters in character name: {char_name!r}")
 
 
 def normalize_wiki_name(character_name: str) -> str:
@@ -59,8 +83,11 @@ def construct_wiki_url(character_name: str, validate: bool = True) -> str:
         parsed = urlparse(url)
         if parsed.scheme not in ("http", "https"):
             raise ValueError(f"Invalid URL scheme: {parsed.scheme}")
-        if not parsed.netloc.endswith("bloodontheclocktower.com"):
-            raise ValueError(f"URL does not match expected domain: {url}")
+        # Use explicit whitelist to prevent subdomain attacks
+        # (e.g., evil.bloodontheclocktower.com or evilbloodontheclocktower.com)
+        valid_domains = {"wiki.bloodontheclocktower.com", "script.bloodontheclocktower.com"}
+        if parsed.netloc not in valid_domains:
+            raise ValueError(f"URL does not match allowed domains: {url}")
 
     return url
 

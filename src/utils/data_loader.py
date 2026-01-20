@@ -9,19 +9,8 @@ import json
 from pathlib import Path
 from typing import Any
 
-# Import config - handle both module and direct execution
-try:
-    import sys
-
-    sys.path.insert(0, str(Path(__file__).parent.parent / "scrapers"))
-    from config import CHARACTERS_DIR
-except ImportError:
-    # Fallback
-    PROJECT_ROOT = Path(__file__).parent.parent.parent
-    CHARACTERS_DIR = PROJECT_ROOT / "data" / "characters"
-
-# Import logging
-from logger import get_logger
+from src.scrapers.config import CHARACTERS_DIR
+from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -56,7 +45,7 @@ def load_previous_character_data(
                 char_id = character.get("id")
                 if char_id:
                     previous_data[char_id] = character
-        except Exception as e:
+        except (json.JSONDecodeError, OSError) as e:
             logger.warning(f"Could not load {char_file}: {e}")
 
     return previous_data
@@ -74,7 +63,7 @@ def load_character_file(char_file: Path) -> dict[str, Any] | None:
     try:
         with open(char_file, encoding="utf-8") as f:
             return json.load(f)
-    except Exception:
+    except (json.JSONDecodeError, OSError):
         return None
 
 
@@ -96,7 +85,7 @@ def save_character_file(char_file: Path, character: dict[str, Any]) -> bool:
             json.dump(character, f, indent=2, ensure_ascii=False)
             f.write("\n")
         return True
-    except Exception as e:
+    except (OSError, TypeError) as e:
         logger.error(f"Error saving {char_file}: {e}")
         return False
 
