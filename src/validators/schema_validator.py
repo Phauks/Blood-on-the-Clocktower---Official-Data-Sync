@@ -19,6 +19,7 @@ if __name__ == "__main__" or "src" not in sys.modules:
 
 from jsonschema import Draft202012Validator
 
+from src.scrapers.config import EXPECTED_TOTAL_CHARACTERS
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -262,7 +263,7 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
 
     Checks:
     - All character IDs are unique
-    - All jinx references point to valid characters
+    - All jinx references point to valid characters (only with full data)
     - Night order values are reasonable
     - Required fields are not empty strings
     """
@@ -276,13 +277,15 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
             issues.append(f"Duplicate character ID: {char_id}")
         char_ids.add(char_id)
 
-    # Check jinx references
-    for char in characters:
-        char_id = char.get("id", "unknown")
-        for jinx in char.get("jinxes", []):
-            jinx_id = jinx.get("id", "")
-            if jinx_id and jinx_id not in char_ids:
-                issues.append(f"{char_id}: Jinx references unknown character '{jinx_id}'")
+    # Check jinx references (only if we have the full dataset)
+    # With partial data, jinxes may reference characters from other editions
+    if len(characters) >= EXPECTED_TOTAL_CHARACTERS:
+        for char in characters:
+            char_id = char.get("id", "unknown")
+            for jinx in char.get("jinxes", []):
+                jinx_id = jinx.get("id", "")
+                if jinx_id and jinx_id not in char_ids:
+                    issues.append(f"{char_id}: Jinx references unknown character '{jinx_id}'")
 
     # Check night order values
     for char in characters:
