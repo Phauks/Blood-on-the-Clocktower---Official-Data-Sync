@@ -66,7 +66,8 @@ IMAGE_RATE_LIMIT = 0.2  # delay between icon downloads (seconds)
 # =============================================================================
 # Validation settings
 # =============================================================================
-EXPECTED_TOTAL_CHARACTERS = 174  # Total characters across all editions
+# Editions required for complete jinx validation (all editions have jinxes)
+EDITIONS_FOR_JINX_VALIDATION = {"tb", "bmr", "snv", "carousel", "loric"}
 MAX_ABILITY_LENGTH = 500  # characters
 MAX_NAME_LENGTH = 30  # characters (for schema validation)
 MAX_INPUT_NAME_LENGTH = 100  # characters (security limit for user input)

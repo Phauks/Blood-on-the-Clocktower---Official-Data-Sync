@@ -19,7 +19,7 @@ if __name__ == "__main__" or "src" not in sys.modules:
 
 from jsonschema import Draft202012Validator
 
-from src.scrapers.config import EXPECTED_TOTAL_CHARACTERS
+from src.scrapers.config import EDITIONS_FOR_JINX_VALIDATION
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -277,9 +277,12 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
             issues.append(f"Duplicate character ID: {char_id}")
         char_ids.add(char_id)
 
-    # Check jinx references (only if we have the full dataset)
+    # Check jinx references (only if we have characters from all editions)
     # With partial data, jinxes may reference characters from other editions
-    if len(characters) >= EXPECTED_TOTAL_CHARACTERS:
+    loaded_editions = {char.get("edition") for char in characters}
+    has_all_editions = EDITIONS_FOR_JINX_VALIDATION.issubset(loaded_editions)
+
+    if has_all_editions:
         for char in characters:
             char_id = char.get("id", "unknown")
             for jinx in char.get("jinxes", []):
