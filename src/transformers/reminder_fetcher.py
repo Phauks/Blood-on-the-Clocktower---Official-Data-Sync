@@ -24,6 +24,7 @@ import re
 import sys
 import time
 from pathlib import Path
+from typing import Any
 
 # Add project root to path for direct script execution
 if __name__ == "__main__" or "src" not in sys.modules:
@@ -119,7 +120,7 @@ def needs_reminder_update(character: dict, previous_data: dict[str, dict]) -> bo
 
     # Case 4: Character name changed (wiki URL would change)
     # Otherwise, no update needed
-    return character.get("name", "") != previous.get("name", "")
+    return bool(character.get("name", "") != previous.get("name", ""))
 
 
 def preserve_reminders(character: dict, previous_data: dict[str, dict]) -> bool:
@@ -584,7 +585,7 @@ def fetch_reminders_for_edition(
     previous_data: dict[str, dict] | None = None,
     use_async: bool = True,
     batch_size: int = 5,
-) -> dict[str, list[str]]:
+) -> dict[str, Any]:
     """Fetch reminder tokens for all characters in an edition.
 
     Args:

@@ -220,7 +220,7 @@ def scrape_characters(headless: bool = True, timeout: int = DEFAULT_TIMEOUT) -> 
     logger.info(f"Characters with jinxes: {chars_with_jinxes}")
 
     # Count by edition
-    edition_counts = {}
+    edition_counts: dict[str, int] = {}
     for char in characters.values():
         edition = char["edition"]
         edition_counts[edition] = edition_counts.get(edition, 0) + 1
@@ -369,7 +369,7 @@ def main() -> int:
     if args.package:
         logger.info("\n--- Phase 9: Creating distribution package ---")
         try:
-            from packager import package_data
+            from src.transformers.packager import package_data
 
             package_data(verbose=1)
             logger.info("\n✓ Distribution package created in dist/")
@@ -380,7 +380,7 @@ def main() -> int:
     if args.reminders or args.flavor:
         logger.info("\n--- Updating manifest with fetched data ---")
         try:
-            from data_loader import load_previous_character_data as load_all_chars
+            from src.utils.data_loader import load_previous_character_data as load_all_chars
 
             updated_characters = load_all_chars()
             if updated_characters:

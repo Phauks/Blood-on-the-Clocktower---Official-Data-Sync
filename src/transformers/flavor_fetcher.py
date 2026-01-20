@@ -95,7 +95,7 @@ def needs_flavor_update(character: dict, previous_data: dict[str, dict]) -> bool
 
     # Case 5: Character name changed (wiki URL would change)
     # Otherwise, no update needed
-    return character.get("name", "") != previous.get("name", "")
+    return bool(character.get("name", "") != previous.get("name", ""))
 
 
 def preserve_flavor_text(character: dict, previous_data: dict[str, dict]) -> bool:

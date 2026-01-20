@@ -8,6 +8,7 @@ for use by the Token Generator application.
 import hashlib
 import json
 from pathlib import Path
+from typing import Any
 
 from src.scrapers.config import CHARACTERS_DIR, DIST_DIR
 from src.utils.logger import get_logger
@@ -32,7 +33,8 @@ def load_all_characters(characters_dir: Path | None = None) -> list[dict]:
         raise FileNotFoundError(f"Character data not found: {all_file}")
 
     with open(all_file, encoding="utf-8") as f:
-        return json.load(f)
+        data: list[dict[Any, Any]] = json.load(f)
+        return data
 
 
 def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:

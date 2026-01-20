@@ -11,6 +11,7 @@ but we extract the character object schema for validation.
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 # Add project root to path for direct script execution
 if __name__ == "__main__" or "src" not in sys.modules:
@@ -317,7 +318,8 @@ def load_all_characters() -> list[dict]:
         )
 
     with open(all_file, encoding="utf-8") as f:
-        return json.load(f)
+        data: list[dict[Any, Any]] = json.load(f)
+        return data
 
 
 def print_validation_report(

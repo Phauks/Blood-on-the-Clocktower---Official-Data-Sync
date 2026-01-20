@@ -29,7 +29,7 @@ def load_previous_character_data(
     if characters_dir is None:
         characters_dir = CHARACTERS_DIR
 
-    previous_data = {}
+    previous_data: dict[str, dict[str, Any]] = {}
 
     if not characters_dir.exists():
         return previous_data
@@ -62,7 +62,8 @@ def load_character_file(char_file: Path) -> dict[str, Any] | None:
     """
     try:
         with open(char_file, encoding="utf-8") as f:
-            return json.load(f)
+            data: dict[str, Any] = json.load(f)
+            return data
     except (json.JSONDecodeError, OSError):
         return None
 

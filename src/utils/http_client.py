@@ -11,6 +11,7 @@ Provides robust HTTP request handling for wiki scraping with:
 import contextlib
 import time
 from collections.abc import Callable
+from typing import Any
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -218,7 +219,8 @@ def fetch_json(url: str, timeout: int | None = None) -> dict | None:
     response = fetch_with_retry(url, timeout=timeout)
     if response:
         try:
-            return response.json()
+            data: dict[Any, Any] = response.json()
+            return data
         except ValueError:
             return None
     return None
