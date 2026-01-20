@@ -7,8 +7,13 @@ for use by the Token Generator application.
 
 import hashlib
 import json
+import sys
 from pathlib import Path
 from typing import Any
+
+# Add project root to path for direct script execution
+if __name__ == "__main__" or "src" not in sys.modules:
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src.scrapers.config import CHARACTERS_DIR, DIST_DIR
 from src.utils.logger import get_logger
