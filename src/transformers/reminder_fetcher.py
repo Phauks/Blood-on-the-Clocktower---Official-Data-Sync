@@ -21,7 +21,13 @@ import asyncio
 import html
 import json
 import re
+import sys
 import time
+from pathlib import Path
+
+# Add project root to path for direct script execution
+if __name__ == "__main__" or "src" not in sys.modules:
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 try:
     import aiohttp

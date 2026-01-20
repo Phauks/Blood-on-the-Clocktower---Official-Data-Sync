@@ -29,6 +29,10 @@ import argparse
 import sys
 from pathlib import Path
 
+# Add project root to path for direct script execution
+if __name__ == "__main__" or "src" not in sys.modules:
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
 from playwright.sync_api import sync_playwright
 
 from src.utils.logger import get_logger
