@@ -42,12 +42,16 @@ def load_all_characters(characters_dir: Path | None = None) -> list[dict]:
         return data
 
 
-def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
+def create_dist_manifest(
+    characters: list[dict], output_dir: Path, content_hash: str | None = None
+) -> dict:
     """Create manifest.json for the distribution package.
 
     Args:
         characters: List of character dicts
         output_dir: Output directory for manifest
+        content_hash: Pre-computed hash of characters.json raw content (if provided,
+                      overrides the hash computed from re-serialized JSON)
 
     Returns:
         The manifest dict
@@ -55,6 +59,11 @@ def create_dist_manifest(characters: list[dict], output_dir: Path) -> dict:
     # Compute stats and build manifest using shared utilities
     stats = compute_manifest_stats(characters)
     manifest = build_manifest(stats)
+
+    # Override contentHash if a pre-computed hash was provided
+    # This ensures the hash matches the actual file bytes
+    if content_hash:
+        manifest["contentHash"] = content_hash
 
     # Save manifest
     manifest_file = output_dir / "manifest.json"
@@ -96,8 +105,16 @@ def package_data(
     if verbose >= 1:
         logger.info(f"  Created {chars_file.name}")
 
-    # Create manifest
-    manifest = create_dist_manifest(characters, dist_dir)
+    # Compute contentHash from the ACTUAL file content (not re-serialized)
+    # This ensures consumers can verify the hash by reading the raw file bytes
+    with open(chars_file, "r", encoding="utf-8") as f:
+        raw_content = f.read()
+    content_hash = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()
+    if verbose >= 2:
+        logger.debug(f"  Content hash: {content_hash}")
+
+    # Create manifest with the correct content hash
+    manifest = create_dist_manifest(characters, dist_dir, content_hash=content_hash)
     if verbose >= 1:
         logger.info(
             f"  Created manifest.json (v{manifest['version']}, hash: {manifest['contentHash']})"
@@ -141,12 +158,11 @@ def verify_package(dist_dir: Path | None = None, verbose: int = 0) -> bool:
     with open(manifest_file, encoding="utf-8") as f:
         manifest = json.load(f)
 
-    with open(chars_file, encoding="utf-8") as f:
-        characters = json.load(f)
-
-    # Compute hash
-    char_json = json.dumps(characters, sort_keys=True, ensure_ascii=False)
-    computed_hash = hashlib.sha256(char_json.encode()).hexdigest()
+    # Compute hash from RAW file content (not re-serialized)
+    # This matches how consumers verify the hash
+    with open(chars_file, "r", encoding="utf-8") as f:
+        raw_content = f.read()
+    computed_hash = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()
 
     if computed_hash != manifest["contentHash"]:
         logger.error(f"Hash mismatch! Expected: {manifest['contentHash']}, Got: {computed_hash}")
