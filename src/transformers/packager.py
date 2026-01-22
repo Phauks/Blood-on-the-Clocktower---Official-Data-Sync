@@ -107,7 +107,7 @@ def package_data(
 
     # Compute contentHash from the ACTUAL file content (not re-serialized)
     # This ensures consumers can verify the hash by reading the raw file bytes
-    with open(chars_file, "r", encoding="utf-8") as f:
+    with open(chars_file, encoding="utf-8") as f:
         raw_content = f.read()
     content_hash = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()
     if verbose >= 2:
@@ -160,7 +160,7 @@ def verify_package(dist_dir: Path | None = None, verbose: int = 0) -> bool:
 
     # Compute hash from RAW file content (not re-serialized)
     # This matches how consumers verify the hash
-    with open(chars_file, "r", encoding="utf-8") as f:
+    with open(chars_file, encoding="utf-8") as f:
         raw_content = f.read()
     computed_hash = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()
 
