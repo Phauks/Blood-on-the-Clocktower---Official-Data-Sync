@@ -159,10 +159,10 @@ See [`examples/update_checker.py`](examples/update_checker.py) for a complete im
 | Trouble Brewing | `tb` | 27 | 18 |
 | Bad Moon Rising | `bmr` | 30 | 45 |
 | Sects & Violets | `snv` | 30 | 37 |
-| Unreleased (Carousel) | `carousel` | 68 | 66 |
+| Unreleased (Carousel) | `carousel` | 69 | 66 |
 | Fabled | `fabled` | 13 | 11 |
 | Loric | `loric` | 8 | 4 |
-| **Total** | | **176** | **181** |
+| **Total** | | **177** | **181** |
 
 
 ## Data Sources
