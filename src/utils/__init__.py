@@ -8,7 +8,7 @@ Modules:
 - wiki_client: Wiki URL construction and fetching
 """
 
-from .data_loader import load_previous_character_data
+from .data_loader import load_all_characters, load_previous_character_data
 from .http_client import close_session, fetch_url, fetch_with_retry, get_session
 from .logger import get_logger
 from .wiki_client import (
@@ -24,6 +24,7 @@ __all__ = [
     "fetch_with_retry",
     "get_logger",
     "get_session",
+    "load_all_characters",
     "load_previous_character_data",
     "construct_wiki_url",
     "fetch_wiki_page",

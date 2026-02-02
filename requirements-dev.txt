@@ -10,17 +10,11 @@ pytest-cov>=7.0.0               # Coverage reporting
 pytest-mock>=3.15.1              # Mocking utilities
 pytest-asyncio>=1.1.0            # Async test support
 pytest-timeout>=2.4.0            # Prevent hanging tests
-pytest-xdist>=3.8.0              # Parallel test execution
 
 # Web Scraping Test Utilities
 responses>=0.25.8                # Mock HTTP requests for testing
-pytest-playwright>=0.7.2         # Playwright test utilities
 
 # Code Quality
 ruff>=0.14.14                    # Fast Python linter and formatter
 mypy>=1.19.1                     # Static type checking
 pre-commit>=4.5.1                # Git hooks for code quality
-
-# Development Tools
-ipython>=9.10.0                  # Enhanced Python shell
-ipdb>=0.13.13                    # Debugger

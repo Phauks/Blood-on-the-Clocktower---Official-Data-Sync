@@ -91,6 +91,31 @@ def save_character_file(char_file: Path, character: dict[str, Any]) -> bool:
         return False
 
 
+def load_all_characters(characters_dir: Path | None = None) -> list[dict[str, Any]]:
+    """Load all characters from the combined all_characters.json file.
+
+    Args:
+        characters_dir: Path to characters directory (default: from config)
+
+    Returns:
+        List of character data dictionaries
+
+    Raises:
+        FileNotFoundError: If all_characters.json does not exist
+    """
+    char_dir = characters_dir or CHARACTERS_DIR
+    all_file = char_dir / "all_characters.json"
+
+    if not all_file.exists():
+        raise FileNotFoundError(
+            f"Character data not found at {all_file}. Run character_scraper.py first."
+        )
+
+    with open(all_file, encoding="utf-8") as f:
+        data: list[dict[str, Any]] = json.load(f)
+        return data
+
+
 def get_character_files_by_edition(edition: str, characters_dir: Path | None = None) -> list[Path]:
     """Get all character JSON files for an edition.
 

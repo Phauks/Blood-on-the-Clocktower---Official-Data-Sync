@@ -18,8 +18,3 @@ jsonschema>=4.26.0
 
 # Progress bars for CLI tools
 tqdm>=4.67.2
-
-# Testing framework
-pytest>=9.0.2
-pytest-cov>=7.0.0  # Coverage reporting
-pytest-mock>=3.15.1  # Mocking utilities

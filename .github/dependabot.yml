@@ -41,8 +41,6 @@ updates:
           - "mypy"
           - "pre-commit"
           - "responses"
-          - "ipython"
-          - "ipdb"
     # Allow both direct and indirect dependencies
     allow:
       - dependency-type: "all"

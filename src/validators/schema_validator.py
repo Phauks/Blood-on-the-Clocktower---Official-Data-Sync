@@ -11,7 +11,6 @@ but we extract the character object schema for validation.
 import json
 import sys
 from pathlib import Path
-from typing import Any
 
 # Add project root to path for direct script execution
 if __name__ == "__main__" or "src" not in sys.modules:
@@ -20,14 +19,10 @@ if __name__ == "__main__" or "src" not in sys.modules:
 from jsonschema import Draft202012Validator
 
 from src.scrapers.config import EDITIONS_FOR_JINX_VALIDATION
+from src.utils.data_loader import load_all_characters
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
-
-# Output paths
-PROJECT_ROOT = Path(__file__).parent.parent.parent
-DATA_DIR = PROJECT_ROOT / "data"
-CHARACTERS_DIR = DATA_DIR / "characters"
 
 # Official schema URL
 SCHEMA_URL = (
@@ -312,20 +307,6 @@ def check_data_integrity(characters: list[dict]) -> list[str]:
             issues.append(f"{char_id}: Empty team")
 
     return issues
-
-
-def load_all_characters() -> list[dict]:
-    """Load all characters from the combined JSON file."""
-    all_file = CHARACTERS_DIR / "all_characters.json"
-
-    if not all_file.exists():
-        raise FileNotFoundError(
-            f"Character data not found at {all_file}. Run character_scraper.py first."
-        )
-
-    with open(all_file, encoding="utf-8") as f:
-        data: list[dict[Any, Any]] = json.load(f)
-        return data
 
 
 def print_validation_report(

@@ -88,7 +88,7 @@ The scraper is organized into modular components:
   - `parse_edition_from_icon(src)` - Extract edition from icon URL
   - `parse_character_id_from_icon(src)` - Extract character ID from icon URL
   - `construct_full_icon_url(edition, char_id, team)` - Build full icon URL
-  - `detect_setup_flag(ability, char_id)` - Detect setup modifiers in ability text
+  - `detect_setup_flag(character_id, ability_text)` - Detect setup modifiers in ability text
 
 - **`extractors.py`** - Page interaction and data extraction:
   - `extract_characters(page)` - Get all characters from sidebar

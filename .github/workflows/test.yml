@@ -75,7 +75,6 @@ jobs:
       - name: Run unit tests
         run: |
           pytest tests/ -v --cov=src --cov-report=xml --cov-report=term-missing
-        continue-on-error: true  # Tests don't exist yet, don't fail
 
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.12'
@@ -106,7 +105,6 @@ jobs:
       - name: Run schema validator
         run: |
           python src/validators/schema_validator.py
-        continue-on-error: true  # Don't fail if no data exists yet
 
   security:
     name: Security Scan

@@ -9,37 +9,17 @@ import hashlib
 import json
 import sys
 from pathlib import Path
-from typing import Any
 
 # Add project root to path for direct script execution
 if __name__ == "__main__" or "src" not in sys.modules:
     sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.scrapers.config import CHARACTERS_DIR, DIST_DIR
+from src.scrapers.config import DIST_DIR
+from src.utils.data_loader import load_all_characters
 from src.utils.logger import get_logger
 from src.utils.manifest_utils import build_manifest, compute_manifest_stats, save_manifest
 
 logger = get_logger(__name__)
-
-
-def load_all_characters(characters_dir: Path | None = None) -> list[dict]:
-    """Load all character data from all_characters.json.
-
-    Args:
-        characters_dir: Directory containing character JSON files
-
-    Returns:
-        List of character dicts
-    """
-    char_dir = characters_dir or CHARACTERS_DIR
-    all_file = char_dir / "all_characters.json"
-
-    if not all_file.exists():
-        raise FileNotFoundError(f"Character data not found: {all_file}")
-
-    with open(all_file, encoding="utf-8") as f:
-        data: list[dict[Any, Any]] = json.load(f)
-        return data
 
 
 def create_dist_manifest(
