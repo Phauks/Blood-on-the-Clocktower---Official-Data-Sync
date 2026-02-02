@@ -2,24 +2,24 @@
 # Python 3.12+ required
 
 # Browser automation for SPA scraping
-playwright>=1.56.0
+playwright>=1.58.0
 
 # HTTP client for wiki flavor text fetching
-requests>=2.32.0
+requests>=2.32.5
 
 # Async HTTP client for batch wiki fetching (5x faster)
-aiohttp>=3.10.0
+aiohttp>=3.13.3
 
 # HTML parsing for wiki scraping
-beautifulsoup4>=4.12.0
+beautifulsoup4>=4.14.3
 
 # JSON Schema validation against official botc-release schema
-jsonschema>=4.25.0
+jsonschema>=4.26.0
 
 # Progress bars for CLI tools
-tqdm>=4.66.0
+tqdm>=4.67.2
 
 # Testing framework
-pytest>=8.0.0
-pytest-cov>=4.1.0  # Coverage reporting
-pytest-mock>=3.12.0  # Mocking utilities
+pytest>=9.0.2
+pytest-cov>=7.0.0  # Coverage reporting
+pytest-mock>=3.15.1  # Mocking utilities

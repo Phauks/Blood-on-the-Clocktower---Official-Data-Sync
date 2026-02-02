@@ -49,12 +49,12 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Fetch all history for tag comparison
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       
@@ -327,7 +327,7 @@ jobs:
       
       - name: Create GitHub Release
         if: steps.changes.outputs.has_changes == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.version }}
           name: Blood on the Clocktower Data v${{ steps.version.outputs.version }}
@@ -348,7 +348,7 @@ jobs:
       
       - name: Upload artifact (for PR builds)
         if: steps.changes.outputs.has_changes == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: botc-data-v${{ steps.version.outputs.version }}
           path: |
